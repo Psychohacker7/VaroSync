@@ -8,7 +8,7 @@ function Header() {
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Varosync Logo" className="h-8" />
+          <img src={`${import.meta.env.BASE_URL}public/logo.png`} alt="Varosync Logo" className="h-8" />
           <span className="text-xl font-bold text-navy-900">varosync</span>
           <span className="text-xs text-gray-500 hidden sm:inline">a biotech company</span>
         </div>

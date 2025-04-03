@@ -40,7 +40,7 @@ function Solutions() {
               {/* Solution Card 1 */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-48 bg-violet-100 flex items-center justify-center">
-                  <img src="/solution1.png" alt="Solution 1" className="h-32 w-auto" />
+                  <img src={`${import.meta.env.BASE_URL}solution1.png`} alt="Solution 1" className="h-32 w-auto" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-navy-900 mb-3">Circadian Analysis</h3>
@@ -57,7 +57,7 @@ function Solutions() {
               {/* Solution Card 2 */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-48 bg-blue-100 flex items-center justify-center">
-                  <img src="/solution2.png" alt="Solution 2" className="h-32 w-auto" />
+                  <img src={`${import.meta.env.BASE_URL}solution2.png`} alt="Solution 2" className="h-32 w-auto" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-navy-900 mb-3">Sleep Optimization</h3>
@@ -74,7 +74,7 @@ function Solutions() {
               {/* Solution Card 3 */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-48 bg-green-100 flex items-center justify-center">
-                  <img src="/solution3.png" alt="Solution 3" className="h-32 w-auto" />
+                  <img src={`${import.meta.env.BASE_URL}solution3.png`} alt="Solution 3" className="h-32 w-auto" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-navy-900 mb-3">Health Monitoring</h3>
@@ -127,7 +127,7 @@ function Solutions() {
               
               <div>
                 <img 
-                  src="/features.png" 
+                  src={`${import.meta.env.BASE_URL}features.png`} 
                   alt="Features Visualization" 
                   className="rounded-xl shadow-lg w-full"
                 />

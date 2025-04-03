@@ -45,7 +45,7 @@ function Company() {
               
               <div>
                 <img 
-                  src="/aboutus.png" 
+                  src={`${import.meta.env.BASE_URL}aboutus.png`} 
                   alt="About Varosync" 
                   className="h-full object-contain"
                 />
@@ -65,7 +65,7 @@ function Company() {
                 <div className="h-64 bg-gray-200">
                     <div className="h-64 flex items-center justify-center">
                     <img 
-                        src="/johndoe.png" 
+                        src={`${import.meta.env.BASE_URL}johndoe.png`} 
                         alt="John Doe" 
                         className="h-full object-contain"
                     />
@@ -86,7 +86,7 @@ function Company() {
                 <div className="h-64 bg-gray-200">
                     <div className="h-64 flex items-center justify-center">
                     <img 
-                        src="/johndoe.png" 
+                        src={`${import.meta.env.BASE_URL}johndoe.png`} 
                         alt="John Doe" 
                         className="h-full object-contain"
                     />
@@ -106,7 +106,7 @@ function Company() {
                 <div className="h-64 bg-gray-200">
                     <div className="h-64 flex items-center justify-center">
                     <img 
-                        src="/johndoe.png" 
+                        src={`${import.meta.env.BASE_URL}johndoe.png`} 
                         alt="John Doe" 
                         className="h-full object-contain"
                     />
