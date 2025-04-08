@@ -57,7 +57,7 @@ function Home() {
         {/* Right image section */}
         <div className="lg:w-1/2 overflow-hidden">
           <img 
-            src="/protein-structure.png"
+            src={`${import.meta.env.BASE_URL}protein-structure.png`}
             alt="Protein Structure Visualization"
             className="w-full h-full object-contain object-right"
           />
@@ -82,7 +82,7 @@ function Home() {
               <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm">
                 <div className="relative -mx-4 md:-mx-8 lg:-mx-12 -my-8">
                   <img 
-                    src="/backgromu.png"
+                    src={`${import.meta.env.BASE_URL}backgromu.png`}
                     alt="Platform Visualization"
                     className="w-full"
                   />
@@ -129,7 +129,7 @@ function Home() {
               </h2>
               <div className="relative">
                 <img 
-                  src="/technology.png"
+                  src={`${import.meta.env.BASE_URL}technology.png`}
                   alt="Solution Visualization"
                   className="rounded-xl w-full"
                 />
@@ -271,7 +271,7 @@ function Home() {
             {/* Partner logos from public folder */}
             <div className="h-16 flex items-center justify-center">
               <img 
-                src="/partnera.png" 
+                src={`${import.meta.env.BASE_URL}partnera.png`} 
                 alt="Partner A Logo" 
                 className="h-full object-contain"
               />
@@ -279,7 +279,7 @@ function Home() {
             
             <div className="h-16 flex items-center justify-center">
               <img 
-                src="/partnerb.png" 
+                src={`${import.meta.env.BASE_URL}partnerb.png`} 
                 alt="Partner B Logo" 
                 className="h-full object-contain"
               />
