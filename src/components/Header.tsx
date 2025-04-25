@@ -9,13 +9,14 @@ function Header() {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Varosync Logo" className="h-8" />
-          <span className="text-xl font-bold text-navy-900">varosync</span>
+          <span className="text-xl font-bold text-navy-900">VaroSync</span>
           <span className="text-xs text-gray-500 hidden sm:inline">a biotech company</span>
         </div>
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           <Link to="/" className="text-gray-600 hover:text-navy-900 transition-colors">Home</Link>
+          <Link to="/platform" className="text-gray-600 hover:text-navy-900 transition-colors">Platform</Link>
           <Link to="/solutions" className="text-gray-600 hover:text-navy-900 transition-colors">Solutions</Link>
           <Link to="/company" className="text-gray-600 hover:text-navy-900 transition-colors">Company</Link>
           <Link to="/contact" className="text-gray-600 hover:text-navy-900 transition-colors">Contact Us</Link>

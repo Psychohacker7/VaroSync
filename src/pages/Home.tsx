@@ -1,8 +1,7 @@
 import React from 'react';
 import { ArrowRight, Target, FileText, Atom, Book, PenTool as Tool, Trophy, Handshake } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const fadeIn = {
@@ -27,27 +26,24 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-
       {/* Hero Section */}
       <div className="flex flex-col lg:flex-row items-stretch relative">
         {/* Left content section */}
         <div className="lg:w-1/2 space-y-6 ml-auto pl-4 pr-4 py-16 lg:max-w-[50%] z-10">
           <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-            <span className="text-violet-500">Optimize</span>
+            <span className="text-violet-500">Design </span>
+            <span className="text-navy-900">Smarter</span>
             <br />
-            <span className="text-navy-900">Human Health</span>
-            <br />
-            <span className="text-navy-900">With AI</span>
+            <span className="text-navy-900">Treat </span>
+            <span className="text-violet-500">Better</span>
           </h1>
           
           <p className="text-gray-600 text-lg leading-relaxed">
-          At Varosync, we harness the power of synchronization to revolutionize healthcare. Combining computational biology, deep learning, and data-driven insights, we create innovative solutions to improve health outcomes and empower individuals to live healthier lives. 
+          At Varosync, we believe the future of precision medicine lies not only in genetics or biomarkers — but in time. Every cell in the human body operates on a circadian rhythm, a deeply conserved 24hour cycle that regulates everything from hormone secretion to immune function. Yet despite decades of evidence, biological time remains almost completely ignored in clinical research, drug development, and digital health.
           </p>
           
           <p className="text-gray-600 text-lg leading-relaxed">
-          Varo means power, and Sync represents synchronize, a powerful message of aligning strength and precision to achieve harmony. We aim to align cutting-edge technology with human biology for a future where healthcare is smarter, personalized, and accessible for all.
-          </p>
+          We are here to change that. Varo means power, and Sync represents synchronize, a powerful message of aligning strength and precision to achieve harmony. Varosync is building a new foundation for clinical trials and personalized care, one that recognizes time as a core variable in physiology, disease progression, and therapeutic response. Using cutting-edge machine learning, biological modeling, and real-world patient data, we deliver circadian aware analytics and infrastructure that power a new class of temporal medicine.</p>
           
           <button className="bg-navy-900 text-white px-8 py-4 rounded-full font-medium flex items-center gap-2 hover:bg-navy-800 transition-colors">
             Partner With Us
@@ -61,6 +57,124 @@ function Home() {
             alt="Protein Structure Visualization"
             className="w-full h-full object-contain object-right"
           />
+        </div>
+      </div>
+
+      {/* Scientific Rationale Section */}
+      <div className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            <motion.div variants={fadeIn} className="text-center mb-12">
+              <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-4">
+                Our Scientific Rationale
+              </h2>
+              <h3 className="text-2xl lg:text-3xl font-bold text-violet-500 mb-8">
+                Why Circadian Biology Matters
+              </h3>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="space-y-6 text-lg text-gray-600">
+              <p>
+                The human body is not static, it is rhythmic. Core clocks in the brain's suprachiasmatic
+                nucleus (SCN) orchestrate daily rhythms in gene expression, metabolism, hormone levels,
+                and immune cell activity. These internal rhythms persist even in isolation from external cues
+                and have been shown to shape disease symptoms and therapeutic responses across a
+                broad spectrum of disorders.
+              </p>
+
+              <p>
+                Recent studies, including a 2024 MIT-led paper, have confirmed what circadian biologists
+                have known for decades: more than half of all drugs approved by the FDA exhibit time-of-day
+                dependent efficacy and toxicity. Yet, most clinical trials still assume the body is the same at
+                9 AM and 9 PM. This leads to lost therapeutic opportunities, statistical noise, and
+                underpowered results.
+              </p>
+
+              <p>
+                Chronobiology has emerged as a powerful lens to improve drug design, dosing schedules,
+                and patient stratification.
+              </p>
+
+              <div className="bg-white rounded-xl p-8 mt-8">
+                <h4 className="text-xl font-bold text-navy-900 mb-4">
+                  The implications are especially profound for therapeutic areas like:
+                </h4>
+                <ul className="space-y-3 list-disc list-inside text-gray-600">
+                  <li>Hypertension, where blood pressure naturally fluctuates across the day</li>
+                  <li>Type 2 diabetes, with known time-of-day differences in insulin sensitivity</li>
+                  <li>Oncology, where circadian regulation affects cell division and DNA repair</li>
+                  <li>Autoimmune and inflammatory conditions, shaped by daily immune rhythms</li>
+                </ul>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Clinical Research Gap Section */}
+      <div className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            <motion.div variants={fadeIn}>
+              <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-8">
+                The Clinical Research Gap
+              </h2>
+              
+              <p className="text-lg text-gray-600 mb-8">
+                Despite compelling biological and pharmacological rationale, circadian timing is rarely
+                incorporated into trial design. This oversight creates multiple systemic problems:
+              </p>
+
+              <div className="grid gap-6 mb-12">
+                <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-violet-500">
+                  <h3 className="font-bold text-navy-900 mb-2">Trial inefficiencies</h3>
+                  <p className="text-gray-600">
+                    Patients who receive treatment at suboptimal times introduce
+                    uncontrolled variance, diluting drug effects.
+                  </p>
+                </div>
+
+                <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-violet-500">
+                  <h3 className="font-bold text-navy-900 mb-2">Stratification bias</h3>
+                  <p className="text-gray-600">
+                    Standard inclusion criteria miss latent timebased phenotypes,
+                    undermining subgroup discovery.
+                  </p>
+                </div>
+
+                <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-violet-500">
+                  <h3 className="font-bold text-navy-900 mb-2">Posthoc explanations</h3>
+                  <p className="text-gray-600">
+                    Poor primary outcomes may stem from temporal mismatch
+                    rather than molecular inefficacy but go undiagnosed.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-navy-900 text-white rounded-xl p-8">
+                <p className="text-lg mb-4">
+                  The status quo is costly. A recent industry analysis found that the average cost of a single
+                  Phase III trial exceeds $21 million, and nearly 50% of trials fail to meet endpoints.
+                </p>
+                <p className="text-lg font-medium text-violet-300">
+                  By ignoring biological time, we may be missing the most actionable, cost-efficient layer of
+                  personalization.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
@@ -203,8 +317,8 @@ function Home() {
                 <div className="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Book className="w-6 h-6 text-blue-600" />
                 </div>
-                <div className="text-4xl font-bold text-navy-900 mb-2">Growing</div>
-                <div className="text-gray-600">Network of clinicians and researchers</div>
+                <div className="text-4xl font-bold text-navy-900 mb-2">1000+</div>
+                <div className="text-gray-600">Simulated hours of PK/PD dynamics under circadian aware dosing schedules</div>
               </motion.div>
 
               <motion.div 
@@ -214,8 +328,8 @@ function Home() {
                 <div className="bg-purple-50 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Tool className="w-6 h-6 text-purple-600" />
                 </div>
-                <div className="text-4xl font-bold text-navy-900 mb-2">10+</div>
-                <div className="text-gray-600">Research collaborations exploring AI-driven sleep insights</div>
+                <div className="text-4xl font-bold text-navy-900 mb-2">8+</div>
+                <div className="text-gray-600">Therapeutic areas supported by our circadian stratification modules</div>
               </motion.div>
 
               <motion.div 
@@ -225,8 +339,8 @@ function Home() {
                 <div className="bg-yellow-50 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Trophy className="w-6 h-6 text-yellow-600" />
                 </div>
-                <div className="text-4xl font-bold text-navy-900 mb-2">200+</div>
-                <div className="text-gray-600">Hours of wearable data analyzed for precision health</div>
+                <div className="text-4xl font-bold text-navy-900 mb-2">5M+</div>
+                <div className="text-gray-600">Data points from EHRs and wearables are integrated for circadian phase estimation</div>
               </motion.div>
 
               <motion.div 
@@ -237,7 +351,7 @@ function Home() {
                   <Handshake className="w-6 h-6 text-green-600" />
                 </div>
                 <div className="text-4xl font-bold text-navy-900 mb-2">5+</div>
-                <div className="text-gray-600">Physiological models developed for circadian health</div>
+                <div className="text-gray-600">Timesensitive drug response profiles modeled using Omu® for trial optimization</div>
               </motion.div>
             </motion.div>
 
@@ -252,10 +366,13 @@ function Home() {
               <p className="text-lg text-white/90 mb-8">
               We are actively collaborating with research institutions and healthcare providers to validate our models and expand the boundaries of circadian health diagnostics.
               </p>
-              <button className="bg-white text-violet-600 px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-white/90 transition-colors">
+              <Link 
+                to="/research" 
+                className="bg-white text-violet-600 px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-white/90 transition-colors"
+              >
                 Publications
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -287,8 +404,6 @@ function Home() {
           </div>
         </div>
       </div>
-      
-      <Footer />
     </div>
   );
 }

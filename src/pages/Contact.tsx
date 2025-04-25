@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
@@ -13,8 +11,6 @@ function Contact() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <Header />
-      
       <main className="flex-grow">
         {/* Hero Section */}
         <div className="bg-navy-900 text-white py-20">
@@ -149,8 +145,6 @@ function Contact() {
           </div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 }
