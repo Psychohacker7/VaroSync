@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mobile-hidden {
+  display: block;
+}
+.desktop-hidden {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  .desktop-hidden {
+    display: block !important;
+  }
+}

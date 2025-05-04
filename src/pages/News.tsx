@@ -94,7 +94,7 @@ const researchItems: ResearchPaper[] = [
   }
 ];
 
-function Research() {
+function News() {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -114,9 +114,9 @@ function Research() {
               animate="animate"
               variants={fadeIn}
             >
-              <h1 className="text-5xl font-bold mb-6">Research That Powers Varosync</h1>
+              <h1 className="text-5xl font-bold mb-6">News & Publications</h1>
               <p className="text-xl text-white/80">
-                Exploring the intersection of circadian biology, clinical trials, and AI
+                Latest updates and publications from VaroSync and related fields
               </p>
             </motion.div>
           </div>
@@ -176,4 +176,4 @@ function Research() {
   );
 }
 
-export default Research;
+export default News; 

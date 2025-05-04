@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Users, Lightbulb, BarChart, Building2, Dna } from 'lucide-react';
+import { Clock, Users, Lightbulb, BarChart, Building2, Dna, Linkedin } from 'lucide-react';
 
 function Company() {
   const fadeIn = {
@@ -164,6 +164,61 @@ function Company() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Team Section */}
+        <div className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              className="max-w-4xl mx-auto"
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              <h2 className="text-4xl font-bold text-navy-900 text-center mb-12">Our Team</h2>
+              
+              <div className="prose prose-lg mx-auto mb-12">
+                <p>
+                  Varosync is built by a founding team that brings together a powerful combination of scientific and technical expertise at the forefront of healthcare innovation.
+                </p>
+                <p>
+                  The team's foundation includes advanced study in fields such as Biomedical Engineering from institutions like Columbia University, alongside deep technical command in areas like applied mathematics. This blend provides a unique perspective on solving complex problems in healthcare.
+                </p>
+                <p>
+                  Collectively, our expertise spans machine learning, enabling us to develop sophisticated predictive models and data analysis techniques. We possess strong capabilities in bioinformatics for interpreting complex biological data, and a solid understanding of clinical pharmacology, which guides our approach to drug development and treatment optimization. This multi-disciplinary background is the driving force behind our innovative solutions.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-16">
+                <div className="bg-white rounded-xl p-8 shadow-lg">
+                  <h3 className="text-2xl font-bold text-navy-900 mb-4">Harry Kabodha</h3>
+                  <p className="text-gray-600 mb-4">
+                    Leveraging his background in Biomedical Engineering to lead our strategic vision and clinical focus.
+                  </p>
+                  <a 
+                    href="https://www.linkedin.com/in/harrykabodha/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-violet-600 hover:text-violet-700 font-medium inline-flex items-center gap-2"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    View LinkedIn Profile
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg">
+                <h3 className="text-2xl font-bold text-navy-900 mb-6">Advisory Board</h3>
+                <p className="text-gray-600 mb-6">
+                  We are guided by an expert Advisory Board comprised of leading academics and professionals in fields critical to our work.
+                </p>
+                <p className="text-gray-600">
+                  Our advisors bring extensive experience and insights in clinical pharmacology and bioinformatics. Their collective knowledge helps inform our scientific direction, validate our approaches, and ensure our solutions are grounded in the latest research and clinical understanding. The guidance from our Advisory Board is invaluable in navigating the complexities of healthcare innovation and accelerating our progress.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
 

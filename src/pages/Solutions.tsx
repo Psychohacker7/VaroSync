@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Target, FileText, Atom } from 'lucide-react';
+import { ArrowRight, Target, FileText, Atom, Brain, Clock, Microscope, Code2, Database, LineChart, Activity } from 'lucide-react';
 
 function Solutions() {
   const fadeIn = {
@@ -21,256 +21,190 @@ function Solutions() {
               animate="animate"
               variants={fadeIn}
             >
-              <h1 className="text-5xl font-bold mb-6">Our Solutions</h1>
+              <h1 className="text-5xl font-bold mb-6">The Omu™ Platform</h1>
               <p className="text-xl text-white/80 mb-8">
-                Innovative computational approaches to solve complex health challenges
+                Our proprietary engine for circadian-aware analytics, simulation, and patient stratification.
               </p>
             </motion.div>
           </div>
         </div>
 
-        {/* Solutions Grid */}
+        {/* NEW Section: OmuTM Technology Explanation (from Platform.tsx) */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
+                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+              >
+                Introducing Omu™ Technology
+              </motion.h2>
+              <motion.p 
+                className="text-lg text-gray-700 mb-12 text-center"
+                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Omu™ is a composable software architecture that enables pharmaceutical R&D and clinical teams to integrate circadian biology into drug discovery. Built with flexibility and scalability in mind, Omu™ can ingest multimodal types including: structured and unstructured EHR data, Traditional clinical trial case report forms and others currently in development.
+              </motion.p>
+              {/* Placeholder for Visual Aid */}
+              <motion.div 
+                className="bg-gradient-to-br from-violet-50 to-blue-50 p-8 rounded-lg shadow-md text-center mb-12"
+                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Atom className="w-16 h-16 text-violet-600 mx-auto mb-4" />
+                <h3 className="text-2xl font-semibold text-navy-900 mb-2">Visual Aid Placeholder</h3>
+                <p className="text-gray-600">[A diagram or animation illustrating the Omu™ concept would go here]</p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* NEW Section: Under the Hood (from Platform.tsx) */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
+                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+              >
+                Under the Hood: A Scientific Stack
+              </motion.h2>
+              <motion.p 
+                className="text-lg text-gray-700 mb-12 text-center"
+                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Omu™ is powered by a suite of models developed from first principles in circadian biology, combined with probabilistic and sequential machine learning methods. Each module is tuned to a specific stage of the therapeutic lifecycle, from trial design to postmarket surveillance.
+              </motion.p>
+              {/* Placeholder for Diagrams */}
+              <motion.div 
+                className="grid md:grid-cols-2 gap-8 mb-12"
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                transition={{ staggerChildren: 0.2, delayChildren: 0.2 }}
+              >
+                <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow text-center">
+                  <Code2 className="w-12 h-12 text-blue-600 mx-auto mb-3" />
+                  <h4 className="font-semibold text-navy-900">Modeling Core</h4>
+                  <p className="text-gray-600 text-sm">[Diagram/Details about core models: Circadian, Probabilistic, Sequential ML]</p>
+                </motion.div>
+                <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow text-center">
+                  <Database className="w-12 h-12 text-green-600 mx-auto mb-3" />
+                  <h4 className="font-semibold text-navy-900">Data Integration</h4>
+                  <p className="text-gray-600 text-sm">[Diagram/Details about data ingestion: EHR, Wearables, Genomics etc.]</p>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+        
+        {/* NEW Section: Visual Technology Showcase (Placeholder) */}
+        <section className="py-20">
+           <div className="container mx-auto px-4">
+             <div className="max-w-4xl mx-auto">
+               <motion.h2 
+                 className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
+                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+               >
+                 Visual Technology Showcase
+               </motion.h2>
+               <motion.p 
+                 className="text-lg text-gray-700 mb-12 text-center"
+                 initial="initial" whileInView="animate" viewport={{ once: true }}
+                 variants={fadeIn}
+                 transition={{ duration: 0.6, delay: 0.1 }}
+               >
+                 See Omu™ in action. Explore examples of how our technology visualizes complex biological data and provides actionable insights.
+               </motion.p>
+               {/* Placeholder for Examples */}
+               <motion.div 
+                 className="bg-gray-100 p-8 rounded-lg shadow-inner text-center"
+                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+                 transition={{ duration: 0.6, delay: 0.2 }}
+               >
+                 <Microscope className="w-16 h-16 text-gray-500 mx-auto mb-4" />
+                 <h3 className="text-2xl font-semibold text-gray-700 mb-2">Showcase Examples Coming Soon</h3>
+                 <p className="text-gray-600">[Interactive demos, case study visuals, or screenshots would go here]</p>
+               </motion.div>
+             </div>
+           </div>
+         </section>
+
+        {/* NEW Section: Benefits and Features (Placeholder structure, merge content later) */}
+        <section className="bg-gradient-to-br from-violet-50 to-blue-50 py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Benefits & Features</h2>
+            <motion.div 
+               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+               initial="initial" whileInView="animate" viewport={{ once: true }}
+               transition={{ staggerChildren: 0.1, delayChildren: 0.1 }}
+            >
+              {/* Example Feature Card */}
+              <motion.div 
+                variants={fadeIn}
+                className="flex items-start gap-4 bg-white p-6 rounded-lg shadow"
+              >
+                <Clock className="w-8 h-8 text-violet-600 flex-shrink-0 mt-1" />
+                <div>
+                  <h5 className="font-semibold text-navy-900 text-xl mb-2">Circadian Phase Estimation</h5>
+                  <p className="text-gray-600">Accurately estimate internal biological time using multimodal data sources.</p>
+                </div>
+              </motion.div>
+               <motion.div 
+                 variants={fadeIn}
+                 className="flex items-start gap-4 bg-white p-6 rounded-lg shadow"
+               >
+                 <Activity className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+                 <div>
+                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Fatigue Risk Scoring</h5>
+                   <p className="text-gray-600">Compute real-time fatigue indices based on circadian alignment and sleep.</p>
+                 </div>
+               </motion.div>
+               <motion.div 
+                 variants={fadeIn}
+                 className="flex items-start gap-4 bg-white p-6 rounded-lg shadow"
+               >
+                 <Target className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                 <div>
+                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Time-Based Stratification</h5>
+                   <p className="text-gray-600">Group participants by latent time-driven subtypes to reduce trial variability.</p>
+                 </div>
+               </motion.div>
+              {/* Placeholder for more...
+               <motion.div variants={fadeIn} className="flex items-start gap-4 bg-white p-6 rounded-lg shadow">...</motion.div>
+               <motion.div variants={fadeIn} className="flex items-start gap-4 bg-white p-6 rounded-lg shadow">...</motion.div>
+               <motion.div variants={fadeIn} className="flex items-start gap-4 bg-white p-6 rounded-lg shadow">...</motion.div> 
+              */}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Original Solutions Grid - Commented out for now */}
+        {/*
         <div className="py-20">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Solution Card 1 */}
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-47 bg-violet-100 flex items-center justify-center">
-                  <img 
-                    src={`${import.meta.env.BASE_URL}helatvare provide.png`}
-                    alt="Doctor" 
-                    className="w-auto scale-100 -mb-5" 
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-navy-900 mb-3">👩‍⚕️ For Healthcare Providers</h3>
-                  <p className="text-gray-600 mb-4">
-                    We turn time into a vital sign for precision diagnosis and treatment planning.
-                  </p>
-                  <ul className="text-gray-600 mb-6 space-y-4">
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">🕒</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Circadian Phase Estimation</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Leverage continuous wearable-derived activity, sleep, and heart-rate data to pinpoint each patient's internal clock time.</li>
-                          <li>Visualize phase on a 24 h atlas, so you know if a symptom occurs in biological morning or evening.</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">🌍</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Circadian Misalignment Detection</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Run SCN-based simulations to detect jet lag, shift-work disorder, or social-jetlag patterns hidden in routine data.</li>
-                          <li>Quantify the degree of misalignment between internal and external time, enabling targeted chronotherapy.</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">🔍</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Objective Sleep Disorder Differentiation</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Replace subjective sleep diaries with circadian biomarkers to distinguish delayed sleep-phase syndrome (DSPS), advanced sleep-phase, and insomnia.</li>
-                          <li>Track phase shifts over days or weeks to monitor treatment response (light therapy, melatonin timing).</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">💡</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Chronotherapeutic Decision Support</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Get dosing-time recommendations for sleep medications, stimulants, or mood stabilizers based on individual phase.</li>
-                          <li>Integrate with EHR workflows to flag patients who may benefit from time-tailored interventions.</li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                  <p className="text-gray-600 italic mb-4">
-                    → Our goal: empower clinicians with non-invasive, biologically driven insights—so you can diagnose faster, personalize treatment, and improve patient outcomes.
-                  </p>
-                  <a href="#" className="text-violet-600 font-medium flex items-center gap-2 hover:text-violet-700">
-                    Learn more
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Solution Card 2 */}
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-47 bg-blue-100 flex items-center justify-center">
-                  <img src="https://img.freepik.com/free-vector/tiny-pharmacist-with-pills-vitamins-flat-vector-illustration-doctors-writing-prescriptions-antibiotics-working-together-helping-patients-cure-pharmacy-business-drugstore-concept_74855-23225.jpg" alt="Pharmaceutical Research" className="w-auto" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-navy-900 mb-3">💊 Pharmaceutical Companies</h3>
-                  <p className="text-gray-600 mb-3">
-                    Your circadian clock can influence drug response. We make that visible.
-                  </p>
-                  <ul className="text-gray-600 mb-6 space-y-4">
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">🧪</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Modular, Therapeutic-Area Tailoring</h4>
-                        <p>We integrate into your preclinical pipelines and trial workflows, with capabilities you can turn on or off depending on phase, data depth, and indication.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">⏰</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Chronopharmacology Modeling</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Model ADME (absorption, distribution, metabolism, elimination) across the 24 h cycle</li>
-                          <li>Reveal off-target effects driven by biological time</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">🔍</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Time-Based Trial Stratification</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Infer circadian phenotypes from EHR or sensor data, even when timestamps are missing</li>
-                          <li>Group participants by latent time-driven subtypes to reduce variability</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">⚙️</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Adaptive Temporal Design</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Support adaptive and pragmatic trials that treat time-of-day as a dosing or stratification axis</li>
-                          <li>Re-randomize or adjust based on emerging temporal signals</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">📊</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Latent Variable Learning</h4>
-                        <p>Use probabilistic latent-variable and EM models to detect hidden circadian subgroups in sparse datasets</p>
-                      </div>
-                    </li>
-                  </ul>
-                  <p className="text-gray-600 italic mb-4">
-                    → Varosync helps you de-risk trials, reduce variability, and boost treatment precision.
-                  </p>
-                  <a href="#" className="text-violet-600 font-medium flex items-center gap-2 hover:text-violet-700">
-                    Learn more
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Solution Card 3 */}
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="h-47 bg-green-100 flex items-center justify-center">
-                  <img src="https://img.freepik.com/free-vector/business-team-discussing-ideas-startup_74855-4380.jpg" alt="Corporate Wellness" className="w-auto" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-navy-900 mb-3">⌚ For Wellness & Wearables</h3>
-                  <p className="text-gray-600 mb-4">
-                    We turn wearables into real-time chronobiology labs.
-                  </p>
-                  <ul className="text-gray-600 mb-6 space-y-4">
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">⚡</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">API-First Integration</h4>
-                        <p>Embed clinically validated circadian metrics into your devices, apps, or platforms via our simple RESTful APIs.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">😴</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Fatigue & Shift-Work Risk Scoring</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Analyze sleep–wake timing, social jetlag, and circadian misalignment</li>
-                          <li>Predict burnout risk, alerting users before performance lapses</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">🌗</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Circadian Phase Estimation</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Infer internal biological time from passive biometrics (heart rate, skin temperature, motion)</li>
-                          <li>Provide users with their personalized "body clock" reading</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="flex-shrink-0 text-xl">🏋️</span>
-                      <div>
-                        <h4 className="font-semibold text-navy-900">Recovery & Performance Windows</h4>
-                        <ul className="list-disc list-inside pl-1 space-y-1">
-                          <li>Recommend optimal training, rest, and sleep periods based on physiological readiness</li>
-                          <li>Help users maximize energy, focus, and recovery</li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                  <p className="text-gray-600 italic mb-4">
-                    → Empower your wellness or wearable product with actionable, time-aware insights that boost engagement and outcomes.
-                  </p>
-                  <a href="#" className="text-violet-600 font-medium flex items-center gap-2 hover:text-violet-700">
-                    Learn more
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+              // Solution Card 1 ... 
+              // Solution Card 2 ... 
+              // Solution Card 3 ... 
             </div>
           </div>
         </div>
+        */}
 
-        {/* Features Section */}
+        {/* Original Features Section - Commented out for now */}
+        {/*
         <div className="bg-gray-50 py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Key Features</h2>
-            
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="space-y-8">
-                  <div className="flex gap-4">
-                    <Target className="w-6 h-6 text-violet-600 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold text-navy-900 text-xl mb-2">Precision Health</h5>
-                      <p className="text-gray-600">Tailored health insights based on individual physiology and data patterns.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    <FileText className="w-6 h-6 text-violet-600 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold text-navy-900 text-xl mb-2">Comprehensive Analysis</h5>
-                      <p className="text-gray-600">Multi-factor health modeling that considers various physiological parameters.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    <Atom className="w-6 h-6 text-violet-600 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold text-navy-900 text-xl mb-2">Advanced Technology</h5>
-                      <p className="text-gray-600">Cutting-edge AI and computational models for accurate health predictions.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <img 
-                  src={`${import.meta.env.BASE_URL}platform.png`} 
-                  alt="Features Visualization" 
-                  className="rounded-xl shadow-lg w-full"
-                />
-              </div>
+              // Original features content ...
             </div>
           </div>
         </div>
+        */}
       </main>
     </div>
   );
