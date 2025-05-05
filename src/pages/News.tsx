@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Clock, BarChart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ResearchPaper {
@@ -167,6 +167,104 @@ function News() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Blog Highlights Section */}
+        <div className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Blog Highlights</h2>
+              
+              <div className="space-y-12">
+                {/* Blog Post 1 */}
+                <motion.div 
+                  className="bg-white rounded-xl shadow-lg overflow-hidden"
+                  variants={fadeIn}
+                >
+                  <div className="h-64 bg-violet-100 relative overflow-hidden">
+                    <img 
+                      src="https://img.freepik.com/free-vector/drug-development-abstract-concept-vector-illustration-drug-discovery-research-development-pharmaceutical-industry-chemical-laboratory-scientific-experiment-medicine-study-abstract-metaphor_335657-2933.jpg"
+                      alt="Clinical Trial Time Illustration" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
+                    <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white">
+                      Why Your Clinical Trial is Probably Ignoring Time (and What That Costs You)
+                    </h3>
+                  </div>
+                  <div className="p-8">
+                    <div className="prose prose-lg max-w-none">
+                      <p className="text-gray-600 mb-4">
+                        In modern clinical research, enormous effort goes into randomization, blinding, and
+                        subgroup analysis. Yet one of the most significant sources of variation in drug response —
+                        biological time — is almost always left out.
+                      </p>
+                      <p className="text-gray-600 mb-4">
+                        Circadian rhythms affect everything from drug metabolism to immune responsiveness. Still,
+                        most trials treat 8 a.m. and 8 p.m. as biologically equivalent moments. This assumption is
+                        both biologically flawed and statistically costly.
+                      </p>
+                      <div className="bg-navy-50 rounded-lg p-6 my-6">
+                        <p className="text-navy-900 font-medium">
+                          Over 50% of FDA-approved drugs show time-of-day variation in efficacy or toxicity (MIT News, 2024).
+                        </p>
+                      </div>
+                      <p className="text-gray-600">
+                        Omu®, Varosync's pharmaceutical platform, uses Bayesian modeling to infer internal
+                        circadian phase from EHR data and stratify participants accordingly.
+                      </p>
+                    </div>
+                    <a href="#" className="inline-flex items-center gap-2 text-violet-600 font-medium mt-6 hover:text-violet-700">
+                      Read full article
+                      <BarChart className="w-4 h-4" />
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Blog Post 2 */}
+                <motion.div 
+                  className="bg-white rounded-xl shadow-lg overflow-hidden"
+                  variants={fadeIn}
+                >
+                  <div className="h-64 bg-navy-100 relative overflow-hidden">
+                    <img 
+                      src="https://img.freepik.com/free-vector/biotechnology-isometric-composition-with-scientific-laboratory-equipment-research-process-vector-illustration_1284-83475.jpg"
+                      alt="TimeTeller Evolution Illustration" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
+                    <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white">
+                      From TimeTeller to Trials: How Circadian Models Went from Lab to Platform
+                    </h3>
+                  </div>
+                  <div className="p-8">
+                    <div className="prose prose-lg max-w-none">
+                      <p className="text-gray-600 mb-4">
+                        What began in academic labs as a tool for tracking circadian biology has now evolved into
+                        high-impact software for clinical trials and digital health. The TimeTeller algorithm (Vlachou
+                        et al., 2019) introduced a new approach to estimating internal time from molecular data.
+                      </p>
+                      <div className="bg-violet-50 rounded-lg p-6 my-6">
+                        <p className="text-navy-900">
+                          Using probabilistic PCA and EM-based inference, our models extract phase signals from even 
+                          sparse or noisy input. With wearable accelerometer data, sleep logs, or even temperature 
+                          variation, we reconstruct circadian timing and provide real-time readiness scoring.
+                        </p>
+                      </div>
+                      <p className="text-gray-600 font-medium italic">
+                        This translation — from genomic clocks to clinical clocks — marks a pivotal shift: timing
+                        medicine is no longer a theory. It's a product.
+                      </p>
+                    </div>
+                    <a href="#" className="inline-flex items-center gap-2 text-violet-600 font-medium mt-6 hover:text-violet-700">
+                      Read full article
+                      <Clock className="w-4 h-4" />
+                    </a>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>

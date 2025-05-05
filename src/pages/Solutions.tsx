@@ -47,15 +47,13 @@ function Solutions() {
                 Omu™ is a composable software architecture that enables pharmaceutical R&D and clinical teams to integrate circadian biology into drug discovery. Built with flexibility and scalability in mind, Omu™ can ingest multimodal types including: structured and unstructured EHR data, Traditional clinical trial case report forms and others currently in development.
               </motion.p>
               {/* Placeholder for Visual Aid */}
-              <motion.div 
-                className="bg-gradient-to-br from-violet-50 to-blue-50 p-8 rounded-lg shadow-md text-center mb-12"
-                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <Atom className="w-16 h-16 text-violet-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold text-navy-900 mb-2">Visual Aid Placeholder</h3>
-                <p className="text-gray-600">[A diagram or animation illustrating the Omu™ concept would go here]</p>
-              </motion.div>
+                <div className="flex justify-center">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}technology.png`} 
+                    alt="Omu Technology Stack" 
+                    className="max-w-full h-auto rounded-lg shadow-lg" 
+                  />
+                </div>
             </div>
           </div>
         </section>
@@ -88,54 +86,21 @@ function Solutions() {
                 <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow text-center">
                   <Code2 className="w-12 h-12 text-blue-600 mx-auto mb-3" />
                   <h4 className="font-semibold text-navy-900">Modeling Core</h4>
-                  <p className="text-gray-600 text-sm">[Diagram/Details about core models: Circadian, Probabilistic, Sequential ML]</p>
+                  <p className="text-gray-600 text-sm"></p>
                 </motion.div>
                 <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow text-center">
                   <Database className="w-12 h-12 text-green-600 mx-auto mb-3" />
                   <h4 className="font-semibold text-navy-900">Data Integration</h4>
-                  <p className="text-gray-600 text-sm">[Diagram/Details about data ingestion: EHR, Wearables, Genomics etc.]</p>
+                  <p className="text-gray-600 text-sm"></p>
                 </motion.div>
               </motion.div>
             </div>
           </div>
         </section>
-        
-        {/* NEW Section: Visual Technology Showcase (Placeholder) */}
-        <section className="py-20">
-           <div className="container mx-auto px-4">
-             <div className="max-w-4xl mx-auto">
-               <motion.h2 
-                 className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
-                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-               >
-                 Visual Technology Showcase
-               </motion.h2>
-               <motion.p 
-                 className="text-lg text-gray-700 mb-12 text-center"
-                 initial="initial" whileInView="animate" viewport={{ once: true }}
-                 variants={fadeIn}
-                 transition={{ duration: 0.6, delay: 0.1 }}
-               >
-                 See Omu™ in action. Explore examples of how our technology visualizes complex biological data and provides actionable insights.
-               </motion.p>
-               {/* Placeholder for Examples */}
-               <motion.div 
-                 className="bg-gray-100 p-8 rounded-lg shadow-inner text-center"
-                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-                 transition={{ duration: 0.6, delay: 0.2 }}
-               >
-                 <Microscope className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-                 <h3 className="text-2xl font-semibold text-gray-700 mb-2">Showcase Examples Coming Soon</h3>
-                 <p className="text-gray-600">[Interactive demos, case study visuals, or screenshots would go here]</p>
-               </motion.div>
-             </div>
-           </div>
-         </section>
-
         {/* NEW Section: Benefits and Features (Placeholder structure, merge content later) */}
         <section className="bg-gradient-to-br from-violet-50 to-blue-50 py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Benefits & Features</h2>
+            <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Features</h2>
             <motion.div 
                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
                initial="initial" whileInView="animate" viewport={{ once: true }}
@@ -180,6 +145,37 @@ function Solutions() {
             </motion.div>
           </div>
         </section>
+        {/* NEW Section: Visual Technology Showcase (Placeholder) */}
+        <section className="py-20">
+           <div className="container mx-auto px-4">
+             <div className="max-w-4xl mx-auto">
+               <motion.h2 
+                 className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
+                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+               >
+                 Visual Technology Showcase
+               </motion.h2>
+               <motion.p 
+                 className="text-lg text-gray-700 mb-12 text-center"
+                 initial="initial" whileInView="animate" viewport={{ once: true }}
+                 variants={fadeIn}
+                 transition={{ duration: 0.6, delay: 0.1 }}
+               >
+                 See Omu™ in action. Explore examples of how our technology visualizes complex biological data and provides actionable insights.
+               </motion.p>
+               {/* Placeholder for Examples */}
+               <motion.div 
+                 className="bg-gray-100 p-8 rounded-lg shadow-inner text-center"
+                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
+                 transition={{ duration: 0.6, delay: 0.2 }}
+               >
+                 <Microscope className="w-16 h-16 text-gray-500 mx-auto mb-4" />
+                 <h3 className="text-2xl font-semibold text-gray-700 mb-2">Showcase Examples Coming Soon</h3>
+                 <p className="text-gray-600"></p>
+               </motion.div>
+             </div>
+           </div>
+         </section>
 
         {/* Original Solutions Grid - Commented out for now */}
         {/*

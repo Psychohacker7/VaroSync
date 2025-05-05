@@ -1,48 +1,98 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import { ArrowRight, LogIn } from 'lucide-react'; // Remove unused imports
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { to: '/solutions', label: 'Solutions' },
+  { to: '/company', label: 'Company' },
+  { to: '/news', label: 'News' },
+  { to: '/careers', label: 'Careers' },
+];
 
 function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      // Progress bar for hero section (assume hero is 100vh)
+      const heroHeight = window.innerHeight;
+      const scroll = Math.min(window.scrollY, heroHeight);
+      setProgress((scroll / heroHeight) * 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
   return (
-    <header className="py-4 px-4 border-b">
-      <div className="container mx-auto flex items-center justify-between">
-        {/* Logo - Make it a link to home */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Varosync Logo" className="h-8" />
-          <span className="text-xl font-bold text-navy-900">VaroSync</span>
-          {/* Optional: Keep subtitle if desired, but requirements don't specify it here */}
-          {/* <span className="text-xs text-gray-500 hidden sm:inline">a biotech company</span> */}
-        </Link>
+    <>
+      {/* Progress Bar */}
+      <div className="header-progress-bar" style={{ width: `${progress}%` }} />
+      <header className={`header-main${scrolled ? ' header-scrolled' : ''}` + (menuOpen ? ' header-menu-open' : '')}>
+        <div className="container mx-auto flex items-center justify-between gap-8 transition-all duration-300">
+          {/* Logo - logotype only, larger, add img class */}
+          <Link to="/" className={`header-logo${scrolled ? ' logo-scrolled' : ''}` + (menuOpen ? ' logo-menu-open' : '')}>
+            <img 
+              src={`${import.meta.env.BASE_URL}logo.png`} 
+              alt="Varosync Logo" 
+              className="h-12 md:h-16 transition-all duration-300 header-logo-img"
+            />
+          </Link>
 
-        {/* Navigation - Update links */}
-        <nav className="hidden md:flex items-center gap-8">
-          {/* Remove Home link (Logo handles this) */}
-          {/* <Link to="/" className="text-gray-600 hover:text-navy-900 transition-colors">Home</Link> */}
-          {/* Remove Platform link */}
-          {/* <Link to="/platform" className="text-gray-600 hover:text-navy-900 transition-colors">Platform</Link> */}
-          <Link to="/solutions" className="text-gray-600 hover:text-navy-900 transition-colors">Solutions</Link>
-          <Link to="/company" className="text-gray-600 hover:text-navy-900 transition-colors">Company</Link>
-          {/* Add News link */}
-          <Link to="/news" className="text-gray-600 hover:text-navy-900 transition-colors">News</Link>
-          {/* Add Careers link */}
-          <Link to="/careers" className="text-gray-600 hover:text-navy-900 transition-colors">Careers</Link>
-          {/* Remove Contact Us link (moved to footer) */}
-          {/* <Link to="/contact" className="text-gray-600 hover:text-navy-900 transition-colors">Contact Us</Link> */}
-        </nav>
+          {/* Desktop Nav - horizontal row, centered */}
+          <nav className="header-nav mobile-hidden flex flex-row items-center gap-8">
+            {navLinks.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`header-link ${location.pathname.startsWith(link.to) ? 'active' : ''}`}
+              >
+                {link.label}
+                <span className="header-link-dot" />
+              </Link>
+            ))}
+            <Link to="/contact" className="header-cta">Request Demo</Link>
+          </nav>
 
-        {/* Action Buttons - Remove these as per requirements */}
-        {/* <div className="flex items-center gap-4">
-          <button className="hidden sm:flex items-center gap-2 text-navy-900 font-medium">
-            Log In
-            <LogIn className="w-4 h-4" />
+          {/* Hamburger for mobile only */}
+          <button
+            className="header-hamburger desktop-hidden"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMenuOpen(m => !m)}
+          >
+            {menuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
-          <button className="bg-navy-900 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 hover:bg-navy-800 transition-colors">
-            Contact Us
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div> */}
-      </div>
-    </header>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`header-mobile-menu desktop-hidden${menuOpen ? ' open' : ''}`}> 
+          <div className="header-mobile-menu-bg" />
+          <nav className="header-mobile-nav">
+            {navLinks.map((link, i) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`header-link${location.pathname.startsWith(link.to) ? ' active' : ''}`}
+                style={{ transitionDelay: menuOpen ? `${i * 80 + 200}ms` : '0ms' }}
+              >
+                {link.label}
+                <span className="header-link-dot" />
+              </Link>
+            ))}
+            <Link to="/contact" className="header-cta" style={{ transitionDelay: menuOpen ? `${navLinks.length * 80 + 200}ms` : '0ms' }}>Request Demo</Link>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }
 

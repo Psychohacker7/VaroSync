@@ -8,6 +8,14 @@
 .desktop-hidden {
   display: none;
 }
+@media (min-width: 768px) {
+  .mobile-hidden {
+    display: block !important;
+  }
+  .desktop-hidden {
+    display: none !important;
+  }
+}
 @media (max-width: 767px) {
   .mobile-hidden {
     display: none !important;
@@ -15,4 +23,194 @@
   .desktop-hidden {
     display: block !important;
   }
+}
+
+/* Sticky Header (Now Transparent) */
+.header-main {
+  @apply sticky top-0 left-0 w-full z-50 transition-all duration-300;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.header-scrolled {
+  /* Only shrink padding on scroll */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  /* Remove background/blur/shadow/border from here */
+}
+
+/* Progress Bar */
+.header-progress-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6861DE 0%, #A0E4A5 100%);
+  z-index: 60;
+  transition: width 0.2s cubic-bezier(.4,0,.2,1);
+}
+
+/* Logo - Now always has background */
+.header-logo {
+  display: flex; align-items: center; gap: 0.5rem;
+  filter: brightness(0.95) drop-shadow(0 1px 4px rgba(106,97,222,0.08));
+  transition: filter 0.3s, transform 0.3s;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  padding: 0.25rem 0.5rem; /* Add some padding */
+  border-radius: 8px; /* Optional rounding */
+  box-shadow: 0 1px 4px rgba(106, 97, 222, 0.1);
+}
+/* Keep hover transform/filter */
+.header-logo:hover {
+  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(106,97,222,0.12));
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Logo Shine */
+.header-logo-img {
+  position: relative;
+  overflow: hidden; /* Contain the shine */
+  display: block;
+}
+.header-logo-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%; /* Start off-screen */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  opacity: 0;
+  transition: left 1s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s;
+}
+.header-logo:hover .header-logo-img::after {
+  left: 150%; /* Move across */
+  opacity: 0.6;
+  transition: left 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s;
+}
+
+/* Nav Links (Pill Shape, Frosted Hover, Always Frosted BG) */
+.header-nav .header-link {
+  position: relative;
+  font-weight: 600; /* Slightly bolder */
+  color: #4A437F; /* Deep Navy text */
+  padding: 0.4rem 1.25rem; /* Pill padding */
+  border-radius: 9999px; /* Pill shape */
+  border: 1px solid #6861DE80; /* Subtle violet border */
+  transition: color 0.2s, background-color 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 4px rgba(106, 97, 222, 0.1);
+}
+/* Hover/active slightly override the base background */
+.header-link:hover, .header-link.active {
+  color: #6861DE; /* Brighter violet text on hover/active */
+  background-color: rgba(255, 255, 255, 0.75); /* Slightly more opaque */
+  backdrop-filter: blur(8px);
+  border-color: #6861DE; /* Stronger violet border */
+  /* Keep existing box-shadow or enhance slightly if needed */
+}
+/* Keep dot, but maybe make it violet? */
+.header-link-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #6861DE; /* Changed to violet */
+  margin-left: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.header-link.active .header-link-dot {
+  opacity: 1;
+}
+
+/* CTA Button */
+.header-cta {
+  margin-left: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6861DE 0%, #A0E4A5 100%);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px 0 rgba(106,97,222,0.08) inset;
+  transition: background 0.3s, box-shadow 0.3s, filter 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.header-cta:hover {
+  background: linear-gradient(270deg, #A0E4A5 0%, #6861DE 100%);
+  filter: brightness(1.1) drop-shadow(0 0 8px #A0E4A5cc);
+  animation: cta-pulse 0.7s;
+}
+@keyframes cta-pulse {
+  0% { box-shadow: 0 0 0 0 #A0E4A5cc; }
+  70% { box-shadow: 0 0 0 8px #A0E4A522; }
+  100% { box-shadow: 0 0 0 0 #A0E4A500; }
+}
+
+/* Hamburger */
+.header-hamburger {
+  background: none; border: none; outline: none;
+  color: #6861DE;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 70;
+  transition: color 0.2s;
+}
+.header-hamburger:hover {
+  color: #A0E4A5;
+}
+
+/* Mobile Menu */
+.header-mobile-menu {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; opacity: 0; z-index: 60;
+  transition: opacity 0.3s;
+  display: flex; flex-direction: column; align-items: flex-end;
+}
+.header-mobile-menu.open {
+  pointer-events: auto; opacity: 1;
+}
+.header-mobile-menu-bg {
+  position: absolute; inset: 0;
+  background: rgba(74,67,127,0.7);
+  backdrop-filter: blur(6px);
+  z-index: 61;
+  transition: background 0.3s;
+}
+.header-mobile-nav {
+  position: relative;
+  z-index: 62;
+  background: #fff;
+  border-radius: 1.5rem 0 0 1.5rem;
+  margin-top: 2.5rem;
+  margin-right: 0.5rem;
+  padding: 2.5rem 2rem 2rem 2.5rem;
+  min-width: 70vw;
+  box-shadow: 0 8px 32px 0 rgba(106,97,222,0.12);
+  display: flex; flex-direction: column; gap: 2rem;
+  animation: menu-slide-in 0.4s cubic-bezier(.4,0,.2,1);
+}
+@keyframes menu-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.header-mobile-menu.open .header-link, .header-mobile-menu.open .header-cta {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.header-mobile-menu .header-link, .header-mobile-menu .header-cta {
+  opacity: 0;
+  transform: translateY(24px);
 }

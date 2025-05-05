@@ -34,10 +34,10 @@ function Footer() {
           <div className="md:col-span-1">
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/varosync/" aria-label="Twitter" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter className="w-6 h-6" />
               </a>
-              <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/varosync/" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
             </div>

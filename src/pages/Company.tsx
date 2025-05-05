@@ -1,6 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Users, Lightbulb, BarChart, Building2, Dna, Linkedin } from 'lucide-react';
+import { FaBrain, FaCogs, FaClock as FaClockIcon, FaUniversity, FaUserMd, FaMicroscope } from 'react-icons/fa';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const coreTeam = [
+  {
+    Icon: FaBrain,
+    title: 'Machine Learning Specialist',
+    description: 'Crafts predictive models to extract deep insights from complex healthcare data.',
+  },
+  {
+    Icon: FaCogs,
+    title: 'Biomedical Engineer',
+    description: 'Designs robust engineering solutions for data-driven medical devices and workflows.',
+  },
+  {
+    Icon: FaClockIcon,
+    title: 'Chronopharmacology Lead',
+    description: 'Optimizes drug delivery timing to maximize therapeutic efficacy and patient safety.',
+  },
+];
+
+const advisors = [
+  {
+    Icon: FaUniversity,
+    title: 'Academic Advisor',
+    description: 'Renowned professors from top universities shaping our scientific strategy.',
+  },
+  {
+    Icon: FaUserMd,
+    title: 'Medical Advisor',
+    description: 'From the frontlines of clinical research, ensuring our solutions are grounded in real-world needs.',
+  },
+  {
+    Icon: FaMicroscope,
+    title: 'Bioinformatics Advisor',
+    description: 'Expertise in interpreting genomic and proteomic data with advanced analytics.',
+  },
+];
 
 function Company() {
   const fadeIn = {
@@ -105,15 +147,8 @@ function Company() {
                   <div className="space-y-4">
                     <p className="text-gray-600">
                       We are proud to collaborate with clinician-scientists and computational health experts from
-                      Columbia University Irving Medical Center, a leading institution at the forefront of clinical
-                      research and translational science.
+                      CUIMC, home to over 1,600 active clinical trials across a wide range of therapeutic areas.
                     </p>
-                    <div className="bg-navy-50 rounded-lg p-4">
-                      <p className="text-navy-900">
-                        CUIMC is home to over 1,600 active clinical trials across a wide range of therapeutic areas,
-                        supported by a robust infrastructure for data-driven innovation.
-                      </p>
-                    </div>
                   </div>
                 </div>
 
@@ -167,206 +202,89 @@ function Company() {
           </div>
         </div>
 
-        {/* Team Section */}
-        <div className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <motion.div 
-              className="max-w-4xl mx-auto"
+        {/* Team Section Refactored */}
+        <section className="py-20 bg-gray-50 relative overflow-hidden">
+          {/* Decorative background pattern */}
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10">
+            <svg width="600" height="600" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="50" fill="url(#grad)" />
+              <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#EDE9FE" />
+                  <stop offset="100%" stopColor="#E6E1FE" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.h2
+              className="text-4xl font-bold text-center text-navy-900 mb-12"
+              variants={fadeInUp}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              variants={fadeIn}
             >
-              <h2 className="text-4xl font-bold text-navy-900 text-center mb-12">Our Team</h2>
-              
-              <div className="prose prose-lg mx-auto mb-12">
-                <p>
-                  Varosync is built by a founding team that brings together a powerful combination of scientific and technical expertise at the forefront of healthcare innovation.
-                </p>
-                <p>
-                  The team's foundation includes advanced study in fields such as Biomedical Engineering from institutions like Columbia University, alongside deep technical command in areas like applied mathematics. This blend provides a unique perspective on solving complex problems in healthcare.
-                </p>
-                <p>
-                  Collectively, our expertise spans machine learning, enabling us to develop sophisticated predictive models and data analysis techniques. We possess strong capabilities in bioinformatics for interpreting complex biological data, and a solid understanding of clinical pharmacology, which guides our approach to drug development and treatment optimization. This multi-disciplinary background is the driving force behind our innovative solutions.
-                </p>
-              </div>
+              Our Expertise...
+            </motion.h2>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-16">
-                <div className="bg-white rounded-xl p-8 shadow-lg">
-                  <h3 className="text-2xl font-bold text-navy-900 mb-4">Harry Kabodha</h3>
-                  <p className="text-gray-600 mb-4">
-                    Leveraging his background in Biomedical Engineering to lead our strategic vision and clinical focus.
+            {/* Core Team Roles */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {coreTeam.map(({ Icon, title, description }, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center"
+                  variants={fadeInUp}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                >
+                  <Icon className="w-12 h-12 text-violet-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-navy-900 mb-2">
+                    {title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {description}
                   </p>
-                  <a 
-                    href="https://www.linkedin.com/in/harrykabodha/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-violet-600 hover:text-violet-700 font-medium inline-flex items-center gap-2"
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Advisory Roles */}
+            <div className="container mx-auto px-4 relative z-10">
+              <motion.h2
+                className="text-4xl font-bold text-center text-navy-900 mb-12"
+                variants={fadeInUp}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+              >
+                ...Guided by
+              </motion.h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                {advisors.map(({ Icon, title, description }, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center"
+                    variants={fadeInUp}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true }}
                   >
-                    <Linkedin className="w-5 h-5" />
-                    View LinkedIn Profile
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-navy-900 mb-6">Advisory Board</h3>
-                <p className="text-gray-600 mb-6">
-                  We are guided by an expert Advisory Board comprised of leading academics and professionals in fields critical to our work.
-                </p>
-                <p className="text-gray-600">
-                  Our advisors bring extensive experience and insights in clinical pharmacology and bioinformatics. Their collective knowledge helps inform our scientific direction, validate our approaches, and ensure our solutions are grounded in the latest research and clinical understanding. The guidance from our Advisory Board is invaluable in navigating the complexities of healthcare innovation and accelerating our progress.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Blog Highlights Section */}
-        <div className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Blog Highlights</h2>
-              
-              <div className="space-y-12">
-                {/* Blog Post 1 */}
-                <motion.div 
-                  className="bg-white rounded-xl shadow-lg overflow-hidden"
-                  variants={fadeIn}
-                >
-                  <div className="h-64 bg-violet-100 relative overflow-hidden">
-                    <img 
-                      src="https://img.freepik.com/free-vector/drug-development-abstract-concept-vector-illustration-drug-discovery-research-development-pharmaceutical-industry-chemical-laboratory-scientific-experiment-medicine-study-abstract-metaphor_335657-2933.jpg"
-                      alt="Clinical Trial Time Illustration" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
-                    <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white">
-                      Why Your Clinical Trial is Probably Ignoring Time (and What That Costs You)
-                    </h3>
-                  </div>
-                  <div className="p-8">
-                    <div className="prose prose-lg max-w-none">
-                      <p className="text-gray-600 mb-4">
-                        In modern clinical research, enormous effort goes into randomization, blinding, and
-                        subgroup analysis. Yet one of the most significant sources of variation in drug response —
-                        biological time — is almost always left out.
-                      </p>
-                      <p className="text-gray-600 mb-4">
-                        Circadian rhythms affect everything from drug metabolism to immune responsiveness. Still,
-                        most trials treat 8 a.m. and 8 p.m. as biologically equivalent moments. This assumption is
-                        both biologically flawed and statistically costly.
-                      </p>
-                      <div className="bg-navy-50 rounded-lg p-6 my-6">
-                        <p className="text-navy-900 font-medium">
-                          Over 50% of FDA-approved drugs show time-of-day variation in efficacy or toxicity (MIT News, 2024).
-                        </p>
-                      </div>
+                    <Icon className="w-12 h-12 text-violet-400 mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-navy-900 mb-2">
+                        {title}
+                      </h3>
                       <p className="text-gray-600">
-                        Omu®, Varosync's pharmaceutical platform, uses Bayesian modeling to infer internal
-                        circadian phase from EHR data and stratify participants accordingly.
+                        {description}
                       </p>
-                    </div>
-                    <a href="#" className="inline-flex items-center gap-2 text-violet-600 font-medium mt-6 hover:text-violet-700">
-                      Read full article
-                      <BarChart className="w-4 h-4" />
-                    </a>
-                  </div>
-                </motion.div>
-
-                {/* Blog Post 2 */}
-                <motion.div 
-                  className="bg-white rounded-xl shadow-lg overflow-hidden"
-                  variants={fadeIn}
-                >
-                  <div className="h-64 bg-navy-100 relative overflow-hidden">
-                    <img 
-                      src="https://img.freepik.com/free-vector/biotechnology-isometric-composition-with-scientific-laboratory-equipment-research-process-vector-illustration_1284-83475.jpg"
-                      alt="TimeTeller Evolution Illustration" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
-                    <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white">
-                      From TimeTeller to Trials: How Circadian Models Went from Lab to Platform
-                    </h3>
-                  </div>
-                  <div className="p-8">
-                    <div className="prose prose-lg max-w-none">
-                      <p className="text-gray-600 mb-4">
-                        What began in academic labs as a tool for tracking circadian biology has now evolved into
-                        high-impact software for clinical trials and digital health. The TimeTeller algorithm (Vlachou
-                        et al., 2019) introduced a new approach to estimating internal time from molecular data.
-                      </p>
-                      <div className="bg-violet-50 rounded-lg p-6 my-6">
-                        <p className="text-navy-900">
-                          Using probabilistic PCA and EM-based inference, our models extract phase signals from even 
-                          sparse or noisy input. With wearable accelerometer data, sleep logs, or even temperature 
-                          variation, we reconstruct circadian timing and provide real-time readiness scoring.
-                        </p>
-                      </div>
-                      <p className="text-gray-600 font-medium italic">
-                        This translation — from genomic clocks to clinical clocks — marks a pivotal shift: timing
-                        medicine is no longer a theory. It's a product.
-                      </p>
-                    </div>
-                    <a href="#" className="inline-flex items-center gap-2 text-violet-600 font-medium mt-6 hover:text-violet-700">
-                      Read full article
-                      <Clock className="w-4 h-4" />
-                    </a>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Values Section with Interactive Cards */}
-        <div className="py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Our Values</h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <motion.div 
-                className="group p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                whileHover={{ y: -5 }}
-              >
-                <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-200 transition-colors">
-                  <Lightbulb className="w-8 h-8 text-violet-600" />
-                </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-4">Innovation</h3>
-                <p className="text-gray-600">
-                  We constantly push the boundaries of what's possible in computational health.
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="group p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                whileHover={{ y: -5 }}
-              >
-                <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-200 transition-colors">
-                  <Users className="w-8 h-8 text-violet-600" />
-                </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-4">Accessibility</h3>
-                <p className="text-gray-600">
-                  We believe advanced health tools should be available to everyone, everywhere.
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="group p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                whileHover={{ y: -5 }}
-              >
-                <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-200 transition-colors">
-                  <BarChart className="w-8 h-8 text-violet-600" />
-                </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-4">Integrity</h3>
-                <p className="text-gray-600">
-                  We uphold the highest standards of scientific rigor and ethical practices.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
+        </section>
       </main>
     </div>
   );

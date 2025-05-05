@@ -25,9 +25,9 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: '#E6E1FE' }}>
       {/* Hero Section with Responsive Video Background */}
-      <div className="relative min-h-screen flex items-center">
+      <div className="relative min-h-screen flex items-center overflow-hidden">
         {/* Desktop Video Background */}
         <div className="absolute inset-0 overflow-hidden mobile-hidden">
           <video
@@ -76,7 +76,7 @@ function Home() {
                 className="text-lg md:text-xl lg:text-2xl text-navy-900 mb-8 leading-relaxed"
                 variants={fadeIn}
               >
-                At Varosync, we're revolutionizing precision medicine by integrating circadian biology into drug development. Our AI-powered platform enables time-aware therapeutics that align with your body's natural rhythms.
+                At VaroSync, we're revolutionizing precision medicine by integrating circadian biology into drug development. Our AI-powered platform enables time-aware therapeutics that align with your body's natural rhythms.
               </motion.p>
               
               <motion.div variants={fadeIn} className="flex md:justify-end justify-center">
@@ -94,7 +94,7 @@ function Home() {
       </div>
 
       {/* Success Stories Section */}
-      <div className="py-24 bg-white">
+      <div className="py-24" style={{ backgroundColor: '#EDE9FE' }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial="initial"
@@ -160,7 +160,7 @@ function Home() {
       </div>
 
       {/* Partners Section */}
-      <div className="py-16 bg-gray-50">
+      <div className="py-16" style={{ backgroundColor: '#EDE9FE' }}>
         <div className="container mx-auto px-4">
           <motion.h2 
             className="text-4xl font-bold text-navy-900 text-center mb-12"
@@ -169,24 +169,24 @@ function Home() {
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            Trusted By Industry Leaders
+            Our Partners
           </motion.h2>
           
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-items-center"
+            className="grid grid-cols-2 md:grid-cols-2 gap-12 items-center justify-items-center"
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerChildren}
           >
-            {['partner1', 'partner2', 'partner3', 'partner4'].map((partner, index) => (
+            {['partnera', 'partnerb'].map((partner, index) => (
               <motion.div 
                 key={partner}
-                className="h-16 w-48 grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-48 w-96 grayscale hover:grayscale-0 transition-all duration-300"
                 variants={fadeIn}
               >
-                <img 
-                  src={`/partners/${partner}.png`}
+                <img
+                  src={`${import.meta.env.BASE_URL}partners/${partner}.png`}
                   alt={`${partner} logo`}
                   className="h-full w-full object-contain"
                 />

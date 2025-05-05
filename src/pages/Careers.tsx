@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, ExternalLink } from 'lucide-react';
+import { Linkedin, ExternalLink, Lightbulb, Users, BarChart } from 'lucide-react';
 
 const Careers: React.FC = () => {
   // Animation variants
@@ -16,16 +16,16 @@ const Careers: React.FC = () => {
     description: [
       "Varosync is seeking a seasoned expert in chronopharmacology and pharmacokinetic/pharmacodynamic (PK/PD) modeling to join our advisory board.",
       "This role involves providing strategic guidance on integrating time-of-day considerations into drug development pipelines, advising on modeling strategies for time-dependent drug effects, and helping shape Varosync's scientific roadmap in chronotherapeutics.",
-      "The ideal candidate will have a strong publication record, extensive experience in preclinical and clinical drug development, and a deep understanding of circadian biology's impact on pharmacology."
+      "The ideal candidate will have extensive experience in preclinical and clinical drug development, and a deep understanding of circadian biology's impact on pharmacology. Previous experience as stregic advisor is a plus."
     ],
     requirements: [
       "PhD or MD/PhD in Pharmacology, Pharmaceutical Sciences, Systems Biology, or related field.",
-      "10+ years of experience in PK/PD modeling, with specific expertise in chronopharmacology highly desirable.",
+      "3+ years of experience in PK/PD modeling, with specific expertise in chronopharmacology highly desirable.",
       "Proven track record of strategic leadership in pharmaceutical R&D.",
       "Excellent communication and collaboration skills."
     ],
     // Placeholder LinkedIn application URL
-    linkedInUrl: "https://www.linkedin.com/jobs/search/?keywords=chronopharmacology%20pkpd"
+    linkedInUrl: "https://www.linkedin.com/jobs/view/4219429898/"
   };
 
   return (
@@ -80,19 +80,53 @@ const Careers: React.FC = () => {
             </motion.div>
           </div>
         </section>
-
-        {/* Optional: Company Culture Section (Placeholder) */}
-        <section className="py-20 bg-gray-100">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeIn}>
-              <h2 className="text-3xl font-bold text-navy-900 mb-6">Our Culture</h2>
-              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-                [Placeholder for company culture description - e.g., innovative, collaborative, science-driven, focused on impact.]
-              </p>
-              {/* Could add values or team highlights here later */}
-            </motion.div>
+        {/* Values Section with Interactive Cards */}
+        <div className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Our Values</h2>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <motion.div 
+                className="group p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                whileHover={{ y: -5 }}
+              >
+                <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-200 transition-colors">
+                  <Lightbulb className="w-8 h-8 text-violet-600" />
+                </div>
+                <h3 className="text-xl font-bold text-navy-900 mb-4">Innovation</h3>
+                <p className="text-gray-600">
+                  We constantly push the boundaries of what's possible in computational health.
+                </p>
+              </motion.div>
+              
+              <motion.div 
+                className="group p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                whileHover={{ y: -5 }}
+              >
+                <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-200 transition-colors">
+                  <Users className="w-8 h-8 text-violet-600" />
+                </div>
+                <h3 className="text-xl font-bold text-navy-900 mb-4">Accessibility</h3>
+                <p className="text-gray-600">
+                  We believe advanced health tools should be available to everyone, everywhere.
+                </p>
+              </motion.div>
+              
+              <motion.div 
+                className="group p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                whileHover={{ y: -5 }}
+              >
+                <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-200 transition-colors">
+                  <BarChart className="w-8 h-8 text-violet-600" />
+                </div>
+                <h3 className="text-xl font-bold text-navy-900 mb-4">Integrity</h3>
+                <p className="text-gray-600">
+                  We uphold the highest standards of scientific rigor and ethical practices.
+                </p>
+              </motion.div>
+            </div>
           </div>
-        </section>
+        </div>
       </main>
     </div>
   );
