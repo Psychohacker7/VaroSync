@@ -87,7 +87,6 @@ function Company() {
                 <div className="absolute -top-12 -left-12 w-32 h-32 bg-violet-100 rounded-full opacity-50"></div>
                 <div className="relative z-10">
                   <h2 className="text-4xl font-bold text-navy-900 mb-6">About Us</h2>
-                  <h3 className="text-2xl font-bold text-violet-600 mb-4">Varosync's niche: biological time meets trial design.</h3>
                   <div className="space-y-6">
                     <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
                       <div className="flex items-start gap-4">
@@ -95,11 +94,16 @@ function Company() {
                           <Dna className="w-6 h-6 text-violet-600" />
                         </div>
                         <div>
-                          <h4 className="text-xl font-semibold text-navy-900 mb-2">Patient-Centered Technologies</h4>
                           <p className="text-lg text-gray-600">
-                            Another advisor brings expertise in leveraging computational tools to analyze electronic
-                            health records and design patient-centered technologies. Their Insights guide the development 
-                            of our platform solutions that address complex healthcare challenges.
+                          We were founded on a simple yet transformative insight. Time is a critical and underutilized dimension in medicine. 
+                         By leveraging the capabilities of artificial intelligence, we model complex 
+                          biological rhythms to guide drug design, anticipate therapeutic responses, and advance the development of precisely timed treatments for some of the world’s most challenging diseases. 
+                          </p>
+                          <br />
+                          <p className="text-lg text-gray-600">
+                          Every day, with each new breakthrough, 
+                          we're getting closer to achieving our ambitious mission to <span className="font-bold text-navy-900">design smarter 
+                          and treat better</span> with the help of AI.
                           </p>
                         </div>
                       </div>
@@ -131,53 +135,10 @@ function Company() {
               >
                 <h2 className="text-4xl font-bold text-navy-900 mb-4">Partner With Us</h2>
                 <p className="text-xl text-gray-600">
-                  Whether you're designing a multisite trial or building a sleep health product, Varosync offers
-                  the scientific infrastructure and tooling to incorporate circadian intelligence from day one.
+                Our culture of collaboration reaches well beyond our own walls and forms the foundation of every partnership, 
+                whether with pharmaceutical firms, biotechs, CROs, or other forward-thinking innovators.
                 </p>
               </motion.div>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="p-3 bg-navy-100 rounded-lg">
-                      <Building2 className="w-6 h-6 text-navy-600" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-navy-900">Columbia University Irving Medical Center Partnership</h3>
-                  </div>
-                  <div className="space-y-4">
-                    <p className="text-gray-600">
-                      We are proud to collaborate with clinician-scientists and computational health experts from
-                      CUIMC, home to over 1,600 active clinical trials across a wide range of therapeutic areas.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-                    <h3 className="text-2xl font-bold text-navy-900 mb-4">Our Collaboration Focus</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-4">
-                        <div className="p-2 bg-violet-100 rounded-lg">
-                          <Clock className="w-5 h-5 text-violet-600" />
-                        </div>
-                        <span className="text-gray-600">Developing circadian-aware trial methodologies</span>
-                      </li>
-                      <li className="flex items-start gap-4">
-                        <div className="p-2 bg-violet-100 rounded-lg">
-                          <BarChart className="w-5 h-5 text-violet-600" />
-                        </div>
-                        <span className="text-gray-600">Exploring AI-based patient stratification</span>
-                      </li>
-                      <li className="flex items-start gap-4">
-                        <div className="p-2 bg-violet-100 rounded-lg">
-                          <Users className="w-5 h-5 text-violet-600" />
-                        </div>
-                        <span className="text-gray-600">Integrating EHR workflows with temporal analytics</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
 
               <div className="bg-navy-900 text-white rounded-xl p-12 shadow-xl relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
@@ -189,12 +150,14 @@ function Company() {
                 </div>
                 <div className="relative">
                   <p className="text-lg mb-6 leading-relaxed">
-                    We are working closely with Columbia-affiliated advisors and researchers to embed
-                    biological timing into how trials are designed, conducted, and analyzed — accelerating the
-                    path from hypothesis to health impact.
+                  Our partnerships bring us together in pursuit of a common aim to develop medicines for those who need them most. 
+                  Transformative discoveries demand tenacity, bold thinking, and true collaboration. That’s why we champion rigorous, 
+                  high-potential science at every stage, applying our expertise to help turn ambitious ideas into tangible breakthroughs.
                   </p>
                   <p className="text-3xl font-bold text-violet-300">
-                    Together, we can Design Smarter and Treat Better.
+                  <p className="text-3xl font-bold text-violet-300 text-center">
+                    Partnerships That Push Boundaries
+                  </p>
                   </p>
                 </div>
               </div>
@@ -249,7 +212,6 @@ function Company() {
                 </motion.div>
               ))}
             </div>
-
             {/* Advisory Roles */}
             <div className="container mx-auto px-4 relative z-10">
               <motion.h2

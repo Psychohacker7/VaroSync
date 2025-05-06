@@ -64,31 +64,49 @@ function Header() {
           </nav>
 
           {/* Hamburger for mobile only */}
-          <button
-            className="header-hamburger desktop-hidden"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            onClick={() => setMenuOpen(m => !m)}
-          >
-            {menuOpen ? <X size={32} /> : <Menu size={32} />}
-          </button>
+          {!menuOpen && (
+            <button
+              className="header-hamburger desktop-hidden"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setMenuOpen(m => !m)}
+            >
+              <Menu size={32} />
+            </button>
+          )}
         </div>
 
         {/* Mobile Menu */}
         <div className={`header-mobile-menu desktop-hidden${menuOpen ? ' open' : ''}`}> 
           <div className="header-mobile-menu-bg" />
-          <nav className="header-mobile-nav">
+          <nav className="header-mobile-nav flex flex-col gap-6 pt-0 relative">
+            {/* Close button, flex aligned top right inside menu */}
+            <div className="flex justify-end w-full mt-1">
+              <button
+                className="p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+              >
+                <X size={32} className="text-green-400" />
+              </button>
+            </div>
             {navLinks.map((link, i) => (
               <Link
                 key={link.to}
                 to={link.to}
                 className={`header-link${location.pathname.startsWith(link.to) ? ' active' : ''}`}
-                style={{ transitionDelay: menuOpen ? `${i * 80 + 200}ms` : '0ms' }}
+                style={{ transitionDelay: menuOpen ? `${i * 80 + 200}ms` : '0ms', paddingLeft: '0.25rem' }}
               >
                 {link.label}
                 <span className="header-link-dot" />
               </Link>
             ))}
-            <Link to="/contact" className="header-cta" style={{ transitionDelay: menuOpen ? `${navLinks.length * 80 + 200}ms` : '0ms' }}>Request Demo</Link>
+            <Link 
+              to="/contact" 
+              className="header-cta w-full text-center flex justify-center items-center mt-2" 
+              style={{ transitionDelay: menuOpen ? `${navLinks.length * 80 + 200}ms` : '0ms', paddingLeft: '0.25rem', marginLeft: 0 }}
+            >
+              Request Demo
+            </Link>
           </nav>
         </div>
       </header>

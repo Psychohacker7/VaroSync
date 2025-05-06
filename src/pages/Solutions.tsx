@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Target, FileText, Atom, Brain, Clock, Microscope, Code2, Database, LineChart, Activity } from 'lucide-react';
+import { ArrowRight, Target, FileText, Atom, Brain, Clock, Microscope, Code2, Database, LineChart, Activity, Pill } from 'lucide-react';
 
 function Solutions() {
   const fadeIn = {
@@ -113,18 +113,18 @@ function Solutions() {
               >
                 <Clock className="w-8 h-8 text-violet-600 flex-shrink-0 mt-1" />
                 <div>
-                  <h5 className="font-semibold text-navy-900 text-xl mb-2">Circadian Phase Estimation</h5>
-                  <p className="text-gray-600">Accurately estimate internal biological time using multimodal data sources.</p>
+                  <h5 className="font-semibold text-navy-900 text-xl mb-2">Time-Sensitive Targeting</h5>
+                  <p className="text-gray-600">Uncover rhythmic gene and protein activity to guide target selection across key disease areas.</p>
                 </div>
               </motion.div>
                <motion.div 
                  variants={fadeIn}
                  className="flex items-start gap-4 bg-white p-6 rounded-lg shadow"
                >
-                 <Activity className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+                 <Pill className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
                  <div>
-                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Fatigue Risk Scoring</h5>
-                   <p className="text-gray-600">Compute real-time fatigue indices based on circadian alignment and sleep.</p>
+                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Optimised Dosing Windows</h5>
+                   <p className="text-gray-600">Pinpoint when drugs work best by aligning delivery with biological timing to boost effect and cut risk.</p>
                  </div>
                </motion.div>
                <motion.div 
@@ -133,8 +133,8 @@ function Solutions() {
                >
                  <Target className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
                  <div>
-                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Time-Based Stratification</h5>
-                   <p className="text-gray-600">Group participants by latent time-driven subtypes to reduce trial variability.</p>
+                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Dynamic Signal Mapping</h5>
+                   <p className="text-gray-600">Simulate how molecules behave over time, capturing rhythms that static lab tests overlook</p>
                  </div>
                </motion.div>
               {/* Placeholder for more...

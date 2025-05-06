@@ -16,7 +16,7 @@ const Careers: React.FC = () => {
     description: [
       "Varosync is seeking a seasoned expert in chronopharmacology and pharmacokinetic/pharmacodynamic (PK/PD) modeling to join our advisory board.",
       "This role involves providing strategic guidance on integrating time-of-day considerations into drug development pipelines, advising on modeling strategies for time-dependent drug effects, and helping shape Varosync's scientific roadmap in chronotherapeutics.",
-      "The ideal candidate will have extensive experience in preclinical and clinical drug development, and a deep understanding of circadian biology's impact on pharmacology. Previous experience as stregic advisor is a plus."
+      "The ideal candidate will have extensive experience in preclinical and clinical drug development, and a deep understanding of circadian biology's impact on pharmacology. Previous experience as strategic advisor is a plus."
     ],
     requirements: [
       "PhD or MD/PhD in Pharmacology, Pharmaceutical Sciences, Systems Biology, or related field.",
@@ -106,9 +106,9 @@ const Careers: React.FC = () => {
                 <div className="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-200 transition-colors">
                   <Users className="w-8 h-8 text-violet-600" />
                 </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-4">Accessibility</h3>
+                <h3 className="text-xl font-bold text-navy-900 mb-4">Patient-Centric</h3>
                 <p className="text-gray-600">
-                  We believe advanced health tools should be available to everyone, everywhere.
+                  We create value by having a patient-centred business approach
                 </p>
               </motion.div>
               

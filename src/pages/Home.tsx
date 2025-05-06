@@ -27,7 +27,19 @@ function Home() {
   return (
     <div className="min-h-screen overflow-hidden" style={{ backgroundColor: '#E6E1FE' }}>
       {/* Hero Section with Responsive Video Background */}
-      <div className="relative min-h-screen flex items-center overflow-hidden">
+      <div className="relative min-h-screen overflow-hidden bg-[#E6E1FE]">
+        {/* Mobile Video Background (true background, only on mobile) */}
+        <div className="absolute inset-0 min-h-screen w-full h-full z-0 desktop-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            src={`${import.meta.env.BASE_URL}mobile3Dencod.mp4`}
+            className="w-full h-full object-cover"
+            style={{ opacity: 1 }}
+          />
+        </div>
         {/* Desktop Video Background */}
         <div className="absolute inset-0 overflow-hidden mobile-hidden">
           <video
@@ -40,22 +52,9 @@ function Home() {
             style={{ opacity: 1 }}
           />
         </div>
-        {/* Mobile Video Background */}
-        <div className="absolute inset-0 overflow-hidden desktop-hidden">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            src={`${import.meta.env.BASE_URL}mobile3D.mp4`}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ opacity: 1 }}
-          />
-        </div>
-
         {/* Content */}
-        <div className="container mx-auto px-4 relative z-20 flex flex-col md:flex-row justify-end items-center min-h-screen">
-          <div className="w-full md:max-w-4xl md:text-right text-white pt-16 md:pt-0">
+        <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-start md:justify-end items-start md:items-center min-h-screen pt-16 md:pt-0">
+          <div className="w-full md:max-w-4xl md:text-right text-white">
             <motion.div
               initial="initial"
               animate="animate"
@@ -76,7 +75,8 @@ function Home() {
                 className="text-lg md:text-xl lg:text-2xl text-navy-900 mb-8 leading-relaxed"
                 variants={fadeIn}
               >
-                At VaroSync, we're revolutionizing precision medicine by integrating circadian biology into drug development. Our AI-powered platform enables time-aware therapeutics that align with your body's natural rhythms.
+              VaroSync is pioneering chronobiology-driven therapeutics. By integrating AI with circadian biology,
+              we’re redefining drug design, testing, and delivery to boost discovery success across diverse modalities.
               </motion.p>
               
               <motion.div variants={fadeIn} className="flex md:justify-end justify-center">
@@ -173,13 +173,13 @@ function Home() {
           </motion.h2>
           
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-2 gap-12 items-center justify-items-center"
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center"
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerChildren}
           >
-            {['partnera', 'partnerb'].map((partner, index) => (
+            {['partnera', 'partnerb', 'partnerc'].map((partner, index) => (
               <motion.div 
                 key={partner}
                 className="h-48 w-96 grayscale hover:grayscale-0 transition-all duration-300"
