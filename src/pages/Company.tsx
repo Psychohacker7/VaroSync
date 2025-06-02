@@ -82,7 +82,7 @@ function Company() {
                     className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6"
                     variants={itemVariants}
                   >
-                    We were founded on a simple yet transformative insight. Time is a critical and underutilized dimension in medicine. By leveraging the capabilities of artificial intelligence, we model complex biological rhythms to guide drug design, anticipate therapeutic responses, and advance the development of precisely timed treatments for some of the world's most challenging diseases.
+                   Varosync was founded with a singular, clear-sighted ambition: to deliver transformative medicines that address the underlying drivers of disease. We believe the next frontier in human health lies in understanding and modulating the essential, dynamic processes that govern cellular function. Our purpose is to translate this profound biological understanding into a new generation of therapeutics, offering hope where there was none and pursuing treatments for some of the world's most challenging illnesses.
                   </motion.p>
                   <motion.p 
                     className="text-lg md:text-xl text-gray-700 max-w-2xl"
