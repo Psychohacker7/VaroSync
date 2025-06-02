@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowUpRight, Clock, BarChart } from 'lucide-react';
+import { ArrowUpRight, Clock, BarChart, ArrowRight, User } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface ResearchPaper {
   title: string;
@@ -13,86 +14,71 @@ interface ResearchPaper {
   type: 'paper' | 'book' | 'article';
 }
 
-const researchItems: ResearchPaper[] = [
+const blogPosts = [
   {
-    title: "Integrating Clinical Research into EHR Workflows",
-    authors: "N. H. Goldhaber et al.",
-    source: "JAMIA Open",
-    year: "2024",
-    description: "Clinical trials can be more adaptive and efficient by embedding them directly into electronic health record systems — a principle central to Varosync's EHR-powered insights.",
-    url: "https://doi.org/10.1093/jamiaopen/ooae023",
-    doi: "10.1093/jamiaopen/ooae023",
-    type: "paper"
+    id: 1,
+    date: "2024",
+    title: "AI Powers a New Era of Drug Discovery and Development",
+    author: "Nature",
+    excerpt: "This article discusses how the integration of artificial intelligence (AI) and big data is revolutionizing the drug discovery process. By combining AI with expert knowledge, pharmaceutical companies are accelerating the development of more effective medicines, reducing the time and cost traditionally associated with bringing new drugs to market. This hybrid approach is poised to provide new treatment options for patients worldwide.",
+    category: "Research",
+    size: "large",
+    url: "https://www.nature.com/articles/d42473-024-00250-9"
   },
   {
-    title: "TimeTeller: A Tool for Precision Circadian Medicine",
-    authors: "D. Vlachou, G. A. Bjarnason, S. Giacchetti, F. Lévi, and D. A. Rand",
-    source: "bioRxiv",
-    year: "2019",
-    description: "TimeTeller laid the foundation for using gene expression to estimate internal circadian time — a core concept behind our phase estimation models.",
-    url: "https://doi.org/10.1101/622050",
-    doi: "10.1101/622050",
-    type: "paper"
+    id: 2,
+    date: "2023",
+    title: "Molecular Free Energies, Rates, and Mechanisms from Data-Efficient Path Sampling Simulations",
+    author: "Journal of Chemical Theory and Computation (ACS)",
+    excerpt: "This paper introduces a data-efficient method for exploring reaction pathways and free energy surfaces using machine learning-enhanced path sampling. It highlights how physical priors and statistical inference can reduce simulation costs while improving mechanistic fidelity—an approach that aligns closely with our interest in model-driven simulations of pharmacokinetics and biomolecular interactions.",
+    category: "Research",
+    size: "medium",
+    url: "https://pubs.acs.org/doi/10.1021/acs.jctc.3c00821"
   },
   {
-    title: "Fundamentals of Clinical Trials (5th ed.)",
-    authors: "L. M. Friedman, C. Furberg, D. L. DeMets, D. M. Reboussin, and C. B. Granger",
-    source: "Springer",
-    year: "2015",
-    description: "A gold-standard reference on clinical trial methodology — detailing how poor stratification (including neglect of time-based variables) leads to bias.",
-    url: "https://doi.org/10.1007/978-3-319-18539-2",
-    doi: "10.1007/978-3-319-18539-2",
-    type: "book"
+    id: 3,
+    date: "2024",
+    title: "Starfysh Integrates Spatial Transcriptomic and Histologic Data to Reveal Heterogeneous Tumour–Immune Hubs",
+    author: "Nature Biotechnology",
+    excerpt: "This study introduces Starfysh, a computational framework that combines spatial transcriptomic data with histological context to identify cellular neighbourhoods within the tumour microenvironment. The method enables high-resolution mapping of tumour–immune interactions, uncovering functional hubs that are invisible to conventional analysis. For Varosync, this illustrates the power of integrative modelling in resolving biological heterogeneity.",
+    category: "Research",
+    size: "medium",
+    url: "https://www.nature.com/articles/s41587-024-02173-8"
   },
   {
-    title: "From Coupled Oscillators to Graph Neural Networks: Reducing Oversmoothing via a Kuramoto Model-based Approach",
-    authors: "T. Nguyen et al.",
-    source: "arXiv",
-    year: "2024",
-    description: "Bridges complex biological dynamics and machine learning — essential for modeling time-aligned physiological signals.",
-    url: "https://doi.org/10.48550/arXiv.2311.03260",
-    doi: "10.48550/arXiv.2311.03260",
-    type: "paper"
+    id: 4,
+    date: "2025",
+    title: "Introducing Varosync",
+    author: "",
+    excerpt: "As we shape the future of pharma, we're proud to introduce Varosync.",
+    category: "Tech",
+    size: "medium",
+    url: "https://www.varosync.com"
   },
-  {
-    title: "Deep Learning: Foundations and Concepts",
-    authors: "C. M. Bishop and H. Bishop",
-    source: "Springer",
-    year: "2024",
-    description: "Advanced deep learning frameworks enhance Varosync's ability to detect latent circadian structures from high-dimensional health data",
-    url: "https://www.bishopbook.com",
-    type: "book"
-  },
-  {
-    title: "Circadian Rhythms and Drug Effectiveness",
-    authors: "",
-    source: "MIT News",
-    year: "2024",
-    description: "More than half of FDA-approved drugs exhibit time-of-day dependent effects — yet few clinical protocols reflect this.",
-    url: "https://news.mit.edu/2024/circadian-rhythms-can-influence-drugs-effectiveness-0424",
-    type: "article"
-  },
-  {
-    title: "Chronopharmacology: New Insights",
-    authors: "R. Dallmann, S. A. Brown, and F. Gachon",
-    source: "Annual Review of Pharmacology and Toxicology",
-    year: "2014",
-    description: "Drug metabolism and efficacy fluctuate across the circadian cycle — reinforcing the need for time-informed therapy.",
-    url: "https://doi.org/10.1146/annurev-pharmtox-011613-135923",
-    doi: "10.1146/annurev-pharmtox-011613-135923",
-    type: "paper"
-  },
-  {
-    title: "Chronopharmacokinetics: A Brief Analysis of the Influence of Circadian Rhythm on the Absorption, Distribution, Metabolism, and Elimination of Drugs",
-    authors: "A. L. R. Piedras et al.",
-    source: "Biomedicine and Pharmacology Journal",
-    year: "2024",
-    description: "Summarizes how circadian rhythms shape how drugs are absorbed, distributed, metabolized, and cleared from the body.",
-    url: "https://doi.org/10.13005/bpj/3003",
-    doi: "10.13005/bpj/3003",
-    type: "paper"
-  }
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
 
 function News() {
   const fadeIn = {
@@ -102,174 +88,159 @@ function News() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      
+    <div className="min-h-screen bg-[#f8f9fa] flex flex-col">
       <main className="flex-grow">
         {/* Hero Section */}
-        <div className="bg-navy-900 text-white py-20">
-          <div className="container mx-auto px-4">
+        <motion.div 
+          className="relative bg-[#e6d4c8] overflow-hidden min-h-[500px] pt-5 text-gray-900 flex flex-col justify-between"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="pt-[15.5px] pr-8 pl-[10px] text-left relative z-10">
             <motion.div 
-              className="max-w-3xl mx-auto text-center"
               initial="initial"
               animate="animate"
               variants={fadeIn}
             >
-              <h1 className="text-5xl font-bold mb-6">News & Publications</h1>
-              <p className="text-xl text-white/80">
-                Latest updates and publications from VaroSync and related fields
-              </p>
+              <h1 className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed">Blog</h1>
             </motion.div>
           </div>
-        </div>
-
-        {/* Research Grid */}
-        <div className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8">
-              {researchItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-sm font-medium px-2 py-1 rounded-full bg-violet-100 text-violet-700">
-                          {item.source}
-                        </span>
-                        <span className="text-sm text-gray-500">{item.year}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-navy-900 mb-2">{item.title}</h3>
-                      {item.authors && (
-                        <p className="text-gray-600 mb-3 text-sm">{item.authors}</p>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <p className="text-gray-600 mb-4">{item.description}</p>
-                  
-                  <div className="flex items-center justify-between">
-                    <a 
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-violet-600 font-medium flex items-center gap-2 hover:text-violet-700"
-                    >
-                      Read {item.type === 'book' ? 'the book' : item.type === 'article' ? 'article' : 'the paper'}
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                    {item.doi && (
-                      <span className="text-sm text-gray-500">doi:{item.doi}</span>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="pt-[15.5px] pb-[15px] pr-8 pl-[15px] absolute right-0 top-0 h-full w-2/3 md:w-1/2 lg:w-1/2 z-0">
+            <img 
+              src={`${import.meta.env.BASE_URL}heroblog.png`}
+              alt="Blog hero"
+              className="w-full h-full object-cover rounded-2xl"
+            />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Blog Highlights Section */}
-        <div className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Blog Highlights</h2>
-              
-              <div className="space-y-12">
-                {/* Blog Post 1 */}
-                <motion.div 
-                  className="bg-white rounded-xl shadow-lg overflow-hidden"
-                  variants={fadeIn}
-                >
-                  <div className="h-64 bg-violet-100 relative overflow-hidden">
-                    <img 
-                      src="https://img.freepik.com/free-vector/drug-development-abstract-concept-vector-illustration-drug-discovery-research-development-pharmaceutical-industry-chemical-laboratory-scientific-experiment-medicine-study-abstract-metaphor_335657-2933.jpg"
-                      alt="Clinical Trial Time Illustration" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
-                    <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white">
-                      Why Your Clinical Trial is Probably Ignoring Time (and What That Costs You)
-                    </h3>
-                  </div>
-                  <div className="p-8">
-                    <div className="prose prose-lg max-w-none">
-                      <p className="text-gray-600 mb-4">
-                        In modern clinical research, enormous effort goes into randomization, blinding, and
-                        subgroup analysis. Yet one of the most significant sources of variation in drug response —
-                        biological time — is almost always left out.
-                      </p>
-                      <p className="text-gray-600 mb-4">
-                        Circadian rhythms affect everything from drug metabolism to immune responsiveness. Still,
-                        most trials treat 8 a.m. and 8 p.m. as biologically equivalent moments. This assumption is
-                        both biologically flawed and statistically costly.
-                      </p>
-                      <div className="bg-navy-50 rounded-lg p-6 my-6">
-                        <p className="text-navy-900 font-medium">
-                          Over 50% of FDA-approved drugs show time-of-day variation in efficacy or toxicity (MIT News, 2024).
-                        </p>
-                      </div>
-                      <p className="text-gray-600">
-                        Omu®, Varosync's pharmaceutical platform, uses Bayesian modeling to infer internal
-                        circadian phase from EHR data and stratify participants accordingly.
-                      </p>
-                    </div>
-                    <a href="#" className="inline-flex items-center gap-2 text-violet-600 font-medium mt-6 hover:text-violet-700">
-                      Read full article
-                      <BarChart className="w-4 h-4" />
-                    </a>
-                  </div>
-                </motion.div>
-
-                {/* Blog Post 2 */}
-                <motion.div 
-                  className="bg-white rounded-xl shadow-lg overflow-hidden"
-                  variants={fadeIn}
-                >
-                  <div className="h-64 bg-navy-100 relative overflow-hidden">
-                    <img 
-                      src="https://img.freepik.com/free-vector/biotechnology-isometric-composition-with-scientific-laboratory-equipment-research-process-vector-illustration_1284-83475.jpg"
-                      alt="TimeTeller Evolution Illustration" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
-                    <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white">
-                      From TimeTeller to Trials: How Circadian Models Went from Lab to Platform
-                    </h3>
-                  </div>
-                  <div className="p-8">
-                    <div className="prose prose-lg max-w-none">
-                      <p className="text-gray-600 mb-4">
-                        What began in academic labs as a tool for tracking circadian biology has now evolved into
-                        high-impact software for clinical trials and digital health. The TimeTeller algorithm (Vlachou
-                        et al., 2019) introduced a new approach to estimating internal time from molecular data.
-                      </p>
-                      <div className="bg-violet-50 rounded-lg p-6 my-6">
-                        <p className="text-navy-900">
-                          Using probabilistic PCA and EM-based inference, our models extract phase signals from even 
-                          sparse or noisy input. With wearable accelerometer data, sleep logs, or even temperature 
-                          variation, we reconstruct circadian timing and provide real-time readiness scoring.
-                        </p>
-                      </div>
-                      <p className="text-gray-600 font-medium italic">
-                        This translation — from genomic clocks to clinical clocks — marks a pivotal shift: timing
-                        medicine is no longer a theory. It's a product.
-                      </p>
-                    </div>
-                    <a href="#" className="inline-flex items-center gap-2 text-violet-600 font-medium mt-6 hover:text-violet-700">
-                      Read full article
-                      <Clock className="w-4 h-4" />
-                    </a>
-                  </div>
-                </motion.div>
+        {/* Blog Posts Grid */}
+        <motion.div 
+          className="w-full py-16 px-[12px]"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[12px]">
+            {/* First row: three cards as before */}
+            {blogPosts.slice(0, 3).map((post) => (
+              <motion.div
+                key={post.id}
+                variants={itemVariants}
+                className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-6 transform hover:-translate-y-1 w-full flex flex-col justify-between h-full"
+              >
+                <div>
+                  <div className="text-sm text-gray-500 mb-2">{post.category} • {post.date}</div>
+                  <h3 className="text-xl font-normal mb-2 text-gray-900">{post.title}</h3>
+                  {post.author && (
+                    <div className="text-sm text-gray-600 mb-2">{post.author}</div>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 mt-4">
+                  {post.excerpt && (
+                    <div className="text-sm text-gray-600 mb-2">{post.excerpt}</div>
+                  )}
+                  <a 
+                    href={post.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-violet-600 font-medium hover:text-violet-700 transition-colors group"
+                  >
+                    Read More 
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+            {/* Second row: combine first and second card into one wide card, third card is image placeholder */}
+            <motion.div
+              variants={itemVariants}
+              className="md:col-span-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between w-full mt-[36px] h-full"
+            >
+              <div>
+                <div className="text-sm text-gray-500 mb-2">{blogPosts[3].category} • {blogPosts[3].date}</div>
+                <h3 className="text-3xl font-normal mb-2 text-gray-900">{blogPosts[3].title}</h3>
+                <div className="text-sm text-gray-600 mb-2">{blogPosts[3].author}</div>
               </div>
+              <div className="flex flex-col gap-2 mt-4">
+                <div className="text-l text-gray-600 mb-2">{blogPosts[3].excerpt}</div>
+                <a 
+                  href={blogPosts[3].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-violet-600 font-medium hover:text-violet-700 transition-colors group"
+                >
+                  Read More <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+            <motion.div
+              variants={itemVariants}
+              className="bg-gray-200 border border-gray-200 rounded-lg shadow-sm flex items-center justify-center min-h-[200px] w-full mt-[36px] h-full"
+            >
+              <img src={`${import.meta.env.BASE_URL}blog.png`} alt="Blog" className="w-full h-full object-cover rounded-lg" />
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Footer CTA Section */}
+        <motion.div 
+          className="relative bg-[#f8f9fa] py-20 px-6 overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        >
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl font-normal text-gray-900 mb-6">
+                For media or careers inquiries, reach out.
+              </h2>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link
+                  to="/contact"
+                  className="bg-gray-900 font-bold text-white px-6 py-3 rounded inline-flex items-center gap-2 hover:bg-gray-800 transition-colors group"
+                >
+                  Contact us
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
             </div>
           </div>
-        </div>
+          
+          {/* Blue geometric shapes */}
+          <motion.div 
+            className="absolute right-0 top-0 h-full flex flex-col justify-center gap-4"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            <div className="flex gap-2">
+              <div className="w-16 h-16 bg-[#e6d4c8] rounded"></div>
+              <div className="w-32 h-16 bg-[#e6d4c8] rounded"></div>
+            </div>
+            <div className="flex gap-2 ml-8">
+              <div className="w-24 h-16 bg-[#e6d4c8] rounded"></div>
+              <div className="w-40 h-16 bg-[#e6d4c8] rounded"></div>
+            </div>
+            <div className="flex gap-2 ml-4">
+              <div className="w-20 h-16 bg-[#e6d4c8] rounded"></div>
+              <div className="w-36 h-16 bg-[#e6d4c8] rounded"></div>
+            </div>
+            <div className="flex gap-2 ml-12">
+              <div className="w-28 h-16 bg-[#e6d4c8] rounded"></div>
+              <div className="w-44 h-16 bg-[#e6d4c8] rounded"></div>
+            </div>
+            <div className="flex gap-2">
+              <div className="w-16 h-16 bg-[#e6d4c8] rounded"></div>
+              <div className="w-32 h-16 bg-[#e6d4c8] rounded"></div>
+            </div>
+          </motion.div>
+        </motion.div>
       </main>
-      
     </div>
   );
 }

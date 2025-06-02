@@ -1,117 +1,137 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [status, setStatus] = useState({ type: '', message: '' });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus({ type: 'loading', message: 'Sending message...' });
-
-    try {
-      await emailjs.send(
-        'service_xyz', // Replace with your EmailJS service ID
-        'template_xyz', // Replace with your EmailJS template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'partnerships@varosync.com'
-        },
-        'public_key_xyz' // Replace with your EmailJS public key
-      );
-
-      setStatus({ type: 'success', message: 'Message sent successfully!' });
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-[#e6c8c8] flex flex-col">
       <main className="flex-grow">
         {/* Hero Section */}
-        <div className="bg-navy-900 text-white py-20">
-          <div className="container mx-auto px-4">
+        <motion.section 
+          className="bg-[#e6c8c8] overflow-hidden min-h-[420px] pt-5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] items-start w-full h-full">
+            {/* Image Column */}
             <motion.div 
-              className="max-w-3xl mx-auto text-center"
-              initial="initial"
-              animate="animate"
-              variants={fadeIn}
+              className="flex justify-start items-start h-full"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-              <p className="text-xl text-white/80 mb-8">
-                Get in touch with our team to learn more about our solutions
-              </p>
+              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
+                <img
+                  src={`${import.meta.env.BASE_URL}contact.png`}
+                  alt="Contact us"
+                  className="w-full h-auto object-cover rounded-2xl"
+                />
+              </div>
+            </motion.div>
+
+            {/* Text Column */}
+            <motion.div 
+              className="flex flex-col justify-start items-start h-full"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <div className="pt-[15.5px] pr-4 text-right">
+                <motion.h1 
+                  className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
+                  variants={itemVariants}
+                >
+                  Contact Us
+                </motion.h1>
+                <motion.p 
+                  className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6"
+                  variants={itemVariants}
+                >
+                  Get in touch with our team to learn more about our solutions and how we can help advance your research and development efforts.
+                </motion.p>
+                <motion.p 
+                  className="text-lg md:text-xl text-gray-700 max-w-2xl"
+                  variants={itemVariants}
+                >
+                  Whether you're interested in partnerships, have questions about our technology, or want to explore collaboration opportunities, we're here to help.
+                </motion.p>
+              </div>
             </motion.div>
           </div>
-        </div>
+        </motion.section>
 
         {/* Contact Form Section */}
-        <div className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12">
+        <motion.section 
+          className="py-12 md:py-16 bg-[#f8f9fa] relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <div className="w-full relative px-[18px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px] items-center w-full h-full min-h-[400px]">
               {/* Contact Information */}
-              <div>
-                <h2 className="text-3xl font-bold text-navy-900 mb-8">Get in Touch</h2>
-                
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-violet-600 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-navy-900">Our Location</h3>
-                      <p className="text-gray-600">Upper West Side, New York, NY 10025</p>
-                    </div>
+              <motion.div 
+                className="md:col-span-1 flex flex-col justify-center h-full"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <motion.div 
+                  className="mb-6 md:mb-0"
+                  variants={itemVariants}
+                >
+                  <div className="space-y-10 mb-8 pl-2 pr-8">
+                    <motion.div className="flex items-start gap-4" variants={itemVariants}>
+                      <MapPin className="w-7 h-7 text-violet-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold text-navy-900 text-xl md:text-2xl mb-1">Our Location</h3>
+                        <p className="text-gray-600 text-lg md:text-xl">New York, New York, NY 10019</p>
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div className="flex items-start gap-4" variants={itemVariants}>
+                      <Mail className="w-7 h-7 text-violet-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold text-navy-900 text-xl md:text-2xl mb-1">Email Us</h3>
+                        <p className="text-gray-600 text-lg md:text-xl">partnerships@varosync.com</p>
+                      </div>
+                    </motion.div>
                   </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <Mail className="w-6 h-6 text-violet-600 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-navy-900">Email Us</h3>
-                      <p className="text-gray-600">partnerships@varosync.com</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <Phone className="w-6 h-6 text-violet-600 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-navy-900">Call Us</h3>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-100 p-6 rounded-xl">
-                  <h3 className="font-semibold text-navy-900 mb-2">Working Hours</h3>
-                  <p className="text-gray-600 mb-4">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p className="text-gray-600">Saturday - Sunday: Closed</p>
-                </div>
-              </div>
-              
+                </motion.div>
+              </motion.div>
+
               {/* Contact Form */}
-              <div className="bg-white rounded-xl shadow-lg p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <motion.div 
+                className="md:col-span-2 bg-white rounded-xl shadow-lg p-8 flex flex-col justify-center h-full max-w-2xl w-full ml-auto"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <form action="https://getform.io/f/axoyyvwb" method="POST" className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                       Name
@@ -120,8 +140,6 @@ function Contact() {
                       type="text"
                       id="name"
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-600 focus:border-transparent"
                     />
@@ -135,8 +153,6 @@ function Contact() {
                       type="email"
                       id="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-600 focus:border-transparent"
                     />
@@ -149,44 +165,23 @@ function Contact() {
                     <textarea
                       id="message"
                       name="message"
-                      value={formData.message}
-                      onChange={handleChange}
                       required
                       rows={4}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-600 focus:border-transparent"
                     />
                   </div>
                   
-                  {status.message && (
-                    <div className={`p-4 rounded-lg ${
-                      status.type === 'success' ? 'bg-green-100 text-green-700' :
-                      status.type === 'error' ? 'bg-red-100 text-red-700' :
-                      'bg-blue-100 text-blue-700'
-                    }`}>
-                      {status.message}
-                    </div>
-                  )}
-                  
                   <button
                     type="submit"
-                    disabled={status.type === 'loading'}
-                    className="w-full bg-violet-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-violet-700 transition-colors disabled:opacity-50"
+                    className="w-full bg-violet-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-violet-700 transition-colors"
                   >
-                    {status.type === 'loading' ? 'Sending...' : 'Send Message'}
+                    Send Message
                   </button>
                 </form>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
-
-        {/* Map Section */}
-        <div className="h-96 bg-gray-200">
-          {/* Placeholder for map */}
-          <div className="h-full flex items-center justify-center">
-            <p className="text-gray-500 text-lg">Map will be displayed here</p>
-          </div>
-        </div>
+        </motion.section>
       </main>
     </div>
   );

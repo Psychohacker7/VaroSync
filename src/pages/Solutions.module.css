@@ -1,0 +1,293 @@
+:root {
+  --gray-700: #374151;
+  --navy-900: #c8d7e6;
+  --violet-600: #7c3aed;
+  --blue-600: #2563eb;
+  --green-600: #16a34a;
+}
+
+.introWrapper {
+  position: relative;
+  height: 75vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--navy-900);
+  padding-top: 1.5rem;
+}
+
+.intro {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.textAlignCenter {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  color: white;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  grid-column: 1 / 2;
+}
+
+.textAlignCenter h1 {
+  color: #111827;
+}
+
+.textAlignCenter p {
+  color: #374151;
+}
+
+.sectionTabs {
+  position: relative;
+  width: 100%;
+  background: white;
+  padding-top: 2.5rem;
+}
+
+.tabsHeight {
+  position: relative;
+  height: 200vh; /* 2 slides */
+}
+
+.tabsStickyWrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+}
+
+.tabsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabsComponent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.tabsLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 24px 24px 24px 16px;
+  position: relative;
+}
+
+.tabsLeftTop {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.tabsLetContent {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+  position: absolute;
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.tabsLetContent.is1 {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+}
+
+.tabsRight {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 15.5px 15.5px 15.5px 0;
+}
+
+.tabsVideo {
+  position: absolute;
+  top: 15.5px;
+  left: 0;
+  right: 15.5px;
+  bottom: 15.5px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.5s ease-out;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tabsVideo.is1 {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.videoElement {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: var(--green-600);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+}
+
+.buttonText {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.buttonCircleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.buttonIcon {
+  transition: transform 0.3s ease;
+}
+
+.button:hover .buttonIcon1 {
+  transform: translateX(4px);
+}
+
+.button:hover .buttonIcon2 {
+  transform: translateX(-4px);
+}
+
+.tabsLetContent h2 {
+  font-size: 2.2rem; /* text-4xl (base for small screens) */
+  line-height: 1.625; /* leading-relaxed */
+  margin-bottom: 1.5rem; /* mb-6 */
+  color: #111827; /* text-gray-900 */
+  font-weight: 400; /* font-normal */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; /* antialiased */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .tabsLetContent h2 {
+    font-size: 2.2rem; /* New smaller size for medium screens and up */
+  }
+}
+
+.tabsLetContent p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--gray-700);
+}
+
+.heroImageSection {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.heroImageSection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+@media (max-width: 1024px) {
+  .tabsComponent {
+    grid-template-columns: 1fr 1.2fr;
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabsComponent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  .tabsRight {
+    height: 60vh;
+  }
+
+  .tabsLeft {
+    padding: 40px 0;
+  }
+
+  .tabsLetContent {
+    padding: 30px;
+    border-radius: 20px;
+  }
+
+  .tabsVideo {
+    border-radius: 20px;
+  }
+
+  .tabsLetContent h2 {
+    font-size: 2rem;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.firstTabVideoPad {
+  padding-left: 24px;
+}
+
+.secondTabVideoPad {
+  padding-bottom: 24px;
+}
+
+.heroImageBottomPad {
+  padding-bottom: 24px;
+} 

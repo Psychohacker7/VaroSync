@@ -1,207 +1,221 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { ArrowRight, Target, Clock, Pill } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Target, FileText, Atom, Brain, Clock, Microscope, Code2, Database, LineChart, Activity, Pill } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import styles from './Solutions.module.css';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
 
 function Solutions() {
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
+  useEffect(() => {
+    // Only keep sticky tab scroll logic below
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const heroHeight = windowHeight * 0.5; // Hero section is now 50vh
+      const sections = document.querySelectorAll(`.${styles.tabsLetContent}`);
+      const videos = document.querySelectorAll(`.${styles.tabsVideo}`);
+
+      // Adjust scroll position to account for hero section
+      const adjustedScrollY = scrollY - heroHeight;
+
+      // First slide is always visible
+      sections[0]?.classList.add(styles.is1);
+      videos[0]?.classList.add(styles.is1);
+
+      // Second slide appears when scrolling
+      if (adjustedScrollY >= windowHeight * 0.5) {
+        // When second slide appears, hide first slide
+        sections[0]?.classList.remove(styles.is1);
+        videos[0]?.classList.remove(styles.is1);
+        // Show second slide
+        sections[1]?.classList.add(styles.is1);
+        videos[1]?.classList.add(styles.is1);
+      } else {
+        sections[1]?.classList.remove(styles.is1);
+        videos[1]?.classList.remove(styles.is1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <div className="bg-navy-900 text-white py-20">
-          <div className="container mx-auto px-4">
-            <motion.div 
-              className="max-w-3xl mx-auto text-center"
-              initial="initial"
-              animate="animate"
-              variants={fadeIn}
+    <div className="min-h-screen bg-white">
+      <section className={styles.introWrapper}>
+        <div className={styles.intro}>
+          {/* Hero Text */}
+          <motion.div
+            className={styles.textAlignCenter}
+            id="js-pin"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h1 
+              className="text-5xl md:text-6xl mb-6 font-normal leading-relaxed"
+              variants={itemVariants}
             >
-              <h1 className="text-5xl font-bold mb-6">The Omu™ Platform</h1>
-              <p className="text-xl text-white/80 mb-8">
-                Our proprietary engine for circadian-aware analytics, simulation, and patient stratification.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* NEW Section: OmuTM Technology Explanation (from Platform.tsx) */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <motion.h2 
-                className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
-                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-              >
-                Introducing Omu™ Technology
-              </motion.h2>
-              <motion.p 
-                className="text-lg text-gray-700 mb-12 text-center"
-                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                Omu™ is a composable software architecture that enables pharmaceutical R&D and clinical teams to integrate circadian biology into drug discovery. Built with flexibility and scalability in mind, Omu™ can ingest multimodal types including: structured and unstructured EHR data, Traditional clinical trial case report forms and others currently in development.
-              </motion.p>
-              {/* Placeholder for Visual Aid */}
-                <div className="flex justify-center">
-                  <img 
-                    src={`${import.meta.env.BASE_URL}technology.png`} 
-                    alt="Omu Technology Stack" 
-                    className="max-w-full h-auto rounded-lg shadow-lg" 
-                  />
-                </div>
-            </div>
-          </div>
-        </section>
-
-        {/* NEW Section: Under the Hood (from Platform.tsx) */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <motion.h2 
-                className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
-                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-              >
-                Under the Hood: A Scientific Stack
-              </motion.h2>
-              <motion.p 
-                className="text-lg text-gray-700 mb-12 text-center"
-                variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                Omu™ is powered by a suite of models developed from first principles in circadian biology, combined with probabilistic and sequential machine learning methods. Each module is tuned to a specific stage of the therapeutic lifecycle, from trial design to postmarket surveillance.
-              </motion.p>
-              {/* Placeholder for Diagrams */}
-              <motion.div 
-                className="grid md:grid-cols-2 gap-8 mb-12"
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true }}
-                transition={{ staggerChildren: 0.2, delayChildren: 0.2 }}
-              >
-                <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow text-center">
-                  <Code2 className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-                  <h4 className="font-semibold text-navy-900">Modeling Core</h4>
-                  <p className="text-gray-600 text-sm"></p>
-                </motion.div>
-                <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow text-center">
-                  <Database className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                  <h4 className="font-semibold text-navy-900">Data Integration</h4>
-                  <p className="text-gray-600 text-sm"></p>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-        {/* NEW Section: Benefits and Features (Placeholder structure, merge content later) */}
-        <section className="bg-gradient-to-br from-violet-50 to-blue-50 py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Features</h2>
-            <motion.div 
-               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-               initial="initial" whileInView="animate" viewport={{ once: true }}
-               transition={{ staggerChildren: 0.1, delayChildren: 0.1 }}
+              Technology
+            </motion.h1>
+            <motion.p 
+              className="text-lg text-white/80"
+              variants={itemVariants}
             >
-              {/* Example Feature Card */}
-              <motion.div 
-                variants={fadeIn}
-                className="flex items-start gap-4 bg-white p-6 rounded-lg shadow"
-              >
-                <Clock className="w-8 h-8 text-violet-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h5 className="font-semibold text-navy-900 text-xl mb-2">Time-Sensitive Targeting</h5>
-                  <p className="text-gray-600">Uncover rhythmic gene and protein activity to guide target selection across key disease areas.</p>
+              Varosync is pioneering a new class of biotherapeutics platform—combining the scientific rigor of a traditional pharma powerhouse with the speed and flexibility of a cutting-edge tech company. We leverage proprietary circadian-aware AI models to source, stratify, and optimize asset portfolios, advancing each candidate through critical milestones with data-driven precision. By unifying real-world health records, wearable signals, and molecular data into one end-to-end engine, our system streamlines decision-making across target discovery, dosing strategy, and clinical trial design—unlocking faster, smarter, and more reliable paths to life-changing therapies
+            </motion.p>
+          </motion.div>
+          {/* Hero Image */}
+          <motion.div
+            className={styles.heroImageSection}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <img 
+              src={`${import.meta.env.BASE_URL}techillu.png`} 
+              alt="Technology visualization"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      <motion.section 
+        className={styles.sectionTabs}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        <div className={styles.tabsHeight}>
+          <div className={styles.tabsStickyWrapper}>
+            <div className={styles.tabsContainer}>
+              <div className={styles.tabsComponent}>
+                {/* First Tab: Video left, Text right */}
+                <div className={styles.tabsRight} style={{ gridColumn: 1 }}>
+                  <div className={`${styles.tabsVideo} ${styles.is1} ${styles.firstTabVideoPad}`}>
+                    <video 
+                      src={`${import.meta.env.BASE_URL}modelingpali.mp4`} 
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className={styles.videoElement}
+                    />
+                  </div>
                 </div>
-              </motion.div>
-               <motion.div 
-                 variants={fadeIn}
-                 className="flex items-start gap-4 bg-white p-6 rounded-lg shadow"
-               >
-                 <Pill className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
-                 <div>
-                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Optimised Dosing Windows</h5>
-                   <p className="text-gray-600">Pinpoint when drugs work best by aligning delivery with biological timing to boost effect and cut risk.</p>
-                 </div>
-               </motion.div>
-               <motion.div 
-                 variants={fadeIn}
-                 className="flex items-start gap-4 bg-white p-6 rounded-lg shadow"
-               >
-                 <Target className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
-                 <div>
-                   <h5 className="font-semibold text-navy-900 text-xl mb-2">Dynamic Signal Mapping</h5>
-                   <p className="text-gray-600">Simulate how molecules behave over time, capturing rhythms that static lab tests overlook</p>
-                 </div>
-               </motion.div>
-              {/* Placeholder for more...
-               <motion.div variants={fadeIn} className="flex items-start gap-4 bg-white p-6 rounded-lg shadow">...</motion.div>
-               <motion.div variants={fadeIn} className="flex items-start gap-4 bg-white p-6 rounded-lg shadow">...</motion.div>
-               <motion.div variants={fadeIn} className="flex items-start gap-4 bg-white p-6 rounded-lg shadow">...</motion.div> 
-              */}
-            </motion.div>
-          </div>
-        </section>
-        {/* NEW Section: Visual Technology Showcase (Placeholder) */}
-        <section className="py-20">
-           <div className="container mx-auto px-4">
-             <div className="max-w-4xl mx-auto">
-               <motion.h2 
-                 className="text-3xl md:text-4xl font-bold text-navy-900 mb-8 text-center"
-                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-               >
-                 Visual Technology Showcase
-               </motion.h2>
-               <motion.p 
-                 className="text-lg text-gray-700 mb-12 text-center"
-                 initial="initial" whileInView="animate" viewport={{ once: true }}
-                 variants={fadeIn}
-                 transition={{ duration: 0.6, delay: 0.1 }}
-               >
-                 See Omu™ in action. Explore examples of how our technology visualizes complex biological data and provides actionable insights.
-               </motion.p>
-               {/* Placeholder for Examples */}
-               <motion.div 
-                 className="bg-gray-100 p-8 rounded-lg shadow-inner text-center"
-                 variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }}
-                 transition={{ duration: 0.6, delay: 0.2 }}
-               >
-                 <Microscope className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-                 <h3 className="text-2xl font-semibold text-gray-700 mb-2">Showcase Examples Coming Soon</h3>
-                 <p className="text-gray-600"></p>
-               </motion.div>
-             </div>
-           </div>
-         </section>
-
-        {/* Original Solutions Grid - Commented out for now */}
-        {/*
-        <div className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              // Solution Card 1 ... 
-              // Solution Card 2 ... 
-              // Solution Card 3 ... 
+                <div className={styles.tabsLeft} style={{ gridColumn: 2 }}>
+                  <div className={styles.tabsLeftTop}>
+                    {/* Tab 1 Content */}
+                    <div className={`${styles.tabsLetContent} ${styles.is1}`}>
+                      <h2>Modelling Human Biology</h2>
+                      <p>
+                        Varosync is building a new kind of engine, one that bridges biological complexity with computational clarity. Our platform integrates advanced machine learning with real-world data to uncover latent physiological signals and guide therapeutic design with greater precision.
+                      </p>
+                      <p>
+                        By modelling multiscale biological processes ranging from gene expression dynamics to drug metabolism and tissue-level pharmacokinetics. We infer patient-specific trajectories that reflect the true heterogeneity of disease. Using deep learning to capture nonlinear interactions between molecular pathways, physiological rhythms, and external interventions. enabling the prediction of therapeutic outcomes with greater temporal and mechanistic resolution.
+                      </p>
+                      <div className="flex items-center gap-4 mt-6">
+                        <Clock className="w-8 h-8 text-violet-600" />
+                        <span className="text-sm text-gray-600">Our approach reflects a foundational shift to design smarter and treat better.</span>
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="mt-8"
+                      >
+                        <Link
+                          to="/contact"
+                          className="bg-gray-900 text-white px-8 py-4 rounded-full font-medium inline-flex items-center gap-2 hover:bg-gray-800 transition-colors"
+                        >
+                          Learn more
+                          <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+                {/* Second Tab: Text left, Video right (unchanged) */}
+                <div className={styles.tabsLeft}>
+                  <div className={styles.tabsLeftTop}>
+                    {/* Tab 2 Content */}
+                    <div className={styles.tabsLetContent}>
+                      <h2>Computing Therapeutic Precision</h2>
+                      <p>
+                        Solving the most intricate challenges in medicine demands more than persistence; it requires a scientific lens capable of perceiving structure within complexity. At Varosync, we harness artificial intelligence not simply to automate workflows, but to interpret the latent architecture of biological systems.                      
+                      </p>
+                      <p>
+                        Our models learn to classify high-dimensional, heterogeneous patient data, therefore identifying patterns invisible to the human eye. Through principled dimensionality reduction and temporal inference, we transform noise into signal and simulate pharmacological responses across populations with great speed and resolution. This capacity to generate, compress, and interrogate data enables us to traverse therapeutic landscapes once deemed intractable.
+                      </p>
+                      <div className="flex items-center gap-4 mt-6">
+                        <Pill className="w-8 h-8 text-blue-600" />
+                        <span className="text-sm text-gray-600">We improve predictive fidelity and extend therapeutic possibilities.</span>
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="mt-8"
+                      >
+                        <Link
+                          to="/contact"
+                          className="bg-gray-900 text-white px-8 py-4 rounded-full font-medium inline-flex items-center gap-2 hover:bg-gray-800 transition-colors"
+                        >
+                          Learn more
+                          <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+                <motion.div 
+                  className={styles.tabsRight}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  <div className={`${styles.tabsVideo} ${styles.secondTabVideoPad}`}>
+                    <video 
+                      src={`${import.meta.env.BASE_URL}computpali.mp4`} 
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className={styles.videoElement}
+                    />
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
-        */}
-
-        {/* Original Features Section - Commented out for now */}
-        {/*
-        <div className="bg-gray-50 py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-navy-900 text-center mb-16">Key Features</h2>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              // Original features content ...
-            </div>
-          </div>
-        </div>
-        */}
-      </main>
+      </motion.section>
     </div>
   );
 }
