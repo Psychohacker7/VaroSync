@@ -24,20 +24,20 @@ function Layout() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Clean the path to prevent malformed URLs
-    const cleanPath = location.pathname.split('?')[0].split('&')[0].split('~')[0];
-    if (cleanPath !== location.pathname) {
-      window.history.replaceState({}, '', cleanPath);
-      return;
-    }
-
-    // Simplified route matching logic
     const path = location.pathname;
-    const matchingRoute = Object.keys(routeBackgrounds).find(key => 
-      path === key || (key !== '/' && path.startsWith(key))
-    );
-    const newBgColor = matchingRoute ? routeBackgrounds[matchingRoute] : routeBackgrounds['/'];
-    setBgColor(newBgColor);
+    let newBgColor = routeBackgrounds['/'];
+    for (const key of Object.keys(routeBackgrounds)) {
+      if (key === '/') {
+        if (path === '/') {
+          newBgColor = routeBackgrounds['/'];
+          break;
+        }
+      } else if (path.startsWith(key)) {
+        newBgColor = routeBackgrounds[key];
+        break;
+      }
+    }
+    setBgColor(newBgColor || '#FFFFFF');
 
     setIsLoading(true);
     const timer = setTimeout(() => {
@@ -116,8 +116,11 @@ function Layout() {
 }
 
 function App() {
+  // Get the repository name from the URL path
+  const repoName = import.meta.env.BASE_URL || '/';
+  
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router basename={repoName}>
       <Layout />
     </Router>
   );
