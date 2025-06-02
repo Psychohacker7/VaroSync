@@ -31,20 +31,18 @@ function Layout() {
       return;
     }
 
+    // Simplified route matching logic
     const path = location.pathname;
-    // Find matching background, fallback to white
-    const newBgColor = Object.keys(routeBackgrounds).find(key => path.startsWith(key) && key !== '/') 
-                        ? routeBackgrounds[Object.keys(routeBackgrounds).find(key => path.startsWith(key) && key !== '/')!]
-                        : routeBackgrounds['/']; 
-    setBgColor(newBgColor || '#FFFFFF');
-    // Optionally update document body background too
-    // document.body.style.backgroundColor = newBgColor || '#FFFFFF'; 
+    const matchingRoute = Object.keys(routeBackgrounds).find(key => 
+      path === key || (key !== '/' && path.startsWith(key))
+    );
+    const newBgColor = matchingRoute ? routeBackgrounds[matchingRoute] : routeBackgrounds['/'];
+    setBgColor(newBgColor);
 
-    // Set loading state when route changes
     setIsLoading(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500); // Adjust timing as needed
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [location.pathname]);
