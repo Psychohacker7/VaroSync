@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -24,6 +24,13 @@ function Layout() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Clean the path to prevent malformed URLs
+    const cleanPath = location.pathname.split('?')[0].split('&')[0].split('~')[0];
+    if (cleanPath !== location.pathname) {
+      window.history.replaceState({}, '', cleanPath);
+      return;
+    }
+
     const path = location.pathname;
     // Find matching background, fallback to white
     const newBgColor = Object.keys(routeBackgrounds).find(key => path.startsWith(key) && key !== '/') 
@@ -99,6 +106,7 @@ function Layout() {
                 <Route path="/company" element={<Company />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/news" element={<News />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </motion.div>
           )}
