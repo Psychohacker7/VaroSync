@@ -64,22 +64,27 @@
   padding-bottom: 0.5rem;
   box-shadow: none;
   border-bottom: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
 }
+
 .header-scrolled {
   /* Only shrink padding on scroll */
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  /* Remove background/blur/shadow/border from here */
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 /* Home page specific styles */
 [data-path="/"] .header-main {
   color: #1a365d !important;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* When scrolled on home page */
 [data-path="/"] .header-scrolled:not(.header-at-top) .header-main {
   color: #1a365d !important;
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 [data-path="/"] .header-scrolled:not(.header-at-top) .header-logo {
@@ -144,7 +149,9 @@
 /* When at top, make header background transparent or match section */
 .header-at-top {
   box-shadow: none !important;
-  border-bottom: 1.5px solid #1a365d;
+  border-bottom: none !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
 }
 
 .header-at-top .header-logo,
@@ -354,4 +361,54 @@
 
 .header-scrolled:not(.header-at-top):not([data-path="/"]) .header-link-dot {
   background-color: #1a365d !important;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+.animate-slide-out-right {
+  animation: slide-out-right 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.menu-bg-home {
+  background: #E6E3FF !important;
+  background-color: #E6E3FF !important;
+  opacity: 1 !important;
+}
+.menu-bg-solutions {
+  background: #c8d7e6 !important;
+  background-color: #c8d7e6 !important;
+  opacity: 1 !important;
+}
+.menu-bg-company {
+  background: #cde6c8 !important;
+  background-color: #cde6c8 !important;
+  opacity: 1 !important;
+}
+.menu-bg-news {
+  background: #e6d4c8 !important;
+  background-color: #e6d4c8 !important;
+  opacity: 1 !important;
+}
+.menu-bg-contact {
+  background: #e6c8c8 !important;
+  background-color: #e6c8c8 !important;
+  opacity: 1 !important;
 }

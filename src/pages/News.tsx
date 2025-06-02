@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Clock, BarChart, ArrowRight, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -87,12 +87,19 @@ function News() {
     transition: { duration: 0.6 }
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f8f9fa] flex flex-col">
       <main className="flex-grow">
         {/* Hero Section */}
         <motion.div 
-          className="relative bg-[#e6d4c8] overflow-hidden min-h-[500px] pt-5 text-gray-900 flex flex-col justify-between"
+          className="relative bg-[#e6d4c8] overflow-hidden min-h-[550px] pt-5 pb-8 md:pb-12 text-gray-900 flex flex-col justify-between"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -106,13 +113,26 @@ function News() {
               <h1 className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed">Blog</h1>
             </motion.div>
           </div>
-          <div className="pt-[15.5px] pb-[15px] pr-8 pl-[15px] absolute right-0 top-0 h-full w-2/3 md:w-1/2 lg:w-1/2 z-0">
-            <img 
-              src={`${import.meta.env.BASE_URL}heroblog.png`}
-              alt="Blog hero"
-              className="w-full h-full object-cover rounded-2xl"
-            />
-          </div>
+          {/* Desktop/Tablet Hero Image */}
+          {!isMobile && (
+            <div className="pt-[15.5px] pb-[15px] pr-8 pl-[15px] absolute right-0 top-0 h-[90%] w-2/3 md:w-1/2 lg:w-1/2 z-0">
+              <img 
+                src={`${import.meta.env.BASE_URL}heroblog.png`}
+                alt="Blog hero"
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
+          )}
+          {/* Mobile Hero Image (after text) */}
+          {isMobile && (
+            <div className="w-full px-4 pb-4">
+              <img 
+                src={`${import.meta.env.BASE_URL}heroblog.png`}
+                alt="Blog hero"
+                className="w-full h-auto object-cover rounded-2xl"
+              />
+            </div>
+          )}
         </motion.div>
 
         {/* Blog Posts Grid */}
@@ -213,7 +233,7 @@ function News() {
           
           {/* Blue geometric shapes */}
           <motion.div 
-            className="absolute right-0 top-0 h-full flex flex-col justify-center gap-4"
+            className="absolute right-0 top-0 h-full flex flex-col justify-center gap-4 hidden md:flex"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}

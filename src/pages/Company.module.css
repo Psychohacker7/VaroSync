@@ -1,0 +1,53 @@
+.mobileHeroTextCol {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mobileHeroTextInner {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.mobileHeroImageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mobileHeroImageInner {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mobileHeroImage {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+}
+
+.companyHeroWrapper {
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .mobileHeroTextCol,
+  .mobileHeroTextInner,
+  .mobileHeroImageWrapper,
+  .mobileHeroImageInner,
+  .mobileHeroImage {
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+  }
+
+  .companyHeroWrapper {
+    padding: 0;
+  }
+} 

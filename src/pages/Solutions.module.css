@@ -8,7 +8,7 @@
 
 .introWrapper {
   position: relative;
-  height: 75vh;
+  height: 60vh;
   width: 100%;
   overflow: hidden;
   background: var(--navy-900);
@@ -21,7 +21,8 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: 2rem;
+  padding: 0 1.5rem;
 }
 
 .textAlignCenter {
@@ -29,16 +30,18 @@
   z-index: 1;
   text-align: left;
   color: white;
-  padding: 15px;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-top: 1rem;
   height: 100%;
   grid-column: 1 / 2;
 }
 
 .textAlignCenter h1 {
   color: #111827;
+  margin-bottom: 0.75rem;
 }
 
 .textAlignCenter p {
@@ -49,107 +52,74 @@
   position: relative;
   width: 100%;
   background: white;
-  padding-top: 2.5rem;
-}
-
-.tabsHeight {
-  position: relative;
-  height: 200vh; /* 2 slides */
-}
-
-.tabsStickyWrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  background: white;
+  padding: 4rem 0;
 }
 
 .tabsContainer {
-  height: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.tabSection {
+  width: 100%;
 }
 
 .tabsComponent {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: 2rem;
   width: 100%;
-  height: 100%;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 1rem;
 }
 
 .tabsLeft {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-  padding: 24px 24px 24px 16px;
+  padding: 1.5rem 0.5rem;
   position: relative;
 }
 
 .tabsLeftTop {
   position: relative;
-  flex: 1;
   display: flex;
   align-items: center;
+  max-width: 600px;
 }
 
 .tabsLetContent {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease-out;
-  position: absolute;
   width: 100%;
   background: white;
-  padding: 20px;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.tabsLetContent.is1 {
-  opacity: 1;
-  transform: translateY(0);
-  position: relative;
+  padding: 1.5rem;
+  border-radius: 1rem;
 }
 
 .tabsRight {
   position: relative;
-  height: 100%;
   width: 100%;
-  padding: 15.5px 15.5px 15.5px 0;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .tabsVideo {
-  position: absolute;
-  top: 15.5px;
-  left: 0;
-  right: 15.5px;
-  bottom: 15.5px;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.5s ease-out;
-  border-radius: 16px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.tabsVideo.is1 {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .videoElement {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 24px;
-  display: block;
+  border-radius: 1rem;
 }
 
 .button {
@@ -197,19 +167,13 @@
 }
 
 .tabsLetContent h2 {
-  font-size: 2.2rem; /* text-4xl (base for small screens) */
-  line-height: 1.625; /* leading-relaxed */
-  margin-bottom: 1.5rem; /* mb-6 */
-  color: #111827; /* text-gray-900 */
-  font-weight: 400; /* font-normal */
+  font-size: 2.2rem;
+  line-height: 1.625;
+  margin-bottom: 1.5rem;
+  color: #111827;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; /* antialiased */
-}
-
-@media (min-width: 768px) { /* md breakpoint */
-  .tabsLetContent h2 {
-    font-size: 2.2rem; /* New smaller size for medium screens and up */
-  }
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .tabsLetContent p {
@@ -224,7 +188,7 @@
   top: 0;
   right: 0;
   width: 50%;
-  height: 100%;
+  height: 85%;
   overflow: hidden;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -241,42 +205,113 @@
 
 @media (max-width: 1024px) {
   .tabsComponent {
-    grid-template-columns: 1fr 1.2fr;
-    max-width: 1200px;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .tabsLeftTop {
+    max-width: 500px;
   }
 }
 
 @media (max-width: 768px) {
-  .tabsComponent {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 0 20px;
+  .introWrapper {
+    height: auto;
+    min-height: 80vh;
+    padding: 2rem 1rem;
   }
 
-  .tabsRight {
-    height: 60vh;
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .textAlignCenter {
+    grid-column: 1;
+    padding: 0;
+    text-align: left;
+    padding-top: 0.5rem;
+  }
+
+  .sectionTabs {
+    padding: 2rem 0;
+  }
+
+  .tabsContainer {
+    gap: 2rem;
+  }
+
+  .tabsComponent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
   }
 
   .tabsLeft {
-    padding: 40px 0;
+    padding: 1rem 0;
   }
 
-  .tabsLetContent {
-    padding: 30px;
-    border-radius: 20px;
+  .tabsRight {
+    padding: 0;
+    height: 300px; /* Fixed height for mobile */
   }
 
   .tabsVideo {
-    border-radius: 20px;
+    height: 100%;
+  }
+
+  .tabsLetContent {
+    padding: 1rem 0;
   }
 
   .tabsLetContent h2 {
     font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
-  .button {
+  .tabsLetContent p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .heroImageSection {
+    position: relative;
     width: 100%;
-    justify-content: center;
+    height: 35vh;
+    padding: 0;
+    order: -1;
+  }
+
+  /* Reorder second tab content on mobile */
+  .tabSection:nth-child(2) .tabsComponent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabSection:nth-child(2) .tabsRight {
+    order: -1;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tabsComponent {
+    max-width: 1400px;
+  }
+
+  .tabsLeftTop {
+    max-width: 450px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .tabsComponent {
+    max-width: 1600px;
+  }
+
+  .tabsLeftTop {
+    max-width: 600px;
   }
 }
 

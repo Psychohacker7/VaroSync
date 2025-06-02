@@ -64,14 +64,6 @@ function Header({ currentRouteBgColor }: HeaderProps) {
       <header
         className={`header-main${scrolled ? ' header-scrolled' : ''}${menuOpen ? ' header-menu-open' : ''}${atTop ? ' header-at-top' : ''}`}
         style={{
-          // Desktop: hideHeader, Mobile: hideMobileHeader
-          transform:
-            menuOpen
-              ? 'translateY(0)'
-              : window.innerWidth >= 768
-                ? (hideHeader ? 'translateY(-100%)' : 'translateY(0)')
-                : (hideMobileHeader ? 'translateY(-100%)' : 'translateY(0)'),
-          transition: 'transform 0.3s ease',
           backgroundColor: atTop ? currentRouteBgColor : '#fff',
         }}
       >
@@ -111,44 +103,53 @@ function Header({ currentRouteBgColor }: HeaderProps) {
             </button>
           )}
         </div>
-
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <>
-            <div className="header-mobile-menu-bg" />
-            <nav className="header-mobile-nav flex flex-col gap-6 pt-0 relative">
-              {/* Close button, flex aligned top right inside menu */}
-              <div className="flex justify-end w-full mt-1">
-                <button
-                  className="p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
-                  aria-label="Close menu"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <X size={32} className="text-green-400" />
-                </button>
-              </div>
-              {navLinks.map((link, i) => (
+      </header>
+      {/* Mobile Menu - OUTSIDE header */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col transition-transform duration-300 ease-in-out transform translate-x-0 animate-slide-in-right" style={{ backgroundColor: currentRouteBgColor, opacity: 1 }}>
+          {/* Logo and Close Button Row */}
+          <div className="flex items-center justify-between px-6 pt-6 pb-2">
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+              <img 
+                src={`${import.meta.env.BASE_URL}logo.png`} 
+                alt="Varosync Logo" 
+                className="h-12"
+              />
+            </Link>
+            <button
+              className="p-2 rounded-full bg-transparent hover:bg-gray-100 transition-colors"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+            >
+              <X size={32} className="text-gray-900" />
+            </button>
+          </div>
+          <hr className="border-t border-gray-300 mb-2" />
+          {/* Nav Links */}
+          <nav className="flex flex-col gap-0 w-full px-0">
+            {navLinks.map((link, i) => (
+              <React.Fragment key={link.to}>
                 <Link
-                  key={link.to}
                   to={link.to}
-                  className={`header-link ${location.pathname === link.to || location.pathname.startsWith(`${link.to}/`) ? 'active' : ''}`}
-                  style={{ transitionDelay: menuOpen ? `${i * 80 + 200}ms` : '0ms', paddingLeft: '0.25rem' }}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-2xl font-medium px-6 py-5 w-full text-gray-900 hover:bg-gray-100 transition-colors"
+                  style={{ borderBottom: '1px solid #e5e5e5' }}
                 >
                   {link.label}
-                  <span className="header-link-dot" />
                 </Link>
-              ))}
-              <Link 
-                to="/contact" 
-                className="header-cta w-full text-center flex justify-center items-center mt-2" 
-                style={{ transitionDelay: menuOpen ? `${navLinks.length * 80 + 200}ms` : '0ms', paddingLeft: '0.25rem', marginLeft: 0 }}
-              >
-                Request Demo
-              </Link>
-            </nav>
-          </>
-        )}
-      </header>
+              </React.Fragment>
+            ))}
+            <Link 
+              to="/contact" 
+              onClick={() => setMenuOpen(false)}
+              className="text-2xl font-medium px-6 py-5 w-full text-gray-900 hover:bg-gray-100 transition-colors"
+              style={{ borderBottom: '1px solid #e5e5e5' }}
+            >
+              Get in touch
+            </Link>
+          </nav>
+        </div>
+      )}
     </>
   );
 }

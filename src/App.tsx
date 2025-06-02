@@ -11,8 +11,8 @@ import News from './pages/News';
 
 // Define background colors for routes
 const routeBackgrounds: { [key: string]: string } = {
-  '/':    'rgba(233, 229, 253, 1)',       // Home - Fully Transparent for video
-  '/solutions': '#c8d7e6', 
+  '/':    '#E6E3FF',    
+  '/solutions': '#c8d7e6',
   '/company':   '#cde6c8', 
   '/news':      '#e6d4c8', 
   '/contact':   '#e6c8c8', 

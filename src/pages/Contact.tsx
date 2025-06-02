@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
@@ -26,41 +26,32 @@ const itemVariants = {
 };
 
 function Contact() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#e6c8c8] flex flex-col">
       <main className="flex-grow">
         {/* Hero Section */}
         <motion.section 
-          className="bg-[#e6c8c8] overflow-hidden min-h-[420px] pt-5"
+          className={`bg-[#e6c8c8] overflow-hidden min-h-[420px] pt-5 ${isMobile ? 'pb-8' : ''}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] items-start w-full h-full">
-            {/* Image Column */}
-            <motion.div 
-              className="flex justify-start items-start h-full"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
-                <img
-                  src={`${import.meta.env.BASE_URL}contact.png`}
-                  alt="Contact us"
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-              </div>
-            </motion.div>
-
             {/* Text Column */}
             <motion.div 
-              className="flex flex-col justify-start items-start h-full"
+              className={isMobile ? "flex flex-col justify-start items-start h-full px-4 text-left mb-6" : "flex flex-col justify-start items-start h-full"}
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              <div className="pt-[15.5px] pr-4 text-right">
+              <div className={isMobile ? "pt-[15.5px] text-left w-full" : "pt-[15.5px] pr-4 text-right"}>
                 <motion.h1 
                   className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
                   variants={itemVariants}
@@ -81,6 +72,31 @@ function Contact() {
                 </motion.p>
               </div>
             </motion.div>
+            {/* Image Column - mobile: after text, desktop: left */}
+            {isMobile ? (
+              <div className="w-full px-4 pb-4">
+                <img
+                  src={`${import.meta.env.BASE_URL}contact.png`}
+                  alt="Contact us"
+                  className="w-full h-auto object-cover rounded-2xl"
+                />
+              </div>
+            ) : (
+              <motion.div 
+                className="flex justify-start items-start h-full"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
+                  <img
+                    src={`${import.meta.env.BASE_URL}contact.png`}
+                    alt="Contact us"
+                    className="w-full h-auto object-cover rounded-2xl"
+                  />
+                </div>
+              </motion.div>
+            )}
           </div>
         </motion.section>
 

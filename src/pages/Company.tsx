@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Users, Lightbulb, BarChart, Building2, Dna, Linkedin, ArrowRight } from 'lucide-react';
 import { FaBrain, FaCogs, FaClock as FaClockIcon, FaUniversity, FaUserMd, FaMicroscope } from 'react-icons/fa';
@@ -28,61 +28,71 @@ const itemVariants = {
 };
 
 function Company() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#cde6c8] flex flex-col">
       <main className="flex-grow">
         {/* About Hero Section */}
         <motion.section 
-          className="bg-[#cde6c8] overflow-hidden min-h-[420px] pt-5"
+          className="bg-[#cde6c8] overflow-hidden min-h-[480px] pt-5 pb-8 md:pb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] items-start w-full h-full">
-            {/* Image Column */}
-            <motion.div 
-              className="flex justify-start items-start h-full"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
-                <img
-                  src={`${import.meta.env.BASE_URL}combined.png`}
-                  alt="Descriptive alt"
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-              </div>
-            </motion.div>
+          <div className="companyHeroWrapper">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] md:gap-12 items-start w-full h-full">
+              {/* Image Column */}
+              <motion.div 
+                className={(isMobile ? "mobileHeroImageWrapper px-[1rem] md:px-0" : "flex justify-start items-start h-full")}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className={isMobile ? "mobileHeroImageInner" : "w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]"}>
+                  <img
+                    src={isMobile ? `${import.meta.env.BASE_URL}mobilonlycompany.png` : `${import.meta.env.BASE_URL}combined.png`}
+                    alt="Descriptive alt"
+                    className={isMobile ? "mobileHeroImage rounded-[16px]" : "w-full h-auto object-cover rounded-2xl"}
+                  />
+                </div>
+              </motion.div>
 
-            {/* Text Column */}
-            <motion.div 
-              className="flex flex-col justify-start items-start h-full"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="pt-[15.5px] pr-4 text-left">
-                <motion.h1 
-                  className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
-                  variants={itemVariants}
-                >
-                  About us
-                </motion.h1>
-                <motion.p 
-                  className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6"
-                  variants={itemVariants}
-                >
-                  We were founded on a simple yet transformative insight. Time is a critical and underutilized dimension in medicine. By leveraging the capabilities of artificial intelligence, we model complex biological rhythms to guide drug design, anticipate therapeutic responses, and advance the development of precisely timed treatments for some of the world's most challenging diseases.
-                </motion.p>
-                <motion.p 
-                  className="text-lg md:text-xl text-gray-700 max-w-2xl"
-                  variants={itemVariants}
-                >
-                  Every day, with each new breakthrough, we're getting closer to achieving our ambitious mission to design smarter and treat better with the help of AI.
-                </motion.p>
-              </div>
-            </motion.div>
+              {/* Text Column */}
+              <motion.div 
+                className={(isMobile ? "mobileHeroTextCol px-[1rem] md:px-0 pb-8" : "flex flex-col justify-start items-start h-full")}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <div className={isMobile ? "mobileHeroTextInner" : "pt-[15.5px] pr-4 text-left"}>
+                  <motion.h1 
+                    className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
+                    variants={itemVariants}
+                  >
+                    About us
+                  </motion.h1>
+                  <motion.p 
+                    className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6"
+                    variants={itemVariants}
+                  >
+                    We were founded on a simple yet transformative insight. Time is a critical and underutilized dimension in medicine. By leveraging the capabilities of artificial intelligence, we model complex biological rhythms to guide drug design, anticipate therapeutic responses, and advance the development of precisely timed treatments for some of the world's most challenging diseases.
+                  </motion.p>
+                  <motion.p 
+                    className="text-lg md:text-xl text-gray-700 max-w-2xl"
+                    variants={itemVariants}
+                  >
+                    Every day, with each new breakthrough, we're getting closer to achieving our ambitious mission to design smarter and treat better with the help of AI.
+                  </motion.p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.section>
 

@@ -59,15 +59,16 @@ function Home() {
   const [desktopVideoReady, setDesktopVideoReady] = useState(false);
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: '#E6E1FE' }}>
+    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: '#E6E3FF', }}>
       {/* Hero Section with Responsive Video Background */}
-      <div className="relative min-h-screen overflow-hidden bg-[#E6E1FE]">
-        {/* Mobile Video Background (true background, only on mobile) */}
+      <div className="relative h-screen md:h-screen overflow-hidden bg-[#E6E3FF]">
+        {/* Mobile Video Background */}
         <motion.div
-          className="absolute inset-0 min-h-screen w-full h-full z-0 desktop-hidden"
+          className="absolute inset-0 w-full h-full z-0 md:hidden overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: mobileVideoReady ? 1 : 0 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
+          style={{ backgroundColor: '#E6E3FF' }}
         >
           <video
             autoPlay
@@ -76,16 +77,17 @@ function Home() {
             playsInline
             src={`${import.meta.env.BASE_URL}mobile3Dencod.mp4`}
             className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
+            style={{ opacity: 1, backgroundColor: '#E6E3FF' }}
             onCanPlayThrough={() => setMobileVideoReady(true)}
           />
         </motion.div>
         {/* Desktop Video Background */}
         <motion.div
-          className="absolute inset-0 overflow-hidden mobile-hidden"
+          className="absolute inset-0 w-full h-full hidden md:block overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: desktopVideoReady ? 1 : 0 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
+          style={{ backgroundColor: '#E6E3FF' }}
         >
           <video
             autoPlay
@@ -93,21 +95,22 @@ function Home() {
             loop
             playsInline
             src={`${import.meta.env.BASE_URL}desktop3D.mp4`}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ opacity: 1 }}
+            className="w-full h-full object-cover"
+            style={{ opacity: 1, backgroundColor: '#E6E3FF' }}
             onCanPlayThrough={() => setDesktopVideoReady(true)}
           />
         </motion.div>
         {/* Content */}
-        <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-start md:justify-end items-start md:items-center min-h-screen pt-16 md:pt-0">
-          <div className="w-full md:max-w-4xl md:text-right text-white">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col md:flex-row justify-start md:justify-end items-start md:items-center h-full pt-20 md:pt-0">
+          <div className="w-full md:w-3/4 lg:w-3/4 text-right md:text-right">
             <motion.div
               initial="initial"
               animate="animate"
               variants={staggerChildren}
+              className="max-w-xl md:max-w-none mx-auto md:mx-0"
             >
               <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl mb-6 font-normal leading-relaxed"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 font-normal leading-tight md:leading-relaxed"
                 variants={fadeIn}
               >
                 <span className="text-violet-400">Reimagine </span>
@@ -118,43 +121,33 @@ function Home() {
               </motion.h1>
               
               <motion.p 
-                className="text-lg md:text-xl lg:text-2xl text-navy-900 mb-8 leading-relaxed"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-navy-900 mb-6 md:mb-8 leading-relaxed"
                 variants={fadeIn}
               >
-              We're entering a new era in medicine where advanced AI reveals hidden biological signals, enabling faster breakthroughs and more precisely targeted therapies. At Varosync, we're building that future.
+                We're entering a new era in medicine where advanced AI reveals hidden biological signals, enabling faster breakthroughs and more precisely targeted therapies. At Varosync, we're building that future.
               </motion.p>
-              
-              <motion.div variants={fadeIn} className="flex md:justify-end justify-center">
-                <Link 
-                  to="/solutions"
-                  className="inline-flex items-center gap-2 bg-violet-600 text-white px-8 py-4 rounded-full font-medium hover:bg-violet-700 transition-colors"
-                >
-                  Explore Our Solutions
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </motion.div>
             </motion.div>
           </div>
         </div>
       </div>
 
       {/* First Sticky Scroll Section */}
-      <div ref={stickySection1Ref} className="relative bg-[#f5f3ff] overflow-hidden min-h-screen pt-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start w-full h-full">
+      <div ref={stickySection1Ref} className="relative bg-[#f5f3ff] overflow-hidden min-h-screen pt-16 md:pt-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-start w-full h-full px-6 md:px-4">
           {/* Text Column */}
           <div className="flex flex-col justify-start h-full">
-            <div className="pt-[15.5px] pl-4">
-            <p className="text-4xl md:text-5xl mb-6 text-gray-900 antialiased font-normal leading-relaxed">
+            <div className="pt-0 md:pt-[15.5px] pl-0 md:pl-4">
+              <p className="text-3xl sm:text-4xl md:text-5xl mb-4 md:mb-6 text-gray-900 antialiased font-normal leading-tight md:leading-relaxed">
                 A smarter approach to development
               </p>
-              <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
-              Varosync is redefining the foundations of drug development while addressing complex patient needs across a range of therapeutic areas. We pursue innovation not through haste but clarity, ensuring every decision is guided by rigorous science and translational relevance.
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl">
+                Varosync is redefining the foundations of drug development while addressing complex patient needs across a range of therapeutic areas. We pursue innovation not through haste but clarity, ensuring every decision is guided by rigorous science and translational relevance.
               </p>
             </div>
           </div>
           {/* Image Column */}
-          <div className="flex justify-end items-start h-full">
-            <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pr-[15.5px] pb-[15.5px]">
+          <div className="flex justify-center md:justify-end items-start h-full">
+            <div className="w-full md:w-auto h-auto rounded-2xl overflow-hidden pt-0 md:pt-[15.5px] pr-0 md:pr-[15.5px] pb-0 md:pb-[15.5px]">
               <img
                 src={`${import.meta.env.BASE_URL}graphic1.png`}
                 alt="Descriptive alt"
@@ -164,12 +157,13 @@ function Home() {
           </div>
         </div>
       </div>
+
       {/* Second Sticky Scroll Section */}
-      <div ref={stickySection2Ref} className="relative bg-[#f5f3ff] overflow-hidden min-h-screen pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start w-full h-full">
+      <div ref={stickySection2Ref} className="relative bg-[#f5f3ff] overflow-hidden min-h-screen pt-16 md:pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0 items-start w-full h-full px-6 md:px-4">
           {/* Image Column */}
-          <div className="flex justify-start items-start h-full">
-            <div className="w-5/6 h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
+          <div className="flex justify-center md:justify-start items-start h-full order-2 md:order-1">
+            <div className="w-full md:w-5/6 h-auto rounded-2xl overflow-hidden pt-0 md:pt-[15.5px] pl-0 md:pl-[15.5px] pb-0 md:pb-[15.5px]">
               <img
                 src={`${import.meta.env.BASE_URL}funnelopt.png`}
                 alt="Descriptive alt"
@@ -178,13 +172,13 @@ function Home() {
             </div>
           </div>
           {/* Text Column */}
-          <div className="flex flex-col justify-center items-start h-full">
-            <div className="pt-[15.5px] pr-4 text-left">
-              <p className="text-4xl md:text-5xl mb-6 text-gray-900 antialiased font-normal leading-relaxed">
-              Using intelligence and insight
+          <div className="flex flex-col justify-center items-start h-full order-1 md:order-2">
+            <div className="pt-0 md:pt-[15.5px] pr-0 md:pr-4 text-left">
+              <p className="text-3xl sm:text-4xl md:text-5xl mb-4 md:mb-6 text-gray-900 antialiased font-normal leading-tight md:leading-relaxed">
+                Using intelligence and insight
               </p>
-              <p className="text-lg md:text-xl text-gray-700 max-w-2xl">
-              As the science of discovery advances, the translation of molecular insight into viable therapies remains constrained by biological variability and complexity of real world data. At Varosync we believe that the solution lies in decoding the process. By integrating artificial intelligence with heterogeneous clinical datasets, we uncover latent physiological patterns. By resolving hidden variability in patient response, we strengthen the bridge between molecular potential and clinical efficacy. 
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl">
+                As the science of discovery advances, the translation of molecular insight into viable therapies remains constrained by biological variability and complexity of real world data. At Varosync we believe that the solution lies in decoding the process. By integrating artificial intelligence with heterogeneous clinical datasets, we uncover latent physiological patterns. By resolving hidden variability in patient response, we strengthen the bridge between molecular potential and clinical efficacy. 
               </p>
             </div>
           </div>
@@ -192,10 +186,10 @@ function Home() {
       </div>
 
       {/* Partners Section */}
-      <div className="py-16" style={{ backgroundColor: '#f5f3ff' }}>
-        <div className="container mx-auto px-4">
+      <div className="py-12 md:py-16" style={{ backgroundColor: '#f5f3ff' }}>
+        <div className="container mx-auto px-6 md:px-4">
           <motion.h2 
-            className="text-4xl font-normal text-navy-900 text-center mb-12"
+            className="text-3xl sm:text-4xl font-normal text-navy-900 text-center mb-8 md:mb-12"
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -205,7 +199,7 @@ function Home() {
           </motion.h2>
           
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 items-center justify-items-center"
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -214,7 +208,7 @@ function Home() {
             {['partnera', 'partnerb', 'partnerc'].map((partner, index) => (
               <motion.div 
                 key={partner}
-                className="h-48 w-96 grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-32 sm:h-40 md:h-48 w-full sm:w-64 md:w-96 grayscale hover:grayscale-0 transition-all duration-300"
                 variants={fadeIn}
               >
                 <img
