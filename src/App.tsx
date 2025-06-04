@@ -24,8 +24,11 @@ function Layout() {
   const [isLoading, setIsLoading] = useState(true);
   const [isRouteChanging, setIsRouteChanging] = useState(false);
 
-  // Handle route changes and background color
+  // Handle route changes, background color, and scroll to top
   useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+
     const path = location.pathname;
     let newBgColor = routeBackgrounds['/'];
     for (const key of Object.keys(routeBackgrounds)) {
