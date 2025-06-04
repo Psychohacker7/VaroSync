@@ -7,20 +7,25 @@
       // Single Page Apps for GitHub Pages
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
-      var pathSegmentsToKeep = 0;
-
-      var l = window.location;
-      var path = l.pathname.split('/').slice(1).join('/');
-      
-      // Only rewrite if we're not already on the root path
-      if (path !== '') {
-        l.replace(
-          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-          '/?/' + path.replace(/&/g, '~and~') +
-          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-          l.hash
-        );
-      }
+      (function() {
+        var l = window.location;
+        var path = l.pathname.split('/').slice(1).join('/');
+        
+        // Clean up the path
+        path = path.replace(/\/+$/, '');
+        
+        // Only rewrite if we have a valid path and we're not already on the root
+        if (path && path !== '') {
+          // Create the new URL with the path in the query string
+          var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            '/?/' + path.replace(/&/g, '~and~') +
+            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            l.hash;
+            
+          // Redirect to the new URL
+          l.replace(newUrl);
+        }
+      })();
     </script>
   </head>
   <body>
