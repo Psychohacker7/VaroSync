@@ -208,13 +208,13 @@ function Home() {
             {['partnera', 'partnerb', 'partnerc'].map((partner, index) => (
               <motion.div 
                 key={partner}
-                className="h-32 sm:h-40 md:h-48 max-w-xs w-full grayscale hover:grayscale-0 transition-all duration-300 p-4 rounded-xl flex items-center justify-center"
+                className="aspect-[3/2] max-h-24 sm:max-h-32 md:max-h-40 w-full max-w-xs bg-white p-4 rounded-xl flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
                 variants={fadeIn}
               >
                 <Image
                   src={`${import.meta.env.BASE_URL}partners/${partner}.png`}
                   alt={`${partner} logo`}
-                  className="h-full w-auto object-contain mx-auto"
+                  className="w-full h-full object-contain"
                   loading="lazy"
                   transparent
                 />

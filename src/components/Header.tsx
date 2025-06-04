@@ -83,7 +83,7 @@ function Header({ currentRouteBgColor }: HeaderProps) {
             <Image 
               src={`${import.meta.env.BASE_URL}logo.png`} 
               alt="Varosync Logo" 
-              className="h-12 md:h-16 transition-all duration-300 header-logo-img"
+              className="h-10 w-auto object-contain transition-all duration-300 header-logo-img"
               loading="eager"
               transparent
             />
@@ -130,7 +130,7 @@ function Header({ currentRouteBgColor }: HeaderProps) {
               <Image 
                 src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Varosync Logo" 
-                className="h-12"
+                className="h-10 w-auto object-contain"
                 loading="eager"
                 transparent
               />

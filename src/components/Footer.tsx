@@ -21,7 +21,7 @@ function Footer({ currentRouteBgColor }: FooterProps) {
               <Image 
                 src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Varosync Logo" 
-                className="h-8"
+                className="h-10 w-auto object-contain"
                 loading="eager"
                 transparent
               />
