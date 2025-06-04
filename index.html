@@ -10,28 +10,31 @@
     <link rel="shortcut icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VaroSync</title>
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      (function(l) {
-        // Check if we have a path in the query string
-        if (l.search[1] === '/') {
-          // Get the path from the query string
-          var path = l.search.slice(1).split('&').map(function(s) { 
+    <script>
+      // Handle SPA routing for GitHub Pages
+      (function() {
+        var l = window.location;
+        var search = l.search;
+        
+        // If we have a path in the query string (e.g. ?/solutions)
+        if (search && search[1] === '/') {
+          // Extract the path from the query string
+          var path = search.slice(1).split('&').map(function(s) { 
             return s.replace(/~and~/g, '&')
           }).join('?');
           
-          // Remove any trailing slashes and clean up the path
+          // Clean up the path
           path = path.replace(/\/+$/, '');
           
-          // Only rewrite if we have a valid path
+          // If we have a valid path, update the URL immediately
           if (path && path !== '/') {
-            // Update the URL without reloading the page
-            window.history.replaceState(null, null, '/' + path + l.hash);
+            // Force a synchronous URL update
+            l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/' + path + l.hash);
+            // Prevent any further processing
+            return;
           }
         }
-      }(window.location))
+      })();
     </script>
     <script type="module" crossorigin src="/assets/index-BAxmLzhI.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DUVh9w3J.css">

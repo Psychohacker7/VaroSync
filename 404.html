@@ -4,25 +4,23 @@
     <meta charset="utf-8">
     <title>Page Not Found</title>
     <script>
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
+      // Handle SPA routing for GitHub Pages
       (function() {
         var l = window.location;
-        var path = l.pathname.split('/').slice(1).join('/');
+        var path = l.pathname;
         
-        // Clean up the path
-        path = path.replace(/\/+$/, '');
+        // Remove leading and trailing slashes
+        path = path.replace(/^\/+|\/+$/g, '');
         
-        // Only rewrite if we have a valid path and we're not already on the root
-        if (path && path !== '') {
+        // Only rewrite if we have a valid path
+        if (path) {
           // Create the new URL with the path in the query string
           var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
             '/?/' + path.replace(/&/g, '~and~') +
             (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
             l.hash;
-            
-          // Redirect to the new URL
+          
+          // Force a synchronous redirect
           l.replace(newUrl);
         }
       })();
