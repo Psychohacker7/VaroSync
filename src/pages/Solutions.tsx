@@ -68,14 +68,21 @@ function Solutions() {
             </div>
             {/* Image Column */}
             <div className="flex justify-start items-start h-full px-4 md:px-0 md:pr-[15.5px]">
-              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pb-[15.5px]">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-full rounded-2xl overflow-hidden pt-[15.5px] pb-[15.5px] bg-[var(--navy-900)]"
+                style={{ height: '220px', minHeight: 'unset' }}
+              >
                 <Image
                   src={`${import.meta.env.BASE_URL}techillu.png`}
                   alt="Technology visualization"
-                  className="w-full h-auto object-cover rounded-2xl"
+                  className="w-full h-full object-cover rounded-2xl"
                   loading="eager"
+                  transparent
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

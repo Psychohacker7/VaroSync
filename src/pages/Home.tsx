@@ -167,6 +167,7 @@ function Home() {
                 alt="Technology visualization"
                 className="w-full h-auto object-cover rounded-2xl"
                 loading="lazy"
+                transparent
               />
             </div>
           </div>
