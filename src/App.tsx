@@ -116,11 +116,8 @@ function Layout() {
 }
 
 function App() {
-  // Get the repository name from the URL path
-  const repoName = import.meta.env.BASE_URL || '/';
-  
   return (
-    <Router basename={repoName}>
+    <Router>
       <Layout />
     </Router>
   );
