@@ -73,7 +73,7 @@ function Solutions() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="w-full rounded-2xl overflow-hidden pt-[15.5px] pb-[15.5px] bg-[var(--navy-900)]"
-                style={{ height: '220px', minHeight: 'unset' }}
+                style={{ height: '480px', minHeight: 'unset' }}
               >
                 <Image
                   src={`${import.meta.env.BASE_URL}techillu.png`}
