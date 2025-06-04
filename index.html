@@ -15,16 +15,20 @@
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
       (function(l) {
+        // Check if we have a path in the query string
         if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
+          // Get the path from the query string
+          var path = l.search.slice(1).split('&').map(function(s) { 
             return s.replace(/~and~/g, '&')
           }).join('?');
           
-          // Only rewrite if we're not already on the root path
-          if (decoded !== '') {
-            window.history.replaceState(null, null,
-              '/' + decoded + l.hash
-            );
+          // Remove any trailing slashes and clean up the path
+          path = path.replace(/\/+$/, '');
+          
+          // Only rewrite if we have a valid path
+          if (path && path !== '/') {
+            // Update the URL without reloading the page
+            window.history.replaceState(null, null, '/' + path + l.hash);
           }
         }
       }(window.location))
