@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import { Image } from '../components/Image';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -75,10 +76,11 @@ function Contact() {
             {/* Image Column - mobile: after text, desktop: left */}
             {isMobile ? (
               <div className="w-full px-4 pb-4">
-                <img
+                <Image
                   src={`${import.meta.env.BASE_URL}contact.png`}
                   alt="Contact us"
                   className="w-full h-auto object-cover rounded-2xl"
+                  loading="eager"
                 />
               </div>
             ) : (
@@ -89,10 +91,11 @@ function Contact() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
-                  <img
+                  <Image
                     src={`${import.meta.env.BASE_URL}contact.png`}
                     alt="Contact us"
                     className="w-full h-auto object-cover rounded-2xl"
+                    loading="eager"
                   />
                 </div>
               </motion.div>

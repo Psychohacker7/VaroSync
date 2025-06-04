@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // import { ArrowRight, LogIn } from 'lucide-react'; // Remove unused imports
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { Image } from './Image';
 
 interface HeaderProps {
   currentRouteBgColor: string;
@@ -79,10 +80,11 @@ function Header({ currentRouteBgColor }: HeaderProps) {
         <div className="w-full flex items-center justify-between gap-8 transition-all duration-300 px-3">
           {/* Logo - logotype only, larger, add img class */}
           <Link to="/" className={`header-logo${scrolled ? ' logo-scrolled' : ''}${menuOpen ? ' logo-menu-open' : ''}`}>
-            <img 
+            <Image 
               src={`${import.meta.env.BASE_URL}logo.png`} 
               alt="Varosync Logo" 
               className="h-12 md:h-16 transition-all duration-300 header-logo-img"
+              loading="eager"
             />
           </Link>
 
@@ -124,10 +126,11 @@ function Header({ currentRouteBgColor }: HeaderProps) {
           {/* Logo and Close Button Row */}
           <div className="flex items-center justify-between px-6 pt-6 pb-2">
             <Link to="/" onClick={handleMenuClose}>
-              <img 
+              <Image 
                 src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Varosync Logo" 
                 className="h-12"
+                loading="eager"
               />
             </Link>
             <button

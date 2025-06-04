@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Clock, Users, Lightbulb, BarChart, Building2, Dna, Linkedin, ArrowRight } from 'lucide-react';
 import { FaBrain, FaCogs, FaClock as FaClockIcon, FaUniversity, FaUserMd, FaMicroscope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { Image } from '../components/Image';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -56,10 +57,11 @@ function Company() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className={isMobile ? "mobileHeroImageInner" : "w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]"}>
-                  <img
+                  <Image
                     src={isMobile ? `${import.meta.env.BASE_URL}mobilonlycompany.png` : `${import.meta.env.BASE_URL}combined.png`}
                     alt="Descriptive alt"
                     className={isMobile ? "mobileHeroImage rounded-[16px]" : "w-full h-auto object-cover rounded-2xl"}
+                    loading="eager"
                   />
                 </div>
               </motion.div>
@@ -157,10 +159,11 @@ function Company() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <img
+                <Image
                   src={`${import.meta.env.BASE_URL}partner.png`}
                   alt="Partner"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </motion.div>
             </div>

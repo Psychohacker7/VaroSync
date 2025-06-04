@@ -3,6 +3,8 @@ import { ArrowRight, Target, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import styles from './Solutions.module.css';
+import { Image } from '../components/Image';
+import { Video } from '../components/Video';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -67,10 +69,11 @@ function Solutions() {
             {/* Image Column */}
             <div className="flex justify-start items-start h-full px-4 md:px-0 md:pr-[15.5px]">
               <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pb-[15.5px]">
-                <img
+                <Image
                   src={`${import.meta.env.BASE_URL}techillu.png`}
                   alt="Technology visualization"
                   className="w-full h-auto object-cover rounded-2xl"
+                  loading="eager"
                 />
               </div>
             </div>
@@ -86,13 +89,10 @@ function Solutions() {
             <div className={styles.tabsComponent}>
               <div className={styles.tabsRight}>
                 <div className={styles.tabsVideo}>
-                  <video 
-                    src={`${import.meta.env.BASE_URL}modelingpali.mp4`} 
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                  <Video 
+                    src={`${import.meta.env.BASE_URL}modelingpali.mp4`}
                     className={styles.videoElement}
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -166,13 +166,10 @@ function Solutions() {
               </div>
               <div className={styles.tabsRight}>
                 <div className={styles.tabsVideo}>
-                  <video 
-                    src={`${import.meta.env.BASE_URL}computpali.mp4`} 
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+                  <Video 
+                    src={`${import.meta.env.BASE_URL}computpali.mp4`}
                     className={styles.videoElement}
+                    loading="lazy"
                   />
                 </div>
               </div>

@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import { ArrowRight, Target, FileText, Atom, Book, PenTool as Tool, Trophy, Handshake, Clock } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Image } from '../components/Image';
+import { Video } from '../components/Video';
 
 function Home() {
   const fadeIn = {
@@ -59,7 +61,7 @@ function Home() {
   const [desktopVideoReady, setDesktopVideoReady] = useState(false);
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: '#E6E3FF', }}>
+    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: '#E6E3FF' }}>
       {/* Hero Section with Responsive Video Background */}
       <div className="relative h-screen md:h-screen overflow-hidden bg-[#E6E3FF]">
         {/* Mobile Video Background */}
@@ -70,15 +72,11 @@ function Home() {
           transition={{ duration: 1.2, ease: 'easeOut' }}
           style={{ backgroundColor: '#E6E3FF' }}
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
+          <Video
             src={`${import.meta.env.BASE_URL}mobile3Dencod.mp4`}
-            className="w-full h-full object-cover"
-            style={{ opacity: 1, backgroundColor: '#E6E3FF' }}
-            onCanPlayThrough={() => setMobileVideoReady(true)}
+            className="w-full h-full"
+            loading="eager"
+            poster={`${import.meta.env.BASE_URL}mobile3Dencod-poster.jpg`}
           />
         </motion.div>
         {/* Desktop Video Background */}
@@ -89,15 +87,11 @@ function Home() {
           transition={{ duration: 1.2, ease: 'easeOut' }}
           style={{ backgroundColor: '#E6E3FF' }}
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
+          <Video
             src={`${import.meta.env.BASE_URL}desktop3D.mp4`}
-            className="w-full h-full object-cover"
-            style={{ opacity: 1, backgroundColor: '#E6E3FF' }}
-            onCanPlayThrough={() => setDesktopVideoReady(true)}
+            className="w-full h-full"
+            loading="eager"
+            poster={`${import.meta.env.BASE_URL}desktop3D-poster.jpg`}
           />
         </motion.div>
         {/* Content */}
@@ -148,10 +142,11 @@ function Home() {
           {/* Image Column */}
           <div className="flex justify-center md:justify-end items-start h-full">
             <div className="w-full md:w-auto h-auto rounded-2xl overflow-hidden pt-0 md:pt-[15.5px] pr-0 md:pr-[15.5px] pb-0 md:pb-[15.5px]">
-              <img
+              <Image
                 src={`${import.meta.env.BASE_URL}graphic1.png`}
-                alt="Descriptive alt"
+                alt="Technology visualization"
                 className="w-full h-auto object-cover rounded-2xl"
+                loading="lazy"
               />
             </div>
           </div>
@@ -164,10 +159,11 @@ function Home() {
           {/* Image Column */}
           <div className="flex justify-center md:justify-start items-start h-full order-2 md:order-1">
             <div className="w-full md:w-5/6 h-auto rounded-2xl overflow-hidden pt-0 md:pt-[15.5px] pl-0 md:pl-[15.5px] pb-0 md:pb-[15.5px]">
-              <img
+              <Image
                 src={`${import.meta.env.BASE_URL}funnelopt.png`}
-                alt="Descriptive alt"
+                alt="Technology visualization"
                 className="w-full h-auto object-cover rounded-2xl"
+                loading="lazy"
               />
             </div>
           </div>
@@ -211,10 +207,11 @@ function Home() {
                 className="h-32 sm:h-40 md:h-48 w-full sm:w-64 md:w-96 grayscale hover:grayscale-0 transition-all duration-300"
                 variants={fadeIn}
               >
-                <img
+                <Image
                   src={`${import.meta.env.BASE_URL}partners/${partner}.png`}
                   alt={`${partner} logo`}
                   className="h-full w-full object-contain"
+                  loading="lazy"
                 />
               </motion.div>
             ))}

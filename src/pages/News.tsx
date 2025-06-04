@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Clock, BarChart, ArrowRight, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Image } from '../components/Image';
 
 interface ResearchPaper {
   title: string;
@@ -116,20 +117,22 @@ function News() {
           {/* Desktop/Tablet Hero Image */}
           {!isMobile && (
             <div className="pt-[15.5px] pb-[15px] pr-8 pl-[15px] absolute right-0 top-0 h-[90%] w-2/3 md:w-1/2 lg:w-1/2 z-0">
-              <img 
+              <Image 
                 src={`${import.meta.env.BASE_URL}heroblog.png`}
                 alt="Blog hero"
                 className="w-full h-full object-cover rounded-2xl"
+                loading="eager"
               />
             </div>
           )}
           {/* Mobile Hero Image (after text) */}
           {isMobile && (
             <div className="w-full px-4 pb-4">
-              <img 
+              <Image 
                 src={`${import.meta.env.BASE_URL}heroblog.png`}
                 alt="Blog hero"
                 className="w-full h-auto object-cover rounded-2xl"
+                loading="eager"
               />
             </div>
           )}
@@ -199,7 +202,12 @@ function News() {
               variants={itemVariants}
               className="bg-gray-200 border border-gray-200 rounded-lg shadow-sm flex items-center justify-center min-h-[200px] w-full mt-[36px] h-full"
             >
-              <img src={`${import.meta.env.BASE_URL}blog.png`} alt="Blog" className="w-full h-full object-cover rounded-lg" />
+              <Image 
+                src={`${import.meta.env.BASE_URL}blog.png`} 
+                alt="Blog" 
+                className="w-full h-full object-cover rounded-lg"
+                loading="lazy"
+              />
             </motion.div>
           </div>
         </motion.div>
