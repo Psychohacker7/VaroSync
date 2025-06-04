@@ -18,12 +18,10 @@ function Footer({ currentRouteBgColor }: FooterProps) {
           {/* Logo and Branding */}
           <div className="mb-6 md:mb-0 flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-4">
-              <Image 
+              <img 
                 src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Varosync Logo" 
-                className="h-10 w-auto object-contain"
-                loading="eager"
-                transparent
+                className="h-8" 
               />
               <span className="text-xl font-bold text-gray-900">Varosync</span>
             </div>

@@ -79,13 +79,11 @@ function Header({ currentRouteBgColor }: HeaderProps) {
       >
         <div className="w-full flex items-center justify-between gap-8 transition-all duration-300 px-3">
           {/* Logo - logotype only, larger, add img class */}
-          <Link to="/" className={`header-logo${scrolled ? ' logo-scrolled' : ''}${menuOpen ? ' logo-menu-open' : ''}`}>
-            <Image 
+          <Link to="/" className={`header-logo${scrolled ? ' logo-scrolled' : ''}${menuOpen ? ' logo-menu-open' : ''}`}> 
+            <img 
               src={`${import.meta.env.BASE_URL}logo.png`} 
               alt="Varosync Logo" 
-              className="h-10 w-auto object-contain transition-all duration-300 header-logo-img"
-              loading="eager"
-              transparent
+              className="h-12 md:h-16 transition-all duration-300 header-logo-img" 
             />
           </Link>
 
@@ -127,12 +125,10 @@ function Header({ currentRouteBgColor }: HeaderProps) {
           {/* Logo and Close Button Row */}
           <div className="flex items-center justify-between px-6 pt-6 pb-2">
             <Link to="/" onClick={handleMenuClose}>
-              <Image 
+              <img 
                 src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Varosync Logo" 
-                className="h-10 w-auto object-contain"
-                loading="eager"
-                transparent
+                className="h-12" 
               />
             </Link>
             <button
