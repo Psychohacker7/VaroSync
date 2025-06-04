@@ -78,7 +78,7 @@ function Solutions() {
                 <Image
                   src={`${import.meta.env.BASE_URL}techillu.png`}
                   alt="Technology visualization"
-                  className="w-full h-full object-contain rounded-2xl"
+                  className="w-full h-full object-cover object-top rounded-2xl"
                   loading="eager"
                   transparent
                 />
