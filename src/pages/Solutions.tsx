@@ -45,18 +45,8 @@ function Solutions() {
       <section className="bg-[var(--navy-900)] overflow-hidden min-h-[480px] pt-5 pb-8 md:pb-12">
         <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] md:gap-12 items-start w-full h-full">
-            {/* Image Column */}
-            <div className="flex justify-start items-start h-full order-1 md:order-none">
-              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
-                <img
-                  src={`${import.meta.env.BASE_URL}techillu.png`}
-                  alt="Technology visualization"
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-              </div>
-            </div>
             {/* Text Column */}
-            <div className="flex flex-col justify-start items-start h-full order-2 md:order-none pt-[15.5px] pr-4 text-left">
+            <div className="flex flex-col justify-start items-start h-full order-1 md:order-none pt-[15.5px] pr-4 text-left px-4 md:px-0">
               <motion.h1 
                 className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
                 variants={itemVariants}
@@ -66,13 +56,23 @@ function Solutions() {
                 Technology
               </motion.h1>
               <motion.p 
-                className="text-lg md:text-xl text-white/80 max-w-2xl mb-6"
+                className="text-lg md:text-xl text-gray-700 max-w-2xl mb-6"
                 variants={itemVariants}
                 initial="hidden"
                 animate="visible"
               >
                 At the heart of our research and development lies a powerful, dual-pronged philosophy: to first understand the intricate complexity of human biology with unprecedented clarity, and then to rationally design and develop therapeutics of remarkable precision. We have cultivated a technology ecosystem that converges predictive, AI-driven science with a versatile, multi-modal therapeutic engine.
               </motion.p>
+            </div>
+            {/* Image Column */}
+            <div className="flex justify-start items-start h-full order-2 md:order-none px-4 md:px-0">
+              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
+                <img
+                  src={`${import.meta.env.BASE_URL}techillu.png`}
+                  alt="Technology visualization"
+                  className="w-full h-auto object-cover rounded-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>
