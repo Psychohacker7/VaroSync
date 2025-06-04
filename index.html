@@ -23,13 +23,15 @@
             return s.replace(/~and~/g, '&')
           }).join('?');
           
-          // Clean up the path
-          path = path.replace(/\/+$/, '');
+          // Clean up the path - remove leading and trailing slashes
+          path = path.replace(/^\/+|\/+$/g, '');
           
           // If we have a valid path, update the URL immediately
           if (path && path !== '/') {
+            // Construct the new URL without double slashes
+            var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/' + path + l.hash;
             // Force a synchronous URL update
-            l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/' + path + l.hash);
+            l.replace(newUrl);
             // Prevent any further processing
             return;
           }
