@@ -208,7 +208,7 @@ function Home() {
             {['partnera', 'partnerb', 'partnerc'].map((partner, index) => (
               <motion.div 
                 key={partner}
-                className="h-32 sm:h-40 md:h-48 w-full sm:w-64 md:w-96 grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-32 sm:h-40 md:h-48 w-full sm:w-64 md:w-96 grayscale hover:grayscale-0 transition-all duration-300 p-4 rounded-xl flex items-center justify-center"
                 variants={fadeIn}
               >
                 <Image
@@ -216,6 +216,7 @@ function Home() {
                   alt={`${partner} logo`}
                   className="h-full w-full object-contain"
                   loading="lazy"
+                  transparent
                 />
               </motion.div>
             ))}

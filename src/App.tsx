@@ -22,7 +22,9 @@ function Layout() {
   const location = useLocation();
   const [bgColor, setBgColor] = useState(routeBackgrounds['/'] || '#FFFFFF');
   const [isLoading, setIsLoading] = useState(true);
+  const [isRouteChanging, setIsRouteChanging] = useState(false);
 
+  // Handle route changes and background color
   useEffect(() => {
     const path = location.pathname;
     let newBgColor = routeBackgrounds['/'];
@@ -39,13 +41,28 @@ function Layout() {
     }
     setBgColor(newBgColor || '#FFFFFF');
 
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+    // Set route changing state
+    setIsRouteChanging(true);
+    // Reset loading state after a short delay to allow for route transition
+    const routeTimer = setTimeout(() => {
+      setIsRouteChanging(false);
+    }, 100);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(routeTimer);
   }, [location.pathname]);
+
+  // Handle initial page load
+  useEffect(() => {
+    // Set initial loading state
+    setIsLoading(true);
+    
+    // Reset loading state after a short delay
+    const loadTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+
+    return () => clearTimeout(loadTimer);
+  }, []);
 
   const pageVariants = {
     initial: {
@@ -79,7 +96,7 @@ function Layout() {
       <Header currentRouteBgColor={bgColor} />
       <main className="flex-grow relative">
         <AnimatePresence mode="wait">
-          {isLoading ? (
+          {(isLoading || isRouteChanging) ? (
             <motion.div
               key="loading"
               initial={{ opacity: 0 }}
