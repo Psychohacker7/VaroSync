@@ -4,26 +4,9 @@
     <meta charset="utf-8">
     <title>Page Not Found</title>
     <script>
-      // Handle SPA routing for GitHub Pages
-      (function() {
-        var l = window.location;
-        var path = l.pathname;
-        
-        // Remove leading and trailing slashes
-        path = path.replace(/^\/+|\/+$/g, '');
-        
-        // Only rewrite if we have a valid path
-        if (path) {
-          // Create the new URL with the path in the query string
-          var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            '/?/' + path.replace(/&/g, '~and~') +
-            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-            l.hash;
-          
-          // Force a synchronous redirect
-          l.replace(newUrl);
-        }
-      })();
+      // Standard GitHub Pages SPA redirect
+      var path = window.location.pathname;
+      window.location.href = '/?p=' + path;
     </script>
   </head>
   <body>

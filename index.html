@@ -11,32 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VaroSync</title>
     <script>
-      // Handle SPA routing for GitHub Pages
-      (function() {
-        var l = window.location;
-        var search = l.search;
-        
-        // If we have a path in the query string (e.g. ?/solutions)
-        if (search && search[1] === '/') {
-          // Extract the path from the query string
-          var path = search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          
-          // Clean up the path - remove leading and trailing slashes
-          path = path.replace(/^\/+|\/+$/g, '');
-          
-          // If we have a valid path, update the URL immediately
-          if (path && path !== '/') {
-            // Construct the new URL without double slashes
-            var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/' + path + l.hash;
-            // Force a synchronous URL update
-            l.replace(newUrl);
-            // Prevent any further processing
-            return;
-          }
-        }
-      })();
+      // Standard GitHub Pages SPA handling
+      var path = new URLSearchParams(window.location.search).get('p');
+      if (path) {
+        window.history.replaceState(null, null, path);
+      }
     </script>
     <script type="module" crossorigin src="/assets/index-BAxmLzhI.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DUVh9w3J.css">
