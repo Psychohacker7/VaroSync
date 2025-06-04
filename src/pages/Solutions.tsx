@@ -46,7 +46,7 @@ function Solutions() {
         <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] md:gap-12 items-start w-full h-full">
             {/* Text Column */}
-            <div className="flex flex-col justify-start items-start h-full pt-[15.5px] pr-4 text-left px-4 md:px-0">
+            <div className="flex flex-col justify-start items-start h-full pt-[15.5px] text-left px-4 md:px-0 md:pl-[15.5px]">
               <motion.h1 
                 className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
                 variants={itemVariants}
@@ -65,8 +65,8 @@ function Solutions() {
               </motion.p>
             </div>
             {/* Image Column */}
-            <div className="flex justify-start items-start h-full px-4 md:px-0">
-              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
+            <div className="flex justify-start items-start h-full px-4 md:px-0 md:pr-[15.5px]">
+              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pb-[15.5px]">
                 <img
                   src={`${import.meta.env.BASE_URL}techillu.png`}
                   alt="Technology visualization"
