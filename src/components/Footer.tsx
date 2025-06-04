@@ -23,6 +23,7 @@ function Footer({ currentRouteBgColor }: FooterProps) {
                 alt="Varosync Logo" 
                 className="h-8"
                 loading="eager"
+                transparent
               />
               <span className="text-xl font-bold text-gray-900">Varosync</span>
             </div>

@@ -9,6 +9,7 @@ interface VideoProps {
   playsInline?: boolean;
   poster?: string;
   loading?: 'lazy' | 'eager';
+  onLoadedData?: () => void;
 }
 
 export function Video({ 
@@ -19,7 +20,8 @@ export function Video({
   muted = true, 
   playsInline = true,
   poster,
-  loading = 'lazy'
+  loading = 'lazy',
+  onLoadedData
 }: VideoProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -52,6 +54,11 @@ export function Video({
     };
   }, [loading]);
 
+  const handleLoadedData = () => {
+    setIsLoaded(true);
+    onLoadedData?.();
+  };
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {!isLoaded && !error && (
@@ -67,7 +74,7 @@ export function Video({
         muted={muted}
         playsInline={playsInline}
         poster={poster}
-        onLoadedData={() => setIsLoaded(true)}
+        onLoadedData={handleLoadedData}
         onError={() => setError(true)}
       >
         <source src={src} type="video/mp4" />

@@ -77,6 +77,7 @@ function Home() {
             className="w-full h-full"
             loading="eager"
             poster={`${import.meta.env.BASE_URL}mobile3Dencod-poster.jpg`}
+            onLoadedData={() => setMobileVideoReady(true)}
           />
         </motion.div>
         {/* Desktop Video Background */}
@@ -92,6 +93,7 @@ function Home() {
             className="w-full h-full"
             loading="eager"
             poster={`${import.meta.env.BASE_URL}desktop3D-poster.jpg`}
+            onLoadedData={() => setDesktopVideoReady(true)}
           />
         </motion.div>
         {/* Content */}
@@ -147,6 +149,7 @@ function Home() {
                 alt="Technology visualization"
                 className="w-full h-auto object-cover rounded-2xl"
                 loading="lazy"
+                transparent
               />
             </div>
           </div>

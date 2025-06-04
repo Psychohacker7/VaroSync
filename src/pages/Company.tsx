@@ -62,6 +62,7 @@ function Company() {
                     alt="Descriptive alt"
                     className={isMobile ? "mobileHeroImage rounded-[16px]" : "w-full h-auto object-cover rounded-2xl"}
                     loading="eager"
+                    transparent
                   />
                 </div>
               </motion.div>
@@ -164,6 +165,7 @@ function Company() {
                   alt="Partner"
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  transparent
                 />
               </motion.div>
             </div>

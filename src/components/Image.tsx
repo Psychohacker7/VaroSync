@@ -6,9 +6,17 @@ interface ImageProps {
   className?: string;
   loading?: 'lazy' | 'eager';
   placeholder?: string;
+  transparent?: boolean;
 }
 
-export function Image({ src, alt, className = '', loading = 'lazy', placeholder = '#E6E3FF' }: ImageProps) {
+export function Image({ 
+  src, 
+  alt, 
+  className = '', 
+  loading = 'lazy', 
+  placeholder = '#E6E3FF',
+  transparent = false 
+}: ImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
 
@@ -23,9 +31,9 @@ export function Image({ src, alt, className = '', loading = 'lazy', placeholder 
   return (
     <div 
       className={`relative overflow-hidden ${className}`}
-      style={{ backgroundColor: placeholder }}
+      style={{ backgroundColor: transparent ? 'transparent' : placeholder }}
     >
-      {!isLoaded && !error && (
+      {!isLoaded && !error && !transparent && (
         <div className="absolute inset-0 animate-pulse" style={{ backgroundColor: placeholder }} />
       )}
       <img

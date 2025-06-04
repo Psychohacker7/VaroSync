@@ -85,6 +85,7 @@ function Header({ currentRouteBgColor }: HeaderProps) {
               alt="Varosync Logo" 
               className="h-12 md:h-16 transition-all duration-300 header-logo-img"
               loading="eager"
+              transparent
             />
           </Link>
 
@@ -131,6 +132,7 @@ function Header({ currentRouteBgColor }: HeaderProps) {
                 alt="Varosync Logo" 
                 className="h-12"
                 loading="eager"
+                transparent
               />
             </Link>
             <button
