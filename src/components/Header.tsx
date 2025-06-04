@@ -16,6 +16,7 @@ const navLinks = [
 function Header({ currentRouteBgColor }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [hideHeader, setHideHeader] = useState(false);
   const [hideMobileHeader, setHideMobileHeader] = useState(false);
@@ -56,6 +57,14 @@ function Header({ currentRouteBgColor }: HeaderProps) {
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
+
+  const handleMenuClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setMenuOpen(false);
+      setIsClosing(false);
+    }, 300); // Match this with the animation duration
+  };
 
   return (
     <>
@@ -105,11 +114,16 @@ function Header({ currentRouteBgColor }: HeaderProps) {
         </div>
       </header>
       {/* Mobile Menu - OUTSIDE header */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col transition-transform duration-300 ease-in-out transform translate-x-0 animate-slide-in-right" style={{ backgroundColor: currentRouteBgColor, opacity: 1 }}>
+      {(menuOpen || isClosing) && (
+        <div 
+          className={`fixed inset-0 z-50 flex flex-col transition-transform duration-300 ease-in-out transform ${
+            isClosing ? 'translate-x-full' : 'translate-x-0'
+          }`} 
+          style={{ backgroundColor: currentRouteBgColor, opacity: 1 }}
+        >
           {/* Logo and Close Button Row */}
           <div className="flex items-center justify-between px-6 pt-6 pb-2">
-            <Link to="/" onClick={() => setMenuOpen(false)}>
+            <Link to="/" onClick={handleMenuClose}>
               <img 
                 src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Varosync Logo" 
@@ -119,7 +133,7 @@ function Header({ currentRouteBgColor }: HeaderProps) {
             <button
               className="p-2 rounded-full bg-transparent hover:bg-gray-100 transition-colors"
               aria-label="Close menu"
-              onClick={() => setMenuOpen(false)}
+              onClick={handleMenuClose}
             >
               <X size={32} className="text-gray-900" />
             </button>
@@ -131,7 +145,7 @@ function Header({ currentRouteBgColor }: HeaderProps) {
               <React.Fragment key={link.to}>
                 <Link
                   to={link.to}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={handleMenuClose}
                   className="text-2xl font-medium px-6 py-5 w-full text-gray-900 hover:bg-gray-100 transition-colors"
                   style={{ borderBottom: '1px solid #e5e5e5' }}
                 >
@@ -141,7 +155,7 @@ function Header({ currentRouteBgColor }: HeaderProps) {
             ))}
             <Link 
               to="/contact" 
-              onClick={() => setMenuOpen(false)}
+              onClick={handleMenuClose}
               className="text-2xl font-medium px-6 py-5 w-full text-gray-900 hover:bg-gray-100 transition-colors"
               style={{ borderBottom: '1px solid #e5e5e5' }}
             >

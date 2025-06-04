@@ -41,40 +41,43 @@ function Solutions() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className={styles.introWrapper}>
-        <div className={styles.intro}>
-          <motion.div
-            className={styles.textAlignCenter}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.h1 
-              className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
-              variants={itemVariants}
-            >
-              Technology
-            </motion.h1>
-            <motion.p 
-              className="text-base md:text-lg lg:text-xl text-white/80"
-              variants={itemVariants}
-            >
-              At the heart of our research and development lies a powerful, dual-pronged philosophy: to first understand the intricate complexity of human biology with unprecedented clarity, and then to rationally design and develop therapeutics of remarkable precision. We have cultivated a technology ecosystem that converges predictive, AI-driven science with a versatile, multi-modal therapeutic engine.
-            </motion.p>
-          </motion.div>
-          <motion.div
-            className={styles.heroImageSection}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <img 
-              src={`${import.meta.env.BASE_URL}techillu.png`} 
-              alt="Technology visualization"
-            />
-          </motion.div>
+      {/* HERO SECTION - now using Tailwind for layout */}
+      <section className="bg-[var(--navy-900)] overflow-hidden min-h-[480px] pt-5 pb-8 md:pb-12">
+        <div className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] md:gap-12 items-start w-full h-full">
+            {/* Image Column */}
+            <div className="flex justify-start items-start h-full order-1 md:order-none">
+              <div className="w-full h-auto rounded-2xl overflow-hidden pt-[15.5px] pl-[15.5px] pb-[15.5px]">
+                <img
+                  src={`${import.meta.env.BASE_URL}techillu.png`}
+                  alt="Technology visualization"
+                  className="w-full h-auto object-cover rounded-2xl"
+                />
+              </div>
+            </div>
+            {/* Text Column */}
+            <div className="flex flex-col justify-start items-start h-full order-2 md:order-none pt-[15.5px] pr-4 text-left">
+              <motion.h1 
+                className="text-5xl md:text-6xl mb-6 text-gray-900 antialiased font-normal leading-relaxed"
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                Technology
+              </motion.h1>
+              <motion.p 
+                className="text-lg md:text-xl text-white/80 max-w-2xl mb-6"
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                At the heart of our research and development lies a powerful, dual-pronged philosophy: to first understand the intricate complexity of human biology with unprecedented clarity, and then to rationally design and develop therapeutics of remarkable precision. We have cultivated a technology ecosystem that converges predictive, AI-driven science with a versatile, multi-modal therapeutic engine.
+              </motion.p>
+            </div>
+          </div>
         </div>
       </section>
+      {/* END HERO SECTION */}
 
       <section className={styles.sectionTabs}>
         <div className={styles.tabsContainer}>
