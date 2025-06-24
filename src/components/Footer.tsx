@@ -26,7 +26,7 @@ function Footer({ currentRouteBgColor }: FooterProps) {
               <span className="text-xl font-bold text-gray-900">Varosync</span>
             </div>
             <p className="text-gray-900">
-              Design smarter, treat better.
+              Pioneering a new dimension in drug discovery.
             </p>
           </div>
 

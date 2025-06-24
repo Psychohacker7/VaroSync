@@ -106,7 +106,7 @@ function Solutions() {
               <div className={styles.tabsLeft}>
                 <div className={styles.tabsLeftTop}>
                   <div className={styles.tabsLetContent}>
-                    <h2>Modelling Human Biology</h2>
+                    <h2>Modeling Human Biology</h2>
                     <p>
                       Varosync is building a new kind of engine, one that bridges biological complexity with computational clarity. Our platform integrates advanced machine learning with real-world data to uncover latent physiological signals and guide therapeutic design with greater precision.
                     </p>
