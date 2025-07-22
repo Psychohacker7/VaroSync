@@ -71,7 +71,25 @@ const Technology = () => {
       <BackgroundBlobs page="technology" />
       <section className="hero">
         <div className="hero-content" style={{ textAlign: 'left', marginTop: '50px', marginLeft: '80px' }}>
-          <div className="hero-text-container">
+          <div className="hero-title-container" style={{
+            border: '1px solid black',
+            borderRadius: '8px',
+            padding: '20px',
+            position: 'relative',
+            display: 'inline-block',
+            maxWidth: '900px'
+          }}>
+            <h1 style={{
+              fontSize: '4rem',
+              fontWeight: '300',
+              margin: 0,
+              color: '#000000',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif'
+            }}>
+              Deconstructing biology's source code
+            </h1>
+          </div>
+          <div className="hero-text-container" style={{ paddingBottom: '0px' }}>
             <p className="page-subtitle" style={fontStyle}>
               At the heart of our research and development lies a powerful, dual-pronged philosophy: to first understand the intricate complexity of human biology with unprecedented clarity, and then to rationally design and develop therapeutics of remarkable precision. We have cultivated a technology ecosystem that converges predictive, AI-driven science with a versatile, multi-modal therapeutic engine.
             </p>

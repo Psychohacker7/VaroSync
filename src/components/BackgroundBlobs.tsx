@@ -65,7 +65,7 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
             style.right = '0%';
             style.width = 'clamp(200px, 40vw, 500px)';
           } else if (index === 2) {
-            style.top = '86%';
+            style.top = '92%';
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 350px)';
           }
@@ -132,7 +132,7 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
           
           /* Mobile positioning for technology page blobs */
           .technology-blob-1 {
-            top: 93% !important;
+            top: 101% !important;
           }
           
           .technology-blob-2 {
@@ -140,8 +140,8 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
           }
           
           .technology-blob-3 {
-            top: 233.5% !important;
-            left: -12.5% !important;
+            top: 238% !important;
+            left: -13% !important;
           }
           
           /* Mobile positioning for company page blobs */
