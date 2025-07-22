@@ -30,8 +30,19 @@ const Company = () => {
       <div className="spacing nav-height"></div>
       
       <section className="hero">
-        <div className="hero-content" style={{ marginLeft: '400px', maxWidth: '1000px', marginRight: '50px' }}>
-          <div className="hero-text-container">
+        <div className="hero-content" style={{ marginLeft: '400px', maxWidth: '1000px', marginRight: '50px', marginTop: '-160px' }}>
+          <div className="hero-title-container">
+            <h1 style={{
+              fontSize: '4rem',
+              fontWeight: '300',
+              margin: 0,
+              color: '#000000',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif'
+            }}>
+              Solving the attrition problem
+            </h1>
+          </div>
+          <div className="hero-text-container" style={{ paddingBottom: '0px' }}>
             <p className="page-subtitle" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>
               Varosync was founded with a singular, clear-sighted ambition: to deliver transformative medicines that address the underlying drivers of disease. We believe the next frontier in human health lies in understanding and modulating the essential, dynamic processes that govern cellular function. Our purpose is to translate this profound biological understanding into a new generation of therapeutics, offering hope where there was none and pursuing treatments for some of the world's most challenging illnesses.
             </p>
