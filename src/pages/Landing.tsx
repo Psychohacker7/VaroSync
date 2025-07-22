@@ -151,8 +151,8 @@ const Landing = () => {
             height: 600px !important;
             min-height: 500px !important;
             max-height: 700px !important;
-            margin-top: 16px !important;
-            margin-bottom: 80px !important;
+            margin-top: -20px !important;
+            margin-bottom: -120px !important;
             pointer-events: auto !important;
           }
         }

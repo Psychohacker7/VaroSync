@@ -25,7 +25,9 @@ const Hero3D = () => {
     const width = container.clientWidth
     const height = container.clientHeight
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
-    camera.position.z = 2.0
+    // Detect mobile and adjust camera distance
+    const isMobile = window.innerWidth <= 768
+    camera.position.z = isMobile ? 2.3 : 2.0
     camera.position.y = 0.1
     camera.position.x = -0.1
     cameraRef.current = camera
