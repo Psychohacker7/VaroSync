@@ -11,7 +11,7 @@ const Technology = () => {
 
   return (
     <>
-      {/* Image background */}
+      {/* Blue background */}
       <div
         style={{
           position: 'fixed',
@@ -21,10 +21,7 @@ const Technology = () => {
           height: '100vh',
           zIndex: -10,
           pointerEvents: 'none',
-          backgroundImage: 'url(/assets/images/background-blue.png)',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
+          backgroundColor: '#f0f6fd',
           transition: 'background 1s',
         }}
         aria-hidden="true"
@@ -32,9 +29,11 @@ const Technology = () => {
       <BackgroundBlobs page="technology" />
       <section className="hero">
         <div className="hero-content" style={{ textAlign: 'left', marginTop: '50px', marginLeft: '80px' }}>
-          <p className="page-subtitle" style={fontStyle}>
-            At the heart of our research and development lies a powerful, dual-pronged philosophy: to first understand the intricate complexity of human biology with unprecedented clarity, and then to rationally design and develop therapeutics of remarkable precision. We have cultivated a technology ecosystem that converges predictive, AI-driven science with a versatile, multi-modal therapeutic engine.
-          </p>
+          <div className="hero-text-container">
+            <p className="page-subtitle" style={fontStyle}>
+              At the heart of our research and development lies a powerful, dual-pronged philosophy: to first understand the intricate complexity of human biology with unprecedented clarity, and then to rationally design and develop therapeutics of remarkable precision. We have cultivated a technology ecosystem that converges predictive, AI-driven science with a versatile, multi-modal therapeutic engine.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -70,7 +69,7 @@ const Technology = () => {
           {/* Image on the right */}
           <div className="tech-image-right">
             <img
-              src="/assets/images/gpu.png"
+              src="/assets/images/gpuchip.png"
               alt="Technology Visualization"
               style={{
                 display: 'block',

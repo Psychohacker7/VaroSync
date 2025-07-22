@@ -342,13 +342,14 @@
     flex-direction: column;
     gap: 40px;
     padding: 0 20px;
-    text-align: center;
+    text-align: left;
   }
   .landing-content-subtitle {
     font-size: 3rem;
+    text-align: left;
   }
   .landing-content-body {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
   .landing-content-img {
     max-width: 90%;
@@ -363,12 +364,14 @@
   .landing-content-grid {
     padding: 0 16px;
     gap: 30px;
+    text-align: left;
   }
   .landing-content-subtitle {
     font-size: 1.8rem;
+    text-align: left;
   }
   .landing-content-body {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .landing-content-img {
     max-width: 95%;
@@ -379,6 +382,7 @@
 @media (max-width: 900px) {
   .landing-partners-container {
     padding: 0 20px;
+    text-align: left;
   }
   .landing-partners-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -390,6 +394,7 @@
 @media (max-width: 600px) {
   .landing-partners-container {
     padding: 0 16px;
+    text-align: left;
   }
   .landing-partners-grid {
     grid-template-columns: 1fr;
@@ -399,4 +404,56 @@
   .landing-partners-grid .landing-content-img-plain {
     max-width: 150px;
   }
+  
+  /* Force smaller font sizes for inline styled text */
+  .funnel-text[style*="font-size: 1.5rem"] {
+    font-size: 1rem !important;
+  }
+  
+  .landing-content-body[style*="font-size: 1.5rem"] {
+    font-size: 1rem !important;
+  }
+  
+  /* Hero text adjustments for small mobile */
+  .type-h1 {
+    font-size: 2rem !important;
+    text-align: left !important;
+  }
+  
+  .type-xl {
+    font-size: 1rem !important;
+    text-align: left !important;
+  }
+  
+  .landing-content-subtitle[style*="font-size: 3rem"] {
+    font-size: 1.6rem !important;
+    text-align: left !important;
+  }
 } 
+
+@media (max-width: 900px) {
+  /* Force smaller font sizes for inline styled text on tablet/mobile */
+  .funnel-text[style*="font-size: 1.5rem"] {
+    font-size: 1.2rem !important;
+  }
+  
+  .landing-content-body[style*="font-size: 1.5rem"] {
+    font-size: 1.4rem !important;
+  }
+  
+  /* Hero text adjustments */
+  .type-h1 {
+    font-size: 2.5rem !important;
+    text-align: left !important;
+  }
+  
+  .type-xl {
+    font-size: 1.2rem !important;
+    text-align: left !important;
+  }
+  
+  .landing-content-subtitle[style*="font-size: 3rem"] {
+    font-size: 2.2rem !important;
+    text-align: left !important;
+  }
+}

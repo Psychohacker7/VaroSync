@@ -1,5 +1,15 @@
 /* Company page specific styles */
 
+/* Hero text container - same styling as Technology page */
+.hero-text-container {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    display: inline-block;
+    max-width: 900px;
+}
+
 /* Spacing classes for header clearance */
 .spacing {
     height: 40px;
@@ -219,6 +229,55 @@
     
     .mission h2, .vision h2, .values h2, .team h2 {
         font-size: 1.7rem;
+        text-align: left;
+    }
+    
+    .hero-content {
+        text-align: left !important;
+        margin-top: 40px !important;
+    }
+    
+    .hero-text-container {
+        text-align: left !important;
+    }
+    
+    /* Force smaller font sizes for inline styled text */
+    p[style*="font-size: 1.5rem"] {
+        font-size: 1.2rem !important;
+    }
+    
+    p[style*="font-size: 1.2rem"] {
+        font-size: 1.1rem !important;
+    }
+    
+    h2[style*="font-size: 2.2rem"] {
+        font-size: 2rem !important;
+    }
+    
+    /* Stack content layout for mobile */
+    .content-with-image {
+        flex-direction: column;
+        gap: 30px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .content-image {
+        flex: none;
+        order: -1;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .company-info {
+        padding: 0;
+        margin: 0;
     }
 }
 
@@ -233,5 +292,40 @@
     
     .mission h2, .vision h2, .values h2, .team h2 {
         font-size: 1.5rem;
+        text-align: left;
+    }
+    
+    .hero-content {
+        text-align: left !important;
+        margin-top: 50px !important;
+    }
+    
+    .hero-text-container {
+        text-align: left !important;
+    }
+    
+    /* Force smaller font sizes for inline styled text */
+    p[style*="font-size: 1.5rem"] {
+        font-size: 1.1rem !important;
+    }
+    
+    p[style*="font-size: 1.2rem"] {
+        font-size: 1rem !important;
+    }
+    
+    h2[style*="font-size: 2.2rem"] {
+        font-size: 1.7rem !important;
+    }
+    
+    /* Smaller mobile adjustments */
+    .content-with-image {
+        padding-left: 0;
+        padding-right: 0;
+        gap: 20px;
+    }
+    
+    .company-info {
+        padding: 0;
+        margin: 0;
     }
 } 

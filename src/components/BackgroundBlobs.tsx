@@ -15,6 +15,7 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
         return [
           '/assets/images/technology1.png',
           '/assets/images/technology2.png',
+          '/assets/images/technology3.png',
         ]
       case 'company':
         return [
@@ -64,15 +65,15 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
             style.right = '0%';
             style.width = 'clamp(200px, 40vw, 500px)';
           } else if (index === 2) {
-            style.top = '10%';
+            style.top = '187%';
             style.right = '0%';
-            style.width = 'clamp(200px, 40vw, 500px)';
+            style.width = 'clamp(200px, 40vw, 350px)';
           }
 
         } else if (page === 'company') {
           if (index === 0) {
-            style.top = '65%';
-            style.left = '0%';
+            style.top = '70%';
+            style.right = '-2%';
           } else if (index === 1) {
             style.top = '0%';
             style.left = '0%';
@@ -118,15 +119,37 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
         /* Mobile positioning for landing page blobs */
         @media (max-width: 768px) {
           .landing-blob-1 {
-            top: 430% !important;
+            top: 407% !important;
           }
           
           .landing-blob-2 {
-            top: 310% !important;
+            top: 312% !important;
           }
           
           .landing-blob-3 {
-            top: 40% !important;
+            top: 45% !important;
+          }
+          
+          /* Mobile positioning for technology page blobs */
+          .technology-blob-1 {
+            top: 99% !important;
+          }
+          
+          .technology-blob-2 {
+            top: 0% !important;
+          }
+          
+          .technology-blob-3 {
+            top: 201% !important;
+          }
+          
+          /* Mobile positioning for company page blobs */
+          .company-blob-1 {
+            top: 173% !important;
+          }
+          
+          .company-blob-2 {
+            top: 0% !important;
           }
         }
       `}</style>
