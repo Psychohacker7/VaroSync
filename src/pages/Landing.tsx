@@ -62,7 +62,7 @@ const Landing = () => {
                 <div className="el hero-text-el" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, height: '100%', transitionTimingFunction: 'ease'}}>
                   <div className="news-image-module-image-wrap flex-bottom-left">
                     <div className="max-w-66 max-w-560px">
-                      <p className="type-xl">We're entering a new era in medicine where inference-based computational method reveal hidden biological signals, enabling faster breakthroughs and more precisely targeted therapies. At Varosync, we're building that future.</p>
+                      <p className="type-xl">We're entering a new era in medicine where inference-based computational methods reveal hidden biological signals, enabling faster breakthroughs and more precisely targeted therapies. At Varosync, we're building that future.</p>
                     </div>
                   </div>
                   <div className="animate-parent">

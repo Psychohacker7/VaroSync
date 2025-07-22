@@ -32,6 +32,10 @@
     min-height: 100%;
 }
 
+.desktop-only {
+    display: block;
+}
+
 .news-content {
     padding: 20px;
     display: flex;
@@ -126,29 +130,110 @@
     .news-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        grid-auto-rows: auto; /* Let cards size naturally to content */
+        padding-bottom: 120px; /* Add space after last card on mobile */
     }
+    
+    .news-card, .news-card.featured {
+        height: auto; /* Remove fixed height constraint */
+    }
+    
     .news-card.featured {
-        grid-column: 1 / -1;
+        grid-column: 1; /* Single column on mobile */
     }
+    
+    .desktop-only {
+        display: none; /* Hide desktop positioning divs on mobile */
+    }
+    
     .news-content {
-        padding: 15px;
+        padding: 20px;
     }
+    
+    .news-header {
+        margin-bottom: 24px; /* Clear spacing between header and footer */
+    }
+    
+    .news-footer {
+        margin-top: 0; /* Remove auto margin positioning */
+    }
+    
     .news-title {
         font-size: 1.2rem;
+        line-height: 1.4;
+        margin-bottom: 8px;
     }
+    
     .news-card.featured .news-title {
         font-size: 1.5rem;
+        line-height: 1.4;
+    }
+    
+    .news-category-date {
+        margin-bottom: 12px;
+    }
+    
+    .news-author {
+        margin-bottom: 0;
+    }
+    
+    .news-excerpt {
+        line-height: 1.6;
+        margin-bottom: 16px;
     }
 }
 
 @media (max-width: 480px) {
     .news-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+        grid-auto-rows: auto;
+        padding-bottom: 200px; /* Add space after last card on small mobile */
     }
+    
+    .news-card.featured {
+        grid-column: 1; /* Ensure single column */
+    }
+    
+    .desktop-only {
+        display: none; /* Hide desktop positioning divs */
+    }
+    
+    .news-content {
+        padding: 16px;
+    }
+    
+    .news-header {
+        margin-bottom: 20px;
+    }
+    
     .news-title {
         font-size: 1.1rem;
+        line-height: 1.3;
+        margin-bottom: 6px;
     }
+    
     .news-card.featured .news-title {
         font-size: 1.3rem;
+        line-height: 1.3;
+    }
+    
+    .news-category-date {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+    
+    .news-author {
+        font-size: 0.85rem;
+    }
+    
+    .news-excerpt {
+        line-height: 1.5;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .read-more {
+        font-size: 0.9rem;
     }
 } 

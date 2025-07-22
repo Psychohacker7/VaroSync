@@ -8,6 +8,7 @@ const Technology = () => {
   }, [])
 
   const fontStyle = { fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' };
+  const content2FontStyle = { fontSize: '1.35rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' };
 
   return (
     <>
@@ -56,31 +57,26 @@ const Technology = () => {
         <div className="tech-split-container">
           {/* Content 2 on the left */}
           <div className="tech-content-left">
-            <div className="tech-content-inner">
-              <p style={fontStyle}>
-                Our computational platform integrates diverse data streams to model complex biological systems. By combining machine learning with mechanistic modeling, we can predict how drugs will interact with biological targets and optimize therapeutic outcomes.
-              </p>
-              <p style={fontStyle}>
-                The platform enables us to rapidly iterate through potential drug candidates, identifying those with the highest likelihood of success while minimizing potential side effects. This approach accelerates the drug development process while maintaining rigorous scientific standards.
-              </p>
+            <div className="tech-content-left-boxed">
+              <div className="tech-content-inner">
+                <p style={content2FontStyle}>
+                  Our computational platform integrates diverse data streams to model complex biological systems. By combining machine learning with mechanistic modeling, we can predict how drugs will interact with biological targets and optimize therapeutic outcomes.
+                </p>
+                <p style={content2FontStyle}>
+                  The platform enables us to rapidly iterate through potential drug candidates, identifying those with the highest likelihood of success while minimizing potential side effects. This approach accelerates the drug development process while maintaining rigorous scientific standards.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Image on the right */}
           <div className="tech-image-right">
-            <img
-              src="/assets/images/gpuchip.png"
-              alt="Technology Visualization"
-              style={{
-                display: 'block',
-                width: '100%',
-                height: 'auto',
-                maxWidth: '100%',
-                border: 'none',
-                boxShadow: 'none',
-                padding: '20px'
-              }}
-            />
+            <div className="tech-image-right-boxed">
+              <img
+                src="/assets/images/gpu.png"
+                alt="Technology Visualization"
+              />
+            </div>
           </div>
         </div>
       </section>

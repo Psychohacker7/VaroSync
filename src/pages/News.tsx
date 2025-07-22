@@ -78,8 +78,8 @@ const News = () => {
       <section className="content">
         <div className="news-header-section">&nbsp;</div>
         <div className="news-grid">
-          {/* First row: blogPosts[1] and blogPosts[2] */}
-          <div></div>
+          {/* Desktop layout with empty divs for positioning */}
+          <div className="desktop-only"></div>
           {blogPosts.slice(1, 3).map((post) => (
             <article key={post.id} className="news-card">
               <div className="news-content">
@@ -96,8 +96,8 @@ const News = () => {
             </article>
           ))}
 
-          {/* Second row: blogPosts[3] spanning two columns */}
-          <article className="news-card featured" style={{ gridColumn: '1 / span 2' }}>
+          {/* Featured card */}
+          <article className="news-card featured">
             <div className="news-content">
               <div className="news-header">
                 <span className="news-category-date" style={{ fontFamily }}>{blogPosts[3].category} • {blogPosts[3].date}</span>
@@ -110,11 +110,11 @@ const News = () => {
               </div>
             </div>
           </article>
-          <div></div>
+          <div className="desktop-only"></div>
 
-          {/* Third row: two empty cards, then blogPosts[0] */}
-          <div></div>
-          <div></div>
+          {/* Empty positioning divs for desktop */}
+          <div className="desktop-only"></div>
+          <div className="desktop-only"></div>
           <article className="news-card">
             <div className="news-content">
               <div className="news-header">

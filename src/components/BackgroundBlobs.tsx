@@ -89,7 +89,7 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
             style.left = '0%';
             style.width = 'clamp(150px, 35vw, 300px)';
           } else if (index === 2) {
-            style.top = '158%';
+            style.top = '150%';
             style.left = '-2%';
             style.width = 'clamp(400px, 70vw, 700px)';
           }
@@ -150,6 +150,20 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
           
           .company-blob-2 {
             top: 0% !important;
+          }
+          
+          /* Mobile positioning for news page blobs */
+          .news-blob-1 {
+            top: 78% !important;
+            right: -5% !important;
+          }
+          
+          .news-blob-2 {
+            top: 7% !important;
+          }
+          
+          .news-blob-3 {
+            top: 227% !important;
           }
         }
       `}</style>
