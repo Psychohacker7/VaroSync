@@ -1,83 +1,64 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Linkedin, Twitter } from 'lucide-react';
-import { Image } from './Image';
+const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif';
+const columnTitleStyle = { fontWeight: 800, marginBottom: 8, color: '#fff', fontSize: 16, letterSpacing: 0.5, fontFamily };
+const linkStyle = { color: '#fff', textDecoration: 'none', fontWeight: 400, fontSize: 15, opacity: 0.92, fontFamily };
 
-interface FooterProps {
-  currentRouteBgColor: string;
-}
-
-function Footer({ currentRouteBgColor }: FooterProps) {
+const Footer = () => {
   return (
-    <footer 
-      className="py-16 border-t border-white transition-colors duration-300"
-      style={{ backgroundColor: currentRouteBgColor }}
-    >
-      <div className="w-full px-3">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-12 gap-y-8 mb-12 items-start">
-          {/* Logo and Branding */}
-          <div className="mb-6 md:mb-0 flex flex-col justify-center">
-            <div className="flex items-center gap-2 mb-4">
-              <img 
-                src={`${import.meta.env.BASE_URL}logo.png`} 
-                alt="Varosync Logo" 
-                className="h-8" 
-              />
-              <span className="text-xl font-bold text-gray-900">Varosync</span>
-            </div>
-            <p className="text-gray-900">
-              Pioneering a new dimension in drug discovery.
-            </p>
-          </div>
-
-          {/* Empty column for spacing */}
-          <div className="hidden md:block" />
-
-          {/* Company Links */}
-          <div className="md:px-4">
-            <h5 className="font-semibold text-gray-900 mb-3">COMPANY</h5>
-            <ul className="space-y-2 text-sm text-gray-900">
-              <li><Link to="/Company" className="hover:text-gray-900">About Us</Link></li>
-              <li><Link to="/Solutions" className="hover:text-gray-900">Technology</Link></li>
-              <li><Link to="/News" className="hover:text-gray-900">Blog & Press</Link></li>
-              <li><Link to="/Contact" className="hover:text-gray-900">Careers</Link></li>
-              <li><Link to="/Contact" className="hover:text-gray-900">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          {/* Development Links */}
-          <div className="md:px-4">
-            <h5 className="font-semibold text-gray-900 mb-3">DEVELOPMENT</h5>
-            <ul className="space-y-2 text-sm text-gray-900">
-              <li><Link to="/Contact" className="hover:text-gray-900">Licensing & Pipeline</Link></li>
-              <li><Link to="/Contact" className="hover:text-gray-900">Clinical Trials</Link></li>
-            </ul>
-          </div>
-
-          {/* Policies & Social Links */}
-          <div className="md:px-4 flex flex-col items-start">
-            <h5 className="font-semibold text-gray-900 mb-3">POLICIES & SOCIAL</h5>
-            <ul className="space-y-2 text-sm text-gray-900">
-              <li><a href="https://crimson-lilian-17.tiiny.site" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">Code of Conduct</a></li>
-              <li><a href="https://crimson-lilian-17.tiiny.site" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">Privacy Policy</a></li>
-              <li className="flex space-x-4 mt-4">
-                <a href="https://twitter.com/var0sync" aria-label="Twitter" className="text-gray-900 hover:text-gray-900 transition-colors">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="https://www.linkedin.com/company/varosync/" aria-label="LinkedIn" className="text-gray-900 hover:text-gray-900 transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </li>
-            </ul>
-          </div>
+    <footer className="footer">
+      <div className="footer-content" style={{alignItems: 'flex-start', position: 'relative'}}>
+        {/* Logo and company name */}
+        <div style={{display: 'flex', alignItems: 'center', gap: 6, minWidth: 180}}>
+          <img src="/assets/images/logo_white.svg" alt="Varosync Logo" style={{width: 48, height: 48, display: 'block'}} />
+          <span style={{fontWeight: 500, fontSize: 22, color: '#fff', letterSpacing: 1, fontFamily}}>Varosync</span>
         </div>
-
-        <div className="border-t border-gray-900 pt-8 text-center text-sm text-gray-900">
-          <p>&copy; {new Date().getFullYear()} Varosync. All rights reserved.</p>
+        {/* Empty column for spacing */}
+        <div style={{flex: 1}}></div>
+        {/* COMPANY column */}
+        <div style={{minWidth: 160}}>
+          <div style={columnTitleStyle}>COMPANY</div>
+          <ul style={{listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8}}>
+            <li><a href="/company" style={linkStyle}>About Us</a></li>
+            <li><a href="/technology" style={linkStyle}>Technology</a></li>
+            <li><a href="/news" style={linkStyle}>Blog & Press</a></li>
+            <li><a href="mailto:partnerships@varosync.com" style={linkStyle}>Careers</a></li>
+            <li><a href="mailto:partnerships@varosync.com" style={linkStyle}>Contact Us</a></li>
+          </ul>
         </div>
+        {/* DEVELOPMENT column */}
+        <div style={{minWidth: 180}}>
+          <div style={columnTitleStyle}>DEVELOPMENT</div>
+          <ul style={{listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8}}>
+            <li><a href="mailto:partnerships@varosync.com" style={linkStyle}>Licensing & pipeline</a></li>
+            <li><a href="mailto:partnerships@varosync.com" style={linkStyle}>Clinical trials</a></li>
+          </ul>
+        </div>
+        {/* POLICIES & SOCIAL column */}
+        <div style={{minWidth: 200}}>
+          <div style={columnTitleStyle}>POLICIES & SOCIAL</div>
+          <ul style={{listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8}}>
+            <li><a href="https://crimson-lilian-17.tiiny.site" target="_blank" rel="noopener noreferrer" style={linkStyle}>Code of Conduct</a></li>
+            <li><a href="https://crimson-lilian-17.tiiny.site" target="_blank" rel="noopener noreferrer" style={linkStyle}>Privacy Policy</a></li>
+            <li style={{display: 'flex', gap: 12, marginTop: 8}}>
+              <a href="https://x.com/var0sync/" target="_blank" rel="noopener noreferrer" aria-label="X" style={{display: 'inline-flex', alignItems: 'center'}}>
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" style={{width: 24, height: 24, filter: 'invert(1)'}} />
+              </a>
+              <a href="https://www.linkedin.com/company/varosync/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{display: 'inline-flex', alignItems: 'center'}}>
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style={{width: 24, height: 24, filter: 'invert(1)'}} />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* Divider bar, aligned with columns */}
+      <div style={{maxWidth: 1200, margin: '32px auto 12px auto', padding: '0 16px'}}>
+        <div style={{height: 1, background: 'rgba(255,255,255,0.2)'}} />
+      </div>
+      {/* Copyright */}
+      <div style={{textAlign: 'center', color: '#fff', fontSize: 15, opacity: 0.8, marginBottom: 4, fontWeight: 400, fontFamily}}>
+        © 2025 Varosync. All rights reserved.
       </div>
     </footer>
   );
-}
+};
 
 export default Footer; 

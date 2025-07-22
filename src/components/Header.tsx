@@ -1,172 +1,287 @@
-import React, { useState, useEffect, useRef } from 'react';
-// import { ArrowRight, LogIn } from 'lucide-react'; // Remove unused imports
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Image } from './Image';
-
-interface HeaderProps {
-  currentRouteBgColor: string;
-}
+import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 
 const navLinks = [
-  { to: '/solutions', label: 'Technology' },
+  { to: '/technology', label: 'Technology' },
   { to: '/company', label: 'Company' },
   { to: '/news', label: 'News' },
 ];
 
-function Header({ currentRouteBgColor }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [hideHeader, setHideHeader] = useState(false);
-  const [hideMobileHeader, setHideMobileHeader] = useState(false);
+const Header = () => {
+  const [isHidden, setIsHidden] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
   const [atTop, setAtTop] = useState(true);
-  const prevScrollY = useRef(0);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setAtTop(currentScrollY === 0);
-      if (window.innerWidth >= 768) {
-        // Desktop
-        if (currentScrollY > prevScrollY.current) {
-          setHideHeader(true);
-        } else {
-          setHideHeader(false);
+      setAtTop(currentScrollY <= 10);
+      
+      if (currentScrollY > 20) {
+        const scrollDelta = currentScrollY - lastScrollY.current;
+        if (scrollDelta > 10) {
+          setIsHidden(true);
+        } else if (scrollDelta < -10) {
+          setIsHidden(false);
         }
       } else {
-        // Mobile
-        if (currentScrollY > prevScrollY.current) {
-          setHideMobileHeader(true);
-        } else {
-          setHideMobileHeader(false);
-        }
+        setIsHidden(false);
       }
-      prevScrollY.current = currentScrollY;
-      setScrolled(currentScrollY > 50);
-      const heroHeight = window.innerHeight;
-      const scroll = Math.min(currentScrollY, heroHeight);
-      setProgress((scroll / heroHeight) * 100);
+      
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
-  const handleMenuClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setMenuOpen(false);
-      setIsClosing(false);
-    }, 300); // Match this with the animation duration
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  const headerStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    zIndex: 50,
+    transform: isHidden ? 'translateY(-100%)' : 'translateY(0)',
+    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+    willChange: 'transform',
+  };
+
+  const navStyle: React.CSSProperties = {
+    background: atTop ? 'transparent' : 'rgba(255, 255, 255, 0.25)',
+    boxShadow: atTop ? 'none' : '0 8px 32px rgba(0,0,0,0.10)',
+    borderRadius: atTop ? '0' : '2rem',
+    border: atTop ? 'none' : '1px solid rgba(0,0,0,0.04)',
+    backdropFilter: atTop ? 'none' : 'blur(16px)',
+    WebkitBackdropFilter: atTop ? 'none' : 'blur(16px)',
+    transition: 'all 0.3s ease',
+    minHeight: '4rem',
+    margin: '12px 20px 0 20px',
+    padding: '0 24px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    maxWidth: '76rem',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   };
 
   return (
     <>
-      {/* Progress Bar */}
-      <div className="header-progress-bar" style={{ width: `${progress}%` }} />
-      <header
-        className={`header-main${scrolled ? ' header-scrolled' : ''}${menuOpen ? ' header-menu-open' : ''}${atTop ? ' header-at-top' : ''}`}
-        style={{
-          backgroundColor: atTop ? currentRouteBgColor : '#fff',
-        }}
-      >
-        <div className="w-full flex items-center justify-between gap-8 transition-all duration-300 px-3">
-          {/* Logo - logotype only, larger, add img class */}
-          <Link to="/" className={`header-logo${scrolled ? ' logo-scrolled' : ''}${menuOpen ? ' logo-menu-open' : ''}`}> 
-            <img 
-              src={`${import.meta.env.BASE_URL}logo.png`} 
-              alt="Varosync Logo" 
-              className="h-12 md:h-16 transition-all duration-300 header-logo-img" 
-            />
-          </Link>
+      {/* Header */}
+      <div style={headerStyle}>
+        <nav style={navStyle}>
+          {/* Logo - Left Side */}
+          <div style={{ flex: '1', display: 'flex', alignItems: 'center' }}>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: '#111' }}>
+              <img 
+                src="/assets/images/Varosync logo.svg" 
+                alt="Varosync Logo" 
+                style={{ height: '32px', width: '32px', objectFit: 'contain' }} 
+              />
+              <span style={{ fontSize: '18px', fontWeight: 500, fontFamily: 'var(--font-family)' }}>
+                Varosync
+              </span>
+            </Link>
+          </div>
 
-          {/* Desktop Nav - horizontal row, centered */}
-          <nav className="header-nav mobile-hidden flex flex-row items-center gap-8">
+          {/* Desktop Navigation - Center */}
+          <div style={{ display: 'none', flex: '1', justifyContent: 'center' }} className="desktop-nav">
+            <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+              {navLinks.map(link => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  style={{
+                    color: '#111',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    fontSize: '16px',
+                    transition: 'color 0.2s',
+                    fontFamily: 'var(--font-family)',
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Button - Right Side */}
+          <div style={{ flex: '1', display: 'none', justifyContent: 'flex-end', alignItems: 'center' }} className="desktop-nav">
+            <a 
+              href="mailto:partnerships@varosync.com"
+              style={{
+                background: '#111',
+                color: '#fff',
+                borderRadius: '999px',
+                padding: '10px 24px',
+                fontWeight: 600,
+                fontSize: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                textDecoration: 'none',
+                transition: 'background 0.2s',
+                fontFamily: 'var(--font-family)',
+              }}
+            >
+              Get in touch
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 14L14 6M14 6H7M14 6V13" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={toggleMobileMenu}
+            style={{
+              display: 'none',
+              background: 'transparent',
+              border: 'none',
+              padding: '8px',
+              cursor: 'pointer',
+              color: '#111',
+            }}
+            className="mobile-menu-btn"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          background: 'rgba(255, 255, 255, 0.98)',
+          zIndex: 100,
+          transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s ease-in-out',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+        className="mobile-menu-overlay"
+      >
+        {/* Mobile Menu Header */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '24px',
+          borderBottom: '1px solid #e5e5e5',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <img 
+              src="/assets/images/Varosync logo.svg" 
+              alt="Varosync Logo" 
+              style={{ height: '32px', width: '32px', objectFit: 'contain' }} 
+            />
+            <span style={{ fontSize: '18px', fontWeight: 500, color: '#111', fontFamily: 'var(--font-family)' }}>
+              Varosync
+            </span>
+          </div>
+          <button 
+            onClick={closeMobileMenu}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              padding: '8px',
+              cursor: 'pointer',
+              color: '#666',
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Menu Content */}
+        <div style={{ flex: 1, padding: '40px 24px' }}>
+          <nav style={{ marginBottom: '48px' }}>
             {navLinks.map(link => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`header-link ${location.pathname === link.to || location.pathname.startsWith(`${link.to}/`) ? 'active' : ''}`}
+                onClick={closeMobileMenu}
+                                 style={{
+                   display: 'block',
+                   color: '#111',
+                   textDecoration: 'none',
+                   fontSize: '24px',
+                   fontWeight: 500,
+                   marginBottom: '24px',
+                   transition: 'color 0.2s',
+                   fontFamily: 'var(--font-family)',
+                 }}
               >
                 {link.label}
-                <span className="header-link-dot" />
               </Link>
             ))}
-            <Link to="/contact" className="header-cta">Get in touch</Link>
           </nav>
 
-          {/* Hamburger for mobile only */}
-          {!menuOpen && (
-            <button
-              className="header-hamburger desktop-hidden"
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              onClick={() => setMenuOpen(m => !m)}
-            >
-              <Menu size={32} />
-            </button>
-          )}
-        </div>
-      </header>
-      {/* Mobile Menu - OUTSIDE header */}
-      {(menuOpen || isClosing) && (
-        <div 
-          className={`fixed inset-0 z-50 flex flex-col transition-transform duration-300 ease-in-out transform ${
-            isClosing ? 'translate-x-full' : 'translate-x-0'
-          }`} 
-          style={{ backgroundColor: currentRouteBgColor, opacity: 1 }}
-        >
-          {/* Logo and Close Button Row */}
-          <div className="flex items-center justify-between px-6 pt-6 pb-2">
-            <Link to="/" onClick={handleMenuClose}>
-              <img 
-                src={`${import.meta.env.BASE_URL}logo.png`} 
-                alt="Varosync Logo" 
-                className="h-12" 
-              />
-            </Link>
-            <button
-              className="p-2 rounded-full bg-transparent hover:bg-gray-100 transition-colors"
-              aria-label="Close menu"
-              onClick={handleMenuClose}
-            >
-              <X size={32} className="text-gray-900" />
-            </button>
-          </div>
-          <hr className="border-t border-gray-300 mb-2" />
-          {/* Nav Links */}
-          <nav className="flex flex-col gap-0 w-full px-0">
-            {navLinks.map((link, i) => (
-              <React.Fragment key={link.to}>
-                <Link
-                  to={link.to}
-                  onClick={handleMenuClose}
-                  className="text-2xl font-medium px-6 py-5 w-full text-gray-900 hover:bg-gray-100 transition-colors"
-                  style={{ borderBottom: '1px solid #e5e5e5' }}
-                >
-                  {link.label}
-                </Link>
-              </React.Fragment>
-            ))}
-            <Link 
-              to="/contact" 
-              onClick={handleMenuClose}
-              className="text-2xl font-medium px-6 py-5 w-full text-gray-900 hover:bg-gray-100 transition-colors"
-              style={{ borderBottom: '1px solid #e5e5e5' }}
+          <div style={{ paddingTop: '32px', borderTop: '1px solid #e5e5e5' }}>
+            <a 
+              href="mailto:partnerships@varosync.com"
+              onClick={closeMobileMenu}
+              style={{
+                background: '#111',
+                color: '#fff',
+                borderRadius: '999px',
+                padding: '16px 32px',
+                fontWeight: 600,
+                fontSize: '18px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '12px',
+                textDecoration: 'none',
+                transition: 'background 0.2s',
+                fontFamily: 'var(--font-family)',
+              }}
             >
               Get in touch
-            </Link>
-          </nav>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 14L14 6M14 6H7M14 6V13" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </div>
         </div>
-      )}
+      </div>
+
+
     </>
   );
-}
+};
 
 export default Header; 

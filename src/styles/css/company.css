@@ -1,0 +1,237 @@
+/* Company page specific styles */
+
+/* Spacing classes for header clearance */
+.spacing {
+    height: 40px;
+}
+
+.nav-height {
+    height: 40px;
+}
+
+._100px {
+    height: 40px;
+}
+
+.tablet-60px {
+    height: 120px;
+}
+
+.mobile-40px {
+    height: 80px;
+}
+
+@media (max-width: 768px) {
+    .spacing._100px {
+        height: 40px;
+    }
+    
+    .spacing.nav-height {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .spacing._100px {
+        height: 4px;
+    }
+    
+    .spacing.nav-height {
+        height: 4px;
+    }
+}
+
+/* Hero section styling */
+.hero {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hero-content {
+    text-align: left;
+}
+
+/* Content section with image layout */
+.content-with-image {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding-left: var(--page-padding);
+    padding-right: 0;
+    margin-right: 0;
+    width: 100vw;
+    margin-left: calc(-1 * var(--page-padding));
+    padding-left: var(--page-padding);
+}
+
+.content-image {
+    flex: 0 0 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Company info sections */
+.company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 var(--page-padding);
+}
+
+.mission, .vision, .values, .team, .partnership {
+    padding: 30px;
+    border-radius: 12px;
+    border: none;
+}
+
+.mission h2, .vision h2, .values h2, .team h2, .partnership h2 {
+    color: #000000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.mission p, .vision p, .team p, .partnership p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* Partnership section specific styles */
+.partnership h3 {
+    color: #000000;
+    font-size: 1.5rem;
+    margin: 25px 0 20px 0;
+    font-weight: 600;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #388e3c;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background: #2e7d32;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 142, 60, 0.3);
+}
+
+/* Values grid */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.value-card {
+    padding: 20px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-3px);
+}
+
+.value-card h3 {
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.value-card p {
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.stat {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+.stat h3 {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.stat p {
+    color: #388e3c;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Page specific styling */
+.page-title {
+    color: #000000;
+}
+
+.page-subtitle {
+    color: #000000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mission, .vision, .values, .team {
+        padding: 20px;
+    }
+    
+    .mission h2, .vision h2, .values h2, .team h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat h3 {
+        font-size: 2rem;
+    }
+    
+    .mission h2, .vision h2, .values h2, .team h2 {
+        font-size: 1.5rem;
+    }
+} 

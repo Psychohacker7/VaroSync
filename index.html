@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varosync - Modern Interactive Website</title>
+    <meta name="description" content="Experience the future with Varosync's cutting-edge technology and interactive 3D experiences">
+    <meta name="keywords" content="varosync, technology, 3d, interactive, web development">
+    <!-- Default favicon: white logo for dark tab backgrounds -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo_white.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo_black.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo_white.svg">
+    <!-- Safari mask icon -->
+    <link rel="mask-icon" href="/assets/images/logo_white.svg" color="#fff">
+    <meta name="theme-color" content="#4a4a6a">
+    <!-- Open Graph for social previews -->
+    <meta property="og:image" content="/assets/images/logo_black.svg" media="(prefers-color-scheme: light)">
+    <meta property="og:image" content="/assets/images/logo_white.svg" media="(prefers-color-scheme: dark)">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="/assets/images/logo_black.svg" media="(prefers-color-scheme: light)">
+    <meta name="twitter:image" content="/assets/images/logo_white.svg" media="(prefers-color-scheme: dark)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/logo-16.png" />
-    <link rel="shortcut icon" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VaroSync</title>
-    <script>
-      // Standard GitHub Pages SPA handling
-      var path = new URLSearchParams(window.location.search).get('p');
-      if (path) {
-        window.history.replaceState(null, null, path);
-      }
-    </script>
-  </head>
-  <body>
+</head>
+<body>
     <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
-  </body>
-</html>
+    <script type="module" src="/src/main.tsx"></script>
+</body>
+</html> 

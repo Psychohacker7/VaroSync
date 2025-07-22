@@ -1,0 +1,154 @@
+/* Add top padding to the news section */
+.content {
+    padding-top: 32px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+    padding: 0 var(--page-padding);
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+}
+
+.news-card, .news-card.featured {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1.5px solid rgba(120, 120, 120, 0.18);
+    overflow: hidden;
+    transition: none;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.news-card.featured {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.news-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-header {
+    margin-bottom: 20px;
+}
+
+.news-footer {
+    margin-top: auto;
+}
+
+.news-category-date {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.news-title {
+    color: #000000;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.news-card.featured .news-title {
+    font-size: 1.8rem;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.news-author {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.news-excerpt {
+    opacity: 0.9;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.read-more {
+    color: #c2185b;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.read-more:hover {
+    color: #ad1457;
+    transform: translateX(5px);
+}
+
+.read-more::after {
+    content: ' →';
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Page specific styling */
+.page-title {
+    color: #000000;
+}
+
+.page-subtitle {
+    color: #000000;
+}
+
+.news-header-section {
+    margin-bottom: 64px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .news-card.featured {
+        grid-column: 1 / -1;
+    }
+    .news-content {
+        padding: 15px;
+    }
+    .news-title {
+        font-size: 1.2rem;
+    }
+    .news-card.featured .news-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    .news-title {
+        font-size: 1.1rem;
+    }
+    .news-card.featured .news-title {
+        font-size: 1.3rem;
+    }
+} 
