@@ -57,7 +57,7 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
 
         } else if (page === 'technology') {
           if (index === 0) {
-            style.top = '99%';
+            style.top = '230%';
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 500px)';
           } else if (index === 1) {
@@ -65,8 +65,8 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
             style.right = '0%';
             style.width = 'clamp(200px, 40vw, 500px)';
           } else if (index === 2) {
-            style.top = '187%';
-            style.right = '0%';
+            style.top = '86%';
+            style.left = '0%';
             style.width = 'clamp(200px, 40vw, 350px)';
           }
 
@@ -132,7 +132,7 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
           
           /* Mobile positioning for technology page blobs */
           .technology-blob-1 {
-            top: 99% !important;
+            top: 93% !important;
           }
           
           .technology-blob-2 {
@@ -140,12 +140,14 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
           }
           
           .technology-blob-3 {
-            top: 201% !important;
+            top: 233.5% !important;
+            left: -12.5% !important;
           }
           
           /* Mobile positioning for company page blobs */
           .company-blob-1 {
-            top: 173% !important;
+            top: 161% !important;
+            right: -6% !important;
           }
           
           .company-blob-2 {

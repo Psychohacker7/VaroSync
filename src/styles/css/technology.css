@@ -39,6 +39,20 @@
     margin: 0;
 }
 
+/* Video section */
+.tech-video-section {
+    padding: 80px 0;
+    margin: 0 auto;
+}
+
+.tech-video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
 /* Content sections */
 .tech-content-section {
     padding: 60px 0;
@@ -303,6 +317,15 @@
         padding: 0 20px;
     }
     
+    /* Video section mobile */
+    .tech-video-section {
+        padding: 40px 0;
+    }
+    
+    .tech-video-container {
+        padding: 0 10px;
+    }
+    
     /* Content 1 mobile - reset positioning */
     .tech-content-inner {
         max-width: 100%;
@@ -430,6 +453,15 @@
     
     .tech-content-block {
         padding: 0 15px;
+    }
+    
+    /* Video section mobile - small screens */
+    .tech-video-section {
+        padding: 30px 0;
+    }
+    
+    .tech-video-container {
+        padding: 0 5px;
     }
     
     .tech-split-container {
