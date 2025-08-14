@@ -207,7 +207,7 @@
 .landing-partners-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 0;
   text-align: center;
 }
 
@@ -220,6 +220,29 @@
 }
 
 .landing-partners-grid .landing-content-img-plain {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Recognized by section styles */
+.landing-recognized-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 0;
+  text-align: center;
+}
+
+.landing-recognized-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+  align-items: center;
+}
+
+.landing-recognized-grid .landing-content-img-plain {
   width: 100%;
   max-width: 200px;
   height: auto;
@@ -381,10 +404,20 @@
 
 @media (max-width: 900px) {
   .landing-partners-container {
-    padding: 0 20px;
-    text-align: left;
+    padding: 0 20px 0 20px;
+    text-align: center;
   }
   .landing-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .landing-recognized-container {
+    padding: 0 20px 0 20px;
+    text-align: center;
+  }
+  .landing-recognized-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-top: 30px;
@@ -394,14 +427,27 @@
 @media (max-width: 600px) {
   .landing-partners-container {
     padding: 0 16px;
-    text-align: left;
+    text-align: center;
   }
   .landing-partners-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 40px;
     margin-top: 20px;
   }
   .landing-partners-grid .landing-content-img-plain {
+    max-width: 150px;
+  }
+  
+  .landing-recognized-container {
+    padding: 0 16px;
+    text-align: center;
+  }
+  .landing-recognized-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  .landing-recognized-grid .landing-content-img-plain {
     max-width: 150px;
   }
   
@@ -429,6 +475,12 @@
     font-size: 1.6rem !important;
     text-align: left !important;
   }
+  
+  /* Override left alignment for partners and recognized by section titles */
+  .landing-partners-container .landing-content-subtitle[style*="font-size: 3rem"],
+  .landing-recognized-container .landing-content-subtitle[style*="font-size: 3rem"] {
+    text-align: center !important;
+  }
 } 
 
 @media (max-width: 900px) {
@@ -455,5 +507,94 @@
   .landing-content-subtitle[style*="font-size: 3rem"] {
     font-size: 2.2rem !important;
     text-align: left !important;
+  }
+  
+  /* Override left alignment for partners and recognized by section titles */
+  .landing-partners-container .landing-content-subtitle[style*="font-size: 3rem"],
+  .landing-recognized-container .landing-content-subtitle[style*="font-size: 3rem"] {
+    text-align: center !important;
+  }
+}
+
+/* Landing page blob positioning for different viewports */
+/* Mobile blob section between content sections */
+.mobile-blob-section {
+  display: none; /* Hidden by default */
+}
+
+.mobile-blob-section-left {
+  display: none; /* Hidden by default */
+}
+
+@media (max-width: 767px) {
+  .mobile-blob-section {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: 0 0;
+    margin: 0;
+  }
+  
+  .mobile-blob-image {
+    width: clamp(300px, 40vw, 500px);
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .mobile-blob-section-left {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0 0;
+    margin: 0;
+  }
+  
+  .mobile-blob-image-left {
+    width: clamp(300px, 40vw, 500px);
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Viewport less than 768px */
+@media (max-width: 767px) {
+  .background-blobs--landing .blob-1 {
+    display: none !important; /* Hide the original blob-1 to prevent duplicates */
+  }
+  
+  .background-blobs--landing .blob-2 {
+    display: none !important; /* Hide the original blob-2 to prevent duplicates */
+  }
+  
+  .background-blobs--landing .blob-3 {
+    top: 0px !important;
+    left: 0px !important;
+  }
+}
+
+/* Viewport between 769px and 900px */
+@media (min-width: 769px) and (max-width: 900px) {
+  .background-blobs--landing .blob-3 {
+    top: 50px !important;
+    right: 0px !important;
+    left: auto !important;
+    transform: scaleX(-1) !important; /* Flip horizontally */
+  }
+}
+
+/* Viewport greater than 900px */
+@media (min-width: 901px) {
+  .background-blobs--landing .blob-3 {
+    top: 900px !important;
+    left: 0px !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  
+  /* Reduce green strip only for recognized section on large viewports */
+  .landing-recognized-container {
+    padding-top: 0 !important;
   }
 }

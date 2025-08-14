@@ -29,8 +29,8 @@ const Company = () => {
       {/* Reduced spacing to prevent header overlap */}
       <div className="spacing nav-height"></div>
       
-      <section className="hero">
-        <div className="hero-content" style={{ marginLeft: '400px', maxWidth: '1000px', marginRight: '50px', marginTop: '-160px' }}>
+      <section className="hero" style={{ position: 'relative', marginTop: '100px', paddingTop: '50px', paddingBottom: '0px', display: 'flex', alignItems: 'flex-start', justifyContent: 'normal' }}>
+        <div className="hero-content" style={{ marginLeft: 'clamp(5px, 5vw, 400px)', maxWidth: 'clamp(600px, 75vw, 1000px)', marginRight: 'clamp(20px, 5vw, 50px)', marginTop: '0px', paddingBottom: '40px' }}>
           <div className="hero-title-container">
             <h1 style={{
               fontSize: '4rem',
@@ -53,22 +53,38 @@ const Company = () => {
         </div>
       </section>
 
-      <section className="content">
+      <section className="content" style={{ position: 'relative', marginTop: '80px' }}>
         <div className="content-with-image">
           <div className="company-info">
             <div className="partnership">
             <h2 style={{ fontSize: '2.2rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Partnerships that push boundaries </h2>
             <p style={{ fontSize: '1.2rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Our culture of collaboration reaches well beyond our own walls and forms the foundation of every partnership, whether with pharmaceutical firms, biotechs, CROs, or other forward-thinking innovators. Our partnerships bring us together in pursuit of a common aim to develop medicines for those who need them most. Transformative discoveries demand tenacity, bold thinking, and true collaboration. That's why we champion rigorous, high-potential science at every stage, applying our expertise to help turn ambitious ideas into tangible breakthroughs.</p>
+            
+            {/* Company3 blob positioned naturally after text */}
+            <img 
+              src="/assets/images/company3.png" 
+              alt="" 
+              className="company1-blob company3-blob-inline"
+            />
                       </div>
           </div>
           <div className="content-image">
             <img
               src="/assets/images/pillcomp.png"
               alt="Company Pill"
-              style={{ border: 'none', boxShadow: 'none', display: 'block', maxWidth: '100%', height: 'auto' }}
+              style={{ border: 'none', boxShadow: 'none', display: 'block', maxWidth: '100%', width: '100%', height: 'auto', objectFit: 'contain' }}
             />
           </div>
         </div>
+        
+        {/* Company1 blob positioned relative to content section */}
+        <img 
+          src="/assets/images/company1.png" 
+          alt="" 
+          className="company1-blob content-blob"
+        />
+        
+
       </section>
     </>
   )

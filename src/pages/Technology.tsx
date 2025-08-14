@@ -70,7 +70,7 @@ const Technology = () => {
       />
       <BackgroundBlobs page="technology" />
       <section className="hero">
-        <div className="hero-content" style={{ textAlign: 'left', marginTop: '50px', marginLeft: '80px' }}>
+        <div className="hero-content" style={{ textAlign: 'left', marginTop: '50px', marginLeft: '20px', marginRight: '140px' }}>
           <div className="hero-title-container" style={{
             border: '1px solid black',
             borderRadius: '8px',
@@ -96,6 +96,11 @@ const Technology = () => {
           </div>
         </div>
       </section>
+
+      {/* Inline Technology3 blob for small screens */}
+      <div className="tech-inline-blob-3" aria-hidden="true" style={{ display: 'none' }}>
+        <img src="/assets/images/technology3.png" alt="" />
+      </div>
 
       {/* Video Section */}
       <section className="tech-video-section">
@@ -132,6 +137,11 @@ const Technology = () => {
               By modelling multiscale biological processes ranging from gene expression dynamics to drug metabolism and tissue-level pharmacokinetics. We infer patient-specific trajectories that reflect the true heterogeneity of disease. Using deep learning to capture nonlinear interactions between molecular pathways, physiological rhythms, and external interventions. enabling the prediction of therapeutic outcomes with greater temporal and mechanistic resolution.
             </p>
           </div>
+          
+          {/* Inline technology1 blob for mobile - positioned after text */}
+          <div className="tech-inline-blob-1" aria-hidden="true" style={{ display: 'none' }}>
+            <img src="/assets/images/technology1.png" alt="" />
+          </div>
         </div>
       </section>
 
@@ -156,7 +166,7 @@ const Technology = () => {
           <div className="tech-image-right">
             <div className="tech-image-right-boxed">
               <img
-                src="/assets/images/gpu.png"
+                src="/assets/images/handchip.png"
                 alt="Technology Visualization"
               />
             </div>

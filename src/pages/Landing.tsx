@@ -33,7 +33,7 @@ const Landing = () => {
       <BackgroundBlobs page="landing" />
       
       {/* Hero section - exact structure from provided HTML */}
-      <div className="section home-hero">
+      <div className="section home-hero" style={{ position: 'relative' }}>
         <div className="spacing nav-height"></div>
         <div className="spacing _100px tablet-60px mobile-40px"></div>
         <div className="container">
@@ -96,44 +96,53 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* 3D object overlay - positioned absolutely to overlay the hero structure */}
-      <div
-        className="hero-3d-overlay-grid"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: 10,
-          display: 'grid',
-          gridTemplateColumns: '1fr minmax(320px, 1fr)',
-          pointerEvents: 'none',
-        }}
-      >
-        {/* Left cell: empty, right cell: 3D object */}
-        <div style={{ pointerEvents: 'none', width: '100%', height: '100%' }}></div>
+        {/* 3D object overlay - positioned absolutely to overlay the hero structure */}
         <div
+          className="hero-3d-overlay-grid"
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'auto',
+            position: 'absolute',
+            top: 0,
+            left: 0,
             width: '100%',
             height: '100%',
-            overflow: 'hidden',
-            minWidth: 0,
+            zIndex: 10,
+            display: 'grid',
+            gridTemplateColumns: '1fr minmax(320px, 1fr)',
+            pointerEvents: 'none',
           }}
         >
-          <div className="hero-3d" style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            <Hero3D />
+          {/* Left cell: empty, right cell: 3D object */}
+          <div style={{ pointerEvents: 'none', width: '100%', height: '100%' }}></div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              pointerEvents: 'auto',
+              width: '100%',
+              height: '100%',
+              overflow: 'hidden',
+              minWidth: 0,
+            }}
+          >
+            <div className="hero-3d" style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+              <Hero3D />
+            </div>
           </div>
         </div>
       </div>
       {/* Responsive stacking for mobile */}
       <style>{`
+        /* Desktop: constrain 3D canvas to hero section height */
+        .home-hero {
+          position: relative !important;
+        }
+        
+        .hero-3d-overlay-grid {
+          height: 100% !important;
+        }
+        
         @media (max-width: 900px) {
           .hero-3d-overlay-grid {
             display: flex !important;
@@ -193,6 +202,15 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Mobile blob section - only visible on mobile */}
+      <section className="mobile-blob-section">
+        <img
+          src="/assets/images/landing2.png"
+          alt="Mobile blob decoration"
+          className="mobile-blob-image"
+        />
+      </section>
+
       {/* Funnel section */}
       <section className="landing-content-section">
         <div className="funnel-grid">
@@ -212,6 +230,15 @@ const Landing = () => {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Mobile blob section - only visible on mobile */}
+      <section className="mobile-blob-section-left">
+        <img
+          src="/assets/images/landing1.png"
+          alt="Mobile blob decoration left"
+          className="mobile-blob-image-left"
+        />
       </section>
 
       {/* Partners section */}
@@ -234,6 +261,34 @@ const Landing = () => {
             <img
               src="/assets/images/partnerc.png"
               alt="Partner company 3"
+              className="landing-content-img-plain"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Recognized by section */}
+      <section className="landing-content-section">
+        <div className="landing-recognized-container">
+          <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Recognized by</h2>
+          <div className="landing-recognized-grid">
+            <img
+              src="/assets/images/inceptionlogo.svg"
+              alt="Inception logo"
+              className="landing-content-img-plain"
+              loading="lazy"
+              style={{ transform: 'scale(1.3)', transformOrigin: 'center' }}
+            />
+            <img
+              src="/assets/images/nybio.png"
+              alt="NYBIO logo"
+              className="landing-content-img-plain"
+              loading="lazy"
+            />
+            <img
+              src="/assets/images/Foundrins.png"
+              alt="Foundrins logo"
               className="landing-content-img-plain"
               loading="lazy"
             />

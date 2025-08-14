@@ -63,39 +63,56 @@
 /* Hero section styling */
 .hero {
     padding: 0;
-    min-height: 100vh;
+    margin-top: 200px; /* Much more clearance from header */
+    padding-top: 80px; /* Extra buffer */
+    padding-bottom: 50px; /* Bottom spacing */
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start; /* Don't center - start from top */
+    justify-content: normal; /* Allow margin-left to work properly */
 }
 
 .hero-content {
     text-align: left;
 }
 
+
+
 /* Content section with image layout */
 .content-with-image {
     display: flex;
+    flex-direction: row; /* Back to horizontal layout */
     align-items: flex-start;
-    gap: 40px;
+    justify-content: space-between; /* Text left, image right */
+    gap: 40px; /* Normal gap between text and image */
     padding-left: var(--page-padding);
-    padding-right: 0;
+    padding-right: var(--page-padding); /* Add right padding to prevent overflow */
     margin-right: 0;
-    width: 100vw;
-    margin-left: calc(-1 * var(--page-padding));
-    padding-left: var(--page-padding);
+    width: 100%; /* Changed from 100vw to prevent overflow */
+    margin-left: 0; /* Remove negative margin that causes overflow */
+    padding-top: 100px; /* Space for text that's moved up */
+    padding-bottom: 100px; /* Space for image that's moved way down */
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    max-width: 100vw; /* Absolute maximum to prevent any overflow */
+    overflow-x: hidden; /* Safety net to prevent horizontal overflow */
 }
 
 .content-image {
-    flex: 0 0 700px;
+    width: 40%; /* Smaller width to allow text expansion */
+    min-width: 200px; /* Reduced min-width to prevent overflow on small screens */
+    max-width: 700px; /* Limit max size */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end; /* Align image to the right */
+    align-items: flex-start; /* Align to same level as left blob */
+    flex: 0 0 auto; /* Don't grow or shrink */
+    margin-top: 400px; /* Move image WAY DOWN below text level */
+    overflow: hidden; /* Prevent any content overflow */
 }
 
 .content-image img {
     max-width: 100%;
+    width: 100%;
     height: auto;
+    object-fit: contain; /* Ensure no distortion or overflow */
 }
 
 /* Company info sections */
@@ -103,7 +120,15 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 0 var(--page-padding);
+    padding: 0;
+    margin-top: -50px; /* Reduced negative margin for better positioning */
+    width: auto; /* Allow natural expansion */
+    min-width: 50%; /* Minimum width to maintain layout */
+    max-width: 70%; /* Allow expansion up to where right blob is positioned */
+    flex: 1 1 auto; /* Allow growth and shrink for horizontal expansion */
+    align-self: flex-start; /* Align to left */
+    padding-right: 80px; /* Space to avoid right blob area */
+    /* No margin needed - blob is now over image area */
 }
 
 .mission, .vision, .values, .team, .partnership {
@@ -112,11 +137,17 @@
     border: none;
 }
 
-.mission h2, .vision h2, .values h2, .team h2, .partnership h2 {
+.mission h2, .vision h2, .values h2, .team h2 {
     color: #000000;
     font-size: 2rem;
     margin-bottom: 20px;
     font-weight: 600;
+}
+
+/* Partnership h2 uses inline styles - don't override */
+.partnership h2 {
+    color: #000000;
+    margin-bottom: 20px;
 }
 
 .mission p, .vision p, .team p, .partnership p {
@@ -213,6 +244,41 @@
     opacity: 0.9;
 }
 
+/* Company1 blob - content-relative positioning */
+.company1-blob {
+    position: absolute;
+    width: clamp(150px, 35vw, 300px);
+    height: auto;
+    opacity: 0.8;
+    filter: blur(0.5px);
+    transform: translateX(-10%);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.content-blob {
+    /* Position in upper area with text (first row) */
+    top: -350px; /* Move blob even higher up relative to text */
+    right: 20px; /* Remove transform that was causing overflow */
+    transform: translateX(6.5%);
+    z-index: 0; /* Behind content but visible */
+}
+
+.company1-blob.company3-blob-inline {
+    /* Natural positioning after text - no absolute positioning needed */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin-top: 400px; /* Position at same level as image that's WAY DOWN */
+    margin-left: -20px; /* Align to left edge */
+    display: block;
+    transform: translateX(-10%);
+    width: 600px !important; /* Doubled size - override clamp width */
+    max-width: 600px !important; /* Doubled size with !important to override other classes */
+}
+
 /* Page specific styling */
 .page-title {
     color: #000000;
@@ -275,19 +341,81 @@
         font-size: 2rem !important;
     }
     
-    /* Stack content layout for mobile */
+    /* Stack content layout for mobile - prevent overflow */
     .content-with-image {
         flex-direction: column;
-        gap: 30px;
-        padding-left: 0;
-        padding-right: 0;
+        gap: 60px; /* Smaller gap on mobile but still good separation */
+        padding-left: var(--page-padding);
+        padding-right: var(--page-padding);
+        padding-top: 50px; /* Reset to smaller padding on mobile */
+        padding-bottom: 0px; /* Reset to smaller padding on mobile */
         margin-left: 0;
         margin-right: 0;
-        width: 100vw;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
+        width: 100% !important;
+        max-width: 100vw !important; /* Prevent viewport overflow */
+        position: static; /* Remove absolute positioning */
+        left: auto;
+        transform: none;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important; /* Prevent horizontal overflow */
+        order: 1; /* Come after company1 blob */
     }
+    
+    .company-info {
+        width: 100% !important; /* Full width on mobile */
+        max-width: 100vw !important; /* Prevent viewport overflow */
+        min-width: auto !important; /* Reset min-width on mobile */
+        padding-right: 0 !important; /* Reset padding on mobile */
+        padding-left: 0 !important; /* Reset left padding too */
+        box-sizing: border-box !important; /* Include padding in width */
+        overflow-x: hidden !important; /* Prevent horizontal overflow */
+    }
+    
+    .content-image {
+        width: 100% !important; /* Full width on mobile */
+        max-width: 100vw !important; /* Prevent viewport overflow */
+        margin-top: 0 !important; /* Reset margin on mobile */
+        overflow: hidden !important; /* Prevent any overflow */
+        box-sizing: border-box !important; /* Include padding in width */
+    }
+    
+    .content-image img {
+        width: 100% !important;
+        max-width: 100% !important; /* Ensure image doesn't overflow */
+        height: auto !important;
+        object-fit: contain !important;
+    }
+    
+    /* Mobile content section as flex container for proper ordering */
+    .content {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Mobile positioning for company1 blob - stack first after hero */
+    .content-blob {
+        position: static !important; /* Remove absolute positioning */
+        top: auto;
+        right: auto;
+        left: auto;
+        transform: none;
+        max-width: 280px;
+        margin: 20px 20px 40px auto; /* Align to right with 20px spacing from edge */
+        display: block;
+        order: -1; /* Show first before content-with-image */
+    }
+    
+    /* Mobile positioning for company3 blob inline - prevent overflow */
+    .company1-blob.company3-blob-inline {
+        margin-left: 0 !important; /* Center on mobile */
+        margin-right: auto;
+        margin-left: auto;
+        width: 90vw !important; /* Responsive width to prevent overflow */
+        max-width: 400px !important; /* Prevent viewport overflow */
+        margin-top: 20px !important;
+    }
+    
+
     
     .content-image {
         flex: none;
@@ -299,6 +427,8 @@
     .company-info {
         padding: 0;
         margin: 0;
+        width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -350,15 +480,111 @@
         font-size: 1.7rem !important;
     }
     
-    /* Smaller mobile adjustments */
+    /* Smaller mobile adjustments - prevent overflow */
     .content-with-image {
-        padding-left: 0;
-        padding-right: 0;
-        gap: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px; /* Even smaller padding on small mobile */
+        gap: 50px; /* Tighter spacing on very small mobile */
+        max-width: 100vw !important; /* Prevent viewport overflow */
+        overflow-x: hidden !important; /* Prevent horizontal overflow */
+        order: 1; /* Come after company1 blob */
     }
+    
+    .company-info {
+        width: 100% !important;
+        max-width: 100vw !important; /* Prevent viewport overflow */
+        min-width: auto !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important; /* Reset left padding too */
+        overflow-x: hidden !important; /* Prevent horizontal overflow */
+    }
+    
+    .content-image {
+        width: 100% !important;
+        max-width: 100vw !important; /* Prevent viewport overflow */
+        margin-top: 0 !important;
+        overflow: hidden !important; /* Prevent any overflow */
+    }
+    
+    .content-image img {
+        width: 100% !important;
+        max-width: 100% !important; /* Ensure image doesn't overflow */
+        height: auto !important;
+    }
+    
+    .company1-blob.company3-blob-inline {
+        width: 85vw !important; /* Even smaller on very small screens */
+        max-width: 350px !important; /* Prevent overflow on small screens */
+    }
+    
+    /* Small mobile content section as flex container for proper ordering */
+    .content {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Small mobile positioning for company1 blob - stack first after hero */
+    .content-blob {
+        position: static !important; /* Same as larger mobile */
+        bottom: auto;
+        max-width: 250px;
+        margin: 15px 15px 30px auto; /* Align to right with 15px spacing from edge */
+        order: -1; /* Show first before content-with-image */
+    }
+    
+
     
     .company-info {
         padding: 0;
         margin: 0;
+        width: 100%;
+        max-width: 100%;
     }
-} 
+}
+
+/* FINAL OVERRIDE - Responsive margin-left that smoothly transitions vw from 30vw to 7vw */
+.hero-content {
+    margin-left: clamp(20px, 30vw, 400px) !important; /* Default: 30vw */
+}
+
+/* Smooth transitions from 1300px down to 770px */
+@media (max-width: 1200px) {
+    .hero-content { margin-left: clamp(20px, 25vw, 400px) !important; }
+}
+
+@media (max-width: 1100px) {
+    .hero-content { margin-left: clamp(20px, 20vw, 400px) !important; }
+}
+
+@media (max-width: 1000px) {
+    .hero-content { margin-left: clamp(10px, 15vw, 400px) !important; }
+}
+
+@media (max-width: 900px) {
+    .hero-content { margin-left: clamp(5px, 12vw, 400px) !important; }
+}
+
+@media (max-width: 850px) {
+    .hero-content { margin-left: clamp(5px, 10vw, 400px) !important; }
+}
+
+@media (max-width: 800px) {
+    .hero-content { margin-left: clamp(5px, 6vw, 400px) !important; }
+}
+
+@media (max-width: 770px) {
+    .hero-content { margin-left: clamp(5px, 2vw, 400px) !important; }
+}
+
+/* Ensure natural document flow between sections - ROBUST APPROACH */
+.hero {
+    min-height: auto !important;
+    height: auto !important;
+}
+
+.content {
+    position: relative !important;
+    clear: both !important;
+    z-index: 1 !important;
+}

@@ -112,6 +112,41 @@
     transition: all 0.3s ease;
 }
 
+/* Grid-based blob positioning */
+.news-grid-blob {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    opacity: 0.8;
+    filter: blur(0.5px);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    object-fit: contain;
+    align-self: center;
+}
+
+.blob-row1 {
+    justify-self: start; /* Align blob news2 to the left */
+    max-width: 450px;
+    margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+    transform: translateX(-20px); /* Additional offset to reach absolute edge */
+}
+
+.blob-row2 {
+    justify-self: end; /* Align blob news1 to the right */
+    max-width: 650px;
+    margin-right: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+    transform: translateX(20px); /* Additional offset to reach absolute edge */
+}
+
+.blob-row3 {
+    grid-column: span 2; /* Spans 2 columns like featured article */
+    max-width: 800px; /* Increased by 50% from 500px */
+    justify-self: start; /* Align blob news3 to the left */
+    margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+    transform: translateX(-20px); /* Additional offset to reach absolute edge */
+}
+
 /* Page specific styling */
 .page-title {
     color: #000000;
@@ -144,6 +179,44 @@
     
     .desktop-only {
         display: none; /* Hide desktop positioning divs on mobile */
+    }
+    
+    .news-grid-blob {
+        display: block; /* Show blobs on mobile, stacked between cards */
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    /* Mobile-only order rearrangement */
+    .blob-row1 { order: 2; } /* blob news2 -> position 2 */
+    .news-card:nth-child(2) { order: 1; } /* article 2 -> position 1 */
+    .news-card:nth-child(3) { order: 3; } /* article 3 -> position 3 */
+    .news-card.featured { order: 4; } /* featured -> position 4 */
+    .blob-row2 { order: 5; } /* blob news1 -> position 5 */
+    .news-card:nth-child(7) { order: 6; } /* article 1 -> position 6 */
+    .blob-row3 { order: 7; } /* blob news3 -> position 7 */
+    
+    .blob-row1 {
+        justify-self: start;
+        margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+        transform: translateX(-20px); /* Additional offset to reach absolute edge */
+        max-width: 300px; /* Smaller on mobile */
+    }
+    
+    .blob-row2 {
+        justify-self: end;
+        margin-right: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+        transform: translateX(20px); /* Additional offset to reach absolute edge */
+        max-width: 400px; /* Smaller on mobile */
+    }
+    
+    .blob-row3 {
+        grid-column: 1; /* Single column on mobile */
+        justify-self: start;
+        margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+        transform: translateX(-20px); /* Additional offset to reach absolute edge */
+        max-width: 450px; /* Smaller on mobile */
     }
     
     .news-content {
@@ -197,6 +270,33 @@
     
     .desktop-only {
         display: none; /* Hide desktop positioning divs */
+    }
+    
+    .news-grid-blob {
+        display: block; /* Show blobs on small mobile too */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* Keep same mobile order on small screens */
+    .blob-row1 { order: 2; } /* blob news2 -> position 2 */
+    .news-card:nth-child(2) { order: 1; } /* article 2 -> position 1 */
+    .news-card:nth-child(3) { order: 3; } /* article 3 -> position 3 */
+    .news-card.featured { order: 4; } /* featured -> position 4 */
+    .blob-row2 { order: 5; } /* blob news1 -> position 5 */
+    .news-card:nth-child(7) { order: 6; } /* article 1 -> position 6 */
+    .blob-row3 { order: 7; } /* blob news3 -> position 7 */
+    
+    .blob-row1 {
+        max-width: 250px; /* Even smaller on small mobile */
+    }
+    
+    .blob-row2 {
+        max-width: 320px; /* Even smaller on small mobile */
+    }
+    
+    .blob-row3 {
+        max-width: 380px; /* Even smaller on small mobile */
     }
     
     .news-content {

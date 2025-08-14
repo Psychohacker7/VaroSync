@@ -91,8 +91,8 @@
 
 /* Split section for Content 2 with image */
 .tech-content-section-split {
-    padding: 40px 0;
-    margin: 0 auto;
+    padding: 40px 20px;
+    margin: 0 20px;
 }
 
 .tech-split-container {
@@ -285,12 +285,56 @@
     font-weight: bold;
 }
 
+/* Technology blob positioning for smaller screens */
+@media (max-width: 1000px) {
+    /* Hide background-layer tech blob 3 on small screens */
+    .background-blobs--technology .blob-3 {
+        display: none !important;
+    }
+    /* Show inline blob between hero and video */
+    .tech-inline-blob-3 {
+        display: flex !important;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 16px 0 8px 0;
+        padding-left: 0;
+        pointer-events: none;
+    }
+    .tech-inline-blob-3 img {
+        width: clamp(160px, 34vw, 280px);
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+/* Specific viewport range 768px to 1000px */
+@media (min-width: 768px) and (max-width: 1000px) {
+    /* Position technology1 blob at top: 2300px */
+    .background-blobs--technology .blob-1 {
+        top: 2200px !important;
+    }
+    
+    /* Reduce orange side space by 40px - ONLY for the first content block */
+    .tech-content-section .tech-content-inner {
+        margin-left: 350px !important; /* Was 450px, reduced by 40px */
+    }
+}
+
+/* For viewports bigger than 1120px */
+@media (min-width: 1120px) {
+    /* Position technology3 blob at top: 700px */
+    .background-blobs--technology .blob-3 {
+        top: 650px !important;
+    }
+}
+
 /* Mobile responsive behavior */
 @media (max-width: 768px) {
     .hero {
         height: auto;
         min-height: calc(100vh - 80px);
-        padding: 120px 0 80px 0;
+        padding: 120px 0 0 0 !important;
+        margin-bottom: 0 !important;
         align-items: flex-start;
         justify-content: flex-start;
     }
@@ -343,6 +387,28 @@
         max-width: 100%;
         margin: 0 auto;
         padding: 0 2px;
+    }
+    
+    /* Mobile: Hide background technology1 blob and show inline version */
+    .background-blobs--technology .blob-1 {
+        display: none !important;
+    }
+    
+    /* Mobile: Show inline technology1 blob after text content */
+    .tech-inline-blob-1 {
+        display: flex !important;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 16px 0 8px 0;
+        padding-left: 0;
+        pointer-events: none;
+        transform: translateX(-2px);
+    }
+    
+    .tech-inline-blob-1 img {
+        width: clamp(250px, 50vw, 400px);
+        height: auto;
+        object-fit: contain;
     }
     
     .tech-split-container {

@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import BackgroundBlobs from '../components/BackgroundBlobs.tsx'
 import '../styles/css/news.css'
 
 const News = () => {
@@ -74,12 +73,15 @@ const News = () => {
         }}
         aria-hidden="true"
       />
-      <BackgroundBlobs page="news" />
       <section className="content">
         <div className="news-header-section">&nbsp;</div>
         <div className="news-grid">
-          {/* Desktop layout with empty divs for positioning */}
-          <div className="desktop-only"></div>
+          {/* ROW 1: blob news2.png in first position */}
+          <img 
+            src="/assets/images/news2.png" 
+            alt="" 
+            className="news-grid-blob blob-row1"
+          />
           {blogPosts.slice(1, 3).map((post) => (
             <article key={post.id} className="news-card">
               <div className="news-content">
@@ -110,11 +112,19 @@ const News = () => {
               </div>
             </div>
           </article>
-          <div className="desktop-only"></div>
+          {/* ROW 2: blob news1.png in third position */}
+          <img 
+            src="/assets/images/news1.png" 
+            alt="" 
+            className="news-grid-blob blob-row2"
+          />
 
-          {/* Empty positioning divs for desktop */}
-          <div className="desktop-only"></div>
-          <div className="desktop-only"></div>
+          {/* ROW 3: blob news3.png spans 2 columns */}
+          <img 
+            src="/assets/images/news3.png" 
+            alt="" 
+            className="news-grid-blob blob-row3"
+          />
           <article className="news-card">
             <div className="news-content">
               <div className="news-header">
