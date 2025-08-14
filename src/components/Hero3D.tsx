@@ -183,7 +183,7 @@ const Hero3D = () => {
               animate(performance.now())
             }
           },
-          (progress) => {
+          () => {
             // Optional: Add loading progress indicator
           },
           (error) => {
