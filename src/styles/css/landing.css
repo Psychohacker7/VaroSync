@@ -560,6 +560,15 @@
 
 /* Viewport less than 768px */
 @media (max-width: 767px) {
+  /* Fix horizontal overflow on mobile */
+  .landing-content-section {
+    width: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
   .background-blobs--landing .blob-1 {
     display: none !important; /* Hide the original blob-1 to prevent duplicates */
   }
