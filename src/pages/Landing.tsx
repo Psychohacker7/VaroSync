@@ -43,7 +43,7 @@ const Landing = () => {
                 <div className="el extra-pad-bottom" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, transitionTimingFunction: 'ease'}}>
                   <div className="flex-horizontal">
                     <div className="news-image-module-image-wrap flex-child-grow">
-                      <h1 className="type-h1">Pioneering a new dimension in drug development</h1>
+                      <h1 className="type-h1">Dynamic models for designing precision molecules</h1>
                     </div>
                     <div className="flex-w-child-50 tablet-hidden"></div>
                   </div>
@@ -62,7 +62,7 @@ const Landing = () => {
                 <div className="el hero-text-el" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, height: '100%', transitionTimingFunction: 'ease'}}>
                   <div className="news-image-module-image-wrap flex-bottom-left">
                     <div className="max-w-66 max-w-560px">
-                      <p className="type-xl">We're entering a new era in medicine where inference-based computational methods reveal hidden biological signals, enabling faster breakthroughs and more precisely targeted therapies. At Varosync, we're building that future.</p>
+                      <p className="type-xl">We're entering a new era where inference-based computational methods uncover a new layer of intelligence in molecular design. At Varosync, we're building that future.</p>
                     </div>
                   </div>
                   <div className="animate-parent">
@@ -258,12 +258,6 @@ const Landing = () => {
               className="landing-content-img-plain"
               loading="lazy"
             />
-            <img
-              src="/assets/images/partnerc.png"
-              alt="Partner company 3"
-              className="landing-content-img-plain"
-              loading="lazy"
-            />
           </div>
         </div>
       </section>
@@ -272,6 +266,7 @@ const Landing = () => {
       <section className="landing-content-section">
         <div className="landing-recognized-container">
           <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Recognized by</h2>
+          <div style={{ height: '12px' }}></div>
           <div className="landing-recognized-grid">
             <img
               src="/assets/images/inceptionlogo.svg"
@@ -287,10 +282,18 @@ const Landing = () => {
               loading="lazy"
             />
             <img
-              src="/assets/images/Foundrins.png"
-              alt="Foundrins logo"
+              src="/assets/images/nsf-icorps.png"
+              alt="Nsf-icorps logo"
               className="landing-content-img-plain"
               loading="lazy"
+              style={{ transform: 'scale(1.5)', transformOrigin: 'center' }}
+            />
+            <img
+              src="/assets/images/theventures.svg"
+              alt="The Ventures logo"
+              className="landing-content-img-plain"
+              loading="lazy"
+              style={{ transform: 'scale(1.3)', transformOrigin: 'center' }}
             />
           </div>
         </div>
