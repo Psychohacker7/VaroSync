@@ -1,4 +1,4 @@
-const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif';
+const fontFamily = 'var(--font-family)';
 const columnTitleStyle = { fontWeight: 650, marginBottom: 8, color: '#fff', fontSize: 16, letterSpacing: 0.5, fontFamily };
 const linkStyle = { color: '#fff', textDecoration: 'none', fontWeight: 400, fontSize: 15, opacity: 0.92, fontFamily };
 

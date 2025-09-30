@@ -259,7 +259,7 @@
 
 .content-blob {
     /* Position in upper area with text (first row) */
-    top: -350px; /* Move blob even higher up relative to text */
+    top: -200px; /* Move blob down by 150px (was -350px) */
     right: 20px; /* Remove transform that was causing overflow */
     transform: translateX(6.5%);
     z-index: 0; /* Behind content but visible */

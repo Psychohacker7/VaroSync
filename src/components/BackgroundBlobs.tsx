@@ -36,15 +36,15 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
         
         if (page === 'landing') {
           if (index === 0) {
-            style.top = '2400px';  // Base value - overridden by media queries
+            style.top = '1650px';  // Base value - overridden by media queries
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 400px)';
           } else if (index === 1) {
-            style.top = '1750px';  // Base value - overridden by media queries
+            style.top = '1250px';  // Base value - overridden by media queries
             style.right = '0%';
             style.width = 'clamp(200px, 40vw, 400px)';
           } else if (index === 2) {
-            style.top = '900px';   // Base value - overridden by media queries
+            style.top = '400px';   // Base value - overridden by media queries
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 400px)';
           }

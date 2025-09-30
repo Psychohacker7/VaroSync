@@ -554,7 +554,7 @@
   .mobile-blob-image-left {
     width: clamp(300px, 40vw, 500px);
     height: auto;
-    margin: 0;
+    margin: -100px 0 0 0;
     padding: 0;
   }
 }
@@ -570,6 +570,18 @@
     padding-right: 20px !important;
   }
   
+  /* Move the first landing-content-section (with "ability to engineer matter" text) closer to hero */
+  .landing-content-section:first-of-type {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+
+  /* Move the partners by section closer to hero */
+  .landing-partners-container {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+
   .background-blobs--landing .blob-1 {
     display: none !important; /* Hide the original blob-1 to prevent duplicates */
   }
@@ -579,25 +591,68 @@
   }
   
   .background-blobs--landing .blob-3 {
-    top: 0px !important;
-    left: 0px !important;
+    top: 300px !important;
+    left: -35px !important;
   }
 }
 
 /* Viewport between 769px and 900px */
 @media (min-width: 769px) and (max-width: 900px) {
   .background-blobs--landing .blob-3 {
-    top: 50px !important;
+    top: 100px !important;
     right: 0px !important;
     left: auto !important;
     transform: scaleX(-1) !important; /* Flip horizontally */
   }
+  .background-blobs--landing .blob-2 {
+    top: 1400px !important;
+    left: 0px !important;
+    right: auto !important;
+    transform: scaleX(-1) !important;
+  }
+  .background-blobs--landing .blob-1 {
+    top: 1900px !important;
+    right: 0px !important;
+    left: auto !important;
+    transform: scaleX(-1) !important;
+  }
 }
 
-/* Viewport greater than 900px */
-@media (min-width: 901px) {
+/* iPad Pro and similar tablet sizes */
+@media (min-width: 901px) and (max-width: 1200px) {
   .background-blobs--landing .blob-3 {
     top: 900px !important;
+    left: -10px !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  .background-blobs--landing .blob-2 {
+    top: 1400px !important;
+    right: 0px !important;
+    left: auto !important;
+    transform: none !important;
+  }
+  .background-blobs--landing .blob-1 {
+    top: 1800px !important;
+    left: 0px !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  
+  /* Shrink recognized by images on narrow viewports */
+  .landing-recognized-grid .landing-content-img-plain {
+    max-width: 160px !important;
+  }
+  
+  .landing-recognized-grid {
+    gap: 10px !important;
+  }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 1201px) {
+  .background-blobs--landing .blob-3 {
+    top: 700px !important;
     left: 0px !important;
     right: auto !important;
     transform: none !important;

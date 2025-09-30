@@ -190,44 +190,11 @@ const Landing = () => {
                 width: '100%',
               }}
             >
-              <p className="landing-content-body" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>
-                Varosync is redefining the foundations of drug development while addressing complex patient needs across a range of therapeutic areas. We pursue innovation not through haste but clarity, ensuring every decision is guided by rigorous science and translational relevance. A smarter approach to drug development...
-              </p>
-              <br />
-              <p className="landing-content-body" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>
-              ... using intelligence and insight. As the science of discovery advances, the translation of molecular insight into viable therapies remains constrained by biological variability and complexity of real world data. We believe that the solution lies in decoding the process. By integrating artificial intelligence with heterogeneous clinical datasets, we uncover latent physiological patterns. By resolving hidden variability in patient response, we strengthen the bridge between molecular potential and clinical efficacy.
-              </p>
+              <p className="landing-content-body" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: 'var(--font-family)' }}>
+                <br />
+                <br />
+              The ability to engineer matter at the molecular level demands a new class of instrument. One that operates beyond static blueprints, providing a computational environment where the complex motion of proteins becomes a deterministic design parameter. It is a system designed to augment scientific intuition, enabling our partners to build the molecular technologies of the future.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mobile blob section - only visible on mobile */}
-      <section className="mobile-blob-section">
-        <img
-          src="/assets/images/landing2.png"
-          alt="Mobile blob decoration"
-          className="mobile-blob-image"
-        />
-      </section>
-
-      {/* Funnel section */}
-      <section className="landing-content-section">
-        <div className="funnel-grid">
-          <div className="funnel-cell funnel-image-cell">
-            <img
-              src="/assets/images/funnelopt.png"
-              alt="Intelligence and insight visualization"
-              className="funnel-image"
-              loading="lazy"
-            />
-          </div>
-          <div className="funnel-cell funnel-empty-cell"></div>
-          <div className="funnel-cell funnel-empty-cell"></div>
-          <div className="funnel-cell funnel-text-cell">
-            <p className="funnel-text" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>
-              Our research engine is designed to navigate the vast and noisy landscape of drug discovery. By systematically evaluating countless molecular starting points against deep biological context, we distill an overwhelming number of possibilities into a focused set of validated, high-conviction targets. This process doesn't just find signals; it clarifies the path to developing medicines that matter.
-            </p>
           </div>
         </div>
       </section>
@@ -244,7 +211,7 @@ const Landing = () => {
       {/* Partners section */}
       <section className="landing-content-section">
         <div className="landing-partners-container">
-          <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Our Partners</h2>
+          <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: 'var(--font-family)' }}>Our Partners</h2>
           <div className="landing-partners-grid">
             <img
               src="/assets/images/partnera.png"
@@ -265,7 +232,7 @@ const Landing = () => {
       {/* Recognized by section */}
       <section className="landing-content-section">
         <div className="landing-recognized-container">
-          <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Recognized by</h2>
+          <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: 'var(--font-family)' }}>Recognized by</h2>
           <div style={{ height: '12px' }}></div>
           <div className="landing-recognized-grid">
             <img
@@ -423,13 +390,13 @@ const Landing = () => {
         }
 
         .type-h1 {
-          font-size: 4rem;
+          font-size: 3.8rem;
           font-weight: 300;
           line-height: 1.2;
           color: #000;
           margin-bottom: 0;
           letter-spacing: -0.02em;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          font-family: var(--font-family);
         }
 
         .type-xl {
@@ -438,7 +405,7 @@ const Landing = () => {
           color: #000;
           font-weight: 300;
           margin-top: 0;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+          font-family: var(--font-family);
         }
 
         .max-w-66 {
@@ -476,109 +443,6 @@ const Landing = () => {
 
         .el-empty {
           min-height: 0;
-        }
-
-        /* Funnel Grid Layout */
-        .funnel-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
-          gap: 40px;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
-
-        .funnel-cell {
-          border: 1px solid black;
-          border-radius: 16px;
-          padding: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .funnel-image-cell {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .funnel-image {
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain;
-        }
-
-        .funnel-text-cell {
-          display: flex;
-          align-items: flex-center;
-          justify-content: flex-start;
-          padding: 0 0 30 30 px;
-        }
-
-        .funnel-text {
-          margin: 0;
-          line-height: 1.6;
-        }
-
-        .funnel-empty-cell {
-          border: none;
-        }
-
-        /* Fix image scaling issue - force proper sizing */
-        .funnel-image-cell {
-          width: 100% !important;
-          height: auto !important;
-          min-height: 0 !important;
-          max-height: 400px !important;
-        }
-
-        .funnel-image {
-          max-width: 100% !important;
-          width: 100% !important;
-          height: auto !important;
-          max-height: 350px !important;
-          object-fit: contain !important;
-          display: block !important;
-        }
-
-        /* Mobile vertical stack - force single column */
-        @media (max-width: 768px) {
-          .funnel-grid {
-            display: grid !important;
-            grid-template-columns: 1fr !important;
-            grid-template-rows: auto auto !important;
-            gap: 30px !important;
-            padding: 0 15px !important;
-          }
-
-          .funnel-empty-cell {
-            display: none !important;
-          }
-
-          .funnel-cell {
-            padding: 15px !important;
-          }
-
-          .funnel-image-cell {
-            max-height: 500px !important;
-          }
-
-          .funnel-image {
-            max-height: 450px !important;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .funnel-grid {
-            gap: 20px;
-            padding: 0 10px;
-          }
-
-          .funnel-cell {
-            padding: 10px;
-          }
         }
 
         /* Hide animation control elements */

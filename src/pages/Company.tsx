@@ -37,18 +37,17 @@ const Company = () => {
               fontWeight: '300',
               margin: 0,
               color: '#000000',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif'
+              fontFamily: 'var(--font-family)'
             }}>
               Solving the attrition problem
             </h1>
           </div>
           <div className="hero-text-container" style={{ paddingBottom: '0px' }}>
-            <p className="page-subtitle" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>
-              Varosync was founded with a singular, clear-sighted ambition: to deliver transformative medicines that address the underlying drivers of disease. We believe the next frontier in human health lies in understanding and modulating the essential, dynamic processes that govern cellular function. Our purpose is to translate this profound biological understanding into a new generation of therapeutics, offering hope where there was none and pursuing treatments for some of the world's most challenging illnesses.
-            </p>
-            <p className="page-subtitle" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>
-              Every day, with each new breakthrough, we're getting closer to achieving our ambitious mission to establish a new standard of care with the help of artificial intelligence.
-            </p>
+            <p className="page-subtitle" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: 'var(--font-family)' }}>
+Varosync was founded to build the definitive computational engine for the next era of molecular design. Our mission is to overcome the limitations of static tools, enabling the design of precision molecules against the world's most challenging protein targets.
+Our core belief is that a true understanding of molecular systems is dynamic. The frontier lies not in static observation, but in computing the complex conformational motions of proteins. Within these rare, transitional states lie the most significant design opportunities. These states were previously invisible to researchers.</p>
+            <p className="page-subtitle" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: 'var(--font-family)' }}>
+             Our purpose is to translate deep computational understanding into decisive insights. We are committed to refining this technology to empower the scientific community, accelerating discovery, and redefining what is possible in molecular engineering.</p>
           </div>
         </div>
       </section>
@@ -57,8 +56,8 @@ const Company = () => {
         <div className="content-with-image">
           <div className="company-info">
             <div className="partnership">
-            <h2 style={{ fontSize: '2.2rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Partnerships that push boundaries </h2>
-            <p style={{ fontSize: '1.2rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' }}>Our culture of collaboration reaches well beyond our own walls and forms the foundation of every partnership, whether with pharmaceutical firms, biotechs, CROs, or other forward-thinking innovators. Our partnerships bring us together in pursuit of a common aim to develop medicines for those who need them most. Transformative discoveries demand tenacity, bold thinking, and true collaboration. That's why we champion rigorous, high-potential science at every stage, applying our expertise to help turn ambitious ideas into tangible breakthroughs.</p>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '300', fontFamily: 'var(--font-family)' }}>Partnerships that push boundaries </h2>
+            <p style={{ fontSize: '1.2rem', fontWeight: '300', fontFamily: 'var(--font-family)' }}>Our culture of collaboration reaches well beyond our own walls and forms the foundation of every partnership, whether with pharmaceutical firms, biotechs, CROs, or other forward-thinking innovators. Our partnerships bring us together in pursuit of a common aim to develop medicines for those who need them most. Transformative discoveries demand tenacity, bold thinking, and true collaboration. That's why we champion rigorous, high-potential science at every stage, applying our expertise to help turn ambitious ideas into tangible breakthroughs.</p>
             
             {/* Company3 blob positioned naturally after text */}
             <img 

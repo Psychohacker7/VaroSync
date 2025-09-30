@@ -48,8 +48,8 @@ const Technology = () => {
     }
   }, [])
 
-  const fontStyle = { fontSize: '1.5rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' };
-  const content2FontStyle = { fontSize: '1.35rem', fontWeight: '300', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif' };
+  const fontStyle = { fontSize: '1.5rem', fontWeight: '300', fontFamily: 'var(--font-family)' };
+  const content2FontStyle = { fontSize: '1.35rem', fontWeight: '300', fontFamily: 'var(--font-family)' };
 
   return (
     <>
@@ -84,15 +84,14 @@ const Technology = () => {
               fontWeight: '300',
               margin: 0,
               color: '#000000',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif'
+              fontFamily: 'var(--font-family)'
             }}>
-              Deconstructing biology's source code
+              Agentic orchestation of biological complexity
             </h1>
           </div>
           <div className="hero-text-container" style={{ paddingBottom: '0px' }}>
             <p className="page-subtitle" style={fontStyle}>
-              At the heart of our research and development lies a powerful, dual-pronged philosophy: to first understand the intricate complexity of human biology with unprecedented clarity, and then to rationally design and develop therapeutics of remarkable precision. We have cultivated a technology ecosystem that converges predictive, AI-driven science with a versatile, multi-modal therapeutic engine.
-            </p>
+              We decode the dynamic behavior that determines protein function. Our multi-agent engine combines knowledge-grounded encoders with massively parallel molecular dynamics to map rare conformational states and reveal functional insights invisible to static structure analysis. This generates precision targets and binding strategies for biology's hardest problems.</p>
           </div>
         </div>
       </section>
@@ -131,11 +130,9 @@ const Technology = () => {
         <div className="tech-content-block">
           <div className="tech-content-inner">
             <p style={fontStyle}>
-              Varosync is building a new kind of engine, one that bridges biological complexity with computational clarity. Our platform integrates advanced machine learning with real-world data to uncover latent physiological signals and guide therapeutic design with greater precision.
-            </p>
+            Proteins breathe and shift through constant motion. Critical conformational changes emerge and vanish within microseconds, such as transient states  and binding competent geometries. Traditional methods struggle to capture these dynamic events at the necessary resolution and scale.</p>
             <p style={fontStyle}>
-              By modelling multiscale biological processes ranging from gene expression dynamics to drug metabolism and tissue-level pharmacokinetics. We infer patient-specific trajectories that reflect the true heterogeneity of disease. Using deep learning to capture nonlinear interactions between molecular pathways, physiological rhythms, and external interventions. enabling the prediction of therapeutic outcomes with greater temporal and mechanistic resolution.
-            </p>
+              At the heart of our engine is a multi-agent workflow that explores high-dimensional conformational landscapes. Strategic retrievals leverage knowledge-grounded encoders to generate hypotheses about functional pathways from biological data and literature. These insights direct empirical agents to execute adaptive molecular dynamics simulations, efficiently sampling rare states where mechanistic insight emerges. Each cycle refines the system's predictive models, accelerating the path from hypothesis to validated biological understanding </p>
           </div>
           
           {/* Inline technology1 blob for mobile - positioned after text */}
@@ -153,11 +150,7 @@ const Technology = () => {
             <div className="tech-content-left-boxed">
               <div className="tech-content-inner">
                 <p style={content2FontStyle}>
-                  Our computational platform integrates diverse data streams to model complex biological systems. By combining machine learning with mechanistic modeling, we can predict how drugs will interact with biological targets and optimize therapeutic outcomes.
-                </p>
-                <p style={content2FontStyle}>
-                  The platform enables us to rapidly iterate through potential drug candidates, identifying those with the highest likelihood of success while minimizing potential side effects. This approach accelerates the drug development process while maintaining rigorous scientific standards.
-                </p>
+                The engine delivers high-confidence functional annotations and intervention strategies with atomic-level precision. By integrating learned biological priors with insights from scientific literature, we explore alternative conformational pathways and reveal design opportunities overlooked by structure-centric methods.</p>
               </div>
             </div>
           </div>
