@@ -11,33 +11,33 @@ const News = () => {
   const blogPosts = [
     {
       id: 1,
-      date: "2024",
-      title: "AI Powers a New Era of Drug Discovery and Development",
-      author: "Nature",
-      excerpt: "This article discusses how the integration of artificial intelligence (AI) and big data is revolutionizing the drug discovery process. By combining AI with expert knowledge, pharmaceutical companies are accelerating the development of more effective medicines, reducing the time and cost traditionally associated with bringing new drugs to market. This hybrid approach is poised to provide new treatment options for patients worldwide.",
-      category: "Research",
+      date: "2025",
+      title: "Member of VentureCrush by Lowenstein Sandler",
+      excerpt: "We're excited to join VentureCrush by Lowenstein Sandler, a premier accelerator program that will help us scale our AI solutions for drug discovery and connect with key industry partners.",
+      category: "Accelerator",
       size: "large",
-      url: "https://www.nature.com/articles/d42473-024-00250-9"
+      url: "https://www.venturecrush.com",
+      image: "/assets/images/Venturecrush.jpeg"
     },
     {
       id: 2,
-      date: "2023",
-      title: "Molecular Free Energies, Rates, and Mechanisms from Data-Efficient Path Sampling Simulations",
-      author: "Journal of Chemical Theory and Computation (ACS)",
-      excerpt: "This paper introduces a data-efficient method for exploring reaction pathways and free energy surfaces using machine learning-enhanced path sampling. It highlights how physical priors and statistical inference can reduce simulation costs while improving mechanistic fidelity—an approach that aligns closely with our interest in model-driven simulations of pharmacokinetics and biomolecular interactions.",
-      category: "Research",
+      date: "2025",
+      title: "Presenting at MIT MoML Conference",
+      excerpt: "Varosync has been selected to present at the prestigious MIT MoML (Machine Learning for Molecular Discovery) conference. We'll be sharing our latest advances in AI-driven pharmaceutical research.",
+      category: "Conference",
       size: "medium",
-      url: "https://pubs.acs.org/doi/10.1021/acs.jctc.3c00821"
+      url: "https://www.moml.mit.edu",
+      image: "/assets/images/MoML.png"
     },
     {
       id: 3,
-      date: "2024",
-      title: "Starfysh Integrates Spatial Transcriptomic and Histologic Data to Reveal Heterogeneous Tumour–Immune Hubs",
-      author: "Nature Biotechnology",
-      excerpt: "This study introduces Starfysh, a computational framework that combines spatial transcriptomic data with histological context to identify cellular neighbourhoods within the tumour microenvironment. The method enables high-resolution mapping of tumour–immune interactions, uncovering functional hubs that are invisible to conventional analysis. For Varosync, this illustrates the power of integrative modelling in resolving biological heterogeneity.",
-      category: "Research",
+      date: "2025",
+      title: "Best AI Solution at The Ventures NYC Global Startup Awards",
+      excerpt: "We're thrilled to announce that Varosync has been recognized as the Best AI Solution at The Ventures NYC Global Startup Awards. This recognition validates our commitment to revolutionizing drug discovery through innovative AI technologies.",
+      category: "Awards",
       size: "medium",
-      url: "https://www.nature.com/articles/s41587-024-02173-8"
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7379005266127900672",
+      image: "/assets/images/theventures.png"
     },
     {
       id: 4,
@@ -90,6 +90,22 @@ const News = () => {
                   <h3 className="news-title" style={{ fontFamily }}>{post.title}</h3>
                   <p className="news-author" style={{ fontFamily }}>{post.author}</p>
                 </div>
+                {post.image && (
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    style={{
+                      width: '100%',
+                      maxHeight: '230px',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      borderRadius: '12px',
+                      marginBottom: '8px',
+                      clipPath: 'inset(0 round 12px)',
+                      display: 'block'
+                    }}
+                  />
+                )}
                 <div className="news-footer">
                   <p className="news-excerpt" style={{ fontFamily }}>{post.excerpt}</p>
                   <a href={post.url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
@@ -132,6 +148,22 @@ const News = () => {
                 <h3 className="news-title" style={{ fontFamily }}>{blogPosts[0].title}</h3>
                 <p className="news-author" style={{ fontFamily }}>{blogPosts[0].author}</p>
               </div>
+              {blogPosts[0].image && (
+                <img 
+                  src={blogPosts[0].image} 
+                  alt={blogPosts[0].title}
+                  style={{
+                    width: '100%',
+                    maxHeight: '300px',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    borderRadius: '12px',
+                    marginBottom: '8px',
+                    clipPath: 'inset(0 round 12px)',
+                    display: 'block'
+                  }}
+                />
+              )}
               <div className="news-footer">
                 <p className="news-excerpt" style={{ fontFamily }}>{blogPosts[0].excerpt}</p>
                 <a href={blogPosts[0].url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
