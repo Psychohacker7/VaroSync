@@ -11,44 +11,74 @@ const News = () => {
   const blogPosts = [
     {
       id: 1,
-      date: "2025",
-      title: "Member of VentureCrush by Lowenstein Sandler",
-      excerpt: "We're excited to join VentureCrush by Lowenstein Sandler, a premier accelerator program that will help us scale our AI solutions for drug discovery and connect with key industry partners.",
+      date: "Nov 2025",
+      title: "Invited to present at Nvidia HQ after the Evolved Hackathon",
+      excerpt: "We're thrilled to have secured runner-up at the Evolved hackathon, earning us an invitation to present our solution at Nvidia's headquarters in December.",
+      category: "Awards",
+      size: "medium",
+      url: "https://www.evolvedtechnology.org",
+      image: "/assets/images/evolved.png"
+    },
+    {
+      id: 2,
+      date: "Nov 2025",
+      title: "First Place at AWS Generative AI Hackathon NYC",
+      excerpt: "Varosync took home first place at the AWS Generative AI Hackathon in New York City, competing alongside some of the brightest minds in agentic AI innovation.",
+      category: "Awards",
+      size: "medium",
+      url: "https://aws.amazon.com/startups/events/aws-agentic-ai-hackathon-nyc2025",
+      image: "/assets/images/aws.png"
+    },
+    {
+      id: 3,
+      date: "Nov 2025",
+      title: "Runner-Up at AWS Heidi Health Hackathon",
+      excerpt: "Our healthcare AI solution earned runner-up honours at the Heidi Health Hackathon in San Francisco, showcasing the impact of our technology in transforming patient care.",
+      category: "Awards",
+      size: "medium",
+      url: "https://events.humanitix.com/heidibuild-san-francisco",
+      image: "/assets/images/heidii.png"
+    },
+    {
+      id: 4,
+      date: "Oct 2025",
+      title: "Joined VentureCrush by Lowenstein Sandler",
+      excerpt: "We're proud to join VentureCrush, Lowenstein Sandler's premier accelerator programme, where we'll scale our pharmaceutical AI solutions alongside exceptional industry partners.",
       category: "Accelerator",
       size: "large",
       url: "https://www.venturecrush.com",
       image: "/assets/images/Venturecrush.jpeg"
     },
     {
-      id: 2,
-      date: "2025",
-      title: "Presenting at MIT MoML Conference",
-      excerpt: "Varosync has been selected to present at the prestigious MIT MoML (Machine Learning for Molecular Discovery) conference. We'll be sharing our latest advances in AI-driven pharmaceutical research.",
+      id: 5,
+      date: "Oct 2025",
+      title: "Presenting at MIT's MoML Conference",
+      excerpt: "Varosync will present our latest advances in AI-driven drug discovery at MIT's Machine Learning for Molecular Discovery conference, joining leading researchers in computational science.",
       category: "Conference",
       size: "medium",
       url: "https://www.moml.mit.edu",
       image: "/assets/images/MoML.png"
     },
     {
-      id: 3,
-      date: "2025",
+      id: 6,
+      date: "Oct 2025",
       title: "Best AI Solution at The Ventures NYC Global Startup Awards",
-      excerpt: "We're thrilled to announce that Varosync has been recognized as the Best AI Solution at The Ventures NYC Global Startup Awards. This recognition validates our commitment to revolutionizing drug discovery through innovative AI technologies.",
+      excerpt: "Varosync received the Best AI Solution award at The Ventures NYC Global Startup Awards, recognising our work in revolutionising pharmaceutical research through innovative AI.",
       category: "Awards",
       size: "medium",
       url: "https://www.linkedin.com/feed/update/urn:li:activity:7379005266127900672",
       image: "/assets/images/theventures.png"
     },
     {
-      id: 4,
-      date: "2025",
+      id: 7,
+      date: "Jul 2025",
       title: "Introducing Varosync",
       author: "",
       excerpt: "As we shape the future of pharma, we're proud to introduce Varosync.",
       category: "Tech",
       size: "medium",
       url: "https://www.varosync.com"
-    },
+    }
   ];
 
   return (
@@ -76,11 +106,40 @@ const News = () => {
       <section className="content">
         <div className="news-header-section">&nbsp;</div>
         <div className="news-grid">
-          {/* ROW 1: blob news2.png in first position */}
+          {/* ROW 1: Featured card (ID 1) spans 2 columns, blob news2.png (flipped) in third position */}
+          <article className="news-card featured">
+            <div className="news-content">
+              <div className="news-header">
+                <span className="news-category-date" style={{ fontFamily }}>{blogPosts[0].category} • {blogPosts[0].date}</span>
+                <h2 className="news-title" style={{ fontFamily }}>{blogPosts[0].title}</h2>
+                {blogPosts[0].author && <p className="news-author" style={{ fontFamily }}>{blogPosts[0].author}</p>}
+              </div>
+              {blogPosts[0].image && (
+                <div className="news-image-container">
+                  <img 
+                    src={blogPosts[0].image} 
+                    alt={blogPosts[0].title}
+                    className="news-card-image"
+                  />
+                </div>
+              )}
+              <div className="news-footer">
+                <p className="news-excerpt" style={{ fontFamily }}>{blogPosts[0].excerpt}</p>
+                <a href={blogPosts[0].url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
+              </div>
+            </div>
+          </article>
           <img 
             src="/assets/images/news2.png" 
             alt="" 
             className="news-grid-blob blob-row1"
+          />
+
+          {/* ROW 2: blob news1.png (flipped) in first position, followed by two cards (ID 2, ID 3) */}
+          <img 
+            src="/assets/images/news1.png" 
+            alt="" 
+            className="news-grid-blob blob-row2"
           />
           {blogPosts.slice(1, 3).map((post) => (
             <article key={post.id} className="news-card">
@@ -91,20 +150,13 @@ const News = () => {
                   <p className="news-author" style={{ fontFamily }}>{post.author}</p>
                 </div>
                 {post.image && (
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    style={{
-                      width: '100%',
-                      maxHeight: '230px',
-                      height: 'auto',
-                      objectFit: 'contain',
-                      borderRadius: '12px',
-                      marginBottom: '8px',
-                      clipPath: 'inset(0 round 12px)',
-                      display: 'block'
-                    }}
-                  />
+                  <div className="news-image-container">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="news-card-image"
+                    />
+                  </div>
                 )}
                 <div className="news-footer">
                   <p className="news-excerpt" style={{ fontFamily }}>{post.excerpt}</p>
@@ -114,28 +166,75 @@ const News = () => {
             </article>
           ))}
 
-          {/* Featured card */}
-          <article className="news-card featured">
+          {/* ROW 3: Three cards (ID 4, ID 5, ID 6) */}
+          <article className="news-card">
             <div className="news-content">
               <div className="news-header">
                 <span className="news-category-date" style={{ fontFamily }}>{blogPosts[3].category} • {blogPosts[3].date}</span>
-                <h2 className="news-title" style={{ fontFamily }}>{blogPosts[3].title}</h2>
-                {blogPosts[3].author && <p className="news-author" style={{ fontFamily }}>{blogPosts[3].author}</p>}
+                <h3 className="news-title" style={{ fontFamily }}>{blogPosts[3].title}</h3>
+                <p className="news-author" style={{ fontFamily }}>{blogPosts[3].author}</p>
               </div>
+              {blogPosts[3].image && (
+                <div className="news-image-container">
+                  <img 
+                    src={blogPosts[3].image} 
+                    alt={blogPosts[3].title}
+                    className="news-card-image"
+                  />
+                </div>
+              )}
               <div className="news-footer">
                 <p className="news-excerpt" style={{ fontFamily }}>{blogPosts[3].excerpt}</p>
                 <a href={blogPosts[3].url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
               </div>
             </div>
           </article>
-          {/* ROW 2: blob news1.png in third position */}
-          <img 
-            src="/assets/images/news1.png" 
-            alt="" 
-            className="news-grid-blob blob-row2"
-          />
+          <article className="news-card">
+            <div className="news-content">
+              <div className="news-header">
+                <span className="news-category-date" style={{ fontFamily }}>{blogPosts[4].category} • {blogPosts[4].date}</span>
+                <h3 className="news-title" style={{ fontFamily }}>{blogPosts[4].title}</h3>
+                <p className="news-author" style={{ fontFamily }}>{blogPosts[4].author}</p>
+              </div>
+              {blogPosts[4].image && (
+                <div className="news-image-container">
+                  <img 
+                    src={blogPosts[4].image} 
+                    alt={blogPosts[4].title}
+                    className="news-card-image"
+                  />
+                </div>
+              )}
+              <div className="news-footer">
+                <p className="news-excerpt" style={{ fontFamily }}>{blogPosts[4].excerpt}</p>
+                <a href={blogPosts[4].url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
+              </div>
+            </div>
+          </article>
+          <article className="news-card">
+            <div className="news-content">
+              <div className="news-header">
+                <span className="news-category-date" style={{ fontFamily }}>{blogPosts[5].category} • {blogPosts[5].date}</span>
+                <h3 className="news-title" style={{ fontFamily }}>{blogPosts[5].title}</h3>
+                <p className="news-author" style={{ fontFamily }}>{blogPosts[5].author}</p>
+              </div>
+              {blogPosts[5].image && (
+                <div className="news-image-container">
+                  <img 
+                    src={blogPosts[5].image} 
+                    alt={blogPosts[5].title}
+                    className="news-card-image"
+                  />
+                </div>
+              )}
+              <div className="news-footer">
+                <p className="news-excerpt" style={{ fontFamily }}>{blogPosts[5].excerpt}</p>
+                <a href={blogPosts[5].url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
+              </div>
+            </div>
+          </article>
 
-          {/* ROW 3: blob news3.png spans 2 columns */}
+          {/* ROW 4: blob news3.png spans 2 columns, followed by one card (ID 7) */}
           <img 
             src="/assets/images/news3.png" 
             alt="" 
@@ -144,29 +243,22 @@ const News = () => {
           <article className="news-card">
             <div className="news-content">
               <div className="news-header">
-                <span className="news-category-date" style={{ fontFamily }}>{blogPosts[0].category} • {blogPosts[0].date}</span>
-                <h3 className="news-title" style={{ fontFamily }}>{blogPosts[0].title}</h3>
-                <p className="news-author" style={{ fontFamily }}>{blogPosts[0].author}</p>
+                <span className="news-category-date" style={{ fontFamily }}>{blogPosts[6].category} • {blogPosts[6].date}</span>
+                <h3 className="news-title" style={{ fontFamily }}>{blogPosts[6].title}</h3>
+                <p className="news-author" style={{ fontFamily }}>{blogPosts[6].author}</p>
               </div>
-              {blogPosts[0].image && (
-                <img 
-                  src={blogPosts[0].image} 
-                  alt={blogPosts[0].title}
-                  style={{
-                    width: '100%',
-                    maxHeight: '300px',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    borderRadius: '12px',
-                    marginBottom: '8px',
-                    clipPath: 'inset(0 round 12px)',
-                    display: 'block'
-                  }}
-                />
+              {blogPosts[6].image && (
+                <div className="news-image-container">
+                  <img 
+                    src={blogPosts[6].image} 
+                    alt={blogPosts[6].title}
+                    className="news-card-image"
+                  />
+                </div>
               )}
               <div className="news-footer">
-                <p className="news-excerpt" style={{ fontFamily }}>{blogPosts[0].excerpt}</p>
-                <a href={blogPosts[0].url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
+                <p className="news-excerpt" style={{ fontFamily }}>{blogPosts[6].excerpt}</p>
+                <a href={blogPosts[6].url} className="read-more" target="_blank" rel="noopener noreferrer" style={{ fontFamily }}>Read More</a>
               </div>
             </div>
           </article>

@@ -1,6 +1,7 @@
 /* Add top padding to the news section */
 .content {
     padding-top: 32px;
+    overflow-x: hidden;
 }
 
 .news-grid {
@@ -11,6 +12,7 @@
     padding: 0 var(--page-padding);
     align-items: stretch;
     grid-auto-rows: 1fr;
+    overflow-x: hidden;
 }
 
 .news-card, .news-card.featured {
@@ -45,6 +47,35 @@
 
 .news-header {
     margin-bottom: 20px;
+}
+
+.news-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 180px;
+    margin-bottom: 12px;
+}
+
+.news-card-image {
+    max-width: 100%;
+    max-height: 280px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 12px;
+    display: block;
+}
+
+.news-card.featured .news-image-container {
+    min-height: 260px;
+    margin-bottom: 20px;
+}
+
+.news-card.featured .news-card-image {
+    max-height: 360px;
 }
 
 .news-footer {
@@ -126,17 +157,17 @@
 }
 
 .blob-row1 {
-    justify-self: start; /* Align blob news2 to the left */
+    justify-self: end; /* Align blob news2 to the right */
     max-width: 450px;
-    margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
-    transform: translateX(-20px); /* Additional offset to reach absolute edge */
+    margin-right: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+    transform: translateX(20px) scaleX(-1); /* Flip horizontally and stick to right edge */
 }
 
 .blob-row2 {
-    justify-self: end; /* Align blob news1 to the right */
+    justify-self: start; /* Align blob news1 to the left */
     max-width: 650px;
-    margin-right: calc(-1 * var(--page-padding)); /* Extend to screen edge */
-    transform: translateX(20px); /* Additional offset to reach absolute edge */
+    margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+    transform: translateX(-20px) scaleX(-1); /* Flip horizontally and stick to left edge */
 }
 
 .blob-row3 {
@@ -167,6 +198,15 @@
         gap: 20px;
         grid-auto-rows: auto; /* Let cards size naturally to content */
         padding-bottom: 120px; /* Add space after last card on mobile */
+        overflow-x: clip; /* Prevent horizontal scroll from blobs */
+    }
+    
+    .news-card.featured .news-image-container {
+        min-height: 240px;
+    }
+    
+    .news-card.featured .news-card-image {
+        max-height: 320px;
     }
     
     .news-card, .news-card.featured {
@@ -188,26 +228,29 @@
         margin-bottom: 30px;
     }
     
-    /* Mobile-only order rearrangement */
-    .blob-row1 { order: 2; } /* blob news2 -> position 2 */
-    .news-card:nth-child(2) { order: 1; } /* article 2 -> position 1 */
-    .news-card:nth-child(3) { order: 3; } /* article 3 -> position 3 */
-    .news-card.featured { order: 4; } /* featured -> position 4 */
-    .blob-row2 { order: 5; } /* blob news1 -> position 5 */
-    .news-card:nth-child(7) { order: 6; } /* article 1 -> position 6 */
-    .blob-row3 { order: 7; } /* blob news3 -> position 7 */
+    /* Mobile-only order rearrangement - cards between blobs */
+    .news-card.featured { order: 1; } /* featured (1st child) -> position 1 */
+    .news-card:nth-child(4) { order: 2; } /* article (4th child) -> position 2 */
+    .news-card:nth-child(5) { order: 3; } /* article (5th child) -> position 3 */
+    .blob-row1 { order: 4; } /* blob news2 (2nd child) -> position 4 */
+    .news-card:nth-child(6) { order: 5; } /* article (6th child) -> position 5 */
+    .news-card:nth-child(7) { order: 6; } /* article (7th child) -> position 6 */
+    .blob-row2 { order: 7; } /* blob news1 (3rd child) -> position 7 */
+    .news-card:nth-child(8) { order: 8; } /* article (8th child) -> position 8 */
+    .news-card:nth-child(10) { order: 9; } /* article (10th child) -> position 9 */
+    .blob-row3 { order: 10; } /* blob news3 (9th child) -> position 10 */
     
     .blob-row1 {
-        justify-self: start;
-        margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
-        transform: translateX(-20px); /* Additional offset to reach absolute edge */
+        justify-self: end;
+        margin-right: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+        transform: translateX(20px) scaleX(-1); /* Flip horizontally and stick to right edge */
         max-width: 300px; /* Smaller on mobile */
     }
     
     .blob-row2 {
-        justify-self: end;
-        margin-right: calc(-1 * var(--page-padding)); /* Extend to screen edge */
-        transform: translateX(20px); /* Additional offset to reach absolute edge */
+        justify-self: start;
+        margin-left: calc(-1 * var(--page-padding)); /* Extend to screen edge */
+        transform: translateX(-20px) scaleX(-1); /* Flip horizontally and stick to left edge */
         max-width: 400px; /* Smaller on mobile */
     }
     
@@ -225,6 +268,15 @@
     
     .news-header {
         margin-bottom: 24px; /* Clear spacing between header and footer */
+    }
+    
+    .news-image-container {
+        min-height: 200px;
+        margin-bottom: 16px;
+    }
+    
+    .news-card-image {
+        max-height: 240px;
     }
     
     .news-footer {
@@ -262,6 +314,7 @@
         gap: 16px;
         grid-auto-rows: auto;
         padding-bottom: 200px; /* Add space after last card on small mobile */
+        overflow-x: clip; /* Prevent horizontal scroll from blobs */
     }
     
     .news-card.featured {
@@ -278,20 +331,29 @@
         margin-bottom: 20px;
     }
     
-    /* Keep same mobile order on small screens */
-    .blob-row1 { order: 2; } /* blob news2 -> position 2 */
-    .news-card:nth-child(2) { order: 1; } /* article 2 -> position 1 */
-    .news-card:nth-child(3) { order: 3; } /* article 3 -> position 3 */
-    .news-card.featured { order: 4; } /* featured -> position 4 */
-    .blob-row2 { order: 5; } /* blob news1 -> position 5 */
-    .news-card:nth-child(7) { order: 6; } /* article 1 -> position 6 */
-    .blob-row3 { order: 7; } /* blob news3 -> position 7 */
+    /* Keep same mobile order on small screens - cards between blobs */
+    .news-card.featured { order: 1; } /* featured (1st child) -> position 1 */
+    .news-card:nth-child(4) { order: 2; } /* article (4th child) -> position 2 */
+    .news-card:nth-child(5) { order: 3; } /* article (5th child) -> position 3 */
+    .blob-row1 { order: 4; } /* blob news2 (2nd child) -> position 4 */
+    .news-card:nth-child(6) { order: 5; } /* article (6th child) -> position 5 */
+    .news-card:nth-child(7) { order: 6; } /* article (7th child) -> position 6 */
+    .blob-row2 { order: 7; } /* blob news1 (3rd child) -> position 7 */
+    .news-card:nth-child(8) { order: 8; } /* article (8th child) -> position 8 */
+    .news-card:nth-child(10) { order: 9; } /* article (10th child) -> position 9 */
+    .blob-row3 { order: 10; } /* blob news3 (9th child) -> position 10 */
     
     .blob-row1 {
+        justify-self: end;
+        margin-right: calc(-1 * var(--page-padding));
+        transform: translateX(20px) scaleX(-1); /* Flip horizontally and stick to right edge */
         max-width: 250px; /* Even smaller on small mobile */
     }
     
     .blob-row2 {
+        justify-self: start;
+        margin-left: calc(-1 * var(--page-padding));
+        transform: translateX(-20px) scaleX(-1); /* Flip horizontally and stick to left edge */
         max-width: 320px; /* Even smaller on small mobile */
     }
     
@@ -305,6 +367,23 @@
     
     .news-header {
         margin-bottom: 20px;
+    }
+    
+    .news-image-container {
+        min-height: 160px;
+        margin-bottom: 12px;
+    }
+    
+    .news-card-image {
+        max-height: 200px;
+    }
+    
+    .news-card.featured .news-image-container {
+        min-height: 200px;
+    }
+    
+    .news-card.featured .news-card-image {
+        max-height: 260px;
     }
     
     .news-title {
