@@ -43,7 +43,7 @@ const Landing = () => {
                 <div className="el extra-pad-bottom" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, transitionTimingFunction: 'ease'}}>
                   <div className="flex-horizontal">
                     <div className="news-image-module-image-wrap flex-child-grow">
-                      <h1 className="type-h1">Dynamic models for designing precision molecules</h1>
+                      <h1 className="type-h1">Dynamic models for functional selectivity</h1>
                     </div>
                     <div className="flex-w-child-50 tablet-hidden"></div>
                   </div>
