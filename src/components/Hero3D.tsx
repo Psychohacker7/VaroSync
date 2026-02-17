@@ -32,7 +32,7 @@ const Hero3D = () => {
 
     try {
       const time = currentTime * 0.001
-      
+
       // Update particles with error handling
       if (particlesRef.current) {
         particlesRef.current.rotation.x = time * 0.1
@@ -44,10 +44,10 @@ const Hero3D = () => {
         // Smooth rotation with bounds checking
         const rotationY = (modelRef.current.rotation.y + 0.01) % (Math.PI * 2)
         modelRef.current.rotation.y = rotationY
-        
+
         // Subtle bounce animation
         modelRef.current.position.y = Math.sin(time * 1.2) * 0.05
-        
+
         // Ensure scale stays consistent
         if (modelRef.current.scale.x !== 1) {
           modelRef.current.scale.set(1, 1, 1)
@@ -56,7 +56,7 @@ const Hero3D = () => {
 
       // Render with error handling
       rendererRef.current.render(sceneRef.current, cameraRef.current)
-      
+
       // Continue animation loop
       animationIdRef.current = requestAnimationFrame(animate)
     } catch (error) {
@@ -74,10 +74,10 @@ const Hero3D = () => {
     let retries = 0
     let didSucceed = false
     let isDestroyed = false
-    
+
     if (!containerRef.current) return
     const container = containerRef.current
-    
+
     // Check WebGL support
     const canvas = document.createElement('canvas')
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
@@ -90,10 +90,10 @@ const Hero3D = () => {
     try {
       const scene = new THREE.Scene()
       sceneRef.current = scene
-      
+
       const width = container.clientWidth
       const height = container.clientHeight
-      
+
       const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
       // Detect mobile and adjust camera distance
       const isMobile = window.innerWidth <= 768
@@ -101,10 +101,10 @@ const Hero3D = () => {
       camera.position.y = 0.1
       camera.position.x = -0.1
       cameraRef.current = camera
-      
+
       // Optimize renderer settings
-      const renderer = new THREE.WebGLRenderer({ 
-        antialias: true, 
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
         alpha: true,
         powerPreference: "high-performance",
         stencil: false,
@@ -115,46 +115,46 @@ const Hero3D = () => {
       renderer.shadowMap.enabled = false // Disable shadows for performance
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Limit pixel ratio
       rendererRef.current = renderer
-      
+
       container.appendChild(renderer.domElement)
-      
+
       // Make the canvas fill its parent and not overflow
       renderer.domElement.style.width = '100%'
       renderer.domElement.style.height = '100%'
       renderer.domElement.style.position = 'relative'
       renderer.domElement.style.left = '0'
       renderer.domElement.style.top = '0'
-      
+
       // Simplified lighting setup for performance
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
       scene.add(ambientLight)
-      
+
       const directionalLight = new THREE.DirectionalLight(0xfff8e7, 1.5)
       directionalLight.position.set(5, 10, 7)
       scene.add(directionalLight)
-      
+
       // Load 3D model with retry logic
       let animationStarted = false
 
       function loadModel() {
         if (isDestroyed) return
-        
+
         const loader = new GLTFLoader()
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
         loader.setDRACOLoader(dracoLoader)
-        
+
         loader.load(
           '/assets/3d/proteindna.glb',
           (gltf: any) => {
             if (didSucceed || isDestroyed) return
             didSucceed = true
             setIsLoading(false)
-            
+
             const model = gltf.scene
             model.scale.set(8, 8, 8)
             model.position.set(0, 0, 0)
-            
+
             // Optimize model for performance
             model.traverse((child: any) => {
               if (child.isMesh) {
@@ -172,10 +172,10 @@ const Hero3D = () => {
                 }
               }
             })
-            
+
             modelRef.current = model
             scene.add(model)
-            
+
             // Start animation loop only after model is loaded
             if (!animationStarted && !isDestroyed) {
               animationStarted = true
@@ -198,7 +198,7 @@ const Hero3D = () => {
           }
         )
       }
-      
+
       loadModel()
 
       // Simplified particles for performance
@@ -206,7 +206,7 @@ const Hero3D = () => {
       const particleGeometry = new THREE.BufferGeometry()
       const positions = new Float32Array(particleCount * 3)
       const colors = new Float32Array(particleCount * 3)
-      
+
       for (let i = 0; i < particleCount; i++) {
         positions[i * 3] = (Math.random() - 0.5) * 8
         positions[i * 3 + 1] = (Math.random() - 0.5) * 8
@@ -215,17 +215,17 @@ const Hero3D = () => {
         colors[i * 3 + 1] = 0.2 + Math.random() * 0.3
         colors[i * 3 + 2] = 0.8 + Math.random() * 0.2
       }
-      
+
       particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
       particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
-      
+
       const particleMaterial = new THREE.PointsMaterial({
         size: 0.04,
         vertexColors: true,
         transparent: true,
         opacity: 0.5
       })
-      
+
       const particles = new THREE.Points(particleGeometry, particleMaterial)
       particlesRef.current = particles
       scene.add(particles)
@@ -233,37 +233,37 @@ const Hero3D = () => {
       // Optimized resize handler
       const handleResize = () => {
         if (isDestroyed || !camera || !renderer || !container) return
-        
+
         const newWidth = container.clientWidth
         const newHeight = container.clientHeight
-        
+
         camera.aspect = newWidth / newHeight
         camera.updateProjectionMatrix()
         renderer.setSize(newWidth, newHeight)
       }
-      
+
       window.addEventListener('resize', handleResize)
 
       // Cleanup function
       return () => {
         isDestroyed = true
-        
+
         if (animationIdRef.current) {
           cancelAnimationFrame(animationIdRef.current)
           animationIdRef.current = null
         }
-        
+
         window.removeEventListener('resize', handleResize)
-        
+
         if (renderer && container.contains(renderer.domElement)) {
           container.removeChild(renderer.domElement)
           renderer.dispose()
         }
-        
+
         if (scene) {
           scene.clear()
         }
-        
+
         // Clear refs
         sceneRef.current = null
         cameraRef.current = null
@@ -295,10 +295,10 @@ const Hero3D = () => {
       )}
       {showFallback && (
         <img src="/assets/images/fallback.png" alt="3D Fallback" className="hero-3d-fallback" style={{
-          position: 'absolute', 
-          left: '50%', 
-          top: '50%', 
-          transform: 'translate(-50%, -50%)', 
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
           width: '300px',
           height: 'auto',
           zIndex: 1
@@ -308,4 +308,4 @@ const Hero3D = () => {
   )
 }
 
-export default Hero3D 
+export default Hero3D

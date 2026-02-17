@@ -14,8 +14,8 @@
     "gltf-pipeline": "^4.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0",
-    "three": "^0.160.1"
+    "three": "^0.160.1",
+    "vanta": "^0.5.24"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

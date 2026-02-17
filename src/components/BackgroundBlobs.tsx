@@ -19,9 +19,8 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
         ]
       case 'company':
         return [
-          '/assets/images/company2.png', // Only company2 blob - company1 and company3 are positioned in content
+          '/assets/images/company2.png',
         ]
-
       default:
         return []
     }
@@ -33,25 +32,26 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
         let style: any = {
           height: 'auto',
         };
-        
+
         if (page === 'landing') {
           if (index === 0) {
-            style.top = '1650px';  // Base value - overridden by media queries
-            style.left = '0%';
-            style.width = 'clamp(200px, 40vw, 400px)';
-          } else if (index === 1) {
-            style.top = '1250px';  // Base value - overridden by media queries
+            style.top = '1100px';
             style.right = '0%';
             style.width = 'clamp(200px, 40vw, 400px)';
+            style.transform = 'scaleX(-1)';
+          } else if (index === 1) {
+            style.top = '1900px';
+            style.left = '0%';
+            style.width = 'clamp(200px, 40vw, 400px)';
+            style.transform = 'scaleX(-1)';
           } else if (index === 2) {
-            style.top = '400px';   // Base value - overridden by media queries
+            style.top = '800px';
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 400px)';
           }
-
         } else if (page === 'technology') {
           if (index === 0) {
-            style.top = '1830px';  // Base value - add tech page media queries
+            style.top = '1830px';
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 500px)';
           } else if (index === 1) {
@@ -59,32 +59,28 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
             style.right = '0%';
             style.width = 'clamp(200px, 40vw, 500px)';
           } else if (index === 2) {
-            style.top = '800px';   // Base value - add tech page media queries
+            style.top = '800px';
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 350px)';
           }
-
         } else if (page === 'company') {
           if (index === 0) {
-            // Only company2 blob now - positioned at top left (untouched as requested)
             style.top = '0px';
             style.left = '0%';
             style.width = 'clamp(200px, 40vw, 530px)';
           }
-          
-
         } else if (page === 'contact') {
           if (index === 0) {
-            style.top = '500px';   // Base value - add contact page media queries
+            style.top = '500px';
             style.left = '0%';
             style.width = 'clamp(150px, 35vw, 300px)';
           } else if (index === 1) {
-            style.top = '1000px';  // Base value - add contact page media queries
+            style.top = '1000px';
             style.right = '0%';
             style.width = 'clamp(150px, 35vw, 300px)';
           }
         }
-        
+
         return (
           <img
             key={index}
@@ -99,4 +95,4 @@ const BackgroundBlobs = ({ page }: BackgroundBlobsProps) => {
   )
 }
 
-export default BackgroundBlobs 
+export default BackgroundBlobs

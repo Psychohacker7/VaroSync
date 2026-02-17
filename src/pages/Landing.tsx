@@ -1,11 +1,31 @@
-import { useEffect } from 'react'
-import Hero3D from '../components/Hero3D.tsx'
-import BackgroundBlobs from '../components/BackgroundBlobs.tsx'
+import { useEffect, useRef } from 'react'
+import Hero3D from '../components/Hero3D'
 import '../styles/css/landing.css'
 
 const Landing = () => {
+  const statementsRef = useRef<(HTMLElement | null)[]>([])
+
   useEffect(() => {
     document.title = 'Varosync - Home'
+  }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('statement-visible')
+          }
+        })
+      },
+      { threshold: 0.15 }
+    )
+
+    statementsRef.current.forEach((el) => {
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -30,8 +50,7 @@ const Landing = () => {
         }}
         aria-hidden="true"
       />
-      <BackgroundBlobs page="landing" />
-      
+
       {/* Hero section - exact structure from provided HTML */}
       <div className="section home-hero" style={{ position: 'relative' }}>
         <div className="spacing nav-height"></div>
@@ -43,7 +62,7 @@ const Landing = () => {
                 <div className="el extra-pad-bottom" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, transitionTimingFunction: 'ease'}}>
                   <div className="flex-horizontal">
                     <div className="news-image-module-image-wrap flex-child-grow">
-                      <h1 className="type-h1">Dynamic models for functional selectivity</h1>
+                      <h1 className="type-h1">Most programs fail <em>after</em> the molecule works.</h1>
                     </div>
                     <div className="flex-w-child-50 tablet-hidden"></div>
                   </div>
@@ -62,7 +81,7 @@ const Landing = () => {
                 <div className="el hero-text-el" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, height: '100%', transitionTimingFunction: 'ease'}}>
                   <div className="news-image-module-image-wrap flex-bottom-left">
                     <div className="max-w-66 max-w-560px">
-                      <p className="type-xl">We're entering a new era where inference-based computational methods uncover a new layer of intelligence in molecular design. At Varosync, we're building that future.</p>
+                      <p className="hero-subtext">Modeling what screens cannot measure.</p>
                     </div>
                   </div>
                   <div className="animate-parent">
@@ -138,11 +157,11 @@ const Landing = () => {
         .home-hero {
           position: relative !important;
         }
-        
+
         .hero-3d-overlay-grid {
           height: 100% !important;
         }
-        
+
         @media (max-width: 900px) {
           .hero-3d-overlay-grid {
             display: flex !important;
@@ -176,92 +195,68 @@ const Landing = () => {
         }
       `}</style>
 
-      {/* Development approach section */}
-      <section className="landing-content-section">
-        <div className="landing-content-grid" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-          {/* Removed the image, keep the space */}
-          <div className="landing-content-image" style={{ flex: 1 }}></div>
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start', width: '100%', paddingRight: '20px' }}>
-            <div
-              className="landing-content-text"
-              style={{
-                maxWidth: '600px',
-                marginLeft: '-150px', // Adjust this value to move the text right or left
-                width: '100%',
-              }}
-            >
-              <p className="landing-content-body" style={{ fontSize: '1.5rem', fontWeight: '300', fontFamily: 'var(--font-family)' }}>
-                <br />
-                <br />
-              The ability to engineer matter at the molecular level demands a new class of instrument. One that operates beyond static blueprints, providing a computational environment where the complex motion of proteins becomes a deterministic design parameter. It is a system designed to augment scientific intuition, enabling our partners to build the molecular technologies of the future.</p>
-            </div>
-          </div>
+      {/* Statement 1: The Indisputable Fact — blob left, text right */}
+      <section className="statement-section statement-fact" ref={(el) => { statementsRef.current[0] = el }}>
+        <div className="statement-blob-area statement-blob-area--left">
+          <img src="/assets/images/landing3.png" alt="" className="statement-blob-img" />
+        </div>
+        <div className="statement-inner">
+          <p className="statement-primary">
+            Affinity is not the bottleneck.
+          </p>
         </div>
       </section>
 
-      {/* Mobile blob section - only visible on mobile */}
-      <section className="mobile-blob-section-left">
-        <img
-          src="/assets/images/landing1.png"
-          alt="Mobile blob decoration left"
-          className="mobile-blob-image-left"
-        />
-      </section>
-
-      {/* Partners section */}
-      <section className="landing-content-section">
-        <div className="landing-partners-container">
-          <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: 'var(--font-family)' }}>Our Partners</h2>
-          <div className="landing-partners-grid">
-            <img
-              src="/assets/images/partnera.png"
-              alt="Partner company 1"
-              className="landing-content-img-plain"
-              loading="lazy"
-            />
-            <img
-              src="/assets/images/partnerb.png"
-              alt="Partner company 2"
-              className="landing-content-img-plain"
-              loading="lazy"
-            />
-          </div>
+      {/* Statement 2: The Structural Critique — text left, blob right */}
+      <section className="statement-section statement-critique" ref={(el) => { statementsRef.current[1] = el }}>
+        <div className="statement-inner">
+          <p className="statement-primary">
+            Screening is negative selection.
+          </p>
+          <p className="statement-secondary">
+            It discards failure, but cannot manufacture success.
+          </p>
+        </div>
+        <div className="statement-blob-area statement-blob-area--right">
+          <img src="/assets/images/landing1.png" alt="" className="statement-blob-img" />
         </div>
       </section>
 
-      {/* Recognized by section */}
-      <section className="landing-content-section">
-        <div className="landing-recognized-container">
-          <h2 className="landing-content-subtitle" style={{ fontSize: '3rem', fontWeight: '400', fontFamily: 'var(--font-family)' }}>Recognized by</h2>
-          <div style={{ height: '12px' }}></div>
-          <div className="landing-recognized-grid">
-            <img
-              src="/assets/images/inceptionlogo.svg"
-              alt="Inception logo"
-              className="landing-content-img-plain"
-              loading="lazy"
-              style={{ transform: 'scale(1.3)', transformOrigin: 'center' }}
-            />
-            <img
-              src="/assets/images/nybio.png"
-              alt="NYBIO logo"
-              className="landing-content-img-plain"
-              loading="lazy"
-            />
-            <img
-              src="/assets/images/nsf-icorps.png"
-              alt="Nsf-icorps logo"
-              className="landing-content-img-plain"
-              loading="lazy"
-              style={{ transform: 'scale(1.5)', transformOrigin: 'center' }}
-            />
-            <img
-              src="/assets/images/theventures.svg"
-              alt="The Ventures logo"
-              className="landing-content-img-plain"
-              loading="lazy"
-              style={{ transform: 'scale(1.3)', transformOrigin: 'center' }}
-            />
+      {/* The Hook: The Solution — blob left, text right */}
+      <section className="statement-section statement-hook" ref={(el) => { statementsRef.current[2] = el }}>
+        <div className="statement-blob-area statement-blob-area--left">
+          <img src="/assets/images/landing2.png" alt="" className="statement-blob-img" style={{ transform: 'scaleX(-1)' }} />
+        </div>
+        <div className="statement-inner">
+          <p className="statement-primary">
+            Performance must be an input, not an outcome.
+          </p>
+        </div>
+      </section>
+
+      {/* Trusted By */}
+      <section className="trusted-section">
+        <div className="trusted-container">
+          <h2 className="trusted-label">Trusted by</h2>
+          <div className="trusted-logos">
+            <a href="https://www.ucsf.edu" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/UCSF.png" alt="UCSF" className="trusted-logo" loading="lazy" />
+            </a>
+            <a href="https://medicine.yale.edu" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/Yale.png" alt="Yale School of Medicine" className="trusted-logo trusted-logo-tall" loading="lazy" />
+            </a>
+            <a href="https://www.columbia.edu" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/Columbia.png" alt="Columbia University" className="trusted-logo trusted-logo-columbia" loading="lazy" />
+            </a>
+            <a href="https://www.jclinic.mit.edu" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/MIT_Jameel.png" alt="MIT Jameel Clinic" className="trusted-logo trusted-logo-jameel" loading="lazy" />
+            </a>
+            <a href="https://new.nsf.gov/funding/initiatives/i-corps" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/nsf-icorps.png" alt="NSF I-Corps" className="trusted-logo" loading="lazy" />
+            </a>
+            <a href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/inceptionlogo.svg" alt="NVIDIA Inception" className="trusted-logo" loading="lazy" />
+            </a>
           </div>
         </div>
       </section>
@@ -284,11 +279,11 @@ const Landing = () => {
         }
 
         .nav-height {
-          height: 20px;
+          height: 60px;
         }
 
         ._100px {
-          height: 20px;
+          height: 60px;
         }
 
         .tablet-60px {
@@ -322,7 +317,7 @@ const Landing = () => {
           padding: 20px;
           position: relative;
         }
-        
+
         .list-horizontal::before {
           content: "2";
           position: absolute;
@@ -335,13 +330,13 @@ const Landing = () => {
           font-weight: bold;
           display: none;
         }
-        
+
         .list-horizontal:nth-of-type(2)::before {
           content: "3";
           background: green;
           display: none;
         }
-        
+
         .list-horizontal:nth-of-type(2) {
           border-color: black;
         }
@@ -368,9 +363,9 @@ const Landing = () => {
           flex: 1;
           padding: 10px;
           position: relative;
-          min-height: 200px;
+          min-height: 0;
           display: flex;
-          align-items: flex-end;
+          align-items: flex-start;
         }
 
         .flex-horizontal {
@@ -384,8 +379,7 @@ const Landing = () => {
         }
 
         .flex-bottom-left {
-          align-items: flex-end;
-          height: 100%;
+          align-items: flex-start;
           display: flex;
         }
 
@@ -516,7 +510,7 @@ const Landing = () => {
           .flex-child-grow {
             min-height: 0;
             display: flex;
-            align-items: flex-end;
+            align-items: flex-start;
           }
 
           .el-empty {
@@ -541,11 +535,11 @@ const Landing = () => {
           }
 
           .spacing._100px {
-            height: 2px;
+            height: 20px;
           }
 
           .spacing.nav-height {
-            height: 2px;
+            height: 60px;
           }
 
           .type-h1 {
@@ -559,7 +553,7 @@ const Landing = () => {
           .flex-child-grow {
             min-height: 0;
             display: flex;
-            align-items: flex-end;
+            align-items: flex-start;
           }
 
           .el-empty {
@@ -571,4 +565,4 @@ const Landing = () => {
   )
 }
 
-export default Landing 
+export default Landing
