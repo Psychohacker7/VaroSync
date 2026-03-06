@@ -28,12 +28,12 @@
 .trusted-section {
     padding: 100px 0;
     position: relative;
-    overflow: hidden;
 }
 
 .trusted-container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 24px;
     text-align: center;
 }
 
@@ -55,6 +55,7 @@
 
 .trusted-logo {
     height: 80px;
+    max-width: 100%;
     width: auto;
     object-fit: contain;
     opacity: 0.45;
@@ -314,7 +315,13 @@
     }
 
     .trusted-logos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 28px;
+    }
+
+    .trusted-logos a {
+        justify-content: center;
     }
 
     .trusted-logo {
@@ -373,6 +380,11 @@
         margin-bottom: 36px;
     }
 
+    .trusted-logos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 20px;
+    }
+
     .trusted-logo {
         height: 50px;
     }
@@ -388,9 +400,5 @@
 
     .trusted-logo-columbia {
         height: 56px;
-    }
-
-    .trusted-logos {
-        gap: 20px;
     }
 }
