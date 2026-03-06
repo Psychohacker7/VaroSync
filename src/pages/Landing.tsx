@@ -248,8 +248,8 @@ const Landing = () => {
             <a href="https://www.columbia.edu" target="_blank" rel="noopener noreferrer">
               <img src="/assets/images/Columbia.png" alt="Columbia University" className="trusted-logo trusted-logo-columbia" loading="lazy" />
             </a>
-            <a href="https://www.jclinic.mit.edu" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/MIT_Jameel.png" alt="MIT Jameel Clinic" className="trusted-logo trusted-logo-jameel" loading="lazy" />
+            <a href="https://hackingmedicine.mit.edu" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/MIT_Hack.png" alt="MIT Hacking Medicine" className="trusted-logo trusted-logo-jameel" loading="lazy" />
             </a>
             <a href="https://new.nsf.gov/funding/initiatives/i-corps" target="_blank" rel="noopener noreferrer">
               <img src="/assets/images/nsf-icorps.png" alt="NSF I-Corps" className="trusted-logo" loading="lazy" />

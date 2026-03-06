@@ -26,13 +26,13 @@
    =========================== */
 
 .trusted-section {
-    padding: 100px var(--page-padding) 100px;
+    padding: 100px 0;
     position: relative;
     overflow: hidden;
 }
 
 .trusted-container {
-    max-width: var(--content-max-width);
+    max-width: 1400px;
     margin: 0 auto;
     text-align: center;
 }
