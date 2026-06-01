@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import Hero3D from '../components/Hero3D'
 import '../styles/css/landing.css'
 
@@ -62,7 +63,7 @@ const Landing = () => {
                 <div className="el extra-pad-bottom" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, transitionTimingFunction: 'ease'}}>
                   <div className="flex-horizontal">
                     <div className="news-image-module-image-wrap flex-child-grow">
-                      <h1 className="type-h1">Most programs fail <em>after</em> the molecule works.</h1>
+                      <h1 className="type-h1">A drug asset’s outcome declares itself late.</h1>
                     </div>
                     <div className="flex-w-child-50 tablet-hidden"></div>
                   </div>
@@ -81,7 +82,7 @@ const Landing = () => {
                 <div className="el hero-text-el" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, height: '100%', transitionTimingFunction: 'ease'}}>
                   <div className="news-image-module-image-wrap flex-bottom-left">
                     <div className="max-w-66 max-w-560px">
-                      <p className="hero-subtext">Modeling what screens cannot measure.</p>
+                      <p className="hero-subtext">Its molecule, target, and biology shape therapeutic risk long before clinical reality is visible.</p>
                     </div>
                   </div>
                   <div className="animate-parent">
@@ -195,7 +196,7 @@ const Landing = () => {
         }
       `}</style>
 
-      {/* Statement 1: The Indisputable Fact — blob left, text right */}
+      {/* Statement 1: The bridge — blob left, text right */}
       <section className="statement-section statement-fact" ref={(el) => { statementsRef.current[0] = el }}>
         <div className="statement-blob-area statement-blob-area--left">
           <img src="/assets/images/landing3.png" alt="" className="statement-blob-img" />
@@ -207,14 +208,14 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Statement 2: The Structural Critique — text left, blob right */}
+      {/* Statement 2: The punch — text left, blob right */}
       <section className="statement-section statement-critique" ref={(el) => { statementsRef.current[1] = el }}>
         <div className="statement-inner">
           <p className="statement-primary">
-            Screening is negative selection.
+            Generation is commoditized.
           </p>
           <p className="statement-secondary">
-            It discards failure, but cannot manufacture success.
+            Consequence is not.
           </p>
         </div>
         <div className="statement-blob-area statement-blob-area--right">
@@ -229,8 +230,24 @@ const Landing = () => {
         </div>
         <div className="statement-inner">
           <p className="statement-primary">
-            Performance must be an input, not an outcome.
+            Computational intelligence modeling the foundations of therapeutic risk.
           </p>
+        </div>
+      </section>
+
+      {/* Routing CTA — double button after the hook */}
+      <section className="landing-descriptor" ref={(el) => { statementsRef.current[3] = el }}>
+        <div className="descriptor-inner">
+          <div className="descriptor-cta-row">
+            <Link to="/biotech" className="descriptor-cta">
+              For drug developers
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </Link>
+            <Link to="/finance" className="descriptor-cta descriptor-cta--outline">
+              For capital allocators
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -238,25 +255,44 @@ const Landing = () => {
       <section className="trusted-section">
         <div className="trusted-container">
           <h2 className="trusted-label">Trusted by</h2>
-          <div className="trusted-logos">
-            <a href="https://www.ucsf.edu" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/UCSF.png" alt="UCSF" className="trusted-logo" loading="lazy" />
-            </a>
-            <a href="https://medicine.yale.edu" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/Yale.png" alt="Yale School of Medicine" className="trusted-logo trusted-logo-tall" loading="lazy" />
-            </a>
-            <a href="https://www.columbia.edu" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/Columbia.png" alt="Columbia University" className="trusted-logo trusted-logo-columbia" loading="lazy" />
-            </a>
-            <a href="https://hackingmedicine.mit.edu" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/MIT_Hack.png" alt="MIT Hacking Medicine" className="trusted-logo trusted-logo-jameel" loading="lazy" />
-            </a>
-            <a href="https://new.nsf.gov/funding/initiatives/i-corps" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/nsf-icorps.png" alt="NSF I-Corps" className="trusted-logo" loading="lazy" />
-            </a>
-            <a href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/images/inceptionlogo.svg" alt="NVIDIA Inception" className="trusted-logo" loading="lazy" />
-            </a>
+          <div className="trusted-marquee" aria-label="Trusted by">
+            <div className="trusted-marquee-track">
+              {/* Render the logo set TWICE for a seamless infinite loop */}
+              {[0, 1].map((copy) => (
+                <div key={copy} className="trusted-marquee-set" aria-hidden={copy === 1 ? true : undefined}>
+                  <a href="https://www.ucsf.edu" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/UCSF.png" alt="UCSF" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://medicine.yale.edu" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/Yale.png" alt="Yale School of Medicine" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://www.columbia.edu" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/Columbia.png" alt="Columbia University" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://hackingmedicine.mit.edu" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/MIT_Hack.png" alt="MIT Hacking Medicine" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://new.nsf.gov/funding/initiatives/i-corps" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/nsf-icorps.png" alt="NSF I-Corps" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/inceptionlogo.svg" alt="NVIDIA Inception" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://www.c10labs.com" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/c10.png" alt="C10 Labs" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://www.larta.org" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/larta.png" alt="Larta Institute" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://hsil.sph.harvard.edu" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/hsil.png" alt="Harvard T.H. Chan School of Public Health · Health Systems Innovation Lab" className="trusted-logo" loading="lazy" />
+                  </a>
+                  <a href="https://edc.nyc" target="_blank" rel="noopener noreferrer" className="trusted-marquee-item">
+                    <img src="/assets/images/nycedc.png" alt="NYC Economic Development Corporation" className="trusted-logo" loading="lazy" />
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -26,7 +26,7 @@
    =========================== */
 
 .trusted-section {
-    padding: 100px 0;
+    padding: 40px 0 64px;
     position: relative;
 }
 
@@ -45,49 +45,67 @@
     margin-bottom: 48px;
 }
 
-.trusted-logos {
+/* — Marquee strip: infinite horizontal scroll, uniform logo size — */
+.trusted-marquee {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.trusted-marquee-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: trusted-marquee-scroll 55s linear infinite;
+}
+
+.trusted-marquee:hover .trusted-marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes trusted-marquee-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.trusted-marquee-set {
+    display: flex;
+    align-items: center;
+    gap: clamp(40px, 5vw, 72px);
+    padding-right: clamp(40px, 5vw, 72px);
+    flex-shrink: 0;
+}
+
+.trusted-marquee-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(24px, 4vw, 48px);
-    flex-wrap: wrap;
+    flex-shrink: 0;
+    text-decoration: none;
 }
 
-.trusted-logo {
-    height: 80px;
-    max-width: 100%;
+.trusted-marquee .trusted-logo {
+    height: 72px;
     width: auto;
+    max-width: none;
     object-fit: contain;
-    opacity: 0.45;
+    opacity: 0.5;
     filter: grayscale(100%);
     transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-/* Yale logo is very tall, needs special handling */
-.trusted-logo-tall {
-    height: 80px;
-    max-width: 70px;
-}
-
-/* MIT Jameel Clinic logo scaled up */
-.trusted-logo-jameel {
-    height: 90px;
-}
-
-/* Columbia logo scaled up */
-.trusted-logo-columbia {
-    height: 90px;
-}
-
-.trusted-logos a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.trusted-logo:hover {
-    opacity: 0.8;
+.trusted-marquee-item:hover .trusted-logo {
+    opacity: 0.85;
     filter: grayscale(0%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trusted-marquee-track {
+        animation: none;
+    }
 }
 
 /* ===========================
@@ -119,7 +137,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 80px 0;
+    padding: 16px 0;
     position: relative;
     width: 100vw;
     overflow: hidden;
@@ -182,8 +200,11 @@
 }
 
 /* Blob images: fixed at 400px, but shrink once they'd exceed half the viewport */
+/* max-width: none overrides Tailwind's preflight img reset (which would otherwise size
+   the blob to 0 because its container is 0px wide by design) */
 .statement-blob-img {
     width: min(400px, 50vw);
+    max-width: none;
     height: auto;
     display: block;
 }
@@ -292,6 +313,91 @@
 }
 
 /* ===========================
+   DESCRIPTOR + ROUTING CTA
+   =========================== */
+
+.landing-descriptor {
+    padding: 20px 0 40px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landing-descriptor.statement-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.descriptor-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 var(--page-padding);
+}
+
+.descriptor-punch {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.descriptor-punch-muted {
+    color: var(--text-secondary);
+}
+
+.descriptor-line {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.descriptor-cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.descriptor-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: 12px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    background: var(--text-primary);
+    color: var(--white);
+}
+
+.descriptor-cta:hover {
+    background: #000;
+}
+
+.descriptor-cta--outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+}
+
+.descriptor-cta--outline:hover {
+    background: transparent;
+    border-color: var(--text-primary);
+}
+
+/* ===========================
    HERO 3D
    =========================== */
 
@@ -314,38 +420,19 @@
         flex: 0 0 clamp(140px, 25vw, 300px);
     }
 
-    .trusted-logos {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
+    .trusted-marquee .trusted-logo {
+        height: 60px;
     }
-
-    .trusted-logos a {
-        justify-content: center;
-    }
-
-    .trusted-logo {
-        height: 64px;
-    }
-
-    .trusted-logo-tall {
-        height: 64px;
-        max-width: 56px;
-    }
-
-    .trusted-logo-jameel {
-        height: 72px;
-    }
-
-    .trusted-logo-columbia {
-        height: 72px;
+    .trusted-marquee-set {
+        gap: 56px;
+        padding-right: 56px;
     }
 }
 
 @media (max-width: 768px) {
     .statement-section {
         min-height: 60vh;
-        padding: 60px 0;
+        padding: 16px 0;
     }
 
     .statement-blob-area {
@@ -355,12 +442,23 @@
     .trusted-label {
         font-size: 2.2rem;
     }
+
+    .trusted-marquee .trusted-logo {
+        height: 52px;
+    }
+    .trusted-marquee-set {
+        gap: 44px;
+        padding-right: 44px;
+    }
+    .trusted-marquee-track {
+        animation-duration: 40s;
+    }
 }
 
 @media (max-width: 480px) {
     .statement-section {
         min-height: 50vh;
-        padding: 40px 0;
+        padding: 16px 0;
     }
 
     .statement-hook {
@@ -371,34 +469,16 @@
         font-size: clamp(1.6rem, 6vw, 2.4rem);
     }
 
-    .trusted-section {
-        padding-top: 80px;
-    }
-
     .trusted-label {
         font-size: 1.8rem;
-        margin-bottom: 36px;
+        margin-bottom: 28px;
     }
 
-    .trusted-logos {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px 20px;
+    .trusted-marquee .trusted-logo {
+        height: 44px;
     }
-
-    .trusted-logo {
-        height: 50px;
-    }
-
-    .trusted-logo-tall {
-        height: 50px;
-        max-width: 44px;
-    }
-
-    .trusted-logo-jameel {
-        height: 56px;
-    }
-
-    .trusted-logo-columbia {
-        height: 56px;
+    .trusted-marquee-set {
+        gap: 36px;
+        padding-right: 36px;
     }
 }

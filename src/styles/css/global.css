@@ -1,116 +1,159 @@
-/* Reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import "tailwindcss";
+
+/* ── Platform theme tokens (used by /finance card components) ── */
+@theme {
+  --color-paper:       #f1e9d6;
+  --color-paper-2:     #ebe1c8;
+  --color-paper-edge:  #d8c9a8;
+  --color-ink:         #15110b;
+  --color-ink-2:       #2b2519;
+  --color-muted:       #6b5d47;
+  --color-muted-2:     #918262;
+  --color-rule:        #c5b591;
+  --color-rule-soft:   #d8c9a8;
+  --color-sepia:       #856a3d;
+  --color-oxblood:     #6b2a1f;
+  --color-sig-term:    #7a2418;
+  --color-sig-sig:     #856a3d;
+  --color-sig-cls:     #3f4a2e;
+  --color-sig-reg:     #3a3e5a;
+
+  /* Site fonts — exposed to Tailwind so font-heading / font-body utilities work */
+  --font-heading: 'Cabinet Grotesk', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Satoshi', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-:root {
-    /* Typography */
-    --font-heading: 'Cabinet Grotesk', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Satoshi', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+/* ── Platform utility classes (used by cards) — in base layer so utilities win ── */
+@layer base {
+  .font-helvetica { font-family: var(--font-body); }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .mol2d svg { width: 100%; height: auto; display: block; }
 
-    /* Colors */
-    --bg-primary: #FAFAF8;
-    --text-primary: #1a1a1a;
-    --text-secondary: #6b6b6b;
-    --text-muted: #999999;
-    --accent: #2a2a2a;
-    --border-subtle: rgba(0, 0, 0, 0.08);
-    --white: #ffffff;
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+  }
+  .dot-live {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--color-oxblood);
+    display: inline-block;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
 
-    /* Spacing */
-    --page-padding: 24px;
-    --section-padding: 120px;
-    --content-max-width: 1200px;
+  /* Reset and base styles */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
 
-    /* Transitions */
-    --transition-smooth: all 0.3s ease;
+  :root {
+      /* Typography */
+      --font-heading: 'Cabinet Grotesk', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Satoshi', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Colors */
+      --bg-primary: #FAFAF8;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b6b6b;
+      --text-muted: #999999;
+      --accent: #2a2a2a;
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --white: #ffffff;
+
+      /* Spacing */
+      --page-padding: 24px;
+      --section-padding: 120px;
+      --content-max-width: 1200px;
+
+      /* Transitions */
+      --transition-smooth: all 0.3s ease;
+  }
+
+  /* Product Sans font loading (fallback) */
+  @font-face {
+      font-family: 'Product Sans';
+      src: url('/assets/fonts/ProductSans-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Product Sans';
+      src: url('/assets/fonts/ProductSans-Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Product Sans';
+      src: url('/assets/fonts/ProductSans-Light.ttf') format('truetype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Product Sans';
+      src: url('/assets/fonts/ProductSans-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  html {
+      scroll-behavior: smooth;
+  }
+
+  body {
+      font-family: var(--font-body);
+      line-height: 1.6;
+      color: var(--text-primary);
+      overflow-x: hidden;
+      background: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Main content */
+  .main {
+      min-height: 100vh;
+  }
+
+  /* Footer */
+  .footer {
+      background: #1a1a1a;
+      color: var(--white);
+      padding: 40px var(--page-padding) 24px;
+  }
+
+  .footer-content {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+  }
+
+  /* Utility classes */
+  .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+  }
 }
 
-/* Product Sans font loading (fallback) */
-@font-face {
-    font-family: 'Product Sans';
-    src: url('/assets/fonts/ProductSans-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Product Sans';
-    src: url('/assets/fonts/ProductSans-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Product Sans';
-    src: url('/assets/fonts/ProductSans-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Product Sans';
-    src: url('/assets/fonts/ProductSans-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: var(--font-body);
-    line-height: 1.6;
-    color: var(--text-primary);
-    overflow-x: hidden;
-    background: var(--bg-primary);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Main content */
-.main {
-    min-height: 100vh;
-}
-
-/* Footer */
-.footer {
-    background: #1a1a1a;
-    color: var(--white);
-    padding: 40px var(--page-padding) 24px;
-}
-
-.footer-content {
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* Utility classes */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* Smooth animations */
+/* Smooth animations — stays un-layered (uses !important anyway) */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -119,23 +162,25 @@ body {
     }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    :root {
-        --page-padding: 20px;
-        --section-padding: 80px;
-    }
+/* Responsive — in base layer */
+@layer base {
+  @media (max-width: 768px) {
+      :root {
+          --page-padding: 20px;
+          --section-padding: 80px;
+      }
 
-    .footer-content {
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
-    }
-}
+      .footer-content {
+          flex-direction: row;
+          align-items: center;
+          gap: 16px;
+      }
+  }
 
-@media (max-width: 480px) {
-    :root {
-        --page-padding: 16px;
-        --section-padding: 60px;
-    }
+  @media (max-width: 480px) {
+      :root {
+          --page-padding: 16px;
+          --section-padding: 60px;
+      }
+  }
 }
