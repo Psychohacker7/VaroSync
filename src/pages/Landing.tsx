@@ -1,7 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'motion/react'
 import Hero3D from '../components/Hero3D'
 import '../styles/css/landing.css'
+
+const heroEase = [0.22, 1, 0.36, 1] as const
 
 const Landing = () => {
   const statementsRef = useRef<(HTMLElement | null)[]>([])
@@ -63,7 +66,14 @@ const Landing = () => {
                 <div className="el extra-pad-bottom" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, transitionTimingFunction: 'ease'}}>
                   <div className="flex-horizontal">
                     <div className="news-image-module-image-wrap flex-child-grow">
-                      <h1 className="type-h1">A drug asset’s outcome declares itself late.</h1>
+                      <motion.h1
+                        className="type-h1"
+                        initial={{ opacity: 0, y: 28 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: heroEase, delay: 0.1 }}
+                      >
+                        A drug asset’s outcome declares itself late.
+                      </motion.h1>
                     </div>
                     <div className="flex-w-child-50 tablet-hidden"></div>
                   </div>
@@ -82,7 +92,14 @@ const Landing = () => {
                 <div className="el hero-text-el" style={{transitionDuration: '1s', transform: 'translate(0px, 0px)', opacity: 1, height: '100%', transitionTimingFunction: 'ease'}}>
                   <div className="news-image-module-image-wrap flex-bottom-left">
                     <div className="max-w-66 max-w-560px">
-                      <p className="hero-subtext">Its molecule, target, and biology shape therapeutic risk long before clinical reality is visible.</p>
+                      <motion.p
+                        className="hero-subtext"
+                        initial={{ opacity: 0, y: 22 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, ease: heroEase, delay: 0.4 }}
+                      >
+                        Its molecule, target, and biology shape therapeutic risk long before clinical reality is visible.
+                      </motion.p>
                     </div>
                   </div>
                   <div className="animate-parent">

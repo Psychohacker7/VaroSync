@@ -10,6 +10,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@types/three": "^0.160.0",
     "gltf-pipeline": "^4.3.0",
     "motion": "^12.40.0",

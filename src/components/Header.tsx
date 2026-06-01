@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { CalButton } from './CalButton';
 
 const Header = () => {
   const [isHidden, setIsHidden] = useState(false);
@@ -340,12 +341,12 @@ const Header = () => {
               Capital Markets
             </Link>
           </div>
-          <a href="mailto:partnerships@varosync.com" className="header-cta">
+          <CalButton className="header-cta">
             Get in touch
             <svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 14L14 6M14 6H7M14 6V13" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
+          </CalButton>
 
           {/* Mobile hamburger — opens the slide-in menu */}
           <button
@@ -401,16 +402,17 @@ const Header = () => {
           </nav>
 
           <div className="menu-foot">
-            <a
-              href="mailto:partnerships@varosync.com"
+            <CalButton
               className="menu-foot-cta"
-              onClick={() => setMenuOpen(false)}
+              ariaLabel="Get in touch"
             >
-              Get in touch
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                <path d="M6 14L14 6M14 6H7M14 6V13" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }} onClick={() => setMenuOpen(false)}>
+                Get in touch
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 14L14 6M14 6H7M14 6V13" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </CalButton>
             <div className="menu-foot-meta">
               <a href="mailto:partnerships@varosync.com">partnerships@varosync.com</a>
               <span>&copy; 2026 Varosync</span>

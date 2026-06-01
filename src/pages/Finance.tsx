@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'motion/react'
+import { CalButton } from '../components/CalButton'
 import { StructureCard } from '@/components/cards/structure'
 import { BindingCard } from '@/components/cards/binding'
 import { MechanismCard } from '@/components/cards/mechanism'
@@ -123,16 +124,14 @@ export default function Finance() {
                 <motion.p variants={heroChildV} className="text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.7] text-muted mb-9">
                   Sponsor-data gap audits against historical failure patterns. Comparable-failure cohorts indexed by structural and mechanism similarity. Decomposable risk components, model-ready. Independent of position.
                 </motion.p>
-                <motion.a
-                  variants={heroChildV}
-                  href="mailto:partnerships@varosync.com?subject=Asset%20discussion"
-                  className="inline-flex items-center gap-2.5 bg-ink text-paper px-7 py-3.5 rounded-full text-[14px] font-medium hover:bg-oxblood transition-colors"
-                >
-                  Discuss your asset
-                  <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                    <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </motion.a>
+                <motion.div variants={heroChildV}>
+                  <CalButton className="inline-flex items-center gap-2.5 bg-ink text-paper px-7 py-3.5 rounded-full text-[14px] font-medium hover:bg-oxblood transition-colors">
+                    Discuss your asset
+                    <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                      <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </CalButton>
+                </motion.div>
               </div>
             </motion.section>
 
@@ -204,15 +203,14 @@ export default function Finance() {
                 <p className="text-[14px] leading-[1.65] text-muted mb-7">
                   Seven interactive views, computed live. Open this page on a larger screen to walk through them.
                 </p>
-                <a
-                  href="mailto:partnerships@varosync.com?subject=Case%20study%20request"
+                <CalButton
                   className="inline-flex items-center gap-2 text-[13px] font-semibold text-paper bg-ink px-6 py-3 rounded-full hover:bg-oxblood transition-colors"
                 >
                   Or, request access
                   <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
                     <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </a>
+                </CalButton>
               </div>
             </div>
 
@@ -306,12 +304,14 @@ export default function Finance() {
                     Calibrated PoS with sensitivity ranges. Decomposable risk components, interrogatable. Off-target binding profiles across the proteome. Mechanism traces with metabolite-level evidence. Comparable-failure cohorts indexed by structural and mechanism similarity, at scale.
                   </p>
                 </motion.div>
-                <motion.a variants={panelItemV} href="mailto:partnerships@varosync.com?subject=Case%20study%20request" className="shrink-0 inline-flex items-center gap-2.5 text-[14px] font-semibold tracking-[-0.005em] text-paper bg-ink px-7 py-3.5 rounded-full hover:bg-oxblood transition-colors">
-                  Request access
-                  <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                    <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </motion.a>
+                <motion.div variants={panelItemV} className="shrink-0">
+                  <CalButton className="inline-flex items-center gap-2.5 text-[14px] font-semibold tracking-[-0.005em] text-paper bg-ink px-7 py-3.5 rounded-full hover:bg-oxblood transition-colors">
+                    Request access
+                    <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                      <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </CalButton>
+                </motion.div>
               </div>
             </motion.section>
 

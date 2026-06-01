@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'motion/react'
+import { CalButton } from '../components/CalButton'
 
 const ease = [0.22, 1, 0.36, 1] as const
 const heroV = {
@@ -352,16 +353,14 @@ export default function Biotech() {
           <motion.p variants={heroChildV} className="bio-subtitle">
             Pharmacology, off-target liability, formulation, and exposure, modeled at their intersection against a proprietary corpus of what has actually failed in the clinic and why. Quantified uncertainty, not point estimates.
           </motion.p>
-          <motion.a
-            variants={heroChildV}
-            href="mailto:partnerships@varosync.com?subject=Asset%20for%20evaluation"
-            className="bio-cta"
-          >
-            Discuss your program
-            <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-              <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.a>
+          <motion.div variants={heroChildV}>
+            <CalButton className="bio-cta">
+              Discuss your program
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </CalButton>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -425,19 +424,16 @@ export default function Biotech() {
               className="engagement-image"
             />
           </motion.div>
-          <motion.a
-            variants={heroChildV}
-            href="mailto:partnerships@varosync.com"
-            className="engagement-side-cta"
-            style={{ marginTop: '32px', display: 'inline-block' }}
-          >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4em' }}>
-              Schedule a call
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" style={{ display: 'inline', verticalAlign: 'middle' }}>
-                <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </motion.a>
+          <motion.div variants={heroChildV} style={{ marginTop: '32px' }}>
+            <CalButton className="engagement-side-cta">
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4em' }}>
+                Schedule a call
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" style={{ display: 'inline', verticalAlign: 'middle' }}>
+                  <path d="M6 14L14 6M14 6H7M14 6V13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </CalButton>
+          </motion.div>
         </motion.div>
       </section>
     </div>
