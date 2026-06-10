@@ -28,12 +28,12 @@ const childV = { hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, transi
 const ALLO = "ZWE"; // STX-478 — mutant-selective allosteric
 const ORTHO = "X3N"; // orthosteric comparator (ATP-adjacent site)
 
+// "both" stays the initial 3D overview (whole protein, both pockets); the two pills focus a site.
 const VIEWS = [
-  { id: "both",  label: "Both sites" },
-  { id: "allo",  label: "Allosteric · escape" },
-  { id: "ortho", label: "Orthosteric · liability" },
+  { id: "allo",  label: "Allosteric" },
+  { id: "ortho", label: "Orthosteric" },
 ] as const;
-type ViewId = typeof VIEWS[number]["id"];
+type ViewId = "both" | "allo" | "ortho";
 
 const ALLO_COLOR = "#5f9e3c";   // green — escape
 const ORTHO_COLOR = "#b53324";  // red — liability
@@ -96,6 +96,15 @@ export function BindingCard({ num }: Props) {
     } catch {}
   }, [view]);
 
+  // keep the 3Dmol canvas crisp when its container changes size (orientation, layout shifts)
+  useEffect(() => {
+    const el = host.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => { try { viewerRef.current?.resize(); viewerRef.current?.render(); } catch {} });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <motion.div id="card-binding" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.15 }} variants={wrapV} className="relative">
       <div className="absolute inset-0 overflow-hidden rounded-[6px]">
@@ -113,21 +122,23 @@ export function BindingCard({ num }: Props) {
             Binding mode
           </span>
           <span className="grow" />
-          {VIEWS.map((t) => {
-            const on = t.id === view;
-            return (
-              <button key={t.id} type="button" onClick={() => setView(t.id)}
-                className={`text-[13px] tracking-[-0.005em] font-bold px-5 py-2.5 rounded-[12px] transition-all duration-200 ${
-                  on ? "bg-white text-[#0a0a0a] shadow-[0_8px_22px_rgba(15,20,28,0.22),0_1px_3px_rgba(15,20,28,0.08)]"
-                     : "bg-white/55 text-[#3a3a35] hover:bg-white/85 hover:text-[#0a0a0a] backdrop-blur-[2px] shadow-[0_3px_10px_rgba(15,20,28,0.08)]"}`}>
-                {t.label}
-              </button>
-            );
-          })}
+          <span className="flex gap-2.5 shrink-0">
+            {VIEWS.map((t) => {
+              const on = t.id === view;
+              return (
+                <button key={t.id} type="button" onClick={() => setView(t.id)}
+                  className={`text-[13px] tracking-[-0.005em] font-bold px-5 py-2.5 rounded-[12px] transition-all duration-200 ${
+                    on ? "bg-white text-[#0a0a0a] shadow-[0_8px_22px_rgba(15,20,28,0.22),0_1px_3px_rgba(15,20,28,0.08)]"
+                       : "bg-white/55 text-[#3a3a35] hover:bg-white/85 hover:text-[#0a0a0a] backdrop-blur-[2px] shadow-[0_3px_10px_rgba(15,20,28,0.08)]"}`}>
+                  {t.label}
+                </button>
+              );
+            })}
+          </span>
         </motion.div>
 
         <motion.div variants={childV} className="font-helvetica bg-white rounded-[10px] shadow-[0_20px_48px_rgba(15,20,28,0.18),0_3px_8px_rgba(15,20,28,0.06)] overflow-hidden">
-          <div className="px-8 pt-9 pb-7 md:px-12 md:pt-11 md:pb-9">
+          <div className="px-5 pt-8 pb-7 md:px-12 md:pt-11 md:pb-9">
             <div className="mb-6 grid md:grid-cols-[1fr_auto] gap-4 items-end">
               <div>
                 <h3 className="text-[19px] tracking-[-0.015em] font-bold text-[#0a0a0a]">PI3Kα · two binding sites</h3>
@@ -137,7 +148,7 @@ export function BindingCard({ num }: Props) {
 
             <div className="grid md:grid-cols-[1.5fr_1fr] gap-6">
               <div className="relative">
-                <div ref={host} className="relative w-full rounded-[6px] border border-[#efefed] bg-[#fbfaf6] overflow-hidden" style={{ height: 380 }} />
+                <div ref={host} className="relative w-full h-[320px] md:h-[380px] rounded-[6px] border border-[#efefed] bg-[#fbfaf6] overflow-hidden" />
                 {!ready && !failed && (
                   <div className="absolute inset-0 flex items-center justify-center text-[12px] text-[#a8a292]">rendering structure…</div>
                 )}

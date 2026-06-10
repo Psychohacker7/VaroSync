@@ -60,7 +60,7 @@ export function GapCard({ num }: Props) {
         </motion.div>
 
         <motion.div variants={childV} className="font-helvetica bg-white rounded-[10px] shadow-[0_20px_48px_rgba(15,20,28,0.18),0_3px_8px_rgba(15,20,28,0.06)] overflow-hidden">
-          <div className="px-8 pt-9 pb-7 md:px-12 md:pt-11 md:pb-9">
+          <div className="px-5 pt-8 pb-7 md:px-12 md:pt-11 md:pb-9">
             <div className="mb-7">
               <h3 className="text-[19px] tracking-[-0.015em] font-bold text-[#0a0a0a]">Coverage of the escape thesis</h3>
               <p className="mt-1 text-[12.5px] text-[#888377]">Each claim audited against the public record, marked established, partial, or open.</p>
@@ -71,21 +71,22 @@ export function GapCard({ num }: Props) {
                 const on = i === open;
                 return (
                   <div key={f.q} className="border-t border-[#efefed] last:border-b">
-                    <button type="button" onClick={() => setOpen(on ? -1 : i)} className="w-full flex items-center gap-4 py-[18px] text-left group">
+                    <button type="button" onClick={() => setOpen(on ? -1 : i)} className="w-full flex flex-wrap items-center gap-x-3 gap-y-2.5 py-4 text-left group md:flex-nowrap md:gap-4 md:py-[18px]">
                       {/* coverage indicator */}
-                      <span className="flex gap-[3px] shrink-0">
+                      <span className="flex gap-[3px] shrink-0 order-1">
                         {[0, 1, 2].map((s) => (
                           <span key={s} className="block w-[16px] h-[5px] rounded-full" style={{ background: s < SFILL[f.status] ? SC[f.status] : "#ece9e0" }} />
                         ))}
                       </span>
-                      <span className={`flex-1 text-[15px] tracking-[-0.005em] transition-colors ${on ? "text-[#0a0a0a] font-bold" : "text-[#3a3a35] font-semibold group-hover:text-[#0a0a0a]"}`}>{f.q}</span>
-                      <span className="text-[10.5px] uppercase tracking-[0.08em] font-bold shrink-0" style={{ color: SC[f.status] }}>{SL[f.status]}</span>
-                      <span className="text-[#b3ac9c] text-[18px] shrink-0 transition-transform duration-200" style={{ transform: on ? "rotate(45deg)" : "none" }}>+</span>
+                      {/* mobile: status + toggle ride the indicator line, question wraps below; desktop: all one row */}
+                      <span className="order-2 ml-auto md:order-3 md:ml-0 text-[10.5px] uppercase tracking-[0.08em] font-bold shrink-0" style={{ color: SC[f.status] }}>{SL[f.status]}</span>
+                      <span className="order-2 md:order-4 text-[#b3ac9c] text-[18px] shrink-0 transition-transform duration-200" style={{ transform: on ? "rotate(45deg)" : "none" }}>+</span>
+                      <span className={`order-3 w-full md:order-2 md:w-auto md:flex-1 text-[15px] tracking-[-0.005em] transition-colors ${on ? "text-[#0a0a0a] font-bold" : "text-[#3a3a35] font-semibold group-hover:text-[#0a0a0a]"}`}>{f.q}</span>
                     </button>
                     <AnimatePresence initial={false}>
                       {on && (
                         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1, transition: { duration: 0.3, ease } }} exit={{ height: 0, opacity: 0, transition: { duration: 0.2 } }} className="overflow-hidden">
-                          <div className="pb-6 pl-[68px] grid md:grid-cols-2 gap-7 max-w-[760px]">
+                          <div className="pb-6 pl-0 md:pl-[68px] grid md:grid-cols-2 gap-5 md:gap-7 max-w-[760px]">
                             <div>
                               <p className="text-[10.5px] uppercase tracking-[0.1em] font-bold text-[#a8a292] mb-1.5">What the record shows</p>
                               <p className="text-[13.5px] leading-[1.55] text-[#6a655c]">{f.record}</p>
