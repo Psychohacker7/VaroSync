@@ -231,6 +231,7 @@ export function StructureCard({ num }: Props) {
     const g = gestRef.current;
 
     const onWheel = (e: WheelEvent) => {
+      if (!e.ctrlKey && !e.metaKey) return;
       e.preventDefault();
       const rect = el.getBoundingClientRect();
       const mx = e.clientX - rect.left, my = e.clientY - rect.top;
