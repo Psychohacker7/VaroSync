@@ -117,7 +117,7 @@ export default function Finance() {
                   Everything behind a drug asset, on the record.
                 </motion.h1>
                 <motion.p variants={heroChildV} className="text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.7] text-muted mb-9">
-                  Programs that came before it their performance, what is still unproven, and what will settle it. Fully verifiable to the filing or trial behind it.
+                  Evaluating the performance of prior programs, what remains unproven, and what will settle it. All claims are fully verifiable to the underlying filing or trial.
                 </motion.p>
                 <motion.div variants={heroChildV}>
                   <CalButton className="inline-flex items-center gap-2.5 bg-ink text-paper px-7 py-3.5 rounded-full text-[14px] font-medium hover:bg-oxblood transition-colors">
