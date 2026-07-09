@@ -4,6 +4,8 @@ import Footer from './components/Footer'
 import Landing from './pages/Landing'
 import Finance from './pages/Finance'
 import Biotech from './pages/Biotech'
+import Careers from './pages/Careers'
+import CareerDetail from './pages/CareerDetail'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/finance" element={<Finance />} />
             <Route path="/biotech" element={<Biotech />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/careers/:slug" element={<CareerDetail />} />
           </Routes>
         </main>
         <Footer />

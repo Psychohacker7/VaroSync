@@ -340,6 +340,9 @@ const Header = () => {
             <Link to="/finance" className={`header-link ${isActive('/finance') ? 'active' : ''}`}>
               Capital Markets
             </Link>
+            <Link to="/careers" className={`header-link ${isActive('/careers') ? 'active' : ''}`}>
+              Careers
+            </Link>
           </div>
           <CalButton className="header-cta">
             Get in touch
@@ -398,6 +401,13 @@ const Header = () => {
               onClick={() => setMenuOpen(false)}
             >
               Capital Markets
+            </Link>
+            <Link
+              to="/careers"
+              className={`menu-nav-link ${isActive('/careers') ? 'active' : ''}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Careers
             </Link>
           </nav>
 
