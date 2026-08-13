@@ -2,14 +2,16 @@
   "case_ref": "MYE-2026-04-B",
   "aspect": "financials",
   "finding_id": "F-06",
-  "finding": "One completed priced round on file (Nov 2022); three fresh allotment authorities taken since, none filed as completed.",
+  "finding": "Completed allotments on file through Nov 2022 (3 SH01 records); three later allotment authorities (2023-01, 2023-09, 2025-11) carry no matching SH01.",
   "data": {
     "meta": {
       "source": "Companies House public HTML (JSON API requires key we do not hold; 401)",
       "company_number_redacted": true,
       "filing_count": 37,
       "date_range": "2020-11-25 (incorporation) through 2026-08-06 (accounts to 30 Nov 2025)",
-      "caveat": "Field structure inferred from description text rather than typed API fields. 4 of 6 RESOLUTIONS filings state no effective date; filing date used as a proxy in those gaps. Officer 'Occupation' field is NOT available in the officers HTML."
+      "caveat": "Field structure inferred from description text rather than typed API fields. 4 of 6 RESOLUTIONS filings state no effective date; filing date used as a proxy in those gaps. Officer 'Occupation' field is NOT available in the officers HTML.",
+      "as_of": "2026-08-06",
+      "interpretation_note": "SH01 records nominal share capital allotted (here ~£108-£239 total), not price-per-share, proceeds, or round valuation — so 'priced round' cannot be inferred. RES10/RES11 are routine authority renewals (allot shares / disapply pre-emption), not evidence of a completed raise; the finding is the absence of an SH01 following the three most recent authorities."
     },
     "type_distribution": {
       "RESOLUTIONS": 6,
@@ -73,7 +75,7 @@
           "RES11",
           "RES10"
         ],
-        "sh01_since": "none on register"
+        "sh01_since": "none found in the public filing index (HTML access)"
       },
       {
         "resolution_date": "2023-09-12",
@@ -81,7 +83,7 @@
           "RES11",
           "RES10"
         ],
-        "sh01_since": "none on register"
+        "sh01_since": "none found in the public filing index (HTML access)"
       },
       {
         "resolution_date": "2025-11-24",
@@ -89,7 +91,7 @@
           "RES11",
           "RES10"
         ],
-        "sh01_since": "none on register"
+        "sh01_since": "none found in the public filing index (HTML access)"
       }
     ],
     "psc_transitions": {
@@ -151,7 +153,7 @@
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }

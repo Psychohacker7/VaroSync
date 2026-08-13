@@ -2,7 +2,7 @@
   "case_ref": "MYE-2026-04-B",
   "aspect": "efficacy",
   "finding_id": "F-03",
-  "finding": "The efficacy bar: cilta-cel 34.9 mo median PFS; approved TCE class 7.5-11.3 mo.",
+  "finding": "The efficacy bar: cilta-cel 34.9 mo median PFS; two approved TCEs (teclistamab, talquetamab) span 7.5-11.3 mo (not the full approved-TCE class).",
   "data": {
     "meta": {
       "algorithm": "Guyot IPDfromKM 0.1.10",
@@ -11,7 +11,10 @@
       "arms": 7,
       "trials": 4,
       "validation_thresholds": "median deviation ≤10% AND mean absolute curve deviation ≤1.5 pp",
-      "caveat": "Reconstructed IPD are pseudo-data, they reproduce the marginal KM curve, not individual patients. SEs are approximate. Covariate-level claims should be avoided."
+      "caveat": "Reconstructed IPD are pseudo-data, they reproduce the marginal KM curve, not individual patients. SEs are approximate. Covariate-level claims should be avoided.",
+      "comparison_caveat": "Arms come from separate trials (single-arm and randomized) with different eligibility and prior-line distributions. Cross-trial PFS differences are benchmarks for scale, not head-to-head comparisons, and should not be read as one product beating another.",
+      "as_of": "2026-04-20",
+      "class_coverage_note": "Reconstructed arms cover cilta-cel (CAR-T) plus two approved TCEs: teclistamab (BCMA, 11.3 mo) and talquetamab (GPRC5D, 7.5-11.2 mo). Two other approved TCEs — elranatamab and linvoseltamab — were NOT reconstructed for this bundle. The 7.5-11.3 mo range is the two reconstructed TCEs, not the full approved-TCE class."
     },
     "arms": [
       {
@@ -146,7 +149,7 @@
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }

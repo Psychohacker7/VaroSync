@@ -3,69 +3,67 @@
   "subject": "Company C",
   "subject_description": "Early-stage BCMA-directed cell therapy platform, UK-domiciled",
   "domain": "Immuno-oncology · Multiple Myeloma · TCE + autologous CAR-T",
-  "disclaimer": "Anonymized specimen. Subject-asset and client identities are redacted. Comparator, market, regulatory, and IP data are unredacted at primary source. This surface exposes the evidence; it does not make an investment call.",
+  "disclaimer": "Anonymized specimen. Direct identifiers of the subject asset and client (names, company/patent/arXiv numbers, addresses) are redacted; the subject's own public disclosures are cited verbatim as evidence and may narrow identity, so non-identifiability is not guaranteed. Comparator, market, regulatory, and IP data are unredacted at primary source. This surface exposes the evidence; it does not make an investment call.",
   "findings": [
     {
       "id": "F-01",
       "aspect": "landscape",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/landscape.json",
       "title": "BCMA is the most crowded target in the myeloma cell-therapy landscape.",
-      "statement": "210 of 268 (78%) active clinical programs are BCMA-directed. Five products approved."
+      "statement": "210 of 268 unique active clinical programs (78%) are BCMA-directed; 5 of the 6 approved products are BCMA. By-target and by-phase census in the evidence block (target rows double-count dual-target assets; 63 programs carry no standard phase)."
     },
     {
       "id": "F-02",
       "aspect": "failures",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/failures.json",
       "title": "15% of recent field failures fall in the construct-level slice a binder-maturation platform acts on.",
-      "statement": "Of 34 programs terminated, withdrawn, or publicly deprioritized 2021 through 2025: 20 (59%) died of commercial pressure; 5 (15%) died of construct-level modes."
+      "statement": "Of 34 programs terminated, withdrawn, or deprioritized 2019–2025: 20 (59%) recorded strategic or corporate reasons as stated, 5 (15%) construct-level modes the platform acts on. 'Strategic' is the stated registry reason, not established commercial-pressure causation."
     },
     {
       "id": "F-03",
       "aspect": "efficacy",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/efficacy.json",
-      "title": "The efficacy bar: cilta-cel 34.9 mo median PFS; approved TCE class 7.5-11.3 mo.",
-      "statement": "KM reconstructions across seven arms in four pivotal trials, all passing validation thresholds."
+      "title": "The efficacy bar: cilta-cel 34.9 mo median PFS; two approved TCEs (teclistamab, talquetamab) span 7.5-11.3 mo.",
+      "statement": "KM reconstructions across seven arms in four trials, all passing the primary validation thresholds. Benchmarks are cross-trial (separate populations), not head-to-head; the 7.5-11.3 mo range is teclistamab + talquetamab, not the full approved-TCE class."
     },
     {
       "id": "F-04",
       "aspect": "safety",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/safety.json",
-      "title": "The approved class is still generating labeled events six years in.",
-      "statement": "Teclistamab post-2025Q1: IgA nephropathy (n=36), IVth-nerve paralysis (n=31). 17,540 unique FAERS cases across seven products."
+      "title": "The approved class keeps accumulating post-marketing reports six years in.",
+      "statement": "17,540 unique FAERS cases across seven products; post-2025Q1 new report terms include teclistamab IgA nephropathy (n=36) and IVth-nerve paralysis (n=31). Spontaneous report counts only — no exposure denominator, not rankable across products, association not causation."
     },
     {
       "id": "F-05",
       "aspect": "ip",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/ip.json",
-      "title": "Founder-inventor overlap on Celyad WO2020221873; sequence identity vs claims tops out at 47%.",
-      "statement": "Six 80%+ hits sit against an unclaimed comparator disclosed in the Celyad document."
+      "title": "Sequence-identity screen vs Celyad WO2020221873; identity vs the claimed CDRs tops out at 47%.",
+      "statement": "Max identity vs Celyad's CLAIMED CDRs is 47%. Six hits exceed 80% on the shorter-sequence metric (fewer on aligned length), all CDR2-vs-CDR2 and against an unclaimed comparator, in the one window whose numbering could not be reliably reproduced. No inventorship comparison is made here."
     },
     {
       "id": "F-06",
       "aspect": "financials",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/financials.json",
-      "title": "One completed priced round on file (Nov 2022); three fresh allotment authorities taken since, none filed as completed.",
-      "statement": "Companies House trail: RES10 + RES11 in Jan 2023, Sep 2023, Nov 2025, no SH01 since."
+      "title": "Completed allotments through Nov 2022 (3 SH01); three later allotment authorities, none filed as completed.",
+      "statement": "Companies House: 3 SH01 completed allotments through Nov 2022; RES10 + RES11 authorities taken 2023-01, 2023-09, 2025-11 with no SH01 since. Resulting-capital figures are nominal, not valuations."
     },
     {
       "id": "F-07",
       "aspect": "papers",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/papers.json",
-      "title": "The one public technical disclosure covers monomer VHH-CAR CDR3 maturation with a reporter-cell readout.",
-      "statement": "NeurIPS 2024 workshop preprint. No primary T-cell functional data. No multispecific geometry."
+      "title": "The one public disclosure is a CAR binder hit-maturation preprint; readout cell-system unstated, no multispecific geometry.",
+      "statement": "NeurIPS 2024 workshop preprint. The published text does not report primary T-cell functional data (terms absent) and the readout cell-system is unstated; no multispecific geometry. Absence in the text, not proof the work was not done."
     },
     {
       "id": "F-08",
       "aspect": "pipeline",
       "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/pipeline.json",
       "title": "The CB-101 multispecific program appears in exactly one venue searched.",
-      "statement": "One conference speaker-bio attribution. No corroboration across seven venues."
+      "statement": "One conference speaker-bio attribution; no independent corroboration across seven venue groups. Recorded LOW confidence and explicitly not load-bearing on any conclusion."
     }
   ],
   "corpus": {
     "id": "MYE-CORPUS-2026Q2-r2313",
-    "snapshot": "2026-04-20T00:00:00Z",
-    "refreshed": "2026-04-20T02:11:00Z",
     "total_programs": 268,
     "termination_events": 34,
     "sponsors": 47,
@@ -80,7 +78,20 @@
       "arXiv / bioRxiv / peer-reviewed journals",
       "SEC EDGAR (10-K/20-F/8-K)",
       "Conference abstracts (ASH, ASCO, EHA, SITC, AACR)"
-    ]
+    ],
+    "assembled": "2026-04-20T02:11:00Z",
+    "latest_bundle_refresh": "2026-08-06",
+    "snapshot_note": "Core corpus assembled 2026-04-20; evidence bundles refresh independently and each carries its own as_of. Latest refreshes: financials 2026-08-06 and safety 2026-08-05 (2026Q2 FAERS archive).",
+    "bundle_as_of": {
+      "landscape": "2026-04-20",
+      "failures": "2026-04-20",
+      "efficacy": "2026-04-20",
+      "safety": "2026-08-05",
+      "ip": "2026-04-20",
+      "financials": "2026-08-06",
+      "papers": "2026-04-20",
+      "pipeline": "2026-04-20"
+    }
   },
   "methodology": {
     "id": "MYE-METH-v1.0",
@@ -88,12 +99,27 @@
     "short_hash": "ac1ede0299b7",
     "registered_at": "2026-04-15T14:22:00Z"
   },
+  "specimen_note": "Worked specimen of Varosync's diligence method. The subject company is anonymized; the comparator, trial, regulatory, IP, and financial evidence is unredacted at primary source. The method_audit below is verifiable in the evidence bundles you can fetch.",
+  "method_audit": {
+    "what_this_surfaced": "The engagement mapped the full competitive field (268 active programs across six targets), base-rated 34 comparable field failures against a taxonomy fixed in advance, screened the subject's patent position residue-by-residue against a predecessor's sequence listing, reconstructed comparator survival curves from published figures and validated them against the source, deduplicated a class-wide adverse-event corpus, and traced every pipeline and publication claim to its primary source. Several reads overturned assumptions in the engagement's own input brief. This is multi-domain, primary-source work a single-domain analyst or a one-shot AI pass does not assemble.",
+    "scope_of_work": "One diligence pass spanning clinical biostatistics (Kaplan-Meier reconstruction), pharmacovigilance (FAERS dedup and reconciliation), antibody and patent sequence analysis, and UK corporate-filing forensics, across nine primary sources assembled and cross-checked, compressing what would otherwise be multiple analyst-weeks.",
+    "method_pre_registered": "Methodology MYE-METH-v1.0 was hashed (sha256 short-hash ac1ede0299b7) and registered 2026-04-15, before the corpus was assembled on 2026-04-20. The 14-mode failure taxonomy was frozen before any event was classified.",
+    "every_finding_traceable": "Each of the 8 findings resolves to a fetchable evidence bundle keyed to primary-source identifiers: ClinicalTrials.gov NCT numbers, WIPO WO2020221873, protein SEQ IDs, Companies House filing codes, FAERS CASEIDs, and an arXiv e-print.",
+    "corrected_its_own_inputs": [
+      "F-05: overturned the engagement's own premise. The flagged Celyad patent WO2020221873 is not a 'VHH-CAR' patent ('VHH' and 'single domain' appear zero times in its text); it claims a conventional VH/VL scFv.",
+      "F-03: trusted the trial PDFs over the input brief, correcting MajesTEC-1 risk-set timing and CARTITUDE-1's risk row (8 values, not the brief's 7).",
+      "F-06: removed an unsupported 'VP Investments' officer occupation that had no basis in the register.",
+      "F-08: held the single-venue CB-101 pipeline claim at LOW confidence after checking seven venue groups with zero corroboration, and marked it explicitly not load-bearing on any conclusion."
+    ],
+    "reconstructions_validated": "KM curve reconstructions (7 arms across 4 trials) were validated against published medians and landmark PFS points within about 1 percentage point (see efficacy.json independent_cross_check).",
+    "bounded_where_uncertain": "Limits are stated where they bite: FAERS counts are not rankable across products (no exposure denominator); efficacy is a cross-trial benchmark, not head-to-head; absence of a term in a paper is not proof the work was not done; the IP overlap concentrates in the least-reliably-numbered CDR window and weakens rather than strengthens the read."
+  },
   "agent_instructions": {
     "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   },

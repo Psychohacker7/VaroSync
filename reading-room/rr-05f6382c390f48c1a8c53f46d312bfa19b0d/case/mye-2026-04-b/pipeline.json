@@ -4,14 +4,34 @@
   "finding_id": "F-08",
   "finding": "The CB-101 multispecific program appears in exactly one venue searched.",
   "data": {
-    "note": "Pipeline claim details in finding F-08 statement; corroboration attempt log lives in the workspace aspect=pipeline view."
+    "as_of": "2026-04-20",
+    "target_claim": "Subject-asset multispecific TCE program (\"CB-101\") with OR-gate logic and Q1 2027 clinic entry.",
+    "primary_source": "A single conference speaker-bio attribution. The page currently 301-redirects behind a login gate.",
+    "corroboration_attempt": {
+      "run_id": "RUN-2026-04-20-J",
+      "venues_checked": [
+        "Sponsor website (current site + Wayback Machine captures)",
+        "SEC EDGAR",
+        "MHRA and FDA public filings",
+        "WIPO PATENTSCOPE (composition-of-matter for a multispecific format)",
+        "arXiv, bioRxiv, PubMed",
+        "Conference agendas: ASH, ASCO, EHA, SITC, AACR, BIO-Europe, JPM Healthcare",
+        "Sponsor LinkedIn posts"
+      ],
+      "independent_confirmations_found": 0,
+      "status": "unresolved"
+    },
+    "confidence": "LOW",
+    "load_bearing": false,
+    "load_bearing_note": "No downstream conclusion in this case depends on the CB-101 claim. It is recorded as a low-confidence, single-source item, not as an established fact.",
+    "framing": "This is an absence-of-corroboration finding. Across the seven venue groups above, no independent confirmation of CB-101 was located as of the snapshot. Absence of corroboration is not proof the program does not exist; it means the single speaker-bio attribution stands uncorroborated."
   },
   "agent_instructions": {
     "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }

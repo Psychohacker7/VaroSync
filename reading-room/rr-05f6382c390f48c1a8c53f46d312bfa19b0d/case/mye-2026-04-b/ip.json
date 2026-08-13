@@ -2,7 +2,7 @@
   "case_ref": "MYE-2026-04-B",
   "aspect": "ip",
   "finding_id": "F-05",
-  "finding": "Founder-inventor overlap on Celyad WO2020221873; sequence identity vs claims tops out at 47%.",
+  "finding": "Sequence-identity screen vs Celyad WO2020221873: identity vs claimed CDRs tops out at 47%; the six 80%+ hits are all CDR2-vs-CDR2 against an unclaimed comparator construct.",
   "data": {
     "meta": {
       "task_framing_correction": "The task described WO2020221873 as an 'anti-BCMA VHH-CAR' patent. It is not one by its own vocabulary: 'VHH', 'single domain' and 'single-domain' each appear ZERO times in Celyad's full text (vs 70 occurrences of 'VHH' in Company C's).",
@@ -11,13 +11,17 @@
       "numbering_scheme": "Neither patent states a scheme. Inferred by reproduction test: Celyad = Kabat (6/6 exact). Company C = IMGT-family (CDR1 28/28, CDR3 27/28, CDR2 only 8/28, Company C's own CDR2 boundary is internally inconsistent).",
       "total_alignments": 4056,
       "algorithm": "BLOSUM62 global alignments",
-      "retrieval_note": "WIPO PATENTSCOPE returned HTTP 403 on all four endpoints. Both official PDFs are image-only scans (102 and 264 characters extracted across 52 and 133 pages). The Company C listing was recovered by transcribing 31 embedded table images and validated: 84 of 84 listed VHH CDRs match their stated parent VHH as exact substrings."
+      "retrieval_note": "WIPO PATENTSCOPE returned HTTP 403 on all four endpoints. Both official PDFs are image-only scans (102 and 264 characters extracted across 52 and 133 pages). The Company C listing was recovered by transcribing 31 embedded table images and validated: 84 of 84 listed VHH CDRs match their stated parent VHH as exact substrings.",
+      "adjacency_basis": "WO2020221873 was flagged as a predecessor adjacent by target and modality. A founder-inventor overlap was recorded in the run log, but inventor identities are redacted in this specimen and are NOT substantiated in this block; this block substantiates the sequence comparison only. Any inventorship claim needs a separate inventor-roster comparison and is out of scope here."
     },
     "counts": {
-      "pairs_over_80pct": 6,
+      "pairs_over_80pct_shorter_metric": 6,
+      "pairs_over_80pct_aligned_metric_note": "The count of 6 is on pct_id_shorter (the shorter-sequence denominator). Fewer clear 80% on the stricter aligned-length metric (pct_id_aln): of the four disclosed top hits, two hold >=80% aligned (87.5, 82.35) and two fall to 75.0 and 76.47.",
       "pairs_over_90pct": 0,
       "max_identity_vs_celyad_claimed_cdrs": 47.06,
-      "max_identity_source": "A Company C conventional scFv, not a VHH"
+      "max_identity_source": "A Company C conventional scFv, not a VHH",
+      "disclosed_in_top_hits": "4 representative pairs are itemized in top_hits; pairs_over_80pct_shorter_metric = 6 total.",
+      "counting_basis": "The 6 counts CDR2 windows by numbering scheme (IMGT and Kabat) across a smaller number of distinct sequence pairs (SEQ ID NO: 172 and SEQ ID NO: 67/68 are each counted under both schemes); 4 representative windows are itemized, 2 are not."
     },
     "top_hits": [
       {
@@ -68,7 +72,8 @@
     "structural_observations": [
       "All six 80%+ hits are CDR2-vs-CDR2. All six are against the same Celyad comparator construct (SEQ ID NO: 15 domain 2), NOT against Celyad's claimed scFv #11.",
       "The 87.5% pair's Kabat window includes near-invariant VHH framework-2 residues (YYADSVKG/AYADSVKG), so the Kabat figure is inflated by framework rather than paratope.",
-      "The xGSGGST CDR2 motif underlying the top hits recurs across many unrelated Company C binders in their own listing, so its distinctiveness is questionable."
+      "The xGSGGST CDR2 motif underlying the top hits recurs across many unrelated Company C binders in their own listing, so its distinctiveness is questionable.",
+      "The entire 80%+ signal is CDR2-vs-CDR2. CDR2 is also the single window where the numbering-reproduction test failed (8/28) and where Company C's own CDR2 boundary is internally inconsistent. The adjacency therefore concentrates in the least reliably delineated region, which weakens rather than strengthens the overlap read."
     ]
   },
   "agent_instructions": {
@@ -76,7 +81,7 @@
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }

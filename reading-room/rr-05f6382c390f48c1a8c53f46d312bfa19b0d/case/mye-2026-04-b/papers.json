@@ -2,7 +2,7 @@
   "case_ref": "MYE-2026-04-B",
   "aspect": "papers",
   "finding_id": "F-07",
-  "finding": "The one public technical disclosure covers monomer VHH-CAR CDR3 maturation with a reporter-cell readout.",
+  "finding": "The one public technical disclosure is a hit-maturation preprint (protein language models for CAR binder maturation). The functional readout's cell system is not stated in the paper (no primary-T-cell terms appear), and no multispecific geometry is described.",
   "data": {
     "meta": {
       "paper": "arXiv preprint (identifier redacted for specimen; v2)",
@@ -32,14 +32,23 @@
         "term": "primary",
         "occurrences_in_paper": 0
       }
-    ]
+    ],
+    "disclosure_audit": {
+      "run_id": "RUN-2026-04-20-G",
+      "STATED": 11,
+      "IMPLIED": 4,
+      "UNSTATED": 5,
+      "CONTRADICTED": 0,
+      "note": "Verbatim-vs-inferred audit of the preprint. Reporter-cell identity (primary T-cells vs a T-cell line) is UNSTATED in the source."
+    },
+    "framing": "terms_absent records that these terms do not appear anywhere in the published preprint text (checked against the authoritative LaTeX e-print source). This establishes what the paper does NOT report; it is not evidence that the underlying experiments were not performed."
   },
   "agent_instructions": {
     "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }

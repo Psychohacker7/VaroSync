@@ -4,14 +4,100 @@
   "finding_id": "F-01",
   "finding": "BCMA is the most crowded target in the myeloma cell-therapy landscape.",
   "data": {
-    "note": "Landscape counts summarized in finding F-01 statement; underlying pipeline breakdown lives in the workspace UI at aspect=landscape."
+    "as_of": "2026-04-20",
+    "total_active_programs": 268,
+    "approved_products": 6,
+    "bcma_share": "210 of 268 unique active programs (78%); 5 of the 6 approved products are BCMA-directed.",
+    "by_target": [
+      {
+        "target": "BCMA",
+        "active": 210,
+        "approved": 5
+      },
+      {
+        "target": "GPRC5D",
+        "active": 47,
+        "approved": 1
+      },
+      {
+        "target": "CD38",
+        "active": 30,
+        "approved": 0
+      },
+      {
+        "target": "SLAMF7",
+        "active": 9,
+        "approved": 0
+      },
+      {
+        "target": "FcRH5",
+        "active": 5,
+        "approved": 0
+      },
+      {
+        "target": "CD138",
+        "active": 5,
+        "approved": 0
+      }
+    ],
+    "by_target_note": "Dual-target assets are counted under each of their targets, so target rows sum to more than the 268 unique programs.",
+    "by_phase": [
+      {
+        "phase": "Phase 1",
+        "n": 94
+      },
+      {
+        "phase": "Phase 1/2",
+        "n": 37
+      },
+      {
+        "phase": "Phase 2",
+        "n": 53
+      },
+      {
+        "phase": "Phase 3",
+        "n": 16
+      },
+      {
+        "phase": "Phase 4",
+        "n": 5
+      },
+      {
+        "phase": "Not specified / other",
+        "n": 63
+      }
+    ],
+    "source_and_method": {
+      "endpoint": "ClinicalTrials.gov API v2",
+      "query": {
+        "query.cond": "Multiple Myeloma OR Plasma Cell Myeloma",
+        "query.intr": "CAR-T OR bispecific OR trispecific OR TCE OR multispecific OR BiTE",
+        "pageSize": 100
+      },
+      "raw_records": 409,
+      "records_retained": 268,
+      "inclusion_rules": [
+        "drop overall_status = UNKNOWN",
+        "count dual-target assets under each target"
+      ],
+      "approved_products_source": "Drugs@FDA",
+      "http_status_series": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "retries": 0
+    },
+    "by_phase_note": "Phase rows sum to the 268 unique active programs. 63 carry no standard interventional phase in the registry (early-phase/'not applicable'/observational)."
   },
   "agent_instructions": {
     "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }

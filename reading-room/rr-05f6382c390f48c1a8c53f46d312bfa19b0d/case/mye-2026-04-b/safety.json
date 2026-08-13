@@ -2,7 +2,7 @@
   "case_ref": "MYE-2026-04-B",
   "aspect": "safety",
   "finding_id": "F-04",
-  "finding": "The approved class is still generating labeled events six years in.",
+  "finding": "The approved class is still accumulating post-marketing report terms six years in.",
   "data": {
     "meta": {
       "source": "FAERS quarterly ASCII archives",
@@ -13,7 +13,16 @@
       "seriousness_denominator": "cases with >=1 OUTC record (80.4% of cases)",
       "serious_definition": "outc_cod in {DE,LT,HO,DS,CA,RI}",
       "cross_check": "openFDA reconciled within 0.1–1.0% on every product",
-      "caveat": "FAERS has no exposure denominator. Reporting counts only. Products cannot be ranked against each other by count magnitude. No PRR/ROR/EBGM computed."
+      "caveat": "FAERS has no exposure denominator. Reporting counts only. Products cannot be ranked against each other by count magnitude. No PRR/ROR/EBGM computed.",
+      "as_of": "2026-08-05",
+      "interpretation_note": "Newly-appearing preferred terms (e.g. IgA nephropathy, IVth-nerve paralysis) are new spontaneous-report terms, not established or causally-attributed signals. Reporting is subject to notoriety and stimulated-reporting bias.",
+      "field_definitions": {
+        "serious_ratio": "serious:non-serious case odds = pct_serious / (100 - pct_serious).",
+        "pct_serious": "share of cases with >=1 OUTC record (the 80.4% seriousness denominator), not of all cases.",
+        "new_pts_post_2025q1": "count of newly-appearing MedDRA preferred terms since 2025Q1 (terms, NOT patients).",
+        "cases": "unique CASEIDs after dedup."
+      },
+      "product_scope_note": "Seven products are tracked for class safety, including belantamab mafodotin — an approved-then-US-withdrawn BCMA ADC that sits outside the landscape's CAR-T/TCE query scope (hence 6 approved in F-01 vs 7 here)."
     },
     "products": [
       {
@@ -41,6 +50,7 @@
         "serious_ratio": 1.66,
         "pct_serious": 62.4,
         "death_cases": 1000,
+        "death_cases_approx": true,
         "new_pts_post_2025q1": 83
       },
       {
@@ -105,7 +115,9 @@
     "structural_confounds": [
       "Linvoseltamab had zero prior-corpus cases, so all 75 of its 'new' PTs are new by construction.",
       "Belantamab's low new-PT count follows from an already-large 972-PT prior corpus; counts fell from a 2022Q2 peak of 364 to a trough of 8 in 2025Q2 (consistent with 2022 US market withdrawal), then rose to 174 by 2026Q2.",
-      "336 cases name more than one product and are counted under each."
+      "336 cases name more than one product and are counted under each.",
+      "Per-product case counts sum to 17,929 vs 17,540 unique CASEIDs (excess 389): 336 cases name >1 product; the 53-case residual is cases naming three or more products, each counted under each.",
+      "belantamab mafodotin death_cases is an approximate figure (~1,000); as the withdrawn, out-of-scope ADC comparator it is tracked for class context only, and its death-outcome count is reported approximately rather than as an exact post-dedup tally."
     ]
   },
   "agent_instructions": {
@@ -113,7 +125,7 @@
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }

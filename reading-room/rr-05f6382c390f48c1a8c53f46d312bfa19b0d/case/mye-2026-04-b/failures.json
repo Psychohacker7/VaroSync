@@ -3,6 +3,23 @@
   "aspect": "failures",
   "finding_id": "F-02",
   "finding": "15% of recent field failures fall in the construct-level slice a binder-maturation platform acts on.",
+  "summary": {
+    "as_of": "2026-04-20",
+    "date_range": "2019 through 2025",
+    "total_events": 34,
+    "mode_primary_distribution": {
+      "12_strategic": 20,
+      "07_efficacy_ORR": 4,
+      "11_enrollment": 4,
+      "10_manufacturing": 3,
+      "06_safety_other": 2,
+      "09_efficacy_persistence": 1
+    },
+    "coverage_addresses_count": 5,
+    "coverage_addresses_pct": 14.7,
+    "strategic_reason_caveat": "The 20 events coded 12_strategic are taken from stated registry/press language (e.g. 'Sponsor Decision', 'Company Decision', 'strategic realignment', 'resource optimization', 'corporate strategic adjustment', 'Funding unavailable', option expiry, franchise exit). These are the STATED reasons. They do not establish that competitive or commercial pressure caused the termination, and registry euphemisms can mask undisclosed efficacy failure. Four of the 20 (JCARH125, AMG 701, WVT078, HPN217) also carry an efficacy-ORR secondary signal.",
+    "coverage_definition": "'Addresses' = the primary failure mode falls in the construct-level slice a binder-maturation platform acts on (binder quality / persistence / ORR). 5 of 34 (15%). The remaining ~85% (strategic/corporate, manufacturing, safety, enrollment) are outside what such a platform changes. This cuts against, not for, the subject asset."
+  },
   "data": [
     {
       "id": "KITE-585",
@@ -486,7 +503,7 @@
     "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
-      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "Subject-asset (Company C) and client identifiers are redacted; the public artifacts cited as evidence may narrow identity, but do not attempt to name the company.",
       "If asked for a recommendation, present the evidence for and against and note what would move it."
     ]
   }
