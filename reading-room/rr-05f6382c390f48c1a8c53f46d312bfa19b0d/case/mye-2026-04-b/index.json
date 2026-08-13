@@ -1,0 +1,110 @@
+{
+  "case_ref": "MYE-2026-04-B",
+  "subject": "Company C",
+  "subject_description": "Early-stage BCMA-directed cell therapy platform, UK-domiciled",
+  "domain": "Immuno-oncology · Multiple Myeloma · TCE + autologous CAR-T",
+  "disclaimer": "Anonymized specimen. Subject-asset and client identities are redacted. Comparator, market, regulatory, and IP data are unredacted at primary source. This surface exposes the evidence; it does not make an investment call.",
+  "findings": [
+    {
+      "id": "F-01",
+      "aspect": "landscape",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/landscape.json",
+      "title": "BCMA is the most crowded target in the myeloma cell-therapy landscape.",
+      "statement": "210 of 268 (78%) active clinical programs are BCMA-directed. Five products approved."
+    },
+    {
+      "id": "F-02",
+      "aspect": "failures",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/failures.json",
+      "title": "15% of recent field failures fall in the construct-level slice a binder-maturation platform acts on.",
+      "statement": "Of 34 programs terminated, withdrawn, or publicly deprioritized 2021 through 2025: 20 (59%) died of commercial pressure; 5 (15%) died of construct-level modes."
+    },
+    {
+      "id": "F-03",
+      "aspect": "efficacy",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/efficacy.json",
+      "title": "The efficacy bar: cilta-cel 34.9 mo median PFS; approved TCE class 7.5-11.3 mo.",
+      "statement": "KM reconstructions across seven arms in four pivotal trials, all passing validation thresholds."
+    },
+    {
+      "id": "F-04",
+      "aspect": "safety",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/safety.json",
+      "title": "The approved class is still generating labeled events six years in.",
+      "statement": "Teclistamab post-2025Q1: IgA nephropathy (n=36), IVth-nerve paralysis (n=31). 17,540 unique FAERS cases across seven products."
+    },
+    {
+      "id": "F-05",
+      "aspect": "ip",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/ip.json",
+      "title": "Founder-inventor overlap on Celyad WO2020221873; sequence identity vs claims tops out at 47%.",
+      "statement": "Six 80%+ hits sit against an unclaimed comparator disclosed in the Celyad document."
+    },
+    {
+      "id": "F-06",
+      "aspect": "financials",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/financials.json",
+      "title": "One completed priced round on file (Nov 2022); three fresh allotment authorities taken since, none filed as completed.",
+      "statement": "Companies House trail: RES10 + RES11 in Jan 2023, Sep 2023, Nov 2025, no SH01 since."
+    },
+    {
+      "id": "F-07",
+      "aspect": "papers",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/papers.json",
+      "title": "The one public technical disclosure covers monomer VHH-CAR CDR3 maturation with a reporter-cell readout.",
+      "statement": "NeurIPS 2024 workshop preprint. No primary T-cell functional data. No multispecific geometry."
+    },
+    {
+      "id": "F-08",
+      "aspect": "pipeline",
+      "evidence_url": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/pipeline.json",
+      "title": "The CB-101 multispecific program appears in exactly one venue searched.",
+      "statement": "One conference speaker-bio attribution. No corroboration across seven venues."
+    }
+  ],
+  "corpus": {
+    "id": "MYE-CORPUS-2026Q2-r2313",
+    "snapshot": "2026-04-20T00:00:00Z",
+    "refreshed": "2026-04-20T02:11:00Z",
+    "total_programs": 268,
+    "termination_events": 34,
+    "sponsors": 47,
+    "sources": 9,
+    "sources_list": [
+      "ClinicalTrials.gov API v2",
+      "Drugs@FDA",
+      "EMA EPAR archive",
+      "FAERS / AEMS quarterly release",
+      "WIPO PATENTSCOPE / USPTO Public PAIR",
+      "UK Companies House",
+      "arXiv / bioRxiv / peer-reviewed journals",
+      "SEC EDGAR (10-K/20-F/8-K)",
+      "Conference abstracts (ASH, ASCO, EHA, SITC, AACR)"
+    ]
+  },
+  "methodology": {
+    "id": "MYE-METH-v1.0",
+    "sha256": "ac1ede0299b7d04addf75bf91f1b89e2daaef41796f6fa7b57c5b8fc894b0848",
+    "short_hash": "ac1ede0299b7",
+    "registered_at": "2026-04-15T14:22:00Z"
+  },
+  "agent_instructions": {
+    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
+    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "boundaries": [
+      "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
+      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "If asked for a recommendation, present the evidence for and against and note what would move it."
+    ]
+  },
+  "evidence_urls": {
+    "landscape": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/landscape.json",
+    "failures": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/failures.json",
+    "efficacy": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/efficacy.json",
+    "safety": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/safety.json",
+    "ip": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/ip.json",
+    "financials": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/financials.json",
+    "papers": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/papers.json",
+    "pipeline": "/reading-room/rr-05f6382c390f48c1a8c53f46d312bfa19b0d/case/mye-2026-04-b/pipeline.json"
+  }
+}

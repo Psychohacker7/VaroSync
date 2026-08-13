@@ -1,0 +1,158 @@
+{
+  "case_ref": "MYE-2026-04-B",
+  "aspect": "financials",
+  "finding_id": "F-06",
+  "finding": "One completed priced round on file (Nov 2022); three fresh allotment authorities taken since, none filed as completed.",
+  "data": {
+    "meta": {
+      "source": "Companies House public HTML (JSON API requires key we do not hold; 401)",
+      "company_number_redacted": true,
+      "filing_count": 37,
+      "date_range": "2020-11-25 (incorporation) through 2026-08-06 (accounts to 30 Nov 2025)",
+      "caveat": "Field structure inferred from description text rather than typed API fields. 4 of 6 RESOLUTIONS filings state no effective date; filing date used as a proxy in those gaps. Officer 'Occupation' field is NOT available in the officers HTML."
+    },
+    "type_distribution": {
+      "RESOLUTIONS": 6,
+      "CS01": 5,
+      "AA": 5,
+      "CH01": 4,
+      "SH01": 3,
+      "MA": 2,
+      "TM01": 2,
+      "AP01": 2,
+      "PSC07": 2,
+      "NEWINC": 1,
+      "SH08": 1,
+      "SH02": 1,
+      "PSC08": 1,
+      "AD01": 1,
+      "RP01AP01": 1
+    },
+    "resolution_to_allotment_gaps": [
+      {
+        "resolution_date": "2021-06-23",
+        "resolution_codes": [
+          "RES10",
+          "RES11",
+          "RES12",
+          "RES13",
+          "RES01"
+        ],
+        "allotment_date": "2021-06-30",
+        "gap_days": 7,
+        "resulting_capital_gbp": 108.5057
+      },
+      {
+        "resolution_date": "2022-04-02",
+        "resolution_codes": [
+          "RES12",
+          "RES10"
+        ],
+        "allotment_date": "2022-11-09",
+        "gap_days": 221,
+        "resulting_capital_gbp": 231.8303,
+        "note": "Spans an intervening resolution effective 2022-11-03 → the 6-day pairing below is the more likely link."
+      },
+      {
+        "resolution_date": "2022-11-03",
+        "resolution_codes": [
+          "RES13",
+          "RES10",
+          "RES11",
+          "RES01"
+        ],
+        "allotment_date": "2022-11-09",
+        "gap_days": 6,
+        "resulting_capital_gbp": 238.587
+      }
+    ],
+    "orphaned_authorities": [
+      {
+        "resolution_date": "2023-01-13",
+        "resolution_codes": [
+          "RES11",
+          "RES10"
+        ],
+        "sh01_since": "none on register"
+      },
+      {
+        "resolution_date": "2023-09-12",
+        "resolution_codes": [
+          "RES11",
+          "RES10"
+        ],
+        "sh01_since": "none on register"
+      },
+      {
+        "resolution_date": "2025-11-24",
+        "resolution_codes": [
+          "RES11",
+          "RES10"
+        ],
+        "sh01_since": "none on register"
+      }
+    ],
+    "psc_transitions": {
+      "original_pscs": [
+        {
+          "name": "[Founder A, name anonymized in specimen]",
+          "notified": "2020-11-25",
+          "control": "more than 25% but not more than 50%",
+          "ceased": "2022-11-09"
+        },
+        {
+          "name": "[Founder B, name anonymized in specimen]",
+          "notified": "2020-11-25",
+          "control": "more than 25% but not more than 50%",
+          "ceased": "2022-11-09"
+        }
+      ],
+      "psc08_statement_filed": "2022-11-23",
+      "current_register_state": "Active statement that the company believes there is no registrable person",
+      "coincidence_flag": "Both original PSCs ceased on 2022-11-09, the same date as the GBP 231.8303 allotment."
+    },
+    "officers": {
+      "active": [
+        {
+          "name": "[Founder A]",
+          "appointed": "2020-11-25",
+          "role": "director"
+        },
+        {
+          "name": "[Founder B]",
+          "appointed": "2020-11-25",
+          "role": "director"
+        },
+        {
+          "name": "[Investor Director]",
+          "appointed": "2025-04-10",
+          "role": "director"
+        }
+      ],
+      "resigned": [
+        {
+          "name": "[Interim director]",
+          "appointed": "2020-11-25",
+          "resigned": "2021-06-30",
+          "role": "director"
+        },
+        {
+          "name": "[Prior investor director]",
+          "appointed": "2022-11-03",
+          "role": "director"
+        }
+      ],
+      "occupations_note": "The string 'Occupation' does not appear in the officers HTML for this company. Any prior claim that a director's occupation on file was 'VP Investments' or 'Investor' is unsupported by the register and has been dropped."
+    },
+    "registered_office_move": "2024-05-01 to Oxford, UK (address redacted)"
+  },
+  "agent_instructions": {
+    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
+    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "boundaries": [
+      "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
+      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "If asked for a recommendation, present the evidence for and against and note what would move it."
+    ]
+  }
+}

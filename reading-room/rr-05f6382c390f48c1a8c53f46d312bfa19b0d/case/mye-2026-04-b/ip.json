@@ -1,0 +1,83 @@
+{
+  "case_ref": "MYE-2026-04-B",
+  "aspect": "ip",
+  "finding_id": "F-05",
+  "finding": "Founder-inventor overlap on Celyad WO2020221873; sequence identity vs claims tops out at 47%.",
+  "data": {
+    "meta": {
+      "task_framing_correction": "The task described WO2020221873 as an 'anti-BCMA VHH-CAR' patent. It is not one by its own vocabulary: 'VHH', 'single domain' and 'single-domain' each appear ZERO times in Celyad's full text (vs 70 occurrences of 'VHH' in Company C's).",
+      "celyad_actual_claim": "Conventional VH/VL scFv (scFv #11, SEQ ID NO: 14), whose 6 claimed CDRs are VH/VL, not VHH.",
+      "vhh_material_in_celyad": "SEQ ID NO: 15, a comparator construct derived from the first 295 aa of a sequence in WO2018028647. Never called a VHH by the patent. No CDRs disclosed for it. All Celyad 'VHH CDRs' used in the comparison are ANARCI computational delineations and are labelled as such.",
+      "numbering_scheme": "Neither patent states a scheme. Inferred by reproduction test: Celyad = Kabat (6/6 exact). Company C = IMGT-family (CDR1 28/28, CDR3 27/28, CDR2 only 8/28, Company C's own CDR2 boundary is internally inconsistent).",
+      "total_alignments": 4056,
+      "algorithm": "BLOSUM62 global alignments",
+      "retrieval_note": "WIPO PATENTSCOPE returned HTTP 403 on all four endpoints. Both official PDFs are image-only scans (102 and 264 characters extracted across 52 and 133 pages). The Company C listing was recovered by transcribing 31 embedded table images and validated: 84 of 84 listed VHH CDRs match their stated parent VHH as exact substrings."
+    },
+    "counts": {
+      "pairs_over_80pct": 6,
+      "pairs_over_90pct": 0,
+      "max_identity_vs_celyad_claimed_cdrs": 47.06,
+      "max_identity_source": "A Company C conventional scFv, not a VHH"
+    },
+    "top_hits": [
+      {
+        "subject_seq": "SEQ ID NO: 172",
+        "celyad_seq": "SEQ ID NO: 15 dom 2",
+        "cdr": "CDR2 (IMGT)",
+        "cb_seq": "IAGSGGST",
+        "cel_seq": "IAWSGGST",
+        "identities_over_alnlen": "7/8",
+        "pct_id_aln": 87.5,
+        "pct_id_shorter": 87.5,
+        "flag": "both metrics"
+      },
+      {
+        "subject_seq": "SEQ ID NO: 172",
+        "celyad_seq": "SEQ ID NO: 15 dom 2",
+        "cdr": "CDR2 (Kabat)",
+        "cb_seq": "17-aa Kabat window",
+        "cel_seq": "17-aa Kabat window",
+        "identities_over_alnlen": "14/17",
+        "pct_id_aln": 82.35,
+        "pct_id_shorter": 82.35,
+        "flag": "both metrics; inflated by framework residues YYADSVKG/AYADSVKG"
+      },
+      {
+        "subject_seq": "SEQ ID NO: 67/68",
+        "celyad_seq": "SEQ ID NO: 15 dom 2",
+        "cdr": "CDR2 (IMGT)",
+        "cb_seq": "ITSGGST",
+        "cel_seq": "IAWSGGST",
+        "identities_over_alnlen": "6/8",
+        "pct_id_aln": 75,
+        "pct_id_shorter": 85.71,
+        "flag": "shorter only; alignment carries a gap"
+      },
+      {
+        "subject_seq": "SEQ ID NO: 67/68",
+        "celyad_seq": "SEQ ID NO: 15 dom 2",
+        "cdr": "CDR2 (Kabat)",
+        "cb_seq": "13-aa Kabat window",
+        "cel_seq": "17-aa Kabat window",
+        "identities_over_alnlen": "13/17",
+        "pct_id_aln": 76.47,
+        "pct_id_shorter": 81.25,
+        "flag": "shorter only; gap"
+      }
+    ],
+    "structural_observations": [
+      "All six 80%+ hits are CDR2-vs-CDR2. All six are against the same Celyad comparator construct (SEQ ID NO: 15 domain 2), NOT against Celyad's claimed scFv #11.",
+      "The 87.5% pair's Kabat window includes near-invariant VHH framework-2 residues (YYADSVKG/AYADSVKG), so the Kabat figure is inflated by framework rather than paratope.",
+      "The xGSGGST CDR2 motif underlying the top hits recurs across many unrelated Company C binders in their own listing, so its distinctiveness is questionable."
+    ]
+  },
+  "agent_instructions": {
+    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
+    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "boundaries": [
+      "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
+      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "If asked for a recommendation, present the evidence for and against and note what would move it."
+    ]
+  }
+}

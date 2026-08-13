@@ -1,0 +1,120 @@
+{
+  "case_ref": "MYE-2026-04-B",
+  "aspect": "safety",
+  "finding_id": "F-04",
+  "finding": "The approved class is still generating labeled events six years in.",
+  "data": {
+    "meta": {
+      "source": "FAERS quarterly ASCII archives",
+      "quarters": "2020Q3 through 2026Q2",
+      "quarter_count": 24,
+      "latest_quarter": "2026Q2",
+      "dedup_note": "17,540 unique CASEIDs from 21,079 DEMO rows; kept max FDA_DT then max case version",
+      "seriousness_denominator": "cases with >=1 OUTC record (80.4% of cases)",
+      "serious_definition": "outc_cod in {DE,LT,HO,DS,CA,RI}",
+      "cross_check": "openFDA reconciled within 0.1–1.0% on every product",
+      "caveat": "FAERS has no exposure denominator. Reporting counts only. Products cannot be ranked against each other by count magnitude. No PRR/ROR/EBGM computed."
+    },
+    "products": [
+      {
+        "name": "cilta-cel",
+        "cases": 5877,
+        "q2_2026": 791,
+        "serious_ratio": 1.77,
+        "pct_serious": 63.9,
+        "death_cases": 749,
+        "new_pts_post_2025q1": 495
+      },
+      {
+        "name": "teclistamab",
+        "cases": 3619,
+        "q2_2026": 243,
+        "serious_ratio": 1.26,
+        "pct_serious": 55.8,
+        "death_cases": 755,
+        "new_pts_post_2025q1": 288
+      },
+      {
+        "name": "belantamab mafodotin",
+        "cases": 2934,
+        "q2_2026": 174,
+        "serious_ratio": 1.66,
+        "pct_serious": 62.4,
+        "death_cases": 1000,
+        "new_pts_post_2025q1": 83
+      },
+      {
+        "name": "elranatamab",
+        "cases": 2162,
+        "q2_2026": 298,
+        "serious_ratio": 2.27,
+        "pct_serious": 69.4,
+        "death_cases": 510,
+        "new_pts_post_2025q1": 426
+      },
+      {
+        "name": "talquetamab",
+        "cases": 2056,
+        "q2_2026": 210,
+        "serious_ratio": 0.97,
+        "pct_serious": 49.2,
+        "death_cases": 228,
+        "new_pts_post_2025q1": 362
+      },
+      {
+        "name": "ide-cel",
+        "cases": 1225,
+        "q2_2026": 63,
+        "serious_ratio": 1.08,
+        "pct_serious": 51.9,
+        "death_cases": 173,
+        "new_pts_post_2025q1": 133
+      },
+      {
+        "name": "linvoseltamab",
+        "cases": 56,
+        "q2_2026": 20,
+        "serious_ratio": 1.46,
+        "pct_serious": 59.4,
+        "death_cases": 3,
+        "new_pts_post_2025q1": 75
+      }
+    ],
+    "highlighted_new_pts": [
+      {
+        "product": "teclistamab",
+        "pt": "IgA nephropathy",
+        "count": 36
+      },
+      {
+        "product": "teclistamab",
+        "pt": "IVth nerve paralysis",
+        "count": 31
+      },
+      {
+        "product": "cilta-cel",
+        "pt": "Lymphoproliferative disorder",
+        "count": 15
+      },
+      {
+        "product": "ide-cel",
+        "pt": "Mucosal inflammation",
+        "count": 11
+      }
+    ],
+    "structural_confounds": [
+      "Linvoseltamab had zero prior-corpus cases, so all 75 of its 'new' PTs are new by construction.",
+      "Belantamab's low new-PT count follows from an already-large 972-PT prior corpus; counts fell from a 2022Q2 peak of 364 to a trough of 8 in 2025Q2 (consistent with 2022 US market withdrawal), then rose to 174 by 2026Q2.",
+      "336 cases name more than one product and are counted under each."
+    ]
+  },
+  "agent_instructions": {
+    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
+    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "boundaries": [
+      "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
+      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "If asked for a recommendation, present the evidence for and against and note what would move it."
+    ]
+  }
+}
