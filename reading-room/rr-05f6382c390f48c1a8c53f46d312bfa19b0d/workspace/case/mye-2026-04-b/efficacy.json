@@ -1,0 +1,153 @@
+{
+  "case_ref": "MYE-2026-04-B",
+  "aspect": "efficacy",
+  "finding_id": "F-03",
+  "finding": "The efficacy bar: cilta-cel 34.9 mo median PFS; approved TCE class 7.5-11.3 mo.",
+  "data": {
+    "meta": {
+      "algorithm": "Guyot IPDfromKM 0.1.10",
+      "extraction": "Numbers-at-risk pulled verbatim from each PDF text layer using char-level coordinates aligned to x-axis tick labels (max offset 0.42 pt). Curves rendered at 400 DPI, axis-calibrated, traced by colour/darkness masking with monotonicity enforced.",
+      "total_reconstructed_records": 1023,
+      "arms": 7,
+      "trials": 4,
+      "validation_thresholds": "median deviation ≤10% AND mean absolute curve deviation ≤1.5 pp",
+      "caveat": "Reconstructed IPD are pseudo-data, they reproduce the marginal KM curve, not individual patients. SEs are approximate. Covariate-level claims should be avoided."
+    },
+    "arms": [
+      {
+        "trial": "MajesTEC-1",
+        "arm": "PFS (teclistamab)",
+        "n": 165,
+        "median_recon": 11.22,
+        "median_pub": 11.3,
+        "median_dev_pct": 0.66,
+        "rmst_12mo": 7.85,
+        "rmst_24mo": "NOT ESTIMABLE",
+        "mean_abs_dev_pp": 0.287,
+        "validation": "PASS",
+        "note": "Published risk set is 0 at month 24 (n=2 sits at month 21). Reconstructed IPD last event time is 22.87 mo."
+      },
+      {
+        "trial": "KarMMa-3",
+        "arm": "ide-cel",
+        "n": 254,
+        "median_recon": 13.76,
+        "median_pub": 13.8,
+        "median_dev_pct": 0.3,
+        "rmst_12mo": 8.88,
+        "rmst_24mo": 13.77,
+        "mean_abs_dev_pp": 0.412,
+        "validation": "PASS"
+      },
+      {
+        "trial": "KarMMa-3",
+        "arm": "standard of care",
+        "n": 132,
+        "median_recon": 4.22,
+        "median_pub": 4.4,
+        "median_dev_pct": 4.12,
+        "rmst_12mo": 6,
+        "rmst_24mo": 8.16,
+        "mean_abs_dev_pp": 0.518,
+        "validation": "PASS"
+      },
+      {
+        "trial": "MonumenTAL-1",
+        "arm": "talquetamab 0.4 mg/kg QW",
+        "n": 143,
+        "median_recon": 7.3,
+        "median_pub": 7.5,
+        "median_dev_pct": 2.7,
+        "rmst_12mo": 7.42,
+        "rmst_24mo": 10.78,
+        "mean_abs_dev_pp": 0.673,
+        "validation": "PASS",
+        "note": "Exceeds 5 pp secondary max-dev screen at a single steep early drop (6.24 pp)"
+      },
+      {
+        "trial": "MonumenTAL-1",
+        "arm": "talquetamab 0.8 mg/kg Q2W",
+        "n": 154,
+        "median_recon": 10.85,
+        "median_pub": 11.2,
+        "median_dev_pct": 3.14,
+        "rmst_12mo": 7.97,
+        "rmst_24mo": 12.37,
+        "mean_abs_dev_pp": 0.759,
+        "validation": "PASS",
+        "note": "Exceeds 5 pp secondary max-dev screen (6.93 pp)"
+      },
+      {
+        "trial": "MonumenTAL-1",
+        "arm": "talquetamab prior TCR",
+        "n": 78,
+        "median_recon": 7.46,
+        "median_pub": 7.7,
+        "median_dev_pct": 3.09,
+        "rmst_12mo": 7.32,
+        "rmst_24mo": 11.64,
+        "mean_abs_dev_pp": 0.712,
+        "validation": "PASS",
+        "note": "Exceeds 5 pp secondary max-dev screen (10.52 pp)"
+      },
+      {
+        "trial": "CARTITUDE-1",
+        "arm": "cilta-cel PFS",
+        "n": 97,
+        "median_recon": 32.43,
+        "median_pub": 34.9,
+        "median_dev_pct": 7.07,
+        "rmst_12mo": 10.49,
+        "rmst_24mo": 18.6,
+        "mean_abs_dev_pp": 0.492,
+        "validation": "PASS",
+        "note": "Risk table tabulated only every 10 months; no risk value exists exactly at 12 or 24 months"
+      }
+    ],
+    "independent_cross_check": [
+      {
+        "trial": "KarMMa-3",
+        "landmark": "18-mo PFS",
+        "recon": "40.7%",
+        "pub": "41%"
+      },
+      {
+        "trial": "KarMMa-3",
+        "landmark": "18-mo PFS (SoC)",
+        "recon": "18.3%",
+        "pub": "19%"
+      },
+      {
+        "trial": "MonumenTAL-1",
+        "landmark": "12-mo PFS 0.4 QW",
+        "recon": "35.2%",
+        "pub": "34.9%"
+      },
+      {
+        "trial": "MonumenTAL-1",
+        "landmark": "12-mo PFS 0.8 Q2W",
+        "recon": "45.9%",
+        "pub": "46.6%"
+      },
+      {
+        "trial": "MonumenTAL-1",
+        "landmark": "12-mo PFS prior TCR",
+        "recon": "44.6%",
+        "pub": "44.7%"
+      }
+    ],
+    "corrections_to_input": [
+      "Brief stated MajesTEC-1's risk table 'falls to n=2 by 24 months', wrong; n=2 is at month 21 and the risk set is 0 by month 24.",
+      "CARTITUDE-1's risk row has 8 values (97 77 63 52 39 36 16 1), not the 7 in the brief. n=52 at month 30 was missing. In both cases the PDF was trusted over the brief."
+    ]
+  },
+  "agent_instructions": {
+    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
+    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "boundaries": [
+      "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
+      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "If asked for a recommendation, present the evidence for and against and note what would move it."
+    ]
+  }
+}
