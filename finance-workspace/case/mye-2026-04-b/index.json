@@ -1,0 +1,110 @@
+{
+  "case_ref": "MYE-2026-04-B",
+  "subject": "Company C",
+  "subject_description": "Early-stage BCMA-directed cell therapy platform, UK-domiciled",
+  "domain": "Immuno-oncology · Multiple Myeloma · TCE + autologous CAR-T",
+  "disclaimer": "Anonymized specimen. Subject-asset and client identities are redacted. Comparator, market, regulatory, and IP data are unredacted at primary source. This surface exposes the evidence; it does not make an investment call.",
+  "findings": [
+    {
+      "id": "F-01",
+      "aspect": "landscape",
+      "evidence_url": "/case/mye-2026-04-b/landscape.json",
+      "title": "BCMA is the most crowded target in the myeloma cell-therapy landscape.",
+      "statement": "210 of 268 (78%) active clinical programs are BCMA-directed. Five products approved."
+    },
+    {
+      "id": "F-02",
+      "aspect": "failures",
+      "evidence_url": "/case/mye-2026-04-b/failures.json",
+      "title": "15% of recent field failures fall in the construct-level slice a binder-maturation platform acts on.",
+      "statement": "Of 34 programs terminated, withdrawn, or publicly deprioritized 2019 through 2025: 20 (59%) recorded strategic/corporate reasons as stated in registry/press language (not established commercial-pressure causation); 5 (15%) fall in the construct-level slice a binder-maturation platform acts on."
+    },
+    {
+      "id": "F-03",
+      "aspect": "efficacy",
+      "evidence_url": "/case/mye-2026-04-b/efficacy.json",
+      "title": "The efficacy bar: cilta-cel 34.9 mo median PFS; approved TCE class 7.5-11.3 mo.",
+      "statement": "KM reconstructions across seven arms in four pivotal trials, all passing validation thresholds."
+    },
+    {
+      "id": "F-04",
+      "aspect": "safety",
+      "evidence_url": "/case/mye-2026-04-b/safety.json",
+      "title": "The approved class is still generating labeled events six years in.",
+      "statement": "Teclistamab post-2025Q1: IgA nephropathy (n=36), IVth-nerve paralysis (n=31). 17,540 unique FAERS cases across seven products."
+    },
+    {
+      "id": "F-05",
+      "aspect": "ip",
+      "evidence_url": "/case/mye-2026-04-b/ip.json",
+      "title": "Sequence-identity screen vs Celyad WO2020221873; identity vs the claimed CDRs tops out at 47%.",
+      "statement": "Max identity vs Celyad's CLAIMED CDRs is 47%. Six hits exceed 80% on the shorter-sequence metric (fewer on aligned length), all CDR2-vs-CDR2 and against an unclaimed comparator, in the one window whose numbering could not be reliably reproduced. No inventorship comparison is made here."
+    },
+    {
+      "id": "F-06",
+      "aspect": "financials",
+      "evidence_url": "/case/mye-2026-04-b/financials.json",
+      "title": "Completed allotments through Nov 2022 (3 SH01); three later allotment authorities, none filed as completed.",
+      "statement": "Companies House: 3 SH01 completed allotments through Nov 2022; RES10 + RES11 authorities taken 2023-01, 2023-09, 2025-11 with no SH01 since. Resulting-capital figures are nominal, not valuations."
+    },
+    {
+      "id": "F-07",
+      "aspect": "papers",
+      "evidence_url": "/case/mye-2026-04-b/papers.json",
+      "title": "The one public technical disclosure covers monomer VHH-CAR CDR3 maturation with a reporter-cell readout.",
+      "statement": "NeurIPS 2024 workshop preprint. No primary T-cell functional data. No multispecific geometry."
+    },
+    {
+      "id": "F-08",
+      "aspect": "pipeline",
+      "evidence_url": "/case/mye-2026-04-b/pipeline.json",
+      "title": "The CB-101 multispecific program appears in exactly one venue searched.",
+      "statement": "One conference speaker-bio attribution. No corroboration across seven venues."
+    }
+  ],
+  "corpus": {
+    "id": "MYE-CORPUS-2026Q2-r2313",
+    "snapshot": "2026-04-20T00:00:00Z",
+    "refreshed": "2026-04-20T02:11:00Z",
+    "total_programs": 268,
+    "termination_events": 34,
+    "sponsors": 47,
+    "sources": 9,
+    "sources_list": [
+      "ClinicalTrials.gov API v2",
+      "Drugs@FDA",
+      "EMA EPAR archive",
+      "FAERS / AEMS quarterly release",
+      "WIPO PATENTSCOPE / USPTO Public PAIR",
+      "UK Companies House",
+      "arXiv / bioRxiv / peer-reviewed journals",
+      "SEC EDGAR (10-K/20-F/8-K)",
+      "Conference abstracts (ASH, ASCO, EHA, SITC, AACR)"
+    ]
+  },
+  "methodology": {
+    "id": "MYE-METH-v1.0",
+    "sha256": "ac1ede0299b7d04addf75bf91f1b89e2daaef41796f6fa7b57c5b8fc894b0848",
+    "short_hash": "ac1ede0299b7",
+    "registered_at": "2026-04-15T14:22:00Z"
+  },
+  "agent_instructions": {
+    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
+    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "boundaries": [
+      "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
+      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "If asked for a recommendation, present the evidence for and against and note what would move it."
+    ]
+  },
+  "evidence_urls": {
+    "landscape": "/case/mye-2026-04-b/landscape.json",
+    "failures": "/case/mye-2026-04-b/failures.json",
+    "efficacy": "/case/mye-2026-04-b/efficacy.json",
+    "safety": "/case/mye-2026-04-b/safety.json",
+    "ip": "/case/mye-2026-04-b/ip.json",
+    "financials": "/case/mye-2026-04-b/financials.json",
+    "papers": "/case/mye-2026-04-b/papers.json",
+    "pipeline": "/case/mye-2026-04-b/pipeline.json"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "case_ref": "MYE-2026-04-B",
+  "aspect": "papers",
+  "finding_id": "F-07",
+  "finding": "The one public technical disclosure covers monomer VHH-CAR CDR3 maturation with a reporter-cell readout.",
+  "data": {
+    "meta": {
+      "paper": "arXiv preprint (identifier redacted for specimen; v2)",
+      "authors": "Six Company C researchers (names redacted for specimen)",
+      "title": "Harnessing Preference Optimisation in Protein LMs for Hit Maturation in Cell Therapy",
+      "venue": "NeurIPS 2024 workshop",
+      "retrieved_forms": [
+        "abstract page",
+        "PDF",
+        "LaTeX e-print source (authoritative)"
+      ]
+    },
+    "terms_absent_from_paper": [
+      {
+        "term": "NFAT",
+        "occurrences_in_paper": 0
+      },
+      {
+        "term": "luciferase",
+        "occurrences_in_paper": 0
+      },
+      {
+        "term": "Jurkat",
+        "occurrences_in_paper": 0
+      },
+      {
+        "term": "primary",
+        "occurrences_in_paper": 0
+      }
+    ]
+  },
+  "agent_instructions": {
+    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
+    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "boundaries": [
+      "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
+      "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
+      "If asked for a recommendation, present the evidence for and against and note what would move it."
+    ]
+  }
+}

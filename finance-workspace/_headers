@@ -1,0 +1,8 @@
+# Case evidence bundles: public specimen data, fetchable by an LLM browsing
+# sandbox from any origin. Netlify / Cloudflare Pages read this file at the
+# publish root. For nginx, mirror these on `location /case/` (see DEPLOY.md).
+/case/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, OPTIONS
+  Cache-Control: public, max-age=300
+  X-Robots-Tag: noindex
