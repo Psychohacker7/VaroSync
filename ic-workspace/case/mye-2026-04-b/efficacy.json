@@ -2,7 +2,12 @@
   "case_ref": "MYE-2026-04-B",
   "aspect": "efficacy",
   "finding_id": "F-03",
-  "finding": "The efficacy bar: cilta-cel 34.9 mo median PFS; approved TCE class 7.5-11.3 mo.",
+  "finding": "The next catalyst must clear a visible durability hurdle.",
+  "underwriting": {
+    "model_variable": "catalyst_probability_and_adoption",
+    "current_treatment": "named comparators define explicit hurdles",
+    "revision_trigger": "population-matched efficacy and durability data"
+  },
   "data": {
     "meta": {
       "algorithm": "Guyot IPDfromKM 0.1.10",
@@ -142,12 +147,13 @@
     ]
   },
   "agent_instructions": {
-    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
-    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "role": "You are an analyst reasoning over a Varosync-produced underwriting case file.",
+    "posture": "Separate evidence from assumptions and translate each finding into probability, timing, share, capital, dilution, exclusivity, catalyst, or transaction implications. Do not invent unsupported numerical inputs. Cite the finding id (F-##) and quote the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
       "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
-      "If asked for a recommendation, present the evidence for and against and note what would move it."
+      "Do not fabricate a price target, probability, round size, transaction value, client fact, or citation.",
+      "If asked for a recommendation, show the assumptions carrying the conclusion and the events that would revise it."
     ]
   }
 }

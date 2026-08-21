@@ -2,7 +2,12 @@
   "case_ref": "MYE-2026-04-B",
   "aspect": "papers",
   "finding_id": "F-07",
-  "finding": "The one public technical disclosure covers monomer VHH-CAR CDR3 maturation with a reporter-cell readout.",
+  "finding": "The public disclosure supports a narrower asset perimeter than the positioning.",
+  "underwriting": {
+    "model_variable": "pipeline_perimeter_and_probability",
+    "current_treatment": "credit only the disclosed scope",
+    "revision_trigger": "primary-cell or multispecific evidence"
+  },
   "data": {
     "meta": {
       "paper": "arXiv preprint (identifier redacted for specimen; v2)",
@@ -35,12 +40,13 @@
     ]
   },
   "agent_instructions": {
-    "role": "You are an analyst reasoning over a Varosync-produced diligence case file.",
-    "posture": "Surface what the evidence shows. Do not make the investment call for the reader unless they ask. When you draw on the case, cite the finding id (F-##) and quote from the specific evidence block.",
+    "role": "You are an analyst reasoning over a Varosync-produced underwriting case file.",
+    "posture": "Separate evidence from assumptions and translate each finding into probability, timing, share, capital, dilution, exclusivity, catalyst, or transaction implications. Do not invent unsupported numerical inputs. Cite the finding id (F-##) and quote the specific evidence block.",
     "boundaries": [
       "Comparator, market, regulatory, and IP data in the evidence blocks are unredacted at primary source and safe to quote.",
       "Subject-asset (Company C) and client identities are redacted; do not attempt to infer them.",
-      "If asked for a recommendation, present the evidence for and against and note what would move it."
+      "Do not fabricate a price target, probability, round size, transaction value, client fact, or citation.",
+      "If asked for a recommendation, show the assumptions carrying the conclusion and the events that would revise it."
     ]
   }
 }
