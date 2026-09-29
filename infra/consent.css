@@ -1,0 +1,245 @@
+/*
+ * Cookie card. Every class is prefixed .vsc- so nothing collides with page
+ * styles, and every colour is a site token with a fallback — the pages do not
+ * all load the same stylesheet, so each token is chained through the three
+ * naming schemes in use (site.css, header.css, varosync.css).
+ *
+ * Two beats, one element: .vsc-banner (the compact card) and .vsc-panel (the
+ * details). consent.js animates the card between their sizes, and shows it
+ * only once the page has loaded and any intro loader has cleared.
+ *
+ * Restyle freely. The one constraint that is not a style choice is marked.
+ */
+
+.vsc, .vsc *, .vsc-fab { box-sizing: border-box; }
+
+.vsc {
+  --vsc-ink: var(--ink, var(--primary, var(--vs-ink, #091423)));
+  --vsc-paper: var(--paper, var(--bg, #F0F1F4));
+  --vsc-surface: #FFFFFF;
+  --vsc-tile: rgb(9 20 35 / .035);
+  --vsc-line: rgb(9 20 35 / .10);
+  --vsc-edge: rgb(9 20 35 / .16);
+  --vsc-muted: var(--muted, rgb(9 20 35 / .60));
+  --vsc-font: var(--sans, var(--vs-sans, 'Experimental', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif));
+  --vsc-ease: cubic-bezier(.22, 1, .36, 1);
+
+  font-family: var(--vsc-font);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--vsc-ink);
+  text-align: left;
+}
+
+/* Resets sit inside :where() so they carry no specificity: any .vsc-*
+   class below wins over them. (A plain `.vsc h2 { font: inherit }` outranked
+   .vsc-heading and flattened every title to body text.) */
+:where(.vsc) :where(h2, h3, p, ul) { margin: 0; padding: 0; font: inherit; }
+:where(.vsc) a { color: inherit; text-decoration: underline; text-decoration-color: var(--vsc-edge); text-underline-offset: 3px; }
+:where(.vsc) a:hover { text-decoration-color: currentColor; }
+
+/* ---------------------------------------------------------------- layer */
+
+.vsc-layer {
+  position: fixed; inset: 0; z-index: 2147483000;
+  pointer-events: none;
+}
+.vsc-scrim {
+  position: absolute; inset: 0;
+  background: rgb(9 20 35 / .28);
+  opacity: 0; transition: opacity .3s var(--vsc-ease, ease);
+}
+.vsc-layer[data-view="panel"] .vsc-scrim { opacity: 1; pointer-events: auto; }
+
+/* ----------------------------------------------------------------- card */
+
+.vsc-card {
+  position: absolute; right: 20px; bottom: 20px;
+  pointer-events: auto;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  background: var(--vsc-surface);
+  border: 1px solid var(--vsc-line);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgb(9 20 35 / .06), 0 24px 64px -16px rgb(9 20 35 / .30);
+}
+.vsc-card:focus { outline: none; }
+.vsc-card.vsc-enter { animation: vsc-rise .42s var(--vsc-ease) both; }
+
+.vsc-banner { width: min(400px, calc(100vw - 24px)); }
+.vsc-panel {
+  width: min(540px, calc(100vw - 24px));
+  max-height: min(720px, calc(100vh - 40px));
+}
+
+/* Sized by its content up to the cap; the category list scrolls inside. */
+.vsc-inner { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+
+.vsc-heading { font-size: 16px; font-weight: 600; letter-spacing: -.005em; }
+.vsc-body { font-size: 13.5px; line-height: 1.55; color: var(--vsc-muted); }
+
+/* ------------------------------------------------------- beat 1: card */
+
+.vsc-banner .vsc-inner { gap: 8px; padding: 20px 20px 18px; }
+.vsc-banner .vsc-actions { margin-top: 10px; }
+
+/* Accept all is the primary, filled action (the owner's decision). The line
+   that keeps this defensible under the EDPB's case-by-case test: Reject all
+   stays the SAME SIZE, in the same row, with readable contrast, one click
+   away. Restyle freely within that — do not shrink, fade or hide it. */
+.vsc-actions { display: flex; gap: 8px; }
+.vsc-actions .vsc-btn { flex: 1 1 0; min-width: 0; }
+
+.vsc-btn {
+  font: inherit; font-size: 13.5px; font-weight: 500; line-height: 1.2;
+  min-height: 40px; padding: 10px 14px;
+  border-radius: 9px; cursor: pointer; white-space: nowrap;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.vsc-secondary {
+  background: var(--vsc-surface); color: var(--vsc-ink);
+  border: 1px solid var(--vsc-edge);
+}
+.vsc-secondary:hover { background: var(--vsc-tile); border-color: rgb(9 20 35 / .28); }
+
+/* The site's own primary: the navy of the form's Submit button. */
+.vsc-primary { background: var(--vsc-ink); color: #fff; border: 1px solid var(--vsc-ink); }
+.vsc-primary:hover { background: #16243a; border-color: #16243a; }
+
+.vsc-btn:focus-visible, .vsc-close:focus-visible,
+.vsc-switch input:focus-visible + .vsc-track {
+  outline: 2px solid var(--vsc-ink); outline-offset: 2px;
+}
+
+/* ---------------------------------------------------- beat 2: details */
+
+.vsc-head {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid var(--vsc-line);
+}
+.vsc-titles { flex: 1 1 auto; display: grid; gap: 6px; min-width: 0; }
+
+.vsc-close {
+  position: relative; flex: 0 0 auto; width: 34px; height: 34px;
+  border: 1px solid var(--vsc-edge); border-radius: 9px;
+  background: var(--vsc-surface); cursor: pointer; padding: 0;
+}
+.vsc-close::before, .vsc-close::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 14px; height: 1.5px; background: var(--vsc-ink); border-radius: 1px;
+}
+.vsc-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.vsc-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.vsc-close:hover { background: var(--vsc-tile); }
+
+.vsc-list {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  display: grid; align-content: start; gap: 10px;
+  padding: 14px 20px 16px;
+}
+
+.vsc-tile {
+  display: grid; gap: 6px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--vsc-tile);
+}
+.vsc-tile-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.vsc-row-name { font-size: 14.5px; font-weight: 500; }
+.vsc-tile .vsc-body { font-size: 13px; }
+.vsc-note { font-size: 12px; color: var(--vsc-muted); font-style: italic; }
+
+.vsc-always {
+  flex: 0 0 auto; font-size: 11.5px; font-weight: 500; white-space: nowrap;
+  padding: 3px 9px; border-radius: 999px;
+  color: var(--vsc-muted); background: var(--vsc-surface); border: 1px solid var(--vsc-line);
+}
+
+.vsc-meta { display: grid; gap: 4px; padding: 4px 2px 0; }
+.vsc-links { font-size: 12.5px; color: var(--vsc-muted); }
+.vsc-id { font-size: 11.5px; color: var(--vsc-muted); font-variant-numeric: tabular-nums; word-break: break-all; }
+
+.vsc-foot {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  padding: 14px 20px 18px;
+  border-top: 1px solid var(--vsc-line);
+}
+.vsc-foot .vsc-spacer { flex: 1 1 auto; }
+
+/* --------------------------------------------------------------- switch */
+
+.vsc-switch { position: relative; flex: 0 0 auto; width: 42px; height: 24px; }
+.vsc-switch input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; z-index: 1; }
+.vsc-track {
+  display: block; width: 100%; height: 100%; border-radius: 12px;
+  background: rgb(9 20 35 / .14);
+  transition: background .2s var(--vsc-ease);
+}
+.vsc-track::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgb(9 20 35 / .25);
+  transition: transform .2s var(--vsc-ease);
+}
+.vsc-switch input:checked + .vsc-track { background: var(--vsc-ink); }
+.vsc-switch input:checked + .vsc-track::after { transform: translateX(18px); }
+.vsc-switch input:disabled { cursor: not-allowed; }
+.vsc-switch input:disabled + .vsc-track { opacity: .4; }
+
+/* ------------------------------------------------------------- fallback */
+
+/* The "Cookie settings" control that appears only on a page without a
+   footer link, after a decision. Never renders once footers have the link. */
+.vsc-fab {
+  position: fixed; left: 12px; bottom: 12px; z-index: 2147482000;
+  font-family: var(--sans, var(--vs-sans, 'Experimental', system-ui, sans-serif));
+  font-size: 12px; font-weight: 500; letter-spacing: 0; text-transform: none;
+  padding: 7px 12px; border-radius: 999px; cursor: pointer;
+  color: var(--ink, var(--primary, #091423));
+  background: #fff;
+  border: 1px solid rgb(9 20 35 / .14);
+  box-shadow: 0 6px 20px -8px rgb(9 20 35 / .3);
+  opacity: .8; transition: opacity .15s;
+}
+.vsc-fab:hover, .vsc-fab:focus-visible { opacity: 1; }
+.vsc-fab:focus-visible { outline: 2px solid var(--ink, #091423); outline-offset: 2px; }
+
+@keyframes vsc-rise { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
+
+/* --------------------------------------------------------------- mobile */
+
+@media (max-width: 560px) {
+  .vsc-card { left: 10px; right: 10px; bottom: 10px; width: auto; border-radius: 14px; }
+  .vsc-panel { max-height: min(86vh, calc(100vh - 20px)); }
+  .vsc-banner .vsc-inner { padding: 18px 16px 16px; }
+  .vsc-btn { padding: 10px 8px; font-size: 13px; }
+  .vsc-head { padding: 18px 16px 12px; }
+  .vsc-list { padding: 12px 16px 14px; }
+  .vsc-foot { padding: 12px 16px 14px; }
+  /* Reject all and Accept all side by side at the same size, as on the
+     first card; Save preferences takes the row below. */
+  .vsc-foot .vsc-btn { flex: 1 1 0; min-width: 0; }
+  .vsc-foot [data-action="save"] { flex-basis: 100%; order: 2; }
+  .vsc-foot .vsc-spacer { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vsc-card.vsc-enter { animation: none; }
+  .vsc-scrim, .vsc-track, .vsc-track::after { transition: none; }
+}
+
+/* The booking calendar when it is not loading: Preferences not allowed
+   (is-optin, get-in-touch.js) or the embed timed out (is-failed). Without
+   this the page's "Loading the calendar" bar runs forever under the text. */
+.git-cal.is-optin, .git-cal.is-failed { min-height: 0; }
+.git-cal.is-optin .git-cal-wait, .git-cal.is-failed .git-cal-wait { display: none; }
+
+/* The booking calendar's opt-in (get-in-touch.js): reads as a link, sits in
+   the page's own fallback line. */
+.git-cal-allow {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0;
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+}

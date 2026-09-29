@@ -1,0 +1,192 @@
+/* Probability of success: an editorial glimpse of a probability-of-success build.
+   Fixed 620 x 440 artboard, scaled to fit its container by the script (transform, never zoom: iOS Safari re-inflates text inside zoomed subtrees) (--pos-fit).
+   Without the script, or under reduced motion, the finished second scene shows.
+   Palette: one spectrum, brick (low odds) through amber and olive to green (high). */
+[data-pos]{
+  --pos-ink:#091423;
+  --pos-text:#2b3240;
+  --pos-muted:rgb(9 20 35 / .46);
+  --pos-rule:rgb(9 20 35 / .07);
+  --pos-line:#e4e6ea;
+  --pos-line-2:#cdd1d7;
+  /* One spectrum, brick (low odds) through amber and olive to green (high). Evidence uses
+     its three anchors: full strength on the effect bars and legend, a step softer on findings. */
+  --pos-for:#7ba458;
+  --pos-mixed:#cd9258;
+  --pos-against:#af4e3f;
+  --pos-for-soft:#a5c18d;
+  --pos-mixed-soft:#ddb58d;
+  --pos-against-soft:#c9877c;
+  --pos-grad:linear-gradient(90deg, #af4e3f 0%, #c1764d 30%, #cd9258 50%, #a99958 70%, #7ba458 100%);
+  --pos-fit:1;
+  width:100%;
+  max-width:620px;
+  position:relative;
+  aspect-ratio:620 / 440;
+  font-family:'Experimental', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  color:var(--pos-text);
+  -webkit-font-smoothing:antialiased;
+}
+[data-pos] *{ box-sizing:border-box; }
+.pos-stage{ position:absolute; left:0; top:0; width:620px; height:440px;
+  transform:scale(var(--pos-fit)); transform-origin:0 0; }
+
+.pos-card{
+  --a:1;
+  position:absolute; left:0; top:0;
+  width:620px; height:440px;
+  padding:26px 28px 0;
+  background:rgb(255 255 255 / var(--a));
+  border-radius:16px;
+  box-shadow:0 0 0 1px rgb(9 20 35 / .07), 0 1px 2px rgb(9 20 35 / .04), 0 18px 40px -18px rgb(9 20 35 / .2);
+  overflow:hidden;
+}
+
+/* Header: the section title swaps per scene. */
+.pos-head{ position:relative; height:22px; }
+.pos-title{
+  position:absolute; left:0; top:0;
+  display:flex; align-items:baseline; gap:10px;
+  font-size:15px; font-weight:500; letter-spacing:-.01em; color:var(--pos-ink);
+}
+.pos-title small{ font-size:11px; font-weight:400; color:var(--pos-muted); letter-spacing:0; }
+
+.pos-scene{ position:absolute; left:28px; right:28px; top:62px; bottom:0; }
+.pos-scene--ref,
+.pos-title--ref{ visibility:hidden; }
+
+.pos-cols{
+  display:grid; align-items:end;
+  height:18px; padding-bottom:7px;
+  font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--pos-muted);
+}
+.pos-rule{ height:1px; background:var(--pos-rule); transform-origin:0 50%; }
+
+.pos-line{
+  display:block; height:5px; border-radius:3px;
+  background:var(--pos-line); transform-origin:0 50%;
+}
+.pos-name{ font-size:12.5px; line-height:1; white-space:nowrap; color:var(--pos-ink); }
+.pos-name em{ font-style:normal; color:var(--pos-muted); margin-right:4px; }
+
+/* Scene 1: reference class. Bars, not dots: the class narrows, the rate moves. */
+.pos-scene--ref .pos-cols,
+.pos-srow, .pos-sum{ grid-template-columns:1fr 150px 160px; column-gap:22px; }
+.pos-srow{ display:grid; align-items:center; height:60px; }
+.pos-srow + .pos-srow{ border-top:1px solid var(--pos-rule); }
+.pos-stack{ display:flex; flex-direction:column; gap:10px; }
+.pos-bar{ position:relative; height:6px; }
+.pos-bar i{
+  position:absolute; left:0; top:0; height:6px; border-radius:3px;
+  width:var(--w); transform-origin:0 50%;
+}
+.pos-bar .pos-n{ background:var(--pos-line-2); }
+.pos-bar .pos-ghost{ background:var(--pos-line); }
+.pos-bar .pos-rate{ background:var(--c); }
+.pos-sum{
+  display:grid; align-items:center; height:56px; border-top:1px solid rgb(9 20 35 / .16);
+  border-radius:6px;
+}
+.pos-sum .pos-name{ font-weight:500; font-size:13px; }
+.pos-sum .pos-n{ background:#9aa1ab; }
+.pos-sum .pos-rate{ box-shadow:inset 0 0 0 1px rgb(9 20 35 / .12); }
+
+/* Scene 2: adjustments by category. Each finding is a line tinted by what it says. */
+.pos-scene--adj .pos-cols,
+.pos-frow{ grid-template-columns:1fr 150px 84px 112px; column-gap:22px; }
+.pos-frow{ display:grid; align-items:center; height:42px; }
+.pos-frow + .pos-frow{ border-top:1px solid var(--pos-rule); }
+.pos-find{ display:flex; flex-direction:column; gap:3px; }
+.pos-find .pos-line{ height:4px; border-radius:2px; }
+.pos-find .for{ background:var(--pos-for-soft); }
+.pos-find .mixed{ background:var(--pos-mixed-soft); }
+.pos-find .against{ background:var(--pos-against-soft); }
+
+/* Many sources, never one: a small stack of documents and the count. */
+.pos-src{ display:flex; align-items:center; gap:8px; font-size:11px; color:var(--pos-muted); font-variant-numeric:tabular-nums; }
+.pos-docs{ position:relative; width:17px; height:15px; flex:none; }
+.pos-docs i{
+  position:absolute; width:10px; height:12px;
+  border:1px solid #b9bec6; border-radius:1.5px; background:#fff;
+}
+.pos-docs i:nth-child(1){ left:6px; top:0; }
+.pos-docs i:nth-child(2){ left:3px; top:1.5px; }
+.pos-docs i:nth-child(3){ left:0; top:3px; }
+.pos-docs i:nth-child(3)::after{
+  content:""; position:absolute; left:2px; right:2px; top:3px; height:1px;
+  background:#cdd1d7; box-shadow:0 2px 0 #cdd1d7, 0 4px 0 #cdd1d7;
+}
+
+/* Effect on the odds: a diverging bar around no change. */
+.pos-eff{ position:relative; align-self:stretch; }
+.pos-eff::before{
+  content:""; position:absolute; left:50%; top:0; bottom:0; width:1px; background:rgb(9 20 35 / .18);
+}
+.pos-eff i{
+  position:absolute; top:50%; margin-top:-3px; height:6px; width:var(--w);
+}
+.pos-eff .up{ left:50%; border-radius:0 3px 3px 0; background:var(--pos-for); transform-origin:0 50%; }
+.pos-eff .down{ right:50%; border-radius:3px 0 0 3px; background:var(--pos-against); transform-origin:100% 50%; }
+
+.pos-legend{
+  display:flex; align-items:center; gap:16px;
+  height:34px; border-top:1px solid var(--pos-rule);
+  font-size:10.5px; color:var(--pos-muted);
+}
+.pos-legend span{ display:flex; align-items:center; gap:6px; }
+.pos-legend i{ display:block; width:14px; height:4px; border-radius:2px; }
+.pos-legend .pos-note{ margin-left:auto; }
+
+/* The call: Fern's proposed range over a slider the analyst sets themselves. */
+.pos-call{ position:absolute; left:0; right:0; top:288px; height:64px; }
+.pos-prop{
+  position:absolute; top:4px; height:8px;
+  left:calc(.24 / .5 * 100%); width:calc(.10 / .5 * 100%);
+  border:1.5px solid var(--pos-ink); border-bottom:0; border-radius:2px 2px 0 0;
+  opacity:.72; transform-origin:50% 100%;
+}
+.pos-prop b{
+  position:absolute; left:50%; bottom:11px; transform:translateX(-50%);
+  font-size:10px; font-weight:400; color:var(--pos-ink); white-space:nowrap;
+}
+.pos-track{
+  position:absolute; left:0; right:0; top:18px; height:10px; border-radius:5px;
+  background:var(--pos-grad);
+  box-shadow:inset 0 0 0 1px rgb(9 20 35 / .06);
+  transform-origin:0 50%;
+}
+.pos-basemark{
+  position:absolute; top:14px; height:18px; width:2px; margin-left:-1px; border-radius:1px;
+  left:calc(.20 / .5 * 100%);
+  background:var(--pos-ink); opacity:.55;
+  transform-origin:50% 50%;
+}
+.pos-thumb{
+  position:absolute; top:23px; width:0; height:0;
+  left:calc(.23 / .5 * 100%);
+}
+.pos-thumb i{
+  position:absolute; left:-11px; top:-11px; width:22px; height:22px; border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 0 1px rgb(9 20 35 / .07), 0 2px 6px rgb(9 20 35 / .18);
+}
+.pos-marks{ position:absolute; left:0; right:0; top:40px; font-size:10px; color:var(--pos-muted); }
+.pos-marks span{ position:absolute; top:0; white-space:nowrap; }
+.pos-marks .lo{ left:0; }
+.pos-marks .hi{ right:0; }
+.pos-marks .base{ right:calc(100% - .20 / .5 * 100% + 7px); }
+.pos-marks .you{ left:calc(.23 / .5 * 100% + 9px); color:var(--pos-ink); }
+
+/* The base rate, carried from the reference class onto the scale between the two scenes. */
+.pos-carry{
+  position:absolute; left:0; top:0; width:0; height:0;
+  opacity:0; pointer-events:none;
+}
+
+/* The analyst's hand. Only shown while it does something. */
+.pos-cursor{
+  position:absolute; left:0; top:0;
+  width:18px; height:24px;
+  opacity:0; pointer-events:none;
+  transform-origin:1px 1px;
+}

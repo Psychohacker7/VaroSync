@@ -1,0 +1,168 @@
+
+
+[data-vs-element] {
+  display: block;
+}
+
+
+@media (min-width: 1024px) {
+  .process_wrapper .item_process > [data-vs-element] {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+    
+    container-type: size;
+    container-name: vsband;
+  }
+}
+
+
+[data-vs-element="compare"] {
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+[data-vs-element="compare"][data-vs-ready] {
+  opacity: 1;
+}
+
+
+[data-vs-element="compare"] > .vs-el-inner {
+  display: block;
+  block-size: 100%;
+}
+
+
+[data-vs-element="evaluate"] [data-evaluate-source-marquee] {
+  
+  --evaluate-marquee-height: 100%;
+  
+  --evaluate-marquee-font: var(--vs-sans);
+}
+
+
+@container vsband (max-height: 433px) {
+  [data-evaluate-source-marquee] .bento__marquee-row:nth-child(n+7) { display: none; }
+}
+@container vsband (max-height: 376px) {
+  [data-evaluate-source-marquee] .bento__marquee-row:nth-child(n+6) { display: none; }
+}
+@container vsband (max-height: 319px) {
+  [data-evaluate-source-marquee] .bento__marquee-row:nth-child(n+5) { display: none; }
+}
+@container vsband (max-height: 262px) {
+  [data-evaluate-source-marquee] .bento__marquee-row:nth-child(n+4) { display: none; }
+}
+@container vsband (max-height: 205px) {
+  [data-evaluate-source-marquee] .bento__marquee-row:nth-child(n+3) { display: none; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  [data-vs-element="evaluate"] .bento__marquee-track {
+    animation: none !important;
+  }
+}
+
+
+[data-vs-element="investigate"] [data-investigate-project-loop] {
+  --investigate-loop-width: 100%;
+  --investigate-loop-height: 100%;
+}
+
+
+[data-vs-element="conclude"] {
+  position: relative;
+  overflow: hidden;
+}
+[data-vs-element="conclude"] > [data-conclude-packet] {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%) scale(var(--vs-fit, 1));
+  transform-origin: center center;
+}
+
+
+
+@media (max-width: 1023.98px) {
+  .item_process > [data-vs-element] {
+    position: relative;
+    height: clamp(230px, 38vw, 340px);
+    margin: 18px 0 6px;
+    overflow: hidden;
+  }
+
+  .item_process > [data-vs-element] > [data-evaluate-source-marquee],
+  .item_process > [data-vs-element] > [data-investigate-project-loop],
+  .item_process > [data-vs-element] > [data-conclude-packet],
+  .item_process > [data-vs-element] > .vs-el-inner {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%) scale(var(--vs-fit, 1));
+    transform-origin: center center;
+    margin: 0;
+  }
+
+  
+  [data-vs-element="compare"] > .vs-el-inner {
+    inline-size: 980px;
+    block-size: 430px;
+  }
+  [data-vs-element="investigate"] [data-investigate-project-loop] {
+    --investigate-loop-width: 644px;
+    --investigate-loop-height: 454px;
+    width: 644px !important;
+    max-width: none !important;
+  }
+  [data-vs-element="conclude"] [data-conclude-packet] {
+    width: 644px !important;
+    max-width: none !important;
+  }
+  
+  [data-vs-element="evaluate"] [data-evaluate-source-marquee] {
+    --evaluate-marquee-height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+  }
+  [data-vs-element="evaluate"] .bento__marquee-row:nth-child(n+5) { display: none; }
+}
+
+
+
+
+[data-vs-element="evaluate"] .bento__marquee { gap: 9px !important; }
+[data-vs-element="evaluate"] .bento__pill {
+  gap: 9px !important;
+  padding: 6px 16px 6px 6px !important;
+  font-size: 16px !important;
+}
+[data-vs-element="evaluate"] .bento__pill img {
+  width: 34px !important;
+  height: 34px !important;
+}
+
+
+[data-vs-element="evaluate"] .bento__marquee-track {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+
+[data-vs-element="evaluate"] [data-evaluate-source-marquee] {
+  --vs-fade: 56px;
+  -webkit-mask-image: linear-gradient(to right,
+    transparent 0, #000 var(--vs-fade),
+    #000 calc(100% - var(--vs-fade)), transparent 100%);
+  mask-image: linear-gradient(to right,
+    transparent 0, #000 var(--vs-fade),
+    #000 calc(100% - var(--vs-fade)), transparent 100%);
+}
+
+
+[data-vs-element="evaluate"] .bento__pill {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  opacity: 1 !important;
+}

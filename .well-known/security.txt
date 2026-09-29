@@ -1,0 +1,5 @@
+Contact: mailto:security@varosync.com
+Preferred-Languages: en
+Canonical: https://varosync.com/.well-known/security.txt
+Policy: https://varosync.com/legal/security/
+Expires: 2027-09-22T00:00:00.000Z

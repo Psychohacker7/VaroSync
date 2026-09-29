@@ -1,0 +1,82 @@
+/* Closing section, sized like the homepage brief. The picture assembles from a cloud of cubes while
+   it and its copy hold below the header, the photograph takes over as the cubes land, then the
+   picture scrolls on while the copy stays parked until its foot meets the picture's, as the
+   homepage copy does. The button under the heading rises out of its mask over the last stretch
+   of that travel. The scrub, the copy's drift and the rise (--fin-act, 0 to 1) are set by
+   finance-converge.js. */
+.fin-converge{
+  --fin-park:calc(var(--header-sticky-height) + 16px);
+  --fin-scrub:0px;
+  margin-top:clamp(56px,7vw,132px);
+  padding-inline:var(--size-20);
+}
+.fin-converge.is-armed{ --fin-scrub:50svh; }
+
+.fin-converge-grid{
+  display:grid;
+  gap:clamp(26px,3vw,52px);
+}
+
+.fin-converge-plate{
+  position:sticky;
+  top:var(--fin-park);
+  margin:0;
+  aspect-ratio:3 / 2;
+  border-radius:10px;
+  overflow:hidden;
+}
+.fin-converge-plate img{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.fin-converge.is-ready .fin-converge-plate img{
+  opacity:clamp(0, calc((var(--converge-progress, 0) - .9) * 10), 1);
+}
+
+.fin-converge-scrub{ height:var(--fin-scrub); }
+
+.fin-converge-copy h2{
+  margin:0;
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:clamp(26px,3.4vw,50px);
+  line-height:1.06;
+  letter-spacing:-.022em;
+}
+
+/* The mask the button rises out of; the padding keeps its border clear of the clip. */
+.fin-converge-act{
+  --vs-ink:var(--ink);
+  --rounded-base:4px;
+  overflow:hidden;
+  padding:2px;
+  margin:clamp(22px,2.4vw,40px) 0 0 -2px;
+}
+.fin-converge-act .vs-cta{ margin-left:0; }
+.fin-converge.is-armed .fin-converge-act .vs-cta{
+  --rise:calc(1 - (1 - var(--fin-act, 0)) * (1 - var(--fin-act, 0)) * (1 - var(--fin-act, 0)));
+  transform:translate3d(0, calc((1 - var(--rise)) * 110%), 0);
+  opacity:clamp(0, calc(var(--fin-act, 0) * 2.5), 1);
+}
+.fin-converge-act:focus-within .vs-cta{ transform:none !important; opacity:1 !important; }
+
+@media (min-width:1024px){
+  .fin-converge{ --fin-park:clamp(84px, 11vh, 132px); }
+  .fin-converge-grid{
+    grid-template-columns:1.5fr 1fr;
+    gap:clamp(40px,4.4vw,90px);
+  }
+  .fin-converge-pin{
+    position:sticky;
+    top:var(--fin-park);
+  }
+  .fin-converge.is-armed .fin-converge-pin{
+    transform:translate3d(0, var(--fin-drift, 0px), 0);
+    will-change:transform;
+  }
+}

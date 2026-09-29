@@ -1,0 +1,93 @@
+/* Field ranking: the homepage program matrix, completed, re-sorted by the firm's own view.
+   Fixed 620 x 440 artboard, scaled to fit its container by the script (transform, never zoom: iOS Safari re-inflates text inside zoomed subtrees) (--fr-fit). The matrix is
+   laid out at 980 wide inside a shadow root and scaled into the card; the editor and the cursor
+   sit above it at card scale. */
+[data-fr]{
+  --fr-fit:1;
+  width:100%;
+  max-width:620px;
+  position:relative;
+  aspect-ratio:620 / 440;
+  font-family:'Experimental', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+[data-fr] *{ box-sizing:border-box; }
+.fr-stage{ position:absolute; left:0; top:0; width:620px; height:440px;
+  transform:scale(var(--fr-fit)); transform-origin:0 0; }
+.fr-card{
+  position:absolute; inset:0;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 0 0 1px rgb(25 34 45 / .07), 0 1px 2px rgb(25 34 45 / .04), 0 18px 40px -18px rgb(25 34 45 / .2);
+  overflow:hidden;
+}
+.fr-host{
+  position:absolute; left:0; top:0; width:980px; height:696px;
+  transform:scale(.63265); transform-origin:0 0;
+  pointer-events:none;
+}
+
+/* The editor: the product's own, as the owner's reference draws it. */
+.fr-pop{
+  position:absolute; left:0; top:0; width:280px;
+  padding:10px;
+  background:#fff; border-radius:14px;
+  box-shadow:0 12px 32px rgb(17 20 28 / .12), 0 1px 2px rgb(17 20 28 / .06), 0 0 0 1px rgb(17 20 28 / .06);
+  color:#0a0a0a;
+  visibility:hidden; transform-origin:0 0;
+}
+.fr-title{
+  display:flex; align-items:center;
+  height:32px; padding-left:11px;
+  background:#fdfdfe; border:1px solid #d1d1d2; border-radius:10px;
+  font-size:12.5px; font-weight:600;
+}
+.fr-ring{ position:absolute; left:7px; top:7px; width:266px; height:38px; border:3px solid #f2f2f2; border-radius:13px; pointer-events:none; }
+.fr-title .fr-caret{ height:14px; margin-left:1px; }
+.fr-caret{
+  display:inline-block; width:1px; height:13px; vertical-align:-2px;
+  background:#0a0a0a;
+  animation:fr-blink 1.06s step-end infinite;
+}
+@keyframes fr-blink{ 50%{ opacity:0; } }
+.fr-rows{ margin-top:6px; }
+.fr-row{
+  display:flex; align-items:center; justify-content:space-between;
+  height:30px; padding:0 6px;
+  font-size:11px;
+}
+.fr-row span{ color:#737373; }
+.fr-row b{ display:flex; align-items:center; gap:6px; font-weight:600; }
+.fr-row svg{ width:9px; height:9px; }
+.fr-ilabel{ margin-top:6px; height:14px; font-size:10px; font-weight:600; color:#737373; line-height:14px; }
+.fr-text{
+  position:relative;
+  height:124px; margin-top:10px; padding:11px 12px;
+  background:#eff0f3; border-radius:11px;
+  font-size:11px; line-height:16px;
+}
+.fr-sel{ border-radius:2px; }
+.fr-typed i{ display:none; font-style:normal; }
+.fr-text .fr-caret{ display:none; position:relative; width:0; height:13px; background:none; }
+.fr-text .fr-caret::after{ content:""; position:absolute; left:0; top:0; width:1px; height:13px; background:#0a0a0a; }
+.fr-grip{ position:absolute; right:4px; bottom:4px; width:8px; height:8px; }
+.fr-foot{
+  display:flex; align-items:center; justify-content:space-between;
+  height:28px; margin-top:10px; padding-left:4px;
+}
+.fr-foot svg{ width:12px; height:12px; }
+.fr-save{
+  display:flex; align-items:center; justify-content:center;
+  width:48px; height:28px; border-radius:8px;
+  background:#0a0a0a; color:#fff;
+  font-size:11px; font-weight:700;
+  box-shadow:0 1px 3px rgb(0 0 0 / .16);
+}
+
+/* The analyst's hand: an arrow, and an I-beam inside the text. Only shown while it does something. */
+.fr-cursor, .fr-ibeam{
+  position:absolute; left:0; top:0;
+  opacity:0; pointer-events:none;
+}
+.fr-cursor{ width:18px; height:24px; transform-origin:1px 1px; }
+.fr-ibeam{ width:8px; height:16px; margin:-8px 0 0 -4px; }

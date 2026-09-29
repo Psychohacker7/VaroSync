@@ -1,0 +1,290 @@
+@import url("/site.css");
+
+.git{
+
+  --col:600px;
+  --ctl:rgb(9 20 35 / .18);
+  --ctl-hover:rgb(9 20 35 / .32);
+  --ph:rgb(9 20 35 / .38);
+  --bad:#b5442e;
+  min-height:100dvh;
+}
+
+@media (min-width:900px){
+  .git{
+    display:grid; grid-template-columns:1fr 1fr;
+    height:100dvh; overflow:hidden;
+  }
+}
+
+.git-col{
+  display:flex; flex-direction:column; align-items:center;
+  padding:clamp(20px,3vw,40px) clamp(18px,3vw,52px) clamp(18px,2vw,30px);
+  min-width:0;
+}
+.git-col > *{ width:100%; max-width:var(--col); }
+@media (min-width:900px){ .git-col{ overflow-y:auto; } }
+
+.git-mark{
+  display:flex; justify-content:center; align-items:center;
+  flex:0 0 auto; color:var(--ink); text-decoration:none;
+}
+.git-mark svg{
+  display:block; width:auto; fill:currentColor;
+  height:clamp(26px,2.2vw,36px);
+}
+
+.git-body{
+  flex:1 1 auto; display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(30px,5vh,64px) 0;
+}
+
+.git-foot{
+  flex:0 0 auto; display:flex; flex-wrap:wrap; gap:8px 18px;
+  justify-content:space-between; align-items:baseline;
+  font-size:12px; color:var(--muted);
+}
+.git-foot-nav{ display:flex; flex-wrap:wrap; gap:6px 16px; }
+.git-foot a{ text-decoration:none; }
+.git-foot a:hover{ color:var(--ink); }
+
+.git.has-intro .git-enter-item{
+  opacity:0;
+  transform:translateY(18px);
+  transition:
+    opacity .68s ease var(--enter-delay, 0ms),
+    transform .82s cubic-bezier(.16,1,.3,1) var(--enter-delay, 0ms);
+  will-change:opacity, transform;
+}
+.git.has-intro.is-entered .git-enter-item{
+  opacity:1;
+  transform:none;
+}
+.git.has-intro .git-hue-img{
+  opacity:.78;
+  transform:scale(1.055);
+  transition:
+    opacity .9s ease,
+    transform 1.35s cubic-bezier(.16,1,.3,1);
+  will-change:opacity, transform;
+}
+.git.has-intro.is-entered .git-hue-img{
+  opacity:1;
+  transform:scale(1);
+}
+
+.git-hue{
+  position:relative; overflow:hidden;
+  background:var(--ink);
+  display:flex;
+}
+.git-hue-img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:50% 38%;
+  display:block;
+}
+
+.git-hue-copy{
+  position:relative; z-index:2;
+  flex:1 1 auto; display:flex; flex-direction:column; justify-content:flex-start;
+  align-items:flex-start;
+  padding:clamp(26px,3vw,54px);
+  min-height:0;
+}
+.git-hue h1{
+  font-family:var(--sans); font-weight:500;
+  font-size:clamp(32px,4.6vw,70px); line-height:1.02; letter-spacing:-.028em;
+  color:var(--ink);
+  margin:0;
+}
+.git-hue p{
+  margin:0;
+  font-family:var(--sans); font-weight:400;
+  font-size:clamp(17px,1.5vw,24px); line-height:1.34; letter-spacing:-.012em;
+
+  color:var(--ink);
+  margin-top:clamp(18px,1.8vw,28px);
+
+  margin-left:var(--indent, 0px);
+  max-width:var(--measure, 26ch);
+  text-align:right;
+}
+
+.git-hue h1 .w{
+  display:inline-block; overflow:hidden; vertical-align:bottom;
+  padding-bottom:.16em; margin-bottom:-.16em;
+}
+.git-hue h1 .w > i{
+  display:inline-block; font-style:normal; will-change:transform;
+  transform:translateY(110%);
+  transition:transform .85s cubic-bezier(.16,1,.3,1);
+  transition-delay:var(--d, 0ms);
+}
+.git-hue.is-in h1 .w > i{ transform:none; }
+
+.git-hue.has-anim p{
+  opacity:0; transform:translateY(16px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);
+  transition-delay:var(--pd, 600ms);
+}
+.git-hue.has-anim.is-in p{ opacity:1; transform:none; }
+
+@media (prefers-reduced-motion: reduce){
+  .git.has-intro .git-enter-item,
+  .git.has-intro .git-hue-img{
+    opacity:1 !important; transform:none !important; transition:none !important;
+  }
+  .git-hue h1 .w > i{ transform:none !important; transition:none; }
+  .git-hue.has-anim p{ opacity:1 !important; transform:none !important; transition:none; }
+}
+
+@media (max-width:899px){
+
+  .git{ display:flex; flex-direction:column; }
+  .git-hue{ min-height:clamp(340px,64vw,440px); }
+
+  .git-hue h1{ font-size:clamp(34px,11.4vw,64px); }
+
+  .git-hue p{ font-size:clamp(17px,2.4vw,23px); }
+}
+
+.git-form{ width:100%; }
+.git-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:899px){ .git-row{ gap:10px; } }
+.git-field{ margin-bottom:16px; }
+
+.git-field label{
+  display:block; margin-bottom:6px;
+  font-family:var(--sans); font-weight:500; font-size:13.5px; letter-spacing:.005em;
+}
+.git-field label .req{ color:var(--bad); margin-left:3px; }
+.git-field label .opt{ color:var(--muted); font-weight:400; font-size:11px; margin-left:6px; }
+
+.git-field input,
+.git-field select,
+.git-field textarea{
+  width:100%; box-sizing:border-box;
+  font-family:var(--prose); font-size:16px; line-height:1.4; color:var(--ink);
+  background:#fff; border:1px solid var(--ctl); border-radius:9px;
+  padding:13px 15px;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+.git-field textarea{ resize:none; min-height:92px; padding-top:12px; }
+@media (max-width:899px){ .git-field textarea{ min-height:58px; } }
+.git-field input::placeholder,
+.git-field textarea::placeholder{ color:var(--ph); }
+.git-field input:hover,
+.git-field select:hover,
+.git-field textarea:hover{ border-color:var(--ctl-hover); }
+.git-field input:focus,
+.git-field select:focus,
+.git-field textarea:focus{
+  outline:none; border-color:var(--ink);
+  box-shadow:0 0 0 3px rgb(9 20 35 / .08);
+}
+.git-field select{
+  appearance:none; -webkit-appearance:none; padding-right:34px; cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%23091423' stroke-opacity='.55' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 12px center;
+}
+.git-field select:invalid,
+.git-field select.is-empty{ color:var(--ph); }
+.git-field optgroup{
+  font-family:var(--sans); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted);
+}
+.git-field option{ font-family:var(--prose); font-size:14px; color:var(--ink); text-transform:none; letter-spacing:0; }
+
+.git-note{ margin:6px 0 0; font-size:12px; color:var(--muted); }
+.git-err{ margin:6px 0 0; font-size:12px; color:var(--bad); }
+.git-err[hidden]{ display:none; }
+
+.git-cap{ margin-bottom:14px; }
+.git-cap:empty{ margin:0; }
+
+.git-submit{
+  width:100%; margin-top:4px; cursor:pointer;
+  font-family:var(--sans); font-weight:500; font-size:16px; letter-spacing:.005em;
+  color:var(--paper); background:var(--ink);
+  border:1px solid var(--ink); border-radius:9px; padding:15px 18px;
+  transition:opacity .18s ease;
+}
+.git-submit:hover{ opacity:.88; }
+.git-submit:disabled{ opacity:.5; cursor:default; }
+
+.git-fine{ margin:12px 0 0; font-size:12px; line-height:1.5; color:var(--muted); }
+.git-fine a{ color:var(--ink); text-decoration:underline; text-underline-offset:3px;
+  text-decoration-thickness:1px; text-decoration-color:var(--rule); }
+.git-fine a:hover{ text-decoration-color:currentColor; }
+
+.git.is-sent{ display:block; height:auto; min-height:100dvh; overflow:visible; }
+
+.git.is-sent .git-col > *{ max-width:none; }
+.git.is-sent .git-hue{ display:none; }
+.git.is-sent .git-body{ justify-content:flex-start; align-items:stretch; padding-top:clamp(34px,8vh,96px); }
+.git-sent-wrap{ max-width:940px; margin:0 auto; width:100%; text-align:center; }
+.git-sent-h{
+  font-family:var(--sans); font-weight:500;
+  font-size:clamp(26px,3vw,42px); line-height:1.08; letter-spacing:-.02em; margin:0;
+}
+.git-sent-p{ margin:12px 0 clamp(24px,3vw,40px); color:var(--muted); }
+.git.is-sent:not(:has(.git-cal)) .git-col{ min-height:100dvh; }
+.git.is-sent:not(:has(.git-cal)) .git-body{ justify-content:center; padding-top:clamp(30px,5vh,64px); }
+.git-sent-wrap:not(:has(.git-cal)) .git-sent-p{ margin-bottom:0; }
+
+.git-cal{ position:relative; min-height:520px; }
+.git-cal.is-ready .git-cal-wait{ display:none; }
+.git-cal-wait{
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:14px; pointer-events:none;
+}
+.git-cal-waitLabel{ font-family:var(--sans); font-size:13px; color:var(--muted); }
+.git-cal-waitBar{
+  width:180px; height:2px; border-radius:2px; overflow:hidden;
+  background:rgb(9 20 35 / .10); position:relative;
+}
+.git-cal-waitBar::after{
+  content:''; position:absolute; inset:0 auto 0 0; width:40%;
+  background:rgb(9 20 35 / .38); animation:gitSweep 1.15s ease-in-out infinite;
+}
+@keyframes gitSweep{ 0%{ transform:translateX(-100%) } 100%{ transform:translateX(350%) } }
+@media (prefers-reduced-motion: reduce){ .git-cal-waitBar::after{ animation:none; } }
+.git-cal-fallback{ position:relative; z-index:1; font-size:14px; color:var(--muted); }
+.git-cal-fallback a{ color:var(--ink); }
+.git-cal-fallback[hidden]{ display:none; }
+
+/* Sent view when the calendar cannot show because Preferences are off: the line above it says so,
+   and the two ways through (book on Cal.com, allow it here) sit in a quiet card, styled like the
+   page's other text links. */
+.git-sent-nocal{ display:none; }
+.git-sent-wrap:has(.git-cal.is-optin) .git-sent-cal{ display:none; }
+.git-sent-wrap:has(.git-cal.is-optin) .git-sent-nocal{ display:inline; }
+#git-cal-optin{
+  max-width:560px; margin:0 auto;
+  padding:clamp(18px,2.4vw,28px) clamp(18px,2.6vw,32px);
+  border:1px solid var(--ctl); border-radius:12px; background:#fff;
+  font-size:15px; line-height:1.6; color:var(--muted); text-align:center;
+}
+#git-cal-optin a,
+#git-cal-optin .git-cal-allow{
+  color:var(--ink); font-weight:500;
+  text-decoration:underline; text-underline-offset:3px;
+  text-decoration-thickness:1px; text-decoration-color:var(--rule);
+}
+#git-cal-optin a:hover,
+#git-cal-optin .git-cal-allow:hover{ text-decoration-color:currentColor; }
+#git-cal-optin a:focus-visible,
+#git-cal-optin .git-cal-allow:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; border-radius:2px; }
+
+.vs-pre .git-mark,
+.vs-pre .git-field,
+.vs-pre .git-cap,
+.vs-pre .git-submit,
+.vs-pre .git-fine,
+.vs-pre .git-foot,
+.vs-pre .git-hue-img,
+.vs-pre .git-hue h1,
+.vs-pre .git-hue p{ visibility:hidden; }
+.vs-pre .git-enter-item,
+.vs-pre .git-hue-img,
+.vs-pre .git-hue p{ transition:none !important; }

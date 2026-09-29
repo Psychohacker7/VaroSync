@@ -1,0 +1,192 @@
+/* Finance feature stack: sticky cards that park under the header, each offset by one peek, so the
+   stack builds as it scrolls. Pure CSS; the mechanism follows the card-stack-scroll recipe.
+   Each card is as tall as its element slot: the slot in one half, the title in the opposite top
+   corner and the line of text at the bottom of that side, alternating sides card to card.
+   Below 1024px the text sits above the slot. */
+
+.fin-stack{
+  /* MECHANISM: own stacking context, so card z-indexes never fight the header. */
+  isolation:isolate;
+  position:relative;
+  z-index:0;
+  container-type:inline-size;           /* card sizes are worked out from this width */
+
+  --fin-nav:50px;                       /* the sticky header below 1024px */
+  --fin-park:.5rem;                     /* gap between the header and a parked card */
+  --fin-edge:clamp(16px,1.45vw,26px);   /* the hero's edge, so the cards line up with it */
+  --card-pad:clamp(16px,1.8vw,28px);    /* the same on every side, top included */
+  --col-gap:clamp(24px,3vw,56px);
+  --title-size:clamp(28px,2.9vw,46px);
+  --title-box:1.1;                      /* the title's box, in ems (its line height) */
+  --title-gap:clamp(12px,1.15vw,18px);  /* title to text */
+  --body-size:clamp(15px,1.3vw,20px);
+  /* Visible band of each parked card: the top padding, the title, and a little air. */
+  --peek:calc(var(--card-pad) * 1.6 + var(--title-size) * var(--title-box));
+
+  margin-top:clamp(4px,.6vw,10px);
+}
+@media (min-width:1024px){
+  .fin-stack{
+    --fin-nav:var(--header-sticky-height);
+    --fin-park:1rem;
+  }
+}
+/* Where the title's box can be trimmed to its capitals, its top is the cap line, so it sits
+   exactly one padding from the card's top and level with the slot's top. */
+@supports (text-box: trim-both cap alphabetic){
+  .fin-stack{ --title-box:.72; }
+}
+
+.fin-stack-list{
+  /* --card-count is set inline. */
+  --cascade:calc((var(--card-count) - 1) * var(--peek));
+  --inner:calc(100cqw - 2 * var(--fin-edge) - 2 * var(--card-pad));
+  /* Below 1024px: the text (title, gap, up to three lines), then the slot, full width. */
+  --slot-w:min(620px, var(--inner));
+  --text-block:calc(var(--title-size) * var(--title-box) + var(--title-gap) + 4 * 1.5 * var(--body-size));
+  --content-block:calc(var(--card-pad) * 3 + var(--text-block) + var(--slot-w) / 1.40909);
+  /* A card hugs its content, and a fully parked stack (the last card plus the peeks above it)
+     still fits one viewport. */
+  --card-block:min(calc(100svh - var(--fin-nav) - var(--fin-park) - var(--cascade) - 1rem), var(--content-block));
+
+  padding-inline:var(--fin-edge);
+  padding-block-end:var(--cascade);     /* room for the last card's translate */
+}
+@media (min-width:1024px){
+  .fin-stack-list{
+    --slot-w:min(620px, calc((var(--inner) - var(--col-gap)) / 2));
+    --content-block:calc(var(--card-pad) * 2 + var(--slot-w) / 1.40909);
+  }
+}
+/* MECHANISM: the runway. A sticky card only travels inside its parent's content box, so the
+   hold has to be in-flow content, not padding; without it the finished stack never holds. */
+.fin-stack-list::after{ content:""; display:block; block-size:10svh; }
+@media (min-width:1024px){ .fin-stack-list::after{ block-size:12svh; } }
+
+.fin-card{
+  /* MECHANISM: the four lines that are the whole effect. */
+  position:sticky;
+  inset-block-start:calc(var(--fin-nav) + var(--fin-park));
+  translate:0 calc(var(--card-index, 0) * var(--peek));
+  z-index:calc(var(--card-index, 0) + 1);
+
+  /* MECHANISM: an explicit height, so every card is the same and they release together. */
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto minmax(0,1fr);
+  block-size:var(--card-block);
+
+  margin-block-end:.75rem;
+  padding:var(--card-pad);
+  overflow:hidden;
+  /* Opaque, always: a translucent card ghosts over the cards parked behind it. */
+  background:var(--card-bg);
+  border-radius:8px;
+}
+/* One tint per card, from the owner's reference palette (sand, blue, mint, rose). */
+.fin-card:nth-child(4n+1){ --card-bg:#EFE3D9; }
+.fin-card:nth-child(4n+2){ --card-bg:#DBECF9; }
+.fin-card:nth-child(4n+3){ --card-bg:#DEEAE9; }
+.fin-card:nth-child(4n+4){ --card-bg:#E7DAD9; }
+
+.fin-card-text{ min-width:0; }
+.fin-card-title{
+  margin:0;
+  font-family:var(--sans); font-weight:500;
+  font-size:var(--title-size); line-height:1.1; letter-spacing:-.025em;
+  text-box:trim-both cap alphabetic;
+}
+.fin-card-text p{
+  margin:var(--title-gap) 0 0;
+  max-width:30ch;
+  font-size:var(--body-size); line-height:1.5;
+  color:rgb(9 20 35 / .68);
+}
+
+/* The element slot: the element's own 620 x 440 footprint, as large as its area allows,
+   empty until an element mounts. */
+.fin-card-media{
+  min-height:0;
+  padding-top:var(--card-pad);
+  container-type:size;
+  display:grid; align-items:start; justify-items:center;
+}
+.fin-card-el{
+  width:min(100cqw, calc(100cqh * 1.40909), 620px);
+  aspect-ratio:620 / 440;
+}
+/* Until then, the element's white card shape stands in for it. */
+.fin-card-el:empty{
+  background:#fff; border-radius:16px;
+  box-shadow:0 0 0 1px rgb(25 34 45 / .07), 0 1px 2px rgb(25 34 45 / .04), 0 18px 40px -18px rgb(25 34 45 / .2);
+}
+
+@media (min-width:1024px){
+  .fin-card{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows:minmax(0,1fr);
+    column-gap:var(--col-gap);
+  }
+  /* The title in the top corner, its line of text just below it. */
+  .fin-card-text{ grid-row:1; display:flex; flex-direction:column; }
+  .fin-card-media{ grid-row:1; padding-top:0; }
+  /* Text on one side, the slot on the other, each on its padding line. */
+  .fin-card[data-text="right"] .fin-card-text{ grid-column:2; justify-self:end; align-items:flex-end; text-align:right; }
+  .fin-card[data-text="right"] .fin-card-media{ grid-column:1; justify-items:start; }
+  .fin-card[data-text="left"] .fin-card-text{ grid-column:1; justify-self:start; }
+  .fin-card[data-text="left"] .fin-card-media{ grid-column:2; justify-items:end; }
+}
+
+/* MECHANISM: full disarm, a plain list. Also when the viewport is too short to hold a parked stack. */
+@media (prefers-reduced-motion: reduce), (max-height:38rem){
+  .fin-card{ position:relative; inset-block-start:auto; translate:none; }
+  .fin-stack-list{ padding-block-end:0; --card-block:var(--content-block); }
+  .fin-stack-list::after{ display:none; }
+  @media (max-width:1023.98px){
+    .fin-card{ display:block; block-size:auto; }
+    .fin-card-media{ container-type:normal; display:block; }
+    .fin-card-el{ width:100%; max-width:min(620px, calc((100svh - var(--fin-nav) - 2rem) * 1.40909)); }
+  }
+}
+
+/* After the stack: three features on the footer's navy. Below laptop they stack as rows
+   (name, then image) split by full-width white lines. From 1024px they sit in one wide strip,
+   three cells across, split by white lines running the band's full height. */
+.fin-use{
+  margin-top:clamp(28px,3.5vw,56px);
+  background:var(--ink); color:var(--paper);
+}
+.fin-use-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:clamp(22px,3vw,40px);
+  padding:clamp(36px,4.5vw,64px) var(--fin-edge, clamp(16px,1.45vw,26px));
+}
+.fin-use-row + .fin-use-row{ border-top:1px solid var(--paper); }
+.fin-use-name{
+  margin:0;
+  font-family:var(--sans); font-weight:500;
+  font-size:clamp(26px,2.4vw,38px); line-height:1.15; letter-spacing:-.02em;
+  max-width:18ch;
+}
+.fin-use-media{ margin:0; min-width:0; }
+.fin-use-media img{
+  display:block; width:100%;
+  aspect-ratio:16 / 10; object-fit:cover;
+  border-radius:10px;
+}
+@media (min-width:1024px){
+  .fin-use{
+    --use-pad:clamp(28px,3vw,56px);   /* one margin, every side */
+    display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .fin-use-row{
+    display:flex; flex-direction:column; justify-content:space-between; align-items:stretch;
+    gap:var(--use-pad);
+    padding:var(--use-pad);
+  }
+  /* The splits: white lines through the band's full height. */
+  .fin-use-row + .fin-use-row{ border-top:0; border-left:1px solid var(--paper); }
+  /* Zigzag down the strip: text over image, image over text, text over image. */
+  .fin-use-row:nth-child(2) .fin-use-media{ order:-1; }
+}

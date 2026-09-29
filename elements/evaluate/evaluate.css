@@ -1,0 +1,100 @@
+
+[data-evaluate-source-marquee],
+[data-evaluate-source-marquee] * {
+  box-sizing: border-box;
+}
+
+[data-evaluate-source-marquee] {
+  --evaluate-marquee-height: 454px;
+  --evaluate-marquee-font: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  width: 100%;
+  height: var(--evaluate-marquee-height);
+  min-width: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  container-type: inline-size;
+  background: transparent;
+}
+
+[data-evaluate-source-marquee] .bento__marquee {
+  pointer-events: none;
+  width: calc(100% - 48px);
+  margin: 0 24px;
+  padding: 22px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  position: relative;
+  overflow: visible;
+}
+
+[data-evaluate-source-marquee] .bento__marquee-row {
+  width: 100%;
+  overflow: visible;
+}
+
+[data-evaluate-source-marquee] .bento__marquee-track {
+  width: max-content;
+  display: flex;
+  animation: evaluate-source-marquee-track 42s linear infinite;
+}
+
+[data-evaluate-source-marquee] .bento__marquee-row--reverse .bento__marquee-track {
+  animation-duration: 48s;
+  animation-direction: reverse;
+}
+
+[data-evaluate-source-marquee] .bento__marquee-group {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 9px;
+  padding-inline-end: 9px;
+}
+
+[data-evaluate-source-marquee] .bento__pill {
+  color: #10212c;
+  font-family: var(--evaluate-marquee-font);
+  white-space: nowrap;
+  background: rgba(250, 250, 247, .78);
+  border-radius: 100px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 18px 7px 7px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  box-shadow: 0 1px 0 rgba(255,255,255,.65), 0 7px 18px rgba(18,39,45,.08);
+}
+
+[data-evaluate-source-marquee] .bento__pill img {
+  width: 34px;
+  height: 34px;
+  display: block;
+  object-fit: contain;
+  border-radius: 100px;
+}
+
+@container (max-width: 519px) {
+  [data-evaluate-source-marquee] .bento__marquee {
+    gap: 8px;
+  }
+  [data-evaluate-source-marquee] .bento__pill {
+    gap: 8px;
+    padding: 5px 14px 5px 5px;
+    font-size: 14px;
+  }
+  [data-evaluate-source-marquee] .bento__pill img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@keyframes evaluate-source-marquee-track {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
