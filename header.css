@@ -23,7 +23,9 @@
   width:calc(var(--cap) * 5.9631);
   height:calc(var(--cap) * 1.2953);
   display:flex; align-items:stretch;
-}.vs-word svg,.vs-mark svg{ fill:currentColor; }.vs-word svg{ display:block; height:100%; flex:0 0 auto; }@media (min-width:1024px){.menu_header{ margin-left:auto; justify-content:flex-end; }div:has(> ul.menu_header.is_sticky){ margin-left:auto; }}.menu_header{ text-transform:none; }.vs-sticky-cta{
+}.vs-word svg,.vs-mark svg{ fill:currentColor; overflow:visible; }/* overflow:visible: each letter svg viewport is flush against its ink, and the default
+   hidden overflow shaved edge pixels off stems and curves at fractional widths (the
+   intermittent cut s and n). */.vs-word svg{ display:block; height:100%; flex:0 0 auto; }@media (min-width:1024px){.menu_header{ margin-left:auto; justify-content:flex-end; }div:has(> ul.menu_header.is_sticky){ margin-left:auto; }}.menu_header{ text-transform:none; }.vs-sticky-cta{
   display:inline-flex;
   align-items:center;
   gap:.55em;

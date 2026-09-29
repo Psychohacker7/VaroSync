@@ -55,7 +55,7 @@ html, body{
 }
 
 .vs-word svg,
-.vs-mark svg{ fill:currentColor; }
+.vs-mark svg{ fill:currentColor; overflow:visible; } /* flush-ink viewports: hidden overflow shaved letter edges */
 .vs-word svg{ display:block; height:100%; flex:0 0 auto; }
 
 @media (min-width:640px){  :root{ --cap: 2.7vw; } }
