@@ -36,6 +36,19 @@
     else if (reduceMotion.addListener) reduceMotion.addListener(sync);
     document.addEventListener('visibilitychange', sync);
     window.addEventListener('pageshow', sync);
+
+    /* Low Power Mode rejects the scripted play() and leaves the poster with no affordance.
+       The first gesture of any kind retries, and the listeners drop once the loop runs. */
+    var gestures = ['touchend', 'pointerdown', 'scroll'];
+    function retry() { sync(); }
+    function armed(on) {
+      gestures.forEach(function (g) {
+        (on ? window.addEventListener : window.removeEventListener)(g, retry, { passive: true });
+      });
+    }
+    video.addEventListener('playing', function () { armed(false); });
+    armed(true);
+
     sync();
   }
 
